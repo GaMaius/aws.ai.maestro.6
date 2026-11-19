@@ -11,7 +11,7 @@
 | eval/ | 관세 규칙 · AI | 정답지와 채점 스크립트 |
 | web/ | 프론트 | 화면 |
 | infra/ | AWS 통합 | IAM 정책, 배포 스크립트 |
-| samples/ | AI | 데이터셋 (dev만 저장소에, test는 git 태그로 잠근 뒤) |
+| samples/ | AI | 데이터셋 (dev만 저장소에. test는 올리지 않고 해시 파일 samples/test_lock.json 으로 잠금) |
 | refs/ | AI | 레퍼런스 출처(sources.csv). 원본 파일은 올리지 않음 |
 | docs/ | 전원 | schema.md(데이터 형식 약속) |
 
