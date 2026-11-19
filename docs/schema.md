@@ -90,15 +90,20 @@ POST /chat          요청  {"session_id": "s-01", "message": "이번 주 통관
 ## 약속 3. 정답지 (eval/answers.csv)
 
 ```csv
-set_id,split,doc,field,planted_value,original_value,error_type,expected_rule_id
-S01,dev,packing_list,total_gross_kg,6520,6250,digit_swap,X-WT-01
-S02,dev,,,,,none,
-S03,test,commercial_invoice,items[0].hs_code,850790,850760,wrong_code,X-HS-01
+set_id,split,doc,field,planted_value,original_value,error_type,expected_rule_id,line,phase,variant
+S01,dev,packing_list,total_gross_kg,6520,6250,digit_swap,X-WT-01,1,P0,
+S02,dev,,,,,none,,,,
+S03,dev,packing_list,invoice_no,SHE-2026 0214,SHE-2026-0214,none,,,,invoice_no_format
+S04,test,certificate_of_origin,items[0].hs_code,6105.10,6109.10,trap_code,X-HS-01,1,P1,
 ```
 
-- 심은 오류 하나가 한 줄, 정상 세트는 error_type=none 한 줄.
+- 심은 오류 하나가 한 줄(오류가 둘이면 두 줄), 정상 세트는 error_type=none 한 줄.
 - split: dev(개발용) / test(발표용, 마지막에 한 번만). 발표용 정답지는 git 에 올리지 않는다(eval/test/).
-- P0 대조 규칙은 서류 전체 값만 비교하므로 field 는 서류 전체 값 이름이다: total_qty, total_gross_kg, invoice_no(약속 1 의 doc_no). 합계가 찍히지 않은 서류는 줄 값을 코드가 더한다. 약속 2 의 cells 가 items[0].gross_kg 처럼 행 단위로 짚어도 채점은 같은 서류의 전체 값으로 묶어 센다. (회의에서 확정)
-- 행 단위 칸(S03 의 items[0].hs_code 처럼)은 행 맞추기와 HS 대조를 하는 P1 부터 쓴다. 그때 바뀐 행 번호도 정답지에 적는다.
-- error_type 은 심은 방식(samples/RULES.md 의 E 목록), expected_rule_id 는 규칙표 v1 의 ID 다(지금은 임시).
-- 핵심 칸 정답 값은 eval/fields.csv, 서류 종류와 품목별 HS 정답은 eval/sets.csv, 현황 조회 질문은 eval/queries.csv.
+- doc: commercial_invoice, packing_list, bill_of_lading, certificate_of_origin.
+- P0 대조 규칙은 서류 전체 값만 비교하므로 field 는 서류 전체 값 이름이다: total_qty, total_gross_kg, invoice_no(약속 1 의 doc_no). 합계가 찍히지 않은 서류는 줄 값을 코드가 더한다. 약속 2 의 cells 가 items[0].gross_kg 처럼 행 단위로 짚어도 채점은 같은 서류의 전체 값으로 묶어 센다.
+- line: 값이 바뀐 품목 줄 번호(1부터). 서류 전체 값이 바뀌었으면 빈칸.
+- phase: P0 = 상업송장·포장명세서의 invoice_no·total_qty·total_gross_kg, 나머지(합계, 송장 HS, B/L, 원산지증명서)는 P1. P0 채점은 phase=P0 줄만 정답으로 보고, P0 줄이 없는 세트는 P0 기준 정상 세트로 센다.
+- variant: 정상 세트에 심은 헷갈리지만 정상인 차이(S03). 불일치로 잡으면 오탐, '참고'로 알리는 것은 괜찮다.
+- 행 단위 칸(S04 의 items[0].hs_code 처럼)은 행 맞추기와 HS 대조를 하는 P1 부터 쓴다.
+- error_type 은 심은 방식(samples/RULES.md 의 E·V 목록), expected_rule_id 는 규칙표 v1 의 ID 다(지금은 임시).
+- 서류마다 찍힌 핵심 칸 값은 eval/fields.csv, 서류 자리·형식과 품목별 HS 정답·헷갈리는 HS는 eval/sets.csv, 현황 조회 질문은 eval/queries.csv.
