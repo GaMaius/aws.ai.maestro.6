@@ -1,0 +1,7 @@
+.env
+.aws/
+*.pem
+__pycache__/
+.venv/
+build/
+function.zip
