@@ -1,1 +1,4 @@
 set_id,split,consignee,docs,line,item,hs_answer
+S01,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,LITHIUM-ION BATTERY PACK 48V 20AH,
+S01,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,STAINLESS STEEL HEX BOLT M10X50,
+S02,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,MEN'S 100% COTTON T-SHIRT,

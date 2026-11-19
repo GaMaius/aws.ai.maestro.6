@@ -1,1 +1,21 @@
 set_id,doc,field,answer
+S01,commercial_invoice,invoice_no,SHE-2026-1101
+S01,commercial_invoice,total_qty,10120
+S01,commercial_invoice,total_gross_kg,1270
+S01,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+S01,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+S01,packing_list,invoice_no,SHE-2026-1101
+S01,packing_list,total_qty,10120
+S01,packing_list,total_gross_kg,1270
+S01,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+S01,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+S02,commercial_invoice,invoice_no,SST-26-0412
+S02,commercial_invoice,total_qty,1250
+S02,commercial_invoice,total_gross_kg,236.7
+S02,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+S02,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+S02,packing_list,invoice_no,SST-26-0412
+S02,packing_list,total_qty,1520
+S02,packing_list,total_gross_kg,236.7
+S02,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+S02,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
