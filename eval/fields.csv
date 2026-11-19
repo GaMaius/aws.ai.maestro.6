@@ -1,21 +1,751 @@
 set_id,doc,field,answer
-S01,commercial_invoice,invoice_no,SHE-2026-1101
-S01,commercial_invoice,total_qty,10120
-S01,commercial_invoice,total_gross_kg,1270
-S01,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
-S01,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
-S01,packing_list,invoice_no,SHE-2026-1101
-S01,packing_list,total_qty,10120
-S01,packing_list,total_gross_kg,1270
-S01,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
-S01,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
-S02,commercial_invoice,invoice_no,SST-26-0412
-S02,commercial_invoice,total_qty,1250
-S02,commercial_invoice,total_gross_kg,236.7
-S02,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
-S02,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
-S02,packing_list,invoice_no,SST-26-0412
-S02,packing_list,total_qty,1520
-S02,packing_list,total_gross_kg,236.7
-S02,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
-S02,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D001,commercial_invoice,invoice_no,SZP2600214
+D001,commercial_invoice,total_qty,2068
+D001,commercial_invoice,total_gross_kg,5855
+D001,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D001,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D001,packing_list,invoice_no,SZP2600214
+D001,packing_list,total_qty,2068
+D001,packing_list,total_gross_kg,5855
+D001,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D001,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D002,commercial_invoice,invoice_no,QDT/26/0133
+D002,commercial_invoice,total_qty,1750
+D002,commercial_invoice,total_gross_kg,556.5
+D002,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D002,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D002,packing_list,invoice_no,QDT/26/0133
+D002,packing_list,total_qty,1750
+D002,packing_list,total_gross_kg,55.65
+D002,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D002,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D003,commercial_invoice,invoice_no,SHE-2026-0323
+D003,commercial_invoice,total_qty,64100
+D003,commercial_invoice,total_gross_kg,3838.6
+D003,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D003,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D003,packing_list,invoice_no,SHE-2026-0332
+D003,packing_list,total_qty,64100
+D003,packing_list,total_gross_kg,3838.6
+D003,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D003,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D004,commercial_invoice,invoice_no,MKS-260111
+D004,commercial_invoice,total_qty,7940
+D004,commercial_invoice,total_gross_kg,8892.8
+D004,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D004,packing_list,invoice_no,MKS-260151
+D004,packing_list,total_qty,7940
+D004,packing_list,total_gross_kg,8892.8
+D004,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D005,commercial_invoice,invoice_no,MKS-260120
+D005,commercial_invoice,total_qty,14060
+D005,commercial_invoice,total_gross_kg,15747.2
+D005,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D005,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D005,packing_list,invoice_no,MKS-260210
+D005,packing_list,total_qty,14060
+D005,packing_list,total_gross_kg,15747.2
+D005,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D005,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D006,commercial_invoice,invoice_no,SZP2600199
+D006,commercial_invoice,total_qty,1837
+D006,commercial_invoice,total_gross_kg,18603.7
+D006,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D006,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D006,packing_list,invoice_no,SZP2600199
+D006,packing_list,total_qty,1846
+D006,packing_list,total_gross_kg,18603.7
+D006,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D006,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D007,commercial_invoice,invoice_no,SST-26-0139
+D007,commercial_invoice,total_qty,16531
+D007,commercial_invoice,total_gross_kg,5957.75
+D007,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D007,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D007,packing_list,invoice_no,SST-26-0139
+D007,packing_list,total_qty,16531
+D007,packing_list,total_gross_kg,5597.75
+D007,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D007,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D008,commercial_invoice,invoice_no,HSF-26-0154
+D008,commercial_invoice,total_qty,940
+D008,commercial_invoice,total_gross_kg,658
+D008,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D008,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D008,packing_list,invoice_no,HSF-26-0154
+D008,packing_list,total_qty,940
+D008,packing_list,total_gross_kg,611
+D008,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D008,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D009,commercial_invoice,invoice_no,SHE-2026-0301
+D009,commercial_invoice,total_qty,1176
+D009,commercial_invoice,total_gross_kg,2097.2
+D009,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D009,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D009,packing_list,invoice_no,SHE-2026-0391
+D009,packing_list,total_qty,1176
+D009,packing_list,total_gross_kg,2097.2
+D009,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D009,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D010,commercial_invoice,invoice_no,SST-26-0129
+D010,commercial_invoice,total_qty,2760
+D010,commercial_invoice,total_gross_kg,736
+D010,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D010,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D010,packing_list,invoice_no,SST-26-0129
+D010,packing_list,total_qty,2760
+D010,packing_list,total_gross_kg,1622.6
+D010,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D010,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D011,commercial_invoice,invoice_no,SHE-2026-0304
+D011,commercial_invoice,total_qty,38144
+D011,commercial_invoice,total_gross_kg,4663
+D011,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D011,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D011,packing_list,invoice_no,SHE-2026-0304
+D011,packing_list,total_qty,38144
+D011,packing_list,total_gross_kg,3638.35
+D011,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D011,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D012,commercial_invoice,invoice_no,MKS-260124
+D012,commercial_invoice,total_qty,10725
+D012,commercial_invoice,total_gross_kg,10982.4
+D012,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D012,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D012,packing_list,invoice_no,MKS-260124
+D012,packing_list,total_qty,10725
+D012,packing_list,total_gross_kg,10982.4
+D012,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D012,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D013,commercial_invoice,invoice_no,FEC-26-0218
+D013,commercial_invoice,total_qty,950
+D013,commercial_invoice,total_gross_kg,20710
+D013,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D013,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D013,packing_list,invoice_no,FEC-26-0218
+D013,packing_list,total_qty,950
+D013,packing_list,total_gross_kg,20710
+D013,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D013,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D014,commercial_invoice,invoice_no,QDT/26/0137
+D014,commercial_invoice,total_qty,6800
+D014,commercial_invoice,total_gross_kg,3980.1
+D014,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D014,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D014,packing_list,invoice_no,QDT/26/0137
+D014,packing_list,total_qty,6800
+D014,packing_list,total_gross_kg,4160.1
+D014,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D014,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D015,commercial_invoice,invoice_no,QDT/26/0118
+D015,commercial_invoice,total_qty,2050
+D015,commercial_invoice,total_gross_kg,651.9
+D015,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D015,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D015,packing_list,invoice_no,QDT/26/0118
+D015,packing_list,total_qty,205
+D015,packing_list,total_gross_kg,651.9
+D015,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D015,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D016,commercial_invoice,invoice_no,FEC-26-0192
+D016,commercial_invoice,total_qty,1475
+D016,commercial_invoice,total_gross_kg,32155
+D016,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D016,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D016,packing_list,invoice_no,FEC-26-0192
+D016,packing_list,total_qty,1475
+D016,packing_list,total_gross_kg,32155
+D016,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D016,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D017,commercial_invoice,invoice_no,QDT/26/0124
+D017,commercial_invoice,total_qty,2475
+D017,commercial_invoice,total_gross_kg,1871.1
+D017,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D017,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D017,packing_list,invoice_no,QDT/26/0124
+D017,packing_list,total_qty,2475
+D017,packing_list,total_gross_kg,1871.1
+D017,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D017,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D018,commercial_invoice,invoice_no,SST-26-0123
+D018,commercial_invoice,total_qty,17410
+D018,commercial_invoice,total_gross_kg,4371.8
+D018,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D018,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D018,packing_list,invoice_no,SST-26-0123
+D018,packing_list,total_qty,17410
+D018,packing_list,total_gross_kg,4371.8
+D018,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D018,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D019,commercial_invoice,invoice_no,BDF-2026-127
+D019,commercial_invoice,total_qty,1141
+D019,commercial_invoice,total_gross_kg,8998.3
+D019,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D019,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D019,packing_list,invoice_no,BDF-2026-127
+D019,packing_list,total_qty,1141
+D019,packing_list,total_gross_kg,8013.7
+D019,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D019,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D020,commercial_invoice,invoice_no,HSF-26-0152
+D020,commercial_invoice,total_qty,1640
+D020,commercial_invoice,total_gross_kg,1148
+D020,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D020,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D020,packing_list,invoice_no,HSF-26-0152
+D020,packing_list,total_qty,1620
+D020,packing_list,total_gross_kg,1148
+D020,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D020,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D021,commercial_invoice,invoice_no,HSF-26-0165
+D021,commercial_invoice,total_qty,1608
+D021,commercial_invoice,total_gross_kg,1147.04
+D021,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D021,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D021,packing_list,invoice_no,HSF-26-0165
+D021,packing_list,total_qty,1608
+D021,packing_list,total_gross_kg,2528.79
+D021,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D021,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D022,commercial_invoice,invoice_no,SZP2600225
+D022,commercial_invoice,total_qty,661
+D022,commercial_invoice,total_gross_kg,1587.3
+D022,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D022,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D022,packing_list,invoice_no,SZP2600252
+D022,packing_list,total_qty,661
+D022,packing_list,total_gross_kg,1587.3
+D022,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D022,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D023,commercial_invoice,invoice_no,BDF-2026-133
+D023,commercial_invoice,total_qty,1056
+D023,commercial_invoice,total_gross_kg,9667.2
+D023,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D023,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D023,packing_list,invoice_no,BDF-2026-133
+D023,packing_list,total_qty,975
+D023,packing_list,total_gross_kg,9667.2
+D023,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D023,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,commercial_invoice,invoice_no,FEC-26-0197
+D024,commercial_invoice,total_qty,2175
+D024,commercial_invoice,total_gross_kg,47415
+D024,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D024,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,packing_list,invoice_no,FEC-26-0197
+D024,packing_list,total_qty,2175
+D024,packing_list,total_gross_kg,47415
+D024,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D024,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D025,commercial_invoice,invoice_no,SZP2600208
+D025,commercial_invoice,total_qty,1242
+D025,commercial_invoice,total_gross_kg,4536.9
+D025,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D025,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D025,packing_list,invoice_no,SZP2600208
+D025,packing_list,total_qty,1242
+D025,packing_list,total_gross_kg,4536.9
+D025,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D025,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D026,commercial_invoice,invoice_no,TNC-26-0239
+D026,commercial_invoice,total_qty,13020
+D026,commercial_invoice,total_gross_kg,13193.6
+D026,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D026,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D026,packing_list,invoice_no,TNC-26-0239
+D026,packing_list,total_qty,13020
+D026,packing_list,total_gross_kg,13193.6
+D026,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D026,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D027,commercial_invoice,invoice_no,TNC-26-0225
+D027,commercial_invoice,total_qty,13740
+D027,commercial_invoice,total_gross_kg,13923.2
+D027,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D027,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D027,packing_list,invoice_no,TNC-26-0225
+D027,packing_list,total_qty,137400
+D027,packing_list,total_gross_kg,13923.2
+D027,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D027,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D028,commercial_invoice,invoice_no,NBH2026-210
+D028,commercial_invoice,total_qty,3204
+D028,commercial_invoice,total_gross_kg,3364.2
+D028,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D028,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D028,packing_list,invoice_no,NBH2026-260
+D028,packing_list,total_qty,3204
+D028,packing_list,total_gross_kg,3364.2
+D028,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D028,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D029,commercial_invoice,invoice_no,HSF-26-0162
+D029,commercial_invoice,total_qty,1997
+D029,commercial_invoice,total_gross_kg,1398.05
+D029,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D029,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D029,packing_list,invoice_no,HSF-26-0162
+D029,packing_list,total_qty,2017
+D029,packing_list,total_gross_kg,1398.05
+D029,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D029,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D030,commercial_invoice,invoice_no,TNC-26-0245
+D030,commercial_invoice,total_qty,17040
+D030,commercial_invoice,total_gross_kg,17267.2
+D030,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D030,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D030,packing_list,invoice_no,TNC-26-0245
+D030,packing_list,total_qty,17040
+D030,packing_list,total_gross_kg,17267.2
+D030,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D030,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D031,commercial_invoice,invoice_no,QDT/26/0127
+D031,commercial_invoice,total_qty,2025
+D031,commercial_invoice,total_gross_kg,1092.9
+D031,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D031,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D031,packing_list,invoice_no,QDT/26/0127
+D031,packing_list,total_qty,2025
+D031,packing_list,total_gross_kg,3954.9
+D031,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D031,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D032,commercial_invoice,invoice_no,SHE-2026-0307
+D032,commercial_invoice,total_qty,1200
+D032,commercial_invoice,total_gross_kg,276
+D032,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D032,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D032,packing_list,invoice_no,SHE-2026-0307
+D032,packing_list,total_qty,1200
+D032,packing_list,total_gross_kg,276
+D032,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D032,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D033,commercial_invoice,invoice_no,SHE-2026-0309
+D033,commercial_invoice,total_qty,11500
+D033,commercial_invoice,total_gross_kg,11684
+D033,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D033,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D033,packing_list,invoice_no,SHE-2026-0309
+D033,packing_list,total_qty,11500
+D033,packing_list,total_gross_kg,11684
+D033,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D033,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D034,commercial_invoice,invoice_no,SHE-2026-0317
+D034,commercial_invoice,total_qty,53350
+D034,commercial_invoice,total_gross_kg,2577.7
+D034,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D034,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D034,packing_list,invoice_no,SHE-2026-0317
+D034,packing_list,total_qty,53530
+D034,packing_list,total_gross_kg,2577.7
+D034,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D034,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D035,commercial_invoice,invoice_no,SZP2600205
+D035,commercial_invoice,total_qty,379
+D035,commercial_invoice,total_gross_kg,4452.2
+D035,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D035,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D035,packing_list,invoice_no,SZP2600205
+D035,packing_list,total_qty,379
+D035,packing_list,total_gross_kg,4452.2
+D035,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D035,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D036,commercial_invoice,invoice_no,SZP2600219
+D036,commercial_invoice,total_qty,904
+D036,commercial_invoice,total_gross_kg,2169.6
+D036,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D036,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D036,packing_list,invoice_no,SZP2600219
+D036,packing_list,total_qty,904
+D036,packing_list,total_gross_kg,2169.6
+D036,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D036,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D037,commercial_invoice,invoice_no,NBH2026-236
+D037,commercial_invoice,total_qty,2532
+D037,commercial_invoice,total_gross_kg,3723
+D037,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D037,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D037,packing_list,invoice_no,NBH2026-236
+D037,packing_list,total_qty,25320
+D037,packing_list,total_gross_kg,3723
+D037,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D037,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D038,commercial_invoice,invoice_no,SST-26-0120
+D038,commercial_invoice,total_qty,9300
+D038,commercial_invoice,total_gross_kg,4333.8
+D038,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D038,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D038,packing_list,invoice_no,SST-26-0120
+D038,packing_list,total_qty,9300
+D038,packing_list,total_gross_kg,3433.8
+D038,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D038,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D039,commercial_invoice,invoice_no,SST-26-0119
+D039,commercial_invoice,total_qty,5876
+D039,commercial_invoice,total_gross_kg,1110.78
+D039,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D039,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D039,packing_list,invoice_no,SST-26-0191
+D039,packing_list,total_qty,5876
+D039,packing_list,total_gross_kg,1110.78
+D039,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D039,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D040,commercial_invoice,invoice_no,QDT/26/0138
+D040,commercial_invoice,total_qty,1300
+D040,commercial_invoice,total_gross_kg,413.4
+D040,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D040,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D040,packing_list,invoice_no,QDT/26/0138
+D040,packing_list,total_qty,1350
+D040,packing_list,total_gross_kg,413.4
+D040,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D040,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D041,commercial_invoice,invoice_no,MKS-260108
+D041,commercial_invoice,total_qty,11175
+D041,commercial_invoice,total_gross_kg,11443.2
+D041,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D041,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D041,packing_list,invoice_no,MKS-260608
+D041,packing_list,total_qty,11175
+D041,packing_list,total_gross_kg,11443.2
+D041,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D041,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D042,commercial_invoice,invoice_no,BDF-2026-139
+D042,commercial_invoice,total_qty,349
+D042,commercial_invoice,total_gross_kg,8933.5
+D042,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D042,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D042,packing_list,invoice_no,BDF-2026-139
+D042,packing_list,total_qty,349
+D042,packing_list,total_gross_kg,8825.5
+D042,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D042,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D043,commercial_invoice,invoice_no,HSF-26-0160
+D043,commercial_invoice,total_qty,9264
+D043,commercial_invoice,total_gross_kg,6770.56
+D043,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D043,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D043,packing_list,invoice_no,HSF-26-0160
+D043,packing_list,total_qty,9264
+D043,packing_list,total_gross_kg,6770.56
+D043,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D043,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D044,commercial_invoice,invoice_no,TNC-26-0235
+D044,commercial_invoice,total_qty,16140
+D044,commercial_invoice,total_gross_kg,16355.2
+D044,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D044,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D044,packing_list,invoice_no,TNC-26-0235
+D044,packing_list,total_qty,16140
+D044,packing_list,total_gross_kg,16355.2
+D044,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D044,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D045,commercial_invoice,invoice_no,QDT/26/0128
+D045,commercial_invoice,total_qty,2866
+D045,commercial_invoice,total_gross_kg,1641.42
+D045,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D045,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D045,packing_list,invoice_no,QDT/26/0128
+D045,packing_list,total_qty,2866
+D045,packing_list,total_gross_kg,1641.42
+D045,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D045,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D046,commercial_invoice,invoice_no,FEC-26-0212
+D046,commercial_invoice,total_qty,9352
+D046,commercial_invoice,total_gross_kg,5416.6
+D046,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D046,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D046,packing_list,invoice_no,FEC-26-0122
+D046,packing_list,total_qty,9352
+D046,packing_list,total_gross_kg,5416.6
+D046,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D046,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D047,commercial_invoice,invoice_no,HSF-26-0167
+D047,commercial_invoice,total_qty,3854
+D047,commercial_invoice,total_gross_kg,2750.52
+D047,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D047,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D047,packing_list,invoice_no,HSF-26-0167
+D047,packing_list,total_qty,8354
+D047,packing_list,total_gross_kg,2750.52
+D047,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D047,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D048,commercial_invoice,invoice_no,NBH2026-233
+D048,commercial_invoice,total_qty,3980
+D048,commercial_invoice,total_gross_kg,4898.2
+D048,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D048,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D048,packing_list,invoice_no,NBH2026-233
+D048,packing_list,total_qty,3980
+D048,packing_list,total_gross_kg,4898.2
+D048,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D048,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D049,commercial_invoice,invoice_no,QDT/26/0135
+D049,commercial_invoice,total_qty,4650
+D049,commercial_invoice,total_gross_kg,1478.7
+D049,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D049,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D049,packing_list,invoice_no,QDT/26/0135
+D049,packing_list,total_qty,4650
+D049,packing_list,total_gross_kg,3259.97
+D049,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D049,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D050,commercial_invoice,invoice_no,BDF-2026-147
+D050,commercial_invoice,total_qty,127
+D050,commercial_invoice,total_gross_kg,4508.5
+D050,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D050,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D050,packing_list,invoice_no,BDF-2026-147
+D050,packing_list,total_qty,127
+D050,packing_list,total_gross_kg,4508.5
+D050,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D050,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D051,commercial_invoice,invoice_no,BDF-2026-129
+D051,commercial_invoice,total_qty,236
+D051,commercial_invoice,total_gross_kg,1581.2
+D051,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D051,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D051,packing_list,invoice_no,BDF-2026-129
+D051,packing_list,total_qty,2360
+D051,packing_list,total_gross_kg,1581.2
+D051,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D051,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D052,commercial_invoice,invoice_no,SZP2600224
+D052,commercial_invoice,total_qty,1832
+D052,commercial_invoice,total_gross_kg,4396.8
+D052,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D052,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D052,packing_list,invoice_no,SZP2600224
+D052,packing_list,total_qty,1828
+D052,packing_list,total_gross_kg,4396.8
+D052,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D052,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D053,commercial_invoice,invoice_no,FEC-26-0209
+D053,commercial_invoice,total_qty,1250
+D053,commercial_invoice,total_gross_kg,27250
+D053,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D053,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D053,packing_list,invoice_no,FEC-26-0209
+D053,packing_list,total_qty,1250
+D053,packing_list,total_gross_kg,27250
+D053,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D053,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D054,commercial_invoice,invoice_no,TNC-26-0230
+D054,commercial_invoice,total_qty,17340
+D054,commercial_invoice,total_gross_kg,17571.2
+D054,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D054,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D054,packing_list,invoice_no,TNC-26-0230
+D054,packing_list,total_qty,17340
+D054,packing_list,total_gross_kg,1757.12
+D054,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D054,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,commercial_invoice,invoice_no,TNC-26-0251
+D055,commercial_invoice,total_qty,15600
+D055,commercial_invoice,total_gross_kg,15808
+D055,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D055,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,packing_list,invoice_no,TNC-26-0251
+D055,packing_list,total_qty,16500
+D055,packing_list,total_gross_kg,15808
+D055,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D055,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D056,commercial_invoice,invoice_no,MKS-260102
+D056,commercial_invoice,total_qty,14850
+D056,commercial_invoice,total_gross_kg,15206.4
+D056,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D056,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D056,packing_list,invoice_no,MKS-260102
+D056,packing_list,total_qty,14850
+D056,packing_list,total_gross_kg,15206.4
+D056,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D056,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D057,commercial_invoice,invoice_no,BDF-2026-146
+D057,commercial_invoice,total_qty,768
+D057,commercial_invoice,total_gross_kg,9811.2
+D057,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D057,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D057,packing_list,invoice_no,BDF-2026-146
+D057,packing_list,total_qty,768
+D057,packing_list,total_gross_kg,9811.2
+D057,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D057,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D058,commercial_invoice,invoice_no,HSF-26-0151
+D058,commercial_invoice,total_qty,7397
+D058,commercial_invoice,total_gross_kg,5485.5
+D058,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D058,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D058,packing_list,invoice_no,HSF-26-0951
+D058,packing_list,total_qty,7397
+D058,packing_list,total_gross_kg,5485.5
+D058,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D058,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D059,commercial_invoice,invoice_no,MKS-260114
+D059,commercial_invoice,total_qty,15525
+D059,commercial_invoice,total_gross_kg,15897.6
+D059,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D059,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D059,packing_list,invoice_no,MKS-260114
+D059,packing_list,total_qty,15525
+D059,packing_list,total_gross_kg,18597.6
+D059,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D059,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D060,commercial_invoice,invoice_no,SHE-2026-0300
+D060,commercial_invoice,total_qty,18500
+D060,commercial_invoice,total_gross_kg,806.6
+D060,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D060,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D060,packing_list,invoice_no,SHE-2026-0300
+D060,packing_list,total_qty,18500
+D060,packing_list,total_gross_kg,806.6
+D060,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D060,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D061,commercial_invoice,invoice_no,NBH2026-222
+D061,commercial_invoice,total_qty,2577
+D061,commercial_invoice,total_gross_kg,3788.55
+D061,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D061,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D061,packing_list,invoice_no,NBH2026-242
+D061,packing_list,total_qty,2577
+D061,packing_list,total_gross_kg,3788.55
+D061,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D061,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D062,commercial_invoice,invoice_no,FEC-26-0210
+D062,commercial_invoice,total_qty,7056
+D062,commercial_invoice,total_gross_kg,4086.6
+D062,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D062,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D062,packing_list,invoice_no,FEC-26-0810
+D062,packing_list,total_qty,7056
+D062,packing_list,total_gross_kg,4086.6
+D062,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D062,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D063,commercial_invoice,invoice_no,SZP2600226
+D063,commercial_invoice,total_qty,739
+D063,commercial_invoice,total_gross_kg,2006.4
+D063,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D063,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D063,packing_list,invoice_no,SZP2600226
+D063,packing_list,total_qty,739
+D063,packing_list,total_gross_kg,2006.4
+D063,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D063,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D064,commercial_invoice,invoice_no,TNC-26-0238
+D064,commercial_invoice,total_qty,15000
+D064,commercial_invoice,total_gross_kg,15200
+D064,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D064,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D064,packing_list,invoice_no,TNC-26-0238
+D064,packing_list,total_qty,15000
+D064,packing_list,total_gross_kg,15200
+D064,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D064,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D065,commercial_invoice,invoice_no,SST-26-0133
+D065,commercial_invoice,total_qty,25807
+D065,commercial_invoice,total_gross_kg,7607.65
+D065,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D065,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D065,packing_list,invoice_no,SST-26-0133
+D065,packing_list,total_qty,25807
+D065,packing_list,total_gross_kg,7453.25
+D065,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D065,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D066,commercial_invoice,invoice_no,SST-26-0145
+D066,commercial_invoice,total_qty,1121
+D066,commercial_invoice,total_gross_kg,522.85
+D066,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D066,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D066,packing_list,invoice_no,SST-26-0154
+D066,packing_list,total_qty,1121
+D066,packing_list,total_gross_kg,522.85
+D066,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D066,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D067,commercial_invoice,invoice_no,NBH2026-238
+D067,commercial_invoice,total_qty,2036
+D067,commercial_invoice,total_gross_kg,2524.2
+D067,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D067,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D067,packing_list,invoice_no,NBH2026-238
+D067,packing_list,total_qty,2036
+D067,packing_list,total_gross_kg,2524.2
+D067,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D067,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D068,commercial_invoice,invoice_no,BDF-2026-141
+D068,commercial_invoice,total_qty,610
+D068,commercial_invoice,total_gross_kg,4087
+D068,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D068,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D068,packing_list,invoice_no,BDF-2026-141
+D068,packing_list,total_qty,610
+D068,packing_list,total_gross_kg,4087
+D068,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D068,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D069,commercial_invoice,invoice_no,NBH2026-216
+D069,commercial_invoice,total_qty,3496
+D069,commercial_invoice,total_gross_kg,3990
+D069,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D069,packing_list,invoice_no,NBH2026-416
+D069,packing_list,total_qty,3496
+D069,packing_list,total_gross_kg,3990
+D069,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D070,commercial_invoice,invoice_no,FEC-26-0204
+D070,commercial_invoice,total_qty,8401
+D070,commercial_invoice,total_gross_kg,4866.95
+D070,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D070,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D070,packing_list,invoice_no,FEC-26-0204
+D070,packing_list,total_qty,8401
+D070,packing_list,total_gross_kg,4866.95
+D070,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D070,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D071,commercial_invoice,invoice_no,FEC-26-0198
+D071,commercial_invoice,total_qty,5520
+D071,commercial_invoice,total_gross_kg,3197
+D071,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D071,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D071,packing_list,invoice_no,FEC-26-0198
+D071,packing_list,total_qty,55200
+D071,packing_list,total_gross_kg,3197
+D071,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D071,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D072,commercial_invoice,invoice_no,NBH2026-237
+D072,commercial_invoice,total_qty,2496
+D072,commercial_invoice,total_gross_kg,2620.8
+D072,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D072,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D072,packing_list,invoice_no,NBH2026-237
+D072,packing_list,total_qty,2496
+D072,packing_list,total_gross_kg,2620.8
+D072,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D072,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D073,commercial_invoice,invoice_no,SHE-2026-0314
+D073,commercial_invoice,total_qty,4000
+D073,commercial_invoice,total_gross_kg,920
+D073,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D073,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D073,packing_list,invoice_no,SHE-2026-0134
+D073,packing_list,total_qty,4000
+D073,packing_list,total_gross_kg,920
+D073,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D073,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D074,commercial_invoice,invoice_no,MKS-260103
+D074,commercial_invoice,total_qty,10190
+D074,commercial_invoice,total_gross_kg,11412.8
+D074,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D074,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D074,packing_list,invoice_no,MKS-260103
+D074,packing_list,total_qty,10200
+D074,packing_list,total_gross_kg,11412.8
+D074,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D074,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D075,commercial_invoice,invoice_no,NBH2026-227
+D075,commercial_invoice,total_qty,4552
+D075,commercial_invoice,total_gross_kg,5980.8
+D075,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D075,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D075,packing_list,invoice_no,NBH2026-227
+D075,packing_list,total_qty,4552
+D075,packing_list,total_gross_kg,5980.8
+D075,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D075,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."

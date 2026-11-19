@@ -7,3 +7,4 @@ ci/ci_fedex_guide.pdf,commercial_invoice,FedEx 상업송장 작성 가이드(한
 pl/pl_upstage_sample.png,packing_list,Upstage 문서 추출 샘플,https://console.upstage.ai/docs/capabilities/extract/prebuilt-extraction,2026-11-19,채워진 예시. 스타일 1 포장명세서 생김새
 pl/pl_shipsol_blank.png,packing_list,Shipping Solutions 무료 양식,https://www.shippingsolutionssoftware.com/packing-list,2026-11-19,빈 양식. 스타일 2 포장명세서
 bl/bl_jse_shubil.pdf,bill_of_lading,Japan Shipping Exchange SHUBIL 견본,https://www.jseinc.org/document/bl/shubil(a)sample.pdf,2026-11-19,P1용 해상 B/L
+hs/관세청_HS부호_20260101.xlsx,hs_table,관세청 HS부호 (2026-01-01 기준),https://www.data.go.kr/data/15049722/fileData.do,2026-11-19,데이터셋 정답 HS 10자리와 수량·중량 단위 검증용 (generate_dataset.py)

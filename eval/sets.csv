@@ -1,4 +1,103 @@
 set_id,split,consignee,docs,line,item,hs_answer
-S01,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,LITHIUM-ION BATTERY PACK 48V 20AH,
-S01,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,STAINLESS STEEL HEX BOLT M10X50,
-S02,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,MEN'S 100% COTTON T-SHIRT,
+D001,dev,HANBIT SAMPLE CORPORATION,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,8507603000
+D001,dev,HANBIT SAMPLE CORPORATION,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,2,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D002,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D003,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",8211920000
+D003,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,2,STAINLESS STEEL HEX BOLT M10X50 A2-70,7318152000
+D004,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",0306179091
+D005,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",0306179091
+D006,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D006,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,8541430000
+D007,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,COTTON TERRY BATH TOWEL 70X140CM,6302600000
+D007,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,2,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",6205200000
+D008,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"BACKPACK, OUTER SURFACE OF POLYESTER TEXTILE",4202922000
+D009,dev,HANBIT SAMPLE CORPORATION,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,CORDLESS DRILL 18V WITH LI-ION BATTERY,8467210000
+D010,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",6205200000
+D011,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,CORDLESS DRILL 18V WITH LI-ION BATTERY,8467210000
+D011,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,STAINLESS STEEL HEX BOLT M10X50 A2-70,7318152000
+D011,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,3,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",8211920000
+D012,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"CASHEW KERNELS W320, SHELLED, NOT ROASTED",0801320000
+D013,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",6907210000
+D014,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",4011500000
+D014,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,2,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D015,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D016,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",6907210000
+D017,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",4011500000
+D018,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",6109101000
+D018,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,2,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",6205200000
+D018,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,3,COTTON TERRY BATH TOWEL 70X140CM,6302600000
+D019,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D019,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,2,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",9403609090
+D020,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"BACKPACK, OUTER SURFACE OF POLYESTER TEXTILE",4202922000
+D021,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D022,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D023,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=1,1,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",9403609090
+D023,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=1,2,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D024,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",6907210000
+D025,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,8507603000
+D025,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,2,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D026,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D027,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D028,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D029,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"BACKPACK, OUTER SURFACE OF POLYESTER TEXTILE",4202922000
+D030,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D031,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",4011500000
+D031,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,2,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D032,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",8211920000
+D033,dev,HANBIT SAMPLE CORPORATION,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=1,1,"ALUMINIUM ALLOY HOLLOW PROFILE 6063-T5, MILL FINISH",7604210000
+D034,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,STAINLESS STEEL HEX BOLT M10X50 A2-70,7318152000
+D034,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",8211920000
+D035,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,8507603000
+D035,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,2,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,8541430000
+D036,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D037,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000
+D038,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,COTTON TERRY BATH TOWEL 70X140CM,6302600000
+D039,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",6109101000
+D040,dev,HANBIT SAMPLE CORPORATION,doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D041,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"CASHEW KERNELS W320, SHELLED, NOT ROASTED",0801320000
+D042,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",9403609090
+D042,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,2,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D043,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"SPORTS SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D043,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,2,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D044,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D045,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D045,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,2,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",4011500000
+D046,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"PORCELAIN DINNER PLATE 25CM, WHITE",6911102000
+D047,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D048,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=1,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000
+D048,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=1,2,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D049,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",4011500000
+D050,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",9403609090
+D051,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D052,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D053,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",6907210000
+D054,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D055,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=1,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D056,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"CASHEW KERNELS W320, SHELLED, NOT ROASTED",0801320000
+D057,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",9403609090
+D057,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,2,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D058,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D058,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,2,"SPORTS SHOES, RUBBER OUTSOLE, TEXTILE UPPER",6404110000
+D059,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"CASHEW KERNELS W320, SHELLED, NOT ROASTED",0801320000
+D060,dev,HANBIT SAMPLE CORPORATION,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,STAINLESS STEEL HEX BOLT M10X50 A2-70,7318152000
+D061,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000
+D062,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,"PORCELAIN DINNER PLATE 25CM, WHITE",6911102000
+D063,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",9405110000
+D063,dev,EXAMPLE DISTRIBUTION KOREA INC.,doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,2,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,8507603000
+D064,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",0901110000
+D065,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,COTTON TERRY BATH TOWEL 70X140CM,6302600000
+D065,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,2,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",6109101000
+D065,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,3,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",6205200000
+D066,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=png;style=2,1,COTTON TERRY BATH TOWEL 70X140CM,6302600000
+D067,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000
+D067,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,2,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D068,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",9401699000
+D069,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000
+D069,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,2,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D070,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"PORCELAIN DINNER PLATE 25CM, WHITE",6911102000
+D071,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=1,1,"PORCELAIN DINNER PLATE 25CM, WHITE",6911102000
+D072,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=1,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D073,dev,"SAMPLE TRADING KOREA CO., LTD.",doc_a=commercial_invoice;doc_b=packing_list;format=pdf;style=2,1,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",8211920000
+D074,dev,"SAMPLE FOODS KOREA CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=png;style=2,1,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",0306179091
+D075,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,1,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,3924909000
+D075,dev,"EXAMPLE HOME LIVING CO., LTD.",doc_a=packing_list;doc_b=commercial_invoice;format=pdf;style=2,2,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,3924909000

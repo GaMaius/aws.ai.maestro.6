@@ -11,3 +11,5 @@ function.zip
 refs/*
 !refs/sources.csv
 samples/test/
+samples/data/sets_test.csv
+eval/test/
