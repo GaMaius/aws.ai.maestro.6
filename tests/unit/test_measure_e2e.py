@@ -56,6 +56,20 @@ def test_summarize_counts_by_format_without_model():
     assert s["seconds"] == {"mean": 11.4, "max": 11.4}
 
 
+def test_score_hs_rows_against_sets_answer():
+    """D003 1행 정답 9401699000, 2행 9403609090 (eval/sets.csv). 사람 확인 후보 3개 안·틀린 자동 확정을 센다."""
+    from samples.measure_e2e import score_hs_rows, warnings_of
+
+    row = {"set_id": "D003", "hs": [
+        {"line": 1, "status": "사람 확인 필요", "candidates": [{"hs": "9401800000"}, {"hs": "9401699000"}]},
+        {"line": 2, "status": "자동 확정", "hs_code": "9403200000", "candidates": []},
+    ]}
+    s = score_hs_rows([row])
+    assert (s["rows"], s["human"], s["human_in_top3"], s["auto"], s["wrong_auto"]) == (2, 1, 1, 1, 1)
+    assert s["wrong_auto_rows"] == ["D003 2행 9403200000 (정답 9403609090)"]
+    assert warnings_of("[tool] a\n[warn] ocr key=k Throttling\n[error] x\n") == ["[warn] ocr key=k Throttling", "[error] x"]
+
+
 def test_count_model_usage_reads_bedrock_usage_metadata(monkeypatch):
     """BedrockModel.stream 응답 끝의 metadata.usage에서 토큰을 모은다 (실제 Bedrock 호출 없음)."""
     from strands.models import bedrock

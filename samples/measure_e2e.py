@@ -265,6 +265,46 @@ def run_set(set_id: str, calls: dict, *, ocr: bool = True, hs_model: bool = True
     }
 
 
+def warnings_of(printed: str) -> list[str]:
+    """숨긴 도구 출력에서 [warn]·[error] 줄만 (OCR·HS 모델을 못 쓴 이유)."""
+    return [line for line in printed.splitlines() if line.startswith(("[warn]", "[error]"))]
+
+
+def hs_answers() -> dict[tuple[str, int], str]:
+    """(세트, 품목 줄) → 정답 HS (eval/sets.csv hs_answer, 개발용만)."""
+    with (EVAL / "sets.csv").open(encoding="utf-8", newline="") as fh:
+        return {(r["set_id"], int(r["line"])): r["hs_answer"] for r in csv.DictReader(fh)
+                if r["split"] == "dev" and r["line"] and r["hs_answer"]}
+
+
+def score_hs_rows(rows: list[dict]) -> dict:
+    """측정 줄의 HS 결과를 정답과 맞춘다 (eval/score.py score_hs와 같은 칸 이름).
+
+    자동 확정 중 틀린 것(wrong_auto, 0이어야 한다), 사람 확인 필요 중 정답이 보여 준 후보 3개 안에 든 것(human_in_top3).
+    """
+    answers = hs_answers()
+    out = Counter(rows=0, no_answer=0, auto=0, wrong_auto=0, human=0, human_in_top3=0, human_no_candidates=0)
+    wrong: list[str] = []
+    for r in rows:
+        for h in r["hs"]:
+            out["rows"] += 1
+            answer = answers.get((r["set_id"], int(h["line"])))
+            if answer is None:
+                out["no_answer"] += 1
+                continue
+            if h["status"] == "자동 확정":
+                out["auto"] += 1
+                if (h.get("hs_code") or "") != answer:
+                    out["wrong_auto"] += 1
+                    wrong.append(f"{r['set_id']} {h['line']}행 {h.get('hs_code')} (정답 {answer})")
+                continue
+            out["human"] += 1
+            shown = [c["hs"] for c in (h.get("candidates") or [])][:3]
+            out["human_in_top3"] += answer in shown
+            out["human_no_candidates"] += not shown
+    return {**out, "wrong_auto_rows": wrong}
+
+
 def done_sets(out: Path) -> set[str]:
     if not out.exists():
         return set()
@@ -288,13 +328,16 @@ def measure(
     todo = [s for s in set_ids if s not in skip]
     print(f"[e2e] {len(set_ids)}세트 중 {len(todo)}세트를 잰다 (이미 잰 {len(set_ids) - len(todo)}세트는 건너뜀) → {out}")
     for n, set_id in enumerate(todo, 1):
-        with contextlib.redirect_stdout(io.StringIO()):  # 도구의 [tool] 출력은 숨긴다
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):  # 도구의 [tool] 출력은 숨긴다
             row = run_set(set_id, calls, ocr=ocr, hs_model=hs_model)
+        row["warnings"] = warnings_of(buf.getvalue())  # OCR 실패 이유 같은 [warn]·[error] 줄은 남긴다
         with out.open("a", encoding="utf-8") as fh:  # 한 건씩 바로 저장
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
         print(f"[e2e] {n}/{len(todo)} {set_id} {row['status']} {row['seconds']}초 호출 {row['model_calls']}번 "
               f"토큰 입력 {row['tokens_in']:,}·출력 {row['tokens_out']:,} Textract {row['textract_pages']}쪽"
-              + (f" 오류 {row['error']}" if row["error"] else ""), flush=True)
+              + (f" 오류 {row['error']}" if row["error"] else "")
+              + (f" 경고 {len(row['warnings'])}줄" if row["warnings"] else ""), flush=True)
     print(f"[e2e] 이번 실행 모델 호출 합계 {calls['model']}번, 토큰 입력 {calls['tokens_in']:,}·출력 {calls['tokens_out']:,}, "
           f"Textract {calls['textract_pages']}쪽, 어림 {cost_usd(calls['tokens_in'], calls['tokens_out'])}달러 + "
           f"{round(calls['textract_pages'] * PRICE_TEXTRACT, 4)}달러 (단가 {PRICE_IN}/{PRICE_OUT}달러 100만 토큰당, Textract {PRICE_TEXTRACT}달러 쪽당)")
@@ -350,7 +393,8 @@ def summarize(
                                                 "check_needed_sets", "wrong_cell_sets", "by_format", "by_error_type")},
         "false_positives": detection["false_positives"], "misses": detection["misses"],
         "fields": {k: fields[k] for k in ("docs", "docs_correct", "cells", "cells_correct", "unread", "by_field", "by_format")},
-        "hs": dict(hs),
+        "hs": dict(hs), "hs_score": score_hs_rows(rows),
+        "warnings": sum(len(r.get("warnings", [])) for r in rows),
         "seconds_by_ci_format": {f: {"mean": round(statistics.mean(v), 1), "max": max(v)} for f, v in sorted(seconds.items())},
         "seconds": {"mean": round(statistics.mean(r["seconds"] for r in rows), 1), "max": max(r["seconds"] for r in rows)},
     }
