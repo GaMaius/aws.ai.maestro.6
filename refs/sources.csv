@@ -1,0 +1,10 @@
+file,doc_type,source_name,url,accessed_at,note
+kotra_guide.pdf,commercial_invoice|packing_list|certificate_of_origin,KOTRA 수출 가이드북 (상업송장 86쪽 · 포장명세서 87쪽 · 원산지증명서 90쪽),https://dl.kotra.or.kr/pyxis-api/2/digital-files/fa976ba5-c4b8-43de-83e8-a5279acd590f,2026-11-19,빈 양식 + 칸별 작성 안내. 스타일 1의 칸 구성
+ci/ci_upstage_sample.png,commercial_invoice,Upstage 문서 추출 샘플,https://console.upstage.ai/docs/capabilities/extract/prebuilt-extraction,2026-11-19,채워진 예시. 스타일 1 상업송장 생김새
+ci/ci_shipsol_blank.png,commercial_invoice,Shipping Solutions 무료 양식,https://www.shippingsolutions.com/commercial-invoice-english,2026-11-19,빈 양식. 스타일 2 상업송장
+ci/ci_shipsol_sample.png,commercial_invoice,Shipping Solutions 샘플,https://shippingsolutions.com/commercial-invoice-english-sample,2026-11-19,채워진 예시. 스타일 2 상업송장
+ci/ci_fedex_guide.pdf,commercial_invoice,FedEx 상업송장 작성 가이드(한영),https://www.fedex.com/content/dam/fedex/apac-asia-pacific/downloads/fedex-commercial-invoice-instructions-kr.pdf,2026-11-19,칸 설명서 (참고만)
+pl/pl_upstage_sample.png,packing_list,Upstage 문서 추출 샘플,https://console.upstage.ai/docs/capabilities/extract/prebuilt-extraction,2026-11-19,채워진 예시. 스타일 1 포장명세서 생김새
+pl/pl_shipsol_blank.png,packing_list,Shipping Solutions 무료 양식,https://www.shippingsolutionssoftware.com/packing-list,2026-11-19,빈 양식. 스타일 2 포장명세서
+bl/bl_jse_shubil.pdf,bill_of_lading,Japan Shipping Exchange SHUBIL 견본,https://www.jseinc.org/document/bl/shubil(a)sample.pdf,2026-11-19,P1용 해상 B/L
+hs/관세청_HS부호_20260101.xlsx,hs_table,관세청 HS부호 (2026-01-01 기준),https://www.data.go.kr/data/15049722/fileData.do,2026-11-19,데이터셋 정답 HS 10자리와 수량·중량 단위 검증용 (generate_dataset.py)
