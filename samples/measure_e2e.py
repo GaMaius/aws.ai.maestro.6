@@ -115,22 +115,46 @@ class _EmptyHistory:
         return None
 
 
-def _count_model_calls() -> dict:
-    """Bedrock 모델 호출(BedrockModel.stream)을 센다. 도구 안의 분류·읽기·다시 확인과 루프 차례가 모두 여기를 지난다."""
+# Bedrock 응답 metadata.usage의 칸 → 이 파일의 칸 (토큰 수)
+USAGE_KEYS = {
+    "inputTokens": "tokens_in", "outputTokens": "tokens_out",
+    "cacheReadInputTokens": "cache_read", "cacheWriteInputTokens": "cache_write",
+}
+# 어림 비용 단가 (미국 달러 / 100만 토큰). Anthropic 직접 요금의 Sonnet 5.5·Sonnet 5 값(2026-11)이다.
+# Bedrock 요금은 다를 수 있어 --price-in·--price-out으로 바꾼다. 청구 화면(Cost Explorer)은 조직 정책으로 막혀 있어 토큰으로 어림한다
+PRICE_IN, PRICE_OUT = 2.0, 10.0
+
+
+def count_model_usage() -> dict:
+    """Bedrock 모델 호출 수와 토큰을 센다. 도구 안의 분류·읽기·다시 확인과 루프 차례가 모두 BedrockModel.stream을 지난다.
+
+    반환: {"model", "tokens_in", "tokens_out", "cache_read", "cache_write"} 누적값 (호출이 끝날 때마다 는다).
+    토큰은 응답 끝의 metadata.usage에서 읽는다. 재시도로 두 번 부르면 두 번 다 센다(실제로 쓴 값).
+    """
     from strands.models import bedrock
 
-    calls = {"model": 0}
+    usage = {"model": 0, **{k: 0 for k in USAGE_KEYS.values()}}
     lock = threading.Lock()
     original = bedrock.BedrockModel.stream
 
     async def counting(self, *args, **kwargs):
         with lock:
-            calls["model"] += 1
+            usage["model"] += 1
         async for event in original(self, *args, **kwargs):
+            meta = event.get("metadata") if isinstance(event, dict) else None
+            if meta and meta.get("usage"):
+                with lock:
+                    for src, dst in USAGE_KEYS.items():
+                        usage[dst] += int(meta["usage"].get(src) or 0)
             yield event
 
     bedrock.BedrockModel.stream = counting
-    return calls
+    return usage
+
+
+def cost_usd(tokens_in: int, tokens_out: int, price_in: float = PRICE_IN, price_out: float = PRICE_OUT) -> float:
+    """토큰 → 어림 비용(미국 달러). 캐시 토큰은 따로 적기만 하고 여기에 넣지 않는다(이 측정은 프롬프트 캐시를 쓰지 않는다)."""
+    return round((tokens_in * price_in + tokens_out * price_out) / 1_000_000, 4)
 
 
 def files_of(set_id: str) -> list[tuple[str, str]]:
@@ -155,7 +179,7 @@ def run_set(set_id: str, calls: dict) -> dict:
     table = hs.load_hs_table()
     files = files_of(set_id)
     read: list = []
-    before, started = calls["model"], time.perf_counter()
+    before, started = dict(calls), time.perf_counter()
     try:
         job = run_job(
             f"job-e2e-{set_id.lower()}", [{"key": k, "doc_type": None} for k, _ in files], lambda key: (ROOT / key).read_bytes(),
@@ -175,7 +199,9 @@ def run_set(set_id: str, calls: dict) -> dict:
     result = job.result if job and job.result else None
     return {
         "set_id": set_id, "formats": dev_sets()[set_id], "status": job.status if job else None, "error": error,
-        "seconds": seconds, "model_calls": calls["model"] - before, "classified": classified,
+        "seconds": seconds, "model_calls": calls["model"] - before["model"],
+        **{k: calls[k] - before[k] for k in USAGE_KEYS.values()},  # 이 세트에서 쓴 토큰
+        "classified": classified,
         "docs": [d.model_dump(mode="json") for d in read],
         "issues": [i.model_dump(mode="json") for i in result.issues] if result else [],
         "hs": [h.model_dump(mode="json") for h in result.hs] if result else [],
@@ -195,7 +221,7 @@ def measure(set_ids: list[str], out: Path, cache: Path | None) -> None:
     if cache is not None:
         local = LocalReadCache(cache)
         extract._default_cache = lambda: local  # 처리 Lambda의 S3 판독 캐시 대신 로컬 (모델 ID·지시문 버전이 키에 들어간다)
-    calls = _count_model_calls()
+    calls = count_model_usage()
     skip = done_sets(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     todo = [s for s in set_ids if s not in skip]
@@ -205,16 +231,21 @@ def measure(set_ids: list[str], out: Path, cache: Path | None) -> None:
             row = run_set(set_id, calls)
         with out.open("a", encoding="utf-8") as fh:  # 한 건씩 바로 저장
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
-        print(f"[e2e] {n}/{len(todo)} {set_id} {row['status']} {row['seconds']}초 호출 {row['model_calls']}번"
+        print(f"[e2e] {n}/{len(todo)} {set_id} {row['status']} {row['seconds']}초 호출 {row['model_calls']}번 "
+              f"토큰 입력 {row['tokens_in']:,}·출력 {row['tokens_out']:,}"
               + (f" 오류 {row['error']}" if row["error"] else ""), flush=True)
-    print(f"[e2e] 이번 실행 모델 호출 합계 {calls['model']}번")
+    print(f"[e2e] 이번 실행 모델 호출 합계 {calls['model']}번, 토큰 입력 {calls['tokens_in']:,}·출력 {calls['tokens_out']:,}, "
+          f"어림 {cost_usd(calls['tokens_in'], calls['tokens_out'])}달러 (단가 {PRICE_IN}/{PRICE_OUT}달러, 100만 토큰당)")
 
 
 # ---------------------------------------------------------------------------
 # 표 (모델 호출 없음)
 # ---------------------------------------------------------------------------
-def summarize(rows: list[dict]) -> dict:
-    """측정 줄들 → 형식별 숫자. 탐지·읽기 채점은 eval/score.py(2번)의 함수를 그대로 쓴다."""
+def summarize(rows: list[dict], price_in: float = PRICE_IN, price_out: float = PRICE_OUT) -> dict:
+    """측정 줄들 → 형식별 숫자. 탐지·읽기 채점은 eval/score.py(2번)의 함수를 그대로 쓴다.
+
+    토큰·어림 비용: 세트 합계와 세트당·서류당 평균. 토큰 칸이 없는 예전 줄은 0으로 본다.
+    """
     from eval.score import load_answers, load_formats, score_detection, score_fields
     from tools.models import ExtractedDocument, Issue
 
@@ -233,9 +264,16 @@ def summarize(rows: list[dict]) -> dict:
             by_fmt[fmt]["분류"] += 1
             by_fmt[fmt]["분류 맞음"] += ok
     hs = Counter(h["status"] for r in rows for h in r["hs"])
+    tokens = {k: sum(r.get(k, 0) for r in rows) for k in USAGE_KEYS.values()}
+    n_docs = sum(len(r["classified"]) for r in rows) or 1
+    total = cost_usd(tokens["tokens_in"], tokens["tokens_out"], price_in, price_out)
     return {
         "sets": len(rows), "status": dict(Counter(r["status"] for r in rows)),
         "model_calls": sum(r["model_calls"] for r in rows),
+        "tokens": {**tokens, "per_set_in": round(tokens["tokens_in"] / len(rows)), "per_set_out": round(tokens["tokens_out"] / len(rows))},
+        "cost_usd": {"total": total, "per_set": round(total / len(rows), 4), "per_doc": round(total / n_docs, 4),
+                     "price_per_mtok": {"in": price_in, "out": price_out},
+                     "note": "토큰으로 어림한 값. Anthropic 직접 요금 기준이고 Bedrock 청구액과 다를 수 있다"},
         "classify_by_format": {f: dict(c) for f, c in sorted(by_fmt.items())},
         "detection": {k: detection[k] for k in ("planted", "detected", "flagged", "normal_sets", "false_positive_sets",
                                                 "check_needed_sets", "wrong_cell_sets", "by_format", "by_error_type")},
@@ -247,9 +285,9 @@ def summarize(rows: list[dict]) -> dict:
     }
 
 
-def report(out: Path, summary_path: Path | None) -> dict:
+def report(out: Path, summary_path: Path | None, price_in: float = PRICE_IN, price_out: float = PRICE_OUT) -> dict:
     rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines() if line.strip()]
-    s = summarize(rows)
+    s = summarize(rows, price_in, price_out)
     print(json.dumps(s, ensure_ascii=False, indent=1))
     if summary_path is not None:
         summary_path.write_text(json.dumps(s, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -264,13 +302,16 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=OUT, help=f"결과 JSONL (기본 {OUT.relative_to(ROOT)})")
     parser.add_argument("--no-cache", action="store_true", help="로컬 판독 캐시를 쓰지 않는다")
     parser.add_argument("--report", action="store_true", help="모델 호출 없이 결과 파일로 표만 낸다")
+    parser.add_argument("--price-in", type=float, default=PRICE_IN, help="어림 비용 입력 단가 (달러/100만 토큰)")
+    parser.add_argument("--price-out", type=float, default=PRICE_OUT, help="어림 비용 출력 단가 (달러/100만 토큰)")
     args = parser.parse_args()
+    summary = SUMMARY if args.out == OUT else None
     if args.report:
-        report(args.out, SUMMARY if args.out == OUT else None)
+        report(args.out, summary, args.price_in, args.price_out)
         return
     set_ids = args.sets or pick_sets(args.per_format)
     measure(set_ids, args.out, None if args.no_cache else CACHE)
-    report(args.out, SUMMARY if args.out == OUT else None)
+    report(args.out, summary, args.price_in, args.price_out)
 
 
 if __name__ == "__main__":

@@ -1,8 +1,11 @@
 """samples/measure_e2e.py(끝까지 측정, FB15 #172) 단위 테스트. 모델·AWS 호출 없음."""
 
+import asyncio
 from collections import Counter
 
-from samples.measure_e2e import LocalReadCache, dev_sets, files_of, pick_sets, set_kind, summarize
+from samples.measure_e2e import (
+    LocalReadCache, cost_usd, count_model_usage, dev_sets, files_of, pick_sets, set_kind, summarize,
+)
 
 
 def test_pick_sets_is_ten_per_invoice_format_and_mixed():
@@ -42,8 +45,33 @@ def test_summarize_counts_by_format_without_model():
                               {"doc": "packing_list", "field": "total_gross_kg", "raw": "12,683.10 KGS"}]}],
         "hs": [{"line": 1, "status": "사람 확인 필요"}], "steps": [],
     }
+    s = summarize([row, {**row, "set_id": "D005", "formats": dev_sets()["D005"], "issues": [], "docs": [],
+                         "tokens_in": 30_000, "tokens_out": 4_000}])  # 토큰 칸이 있는 줄과 없는 예전 줄
+    assert s["tokens"]["tokens_in"] == 30_000 and s["tokens"]["per_set_in"] == 15_000
+    assert s["cost_usd"]["total"] == cost_usd(30_000, 4_000) == 0.1 and s["cost_usd"]["per_set"] == 0.05
     s = summarize([row])
     assert s["sets"] == 1 and s["model_calls"] == 10 and s["hs"] == {"사람 확인 필요": 1}
     assert s["classify_by_format"] == {"pdf": {"분류": 1, "분류 맞음": 1}, "scan": {"분류": 1, "분류 맞음": 0}}
     assert (s["detection"]["planted"], s["detection"]["detected"]) == (1, 1)
     assert s["seconds"] == {"mean": 11.4, "max": 11.4}
+
+
+def test_count_model_usage_reads_bedrock_usage_metadata(monkeypatch):
+    """BedrockModel.stream 응답 끝의 metadata.usage에서 토큰을 모은다 (실제 Bedrock 호출 없음)."""
+    from strands.models import bedrock
+
+    async def fake_stream(self, *args, **kwargs):
+        yield {"messageStart": {"role": "assistant"}}
+        yield {"metadata": {"usage": {"inputTokens": 3500, "outputTokens": 130, "totalTokens": 3630}}}
+
+    monkeypatch.setattr(bedrock.BedrockModel, "stream", fake_stream)  # 끝나면 진짜 stream으로 되돌린다
+    usage = count_model_usage()
+
+    async def call_twice():
+        for _ in range(2):
+            async for _event in bedrock.BedrockModel.stream(None):
+                pass
+
+    asyncio.run(call_twice())
+    assert usage == {"model": 2, "tokens_in": 7000, "tokens_out": 260, "cache_read": 0, "cache_write": 0}
+    assert cost_usd(7000, 260) == round((7000 * 2 + 260 * 10) / 1_000_000, 4)
