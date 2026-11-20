@@ -4,7 +4,9 @@ API Lambda(api/handler.py의 POST /jobs)가 작업을 queued로 저장한 뒤 �
     받는 이벤트: {"job_id": "job-xxxxxxxx", "files": [{"key", "doc_type"}]}
     하는 일: running으로 바꾸고 run_job을 돌린다. 단계가 늘 때마다 저장해 화면 진행 단계에 보이고,
             끝나면 waiting_approval · done · failed로 저장한다.
-            HS는 recommend_hs(C1·C2)로 품목마다 추천한다 (모델 없이 품명 검색, 확정 이력은 team06-hs-history).
+            HS는 recommend_hs(C1·C2)로 품목마다 추천한다 (확정 이력은 team06-hs-history. 이력이 없으면 모델이 검색어를 뽑고
+            후보 안에서 고른다, #132). 품목 행마다 모델 호출이 두 번이라, 처리 시작부터 HS_MODEL_SECONDS까지만 기다리고
+            넘거나 실패하면 품명 검색·앞 후보로 대신한다. 모델을 못 쓴 행은 단계 기록(hs_model)에 남긴다.
             마지막 저장 때 읽은 서류(docs)와 수입자(importer)를 같은 줄에 넣는다. HS 선택(C3)·승인(D3)이 읽는다 (#122).
             waiting_approval·done이고 읽은 서류가 있으면 마지막 저장 직전에 차례로 한다 (#154):
               1. 신고서 초안을 채운다 (C5 draft_declaration). 문제가 남은 칸과 확정 안 된 HS 칸은 비운다
@@ -14,8 +16,12 @@ API Lambda(api/handler.py의 POST /jobs)가 작업을 queued로 저장한 뒤 �
             서류마다 Textract OCR을 매번 돌린다 (F10 #188). run_job과 동시에 돌리고, 다시 확인(reread_field)의 두 번째 근거로
             넘긴다. PDF는 쪽 그림(JPEG)을 그려 S3(uploads/…)에 두고 그 그림을 OCR 한다. OCR 결과(ocr 칸)와 쪽 그림 목록(pages 칸)은
             같은 줄에 저장해 서류 보기(GET /jobs/{id}/files)의 쪽 그림·칸 위치에 쓴다.
+            ocr 칸은 OCR_MAX_LINES 에서 자른다. 자르지 않은 결과는 S3 cache/ocr/<ocr_cache_key(파일)>.json 에 두고, 같은 파일이면
+            그것을 써서 Textract 를 다시 부르지 않는다 (B4-L0, l0). NO_CACHE=1 이면 저장·재사용하지 않는다.
             OCR은 처리 시작부터 OCR_WAIT_SECONDS까지만 기다린다. 넘으면 그 서류는 OCR 없이 진행한다 (Lambda 300초 안에 끝나게).
-제한 시간 300초. 환경 변수: JOBS_TABLE, DOCS_BUCKET, MODEL_ID, HS_HISTORY_TABLE, SHIPMENTS_TABLE, WMS_TABLE
+            CLASSIFY_BY_OCR=1 이면 서류 종류를 Textract 글자의 제목 줄로 고르고, 못 정하면 Bedrock 으로 분류한다 (비용 줄이기, 기본은 끔).
+제한 시간 300초. 시간 상한: OCR 대기 OCR_WAIT_SECONDS(100초), 에이전트 루프 AGENT_SECONDS(150초, agent/),
+HS 모델 HS_MODEL_SECONDS(240초). 모두 처리 시작부터 잰다. 마지막 60초는 초안·등록·저장에 남긴다. 환경 변수: JOBS_TABLE, DOCS_BUCKET, MODEL_ID, HS_HISTORY_TABLE, SHIPMENTS_TABLE, WMS_TABLE, CLASSIFY_BY_OCR(선택)
 
 비동기 호출은 함수가 오류·시간 초과로 끝나면 Lambda가 같은 이벤트를 다시 보낸다. 그래서 저장된 상태를 보고 한 번만 처리한다.
     queued   → 처리한다
@@ -23,7 +29,10 @@ API Lambda(api/handler.py의 POST /jobs)가 작업을 queued로 저장한 뒤 �
     그 밖    → 이미 끝난 작업이다. 아무것도 하지 않는다
 """
 
+import hashlib
 import json
+import os
+import threading
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
 from concurrent.futures import TimeoutError as FutureTimeout
@@ -31,8 +40,9 @@ from functools import cache
 
 from api import handler
 from tools import declaration, hs, report
-from tools.models import ExtractedDocument, HSResult, Job, OcrResult, RereadResult, Step, WmsState
-from tools.ocr import is_pdf, ocr_document, render_pages, upright_image
+from tools.models import Classification, ExtractedDocument, HSResult, Job, OcrResult, RereadResult, Step, WmsState
+from tools.extract import _strands_classifier, content_blocks
+from tools.ocr import classify_from_ocr, default_ocr_cache, is_pdf, ocr_cached, ocr_document, render_pages, upright_image
 from tools.query import dynamo_shipments
 from tools.reread import reread_field
 
@@ -40,9 +50,17 @@ INTERRUPTED = "처리가 중간에 멈췄습니다 (시간 초과 등). 서류�
 # done인데 자동 등록 조건을 못 채웠을 때 단계 기록에 남기는 이유 (register_if_ready는 조건 미달에 이유를 붙이지 않는다)
 NOT_READY = "자동 등록 조건(남은 문제 없음, 모든 품목 HS 확정)을 채우지 못했습니다. 승인하면 등록합니다"
 OCR_WORKERS = 4  # 서류 OCR 을 동시에 몇 장까지
+# PDF 쪽 그리기(pypdfium2)는 한 번에 하나만. pdfium은 스레드 안전하지 않아 동시에 부르면 파이썬 오류 없이 프로세스가 죽는다.
+# Textract 호출·S3 저장은 그대로 동시에 돈다
+_PDFIUM_LOCK = threading.Lock()
 OCR_MAX_LINES = 600  # 서류 한 장에 저장할 OCR 줄 수 상한 (DynamoDB 한 줄 400KB)
 # OCR 을 기다리는 상한(처리 시작부터, 초). 서류 10장 × 5쪽 × Textract(5초 × 2회)가 겹쳐도 Lambda 300초 안에 끝나게 (#194 리뷰)
 OCR_WAIT_SECONDS = 100
+# HS 모델 호출(검색어 뽑기·후보 고르기)을 기다리는 상한(처리 시작부터, 초) (#132 리뷰).
+# 모델 호출 하나가 읽기 타임아웃 120초 × 재시도로 멈춰도, 남은 60초 안에 초안·등록·저장을 끝내 Lambda 300초를 넘지 않게 한다.
+# 넘으면 그 호출은 기다리지 않고 recommend_hs가 품명 검색·앞 후보로 대신한다.
+HS_MODEL_SECONDS = 240
+HS_MODEL_WORKERS = 4  # HS 모델 호출을 동시에 몇 개까지 (상한을 넘겨 버려진 호출이 자리를 차지해도 다음 행이 돌게)
 
 
 def _save(job: Job, item: dict) -> None:
@@ -87,16 +105,73 @@ def _hs_table() -> hs.CsvHSTable:
     return hs.load_hs_table()
 
 
-def recommend_line(docs: list[ExtractedDocument], line: int) -> HSResult:
-    """run_job에 넘기는 hs_recommender. 품목 한 행의 HS를 recommend_hs로 추천한다.
+class HsModelRun:
+    """작업 하나의 HS 추천. recommend를 run_job의 hs_recommender로 넘긴다 (#132).
 
-    언제: run_job이 품목 행마다 부른다. 모델(terms_reader·picker)은 넘기지 않아 품명 검색만 한다.
-    받는 것: docs(읽은 서류, files 순서), line(품목 행).
-    반환: HSResult. 수입자를 알면 그 수입자의 확정 이력(team06-hs-history)을 쓰고, 모르면 빈 이력으로 부른다.
+    확정 이력이 없으면 모델이 품명에서 검색어를 뽑고(bedrock_terms_reader), 코드가 찾은 후보 안에서 모델이 고른다(bedrock_picker).
+    모델 호출은 처리 시작부터 HS_MODEL_SECONDS까지만 기다린다. 넘거나 실패하면 그 호출만 포기하고 recommend_hs가 대신한다:
+      검색어 뽑기 → 품명을 그대로 검색어로 쓴다
+      후보 고르기 → 모델 선택 없이 찾은 후보의 앞 3개를 보여 준다 (자동 확정 auto_match는 하지 않는다)
+    어느 행에서 모델을 못 썼는지 모아 두었다가 step()으로 작업 단계 기록에 남긴다 (agent-design.md 1번).
     """
-    importer = importer_of(docs)
-    history = handler._hs_history() if importer else _NoHistory()
-    return hs.recommend_hs(docs, line, importer or "", history=history, table=_hs_table())
+
+    def __init__(self, seconds: float | None = None):
+        self.seconds = HS_MODEL_SECONDS if seconds is None else seconds
+        self.deadline = time.monotonic() + self.seconds
+        self.pool = ThreadPoolExecutor(max_workers=HS_MODEL_WORKERS)
+        self.lock = threading.Lock()
+        self.asked: set[int] = set()  # 모델을 부르려 한 행
+        self.missed: dict[int, list[str]] = {}  # 행 → 모델을 못 쓴 이유
+
+    def _miss(self, line: int, why: str) -> None:
+        print(f"[warn] hs_model line={line} {why}")
+        with self.lock:
+            self.missed.setdefault(line, []).append(why)
+
+    def _call(self, what: str, line: int, fn, *args):
+        """모델 호출 하나를 상한까지만 기다린다. 못 쓰면 예외를 내서 recommend_hs가 대신하게 한다."""
+        with self.lock:
+            self.asked.add(line)
+        left = self.deadline - time.monotonic()
+        if left <= 0:
+            self._miss(line, f"{what} 건너뜀(시간 상한 {self.seconds:g}초)")
+            raise TimeoutError(f"HS 모델 시간 상한 {self.seconds:g}초")
+        future = self.pool.submit(fn, *args)
+        try:
+            return future.result(timeout=left)
+        except FutureTimeout:
+            self._miss(line, f"{what} 시간 초과(상한 {self.seconds:g}초)")
+            raise TimeoutError(f"HS 모델 시간 상한 {self.seconds:g}초") from None
+        except Exception as exc:
+            self._miss(line, f"{what} 실패({type(exc).__name__})")
+            raise
+
+    def recommend(self, docs: list[ExtractedDocument], line: int) -> HSResult:
+        """run_job에 넘기는 hs_recommender. 품목 한 행의 HS를 recommend_hs로 추천한다.
+
+        언제: run_job이 품목 행마다 부른다.
+        받는 것: docs(읽은 서류, files 순서), line(품목 행).
+        반환: HSResult. 수입자를 알면 그 수입자의 확정 이력(team06-hs-history)을 쓰고, 모르면 빈 이력으로 부른다.
+        """
+        importer = importer_of(docs)
+        history = handler._hs_history() if importer else _NoHistory()
+        return hs.recommend_hs(
+            docs, line, importer or "", history=history, table=_hs_table(),
+            terms_reader=lambda name: self._call("검색어 뽑기", line, hs.bedrock_terms_reader, name),
+            picker=lambda name, cands: self._call("후보 고르기", line, hs.bedrock_picker, name, cands),
+        )
+
+    def step(self) -> Step | None:
+        """모델을 부르려 한 행이 있으면 그 결과를 단계 기록 한 줄로. 없으면(이력으로 끝남, 품목 없음) None.
+        남은 호출은 기다리지 않는다."""
+        self.pool.shutdown(wait=False, cancel_futures=True)
+        if not self.asked:
+            return None
+        if not self.missed:
+            return Step(tool="hs_model", summary=f"HS 모델 검색어·후보 고르기 {len(self.asked)}행 모두 사용", ok=True)
+        detail = ", ".join(f"{line}행 {'·'.join(why)}" for line, why in sorted(self.missed.items()))
+        summary = f"HS 모델 {len(self.asked)}행 중 {len(self.missed)}행 못 씀 → 품명 검색·앞 후보로 대신: {detail}"
+        return Step(tool="hs_model", summary=summary, ok=False)
 
 
 def _docs_columns(docs: list[ExtractedDocument]) -> dict:
@@ -118,6 +193,11 @@ def page_key(key: str, number: int) -> str:
     return f"{key}.p{number}.jpg"
 
 
+def ocr_cache():
+    """OCR 원본 저장소 (B4-L0). DOCS_BUCKET 의 cache/ocr/, NO_CACHE=1 이면 None. 테스트는 메모리판으로 바꾼다."""
+    return default_ocr_cache()
+
+
 def ocr_one(key: str) -> tuple[OcrResult | None, list[dict]]:
     """서류 한 장: PDF면 쪽 그림을 그려 S3 에 두고, 그 그림(이미지는 원본)을 Textract 로 OCR 한다 (F10 #188).
     EXIF 회전이 있는 사진은 똑바로 세운 그림을 쪽 그림으로 두고 그것을 OCR 한다 (화면의 박스 방향과 맞추려고).
@@ -129,7 +209,8 @@ def ocr_one(key: str) -> tuple[OcrResult | None, list[dict]]:
         data = handler.fetch_object(key)
         images = None
         if is_pdf(key):
-            rendered = render_pages(data)
+            with _PDFIUM_LOCK:  # pdfium은 스레드 여럿이 동시에 쓰면 프로세스가 통째로 죽는다 (Runtime.ExitError, #39)
+                rendered = render_pages(data)
             for number, page in enumerate(rendered, start=1):
                 handler.store_object(page_key(key, number), page.data, "image/jpeg")
                 pages.append({"key": page_key(key, number), "width": page.width, "height": page.height})
@@ -138,7 +219,8 @@ def ocr_one(key: str) -> tuple[OcrResult | None, list[dict]]:
             handler.store_object(page_key(key, 1), upright.data, "image/jpeg")
             pages.append({"key": page_key(key, 1), "width": upright.width, "height": upright.height})
             images = [upright.data]
-        return ocr_document(key, data, pages=images), pages
+        # 같은 파일이면 저장해 둔 OCR 을 쓰고, 아니면 Textract 로 OCR 해서 자르지 않고 S3 cache/ocr/ 에 둔다 (B4-L0)
+        return ocr_cached(key, data, pages=images, cache=ocr_cache(), run=ocr_document), pages
     except Exception as exc:  # 깨진 PDF·크기·권한·타임아웃. 작업은 계속한다
         print(f"[warn] ocr key={key} {type(exc).__name__}: {exc}")
         return None, pages
@@ -206,6 +288,50 @@ def _rereader_with(ocr: OcrRun):
         res, _ = ocr.get(doc.file)
         return reread_field(doc, field, data, ocr=res)
     return rereader
+
+
+# Bedrock 분류 (Textract 로 못 정했을 때). 테스트는 가짜로 바꾼다
+_model_classifier = _strands_classifier
+
+
+def _blocks_hash(blocks: list[dict]) -> str | None:
+    """content_blocks 결과(첫 블록의 바이트)의 해시. 분류기가 받은 블록이 어느 파일인지 찾는 데 쓴다."""
+    try:
+        block = blocks[0]
+        return hashlib.sha256((block.get("document") or block.get("image"))["source"]["bytes"]).hexdigest()
+    except (IndexError, KeyError, TypeError):
+        return None
+
+
+def _ocr_classifying(ocr: OcrRun):
+    """CLASSIFY_BY_OCR=1 일 때 run_job 에 넘길 (fetch, classifier).
+
+    fetch 는 받은 파일의 content_blocks 해시 → S3 키를 적어 두고, classifier 는 그 파일의 Textract 글자에서
+    제목 줄로 종류를 고른다 (tools.ocr.classify_from_ocr). 확신이 없거나 OCR 이 없으면 Bedrock 으로 분류한다.
+    분류는 OCR 을 기다리므로(서류마다, OCR_WAIT_SECONDS 까지) 분류 단계가 그만큼 늦어질 수 있다.
+    """
+    keys: dict[str, str] = {}
+
+    def fetch(key: str) -> bytes:
+        data = handler.fetch_object(key)
+        try:
+            digest = _blocks_hash(content_blocks(key, data))
+            if digest:
+                keys[digest] = key
+        except Exception as exc:  # 지원하지 않는 형식 등: 분류 때 모델로 넘어간다
+            print(f"[warn] classify_by_ocr key={key} 블록 해시 실패: {type(exc).__name__}")
+        return data
+
+    def classifier(blocks: list[dict], prompt: str) -> Classification:
+        key = keys.get(_blocks_hash(blocks) or "")
+        got = classify_from_ocr(ocr.get(key)[0] if key else None)
+        if got is not None:
+            print(f"[tool] classify_from_ocr key={key} → {got.doc_type} ({got.reason})")
+            return got
+        print(f"[classify] key={key} Textract 제목으로 못 정함: 모델로 분류")
+        return _model_classifier(blocks, prompt)
+
+    return fetch, classifier
 
 
 def _draft(job: Job, docs: list[ExtractedDocument]) -> None:
@@ -329,16 +455,22 @@ def lambda_handler(event, context):
 
     started = time.perf_counter()
     ocr_run = OcrRun([f["key"] for f in files])  # run_job 과 동시에 돈다 (F10 #188)
+    hs_run = HsModelRun()  # HS 모델 호출은 처리 시작부터 HS_MODEL_SECONDS까지만 (#132 리뷰)
+    fetch, classifier = handler.fetch_object, None
+    if os.environ.get("CLASSIFY_BY_OCR") == "1":  # 분류를 Textract 글자로 (서류마다 Bedrock 분류 호출 하나를 줄인다)
+        fetch, classifier = _ocr_classifying(ocr_run)
     try:
         result = run_job(
-            job_id, files, handler.fetch_object, on_step=on_step, hs_recommender=recommend_line, on_docs=read.extend,
-            rereader=_rereader_with(ocr_run),
+            job_id, files, fetch, on_step=on_step, hs_recommender=hs_run.recommend, on_docs=read.extend,
+            rereader=_rereader_with(ocr_run), classifier=classifier,
         )
     except Exception as exc:  # 예상 못 한 오류도 작업 상태로 남긴다 (Lambda가 다시 돌리지 않게 여기서 끝낸다)
         print(f"[error] worker job={job_id} {type(exc).__name__}: {exc}")
         result = Job(job_id=job_id, status="failed", steps=latest.steps, error=f"{type(exc).__name__}: {exc}")
     ocr = ocr_run.finish()
     result.steps.append(_ocr_step(ocr, ocr_run.timed_out))
+    if (hs_step := hs_run.step()) is not None:
+        result.steps.append(hs_step)
     print(f"[job] {job_id} status={result.status} {time.perf_counter() - started:.1f}초")
     if result.status in ("waiting_approval", "done") and read:  # 실패한 작업은 초안·등록·화물 기록을 하지 않는다
         _draft(result, read)
