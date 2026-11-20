@@ -75,3 +75,79 @@ def test_count_model_usage_reads_bedrock_usage_metadata(monkeypatch):
     asyncio.run(call_twice())
     assert usage == {"model": 2, "tokens_in": 7000, "tokens_out": 260, "cache_read": 0, "cache_write": 0}
     assert cost_usd(7000, 260) == round((7000 * 2 + 260 * 10) / 1_000_000, 4)
+
+
+# ---------------------------------------------------------------------------
+# 처리 Lambda와 같은 조건 (like_worker): OCR·HS 모델. 배포본 저장소는 건드리지 않는다
+# ---------------------------------------------------------------------------
+import pytest  # noqa: E402
+
+from samples.measure_e2e import ROOT, like_worker, run_set  # noqa: E402
+from tools.models import (  # noqa: E402
+    Classification, HSPick, HSSearchTerms, OcrLine, OcrResult, RawDocument,
+)
+
+
+@pytest.fixture
+def no_aws(monkeypatch, tmp_path):
+    """S3·DynamoDB·Textract·Bedrock을 부르면 실패하게 막고(끝나면 되돌림), like_worker를 건다."""
+    from api import handler, worker
+
+    monkeypatch.setattr(handler, "fetch_object", lambda key: pytest.fail("S3에서 읽으면 안 된다"))
+    monkeypatch.setattr(handler, "store_object", lambda *a, **k: pytest.fail("S3에 쓰면 안 된다"))
+    monkeypatch.setattr(handler, "_hs_history", lambda: pytest.fail("DynamoDB를 읽으면 안 된다"))
+    monkeypatch.setattr(worker, "ocr_cache", lambda: None)
+    texts = {"doc_a": "TOTAL G.W. 120 KGS", "doc_b": "TOTAL G.W. 100 KGS", "doc_c": "GROSS WEIGHT 100 KGS"}
+
+    def fake_ocr(file, data, *, client=None, pages=None):
+        slot = file.rsplit("/", 1)[-1].split(".")[0]
+        return OcrResult(file=file, lines=[OcrLine(page=1, text=texts.get(slot, ""), bbox=(0.1, 0.1, 0.5, 0.05))])
+
+    monkeypatch.setattr(worker, "ocr_document", fake_ocr)
+    usage = {"model": 0, "tokens_in": 0, "tokens_out": 0, "cache_read": 0, "cache_write": 0}
+    like_worker(usage, tmp_path / "ocr")
+    return usage
+
+
+def test_like_worker_reads_local_files_and_writes_nothing(no_aws):
+    from api import handler, worker
+
+    assert handler.fetch_object("samples/dev/D003/doc_a.pdf")[:4] == b"%PDF"  # 로컬 파일
+    assert handler.store_object("uploads/x.p1.jpg", b"", "image/jpeg") is None  # S3에 쓰지 않는다
+    assert handler._hs_history().get("수입자", "품목") is None  # 빈 확정 이력
+    worker.ocr_document("k.pdf", b"x", pages=[b"1", b"2"])
+    worker.ocr_document("k.png", b"x")
+    assert no_aws["textract_pages"] == 3  # PDF는 쪽마다, 이미지는 1
+    assert worker.ocr_cache() is not None  # 로컬 OCR 캐시
+
+
+def test_run_set_like_worker_uses_ocr_for_reread_and_hs_model(no_aws, monkeypatch):
+    """실제 개발용 PDF(D005, 3장)로 처리 Lambda와 같은 부품을 돈다. 모델·Textract는 가짜."""
+    from tools import extract, hs
+
+    files = {(ROOT / key).read_bytes(): doc_type for key, doc_type in files_of("D005")}
+    asked: list[str] = []
+
+    def classifier(blocks, prompt):
+        return Classification(doc_type=files[blocks[0]["document"]["source"]["bytes"]], reason="제목 (가짜)")
+
+    def reader(blocks, prompt):  # 포장명세서만 총중량 120 → 송장·B/L 100과 불일치
+        doc_type = files[blocks[0]["document"]["source"]["bytes"]]
+        weight = "120 KGS" if doc_type == "packing_list" else "100 KGS"
+        return RawDocument.model_validate({"doc_no": {"raw": "INV-9"}, "total_gross_kg": {"raw": weight},
+                                           "items": [{"line": 1, "name": {"raw": "WOODEN CHAIR"}}]})
+
+    monkeypatch.setattr(extract, "_strands_classifier", classifier)
+    monkeypatch.setattr(extract, "_strands_reader", reader)
+    monkeypatch.setattr(hs, "bedrock_terms_reader", lambda name: asked.append("terms") or HSSearchTerms(terms=["chair"]))
+    monkeypatch.setattr(hs, "bedrock_picker", lambda name, cands: asked.append("pick") or HSPick(picks=[]))
+
+    row = run_set("D005", no_aws)
+    tools_used = [s["tool"] for s in row["steps"]]
+    assert row["status"] == "waiting_approval" and row["error"] is None
+    assert [ok for _, _, ok in row["classified"]] == [True, True, True]
+    assert row["textract_pages"] >= 3  # 서류마다 OCR (PDF는 쪽마다)
+    assert "ocr_document" in tools_used and "hs_model" in tools_used  # 처리 Lambda가 run_job 뒤에 남기는 단계
+    [weight] = [i for i in row["issues"] if i["rule_id"] == "X-WT-01"]
+    assert weight["checked_by"] == "textract"  # 다시 확인의 두 번째 근거가 OCR이다 (OCR 없으면 model_reread)
+    assert "terms" in asked  # HS 모델 검색어 뽑기를 불렀다
