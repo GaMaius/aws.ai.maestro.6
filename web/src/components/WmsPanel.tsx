@@ -1,13 +1,25 @@
 // G7 결과 화면: WMS 상태와 승인 (result.wms, POST /api/jobs/{id}/approve).
 // 등록할 수 있는지는 서버가 정한다. 불일치가 남은 건은 서버가 409 로 거절하고, 화면은 안내만 한다 (agent-design.md 8번).
+// FB01-b: 서버 배포 전·옛 작업은 승인 대기인데 result.wms 가 null 이다. 그때도 승인 입력을 보인다 (서버가 다시 검사한다).
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { ApiError, approveJob } from "../api";
+import { ApiError, approveJob, certificateUrl } from "../api";
 import type { JobStatus, WmsBy, WmsState } from "../types";
 
 const BY_KO: Record<WmsBy, string> = { auto: "자동 등록", human: "사람 승인" };
 
-export function WmsPanel({ jobId, jobStatus, wms }: { jobId: string; jobStatus: JobStatus; wms: WmsState | null }) {
+export function WmsPanel({
+  jobId,
+  jobStatus,
+  wms,
+  blocked = null,
+}: {
+  jobId: string;
+  jobStatus: JobStatus;
+  wms: WmsState | null;
+  /** 승인해도 등록할 수 없는 이유 (불일치가 남음, FB22). 있으면 승인 버튼을 막고 누르기 전에 보인다 */
+  blocked?: string | null;
+}) {
   const queryClient = useQueryClient();
   const [approver, setApprover] = useState("");
   const mutation = useMutation({
@@ -19,22 +31,45 @@ export function WmsPanel({ jobId, jobStatus, wms }: { jobId: string; jobStatus: 
   });
 
   const conflict = mutation.error instanceof ApiError && mutation.error.status === 409;
-  const canApprove = wms?.status === "승인 대기" && jobStatus === "waiting_approval";
+  // wms 가 없어도 작업이 승인 대기면 승인 대기로 본다 (FB01-b)
+  const waiting = jobStatus === "waiting_approval" && (wms === null || wms.status === "승인 대기");
+  const shown: WmsState | null = wms ?? (waiting ? { status: "승인 대기", by: null, wms_id: null } : null);
+  const canApprove = waiting;
 
   return (
     <div className="panel">
       <h2>WMS 등록</h2>
-      {!wms ? (
+      {!shown ? (
         <p className="empty">WMS 상태가 아직 없습니다.</p>
       ) : (
         <p className="wms-state">
-          <span className={wms.status === "등록됨" ? "grade grade-ok" : "grade grade-check"}>{wms.status}</span>
-          {wms.by && <span className="hint">{BY_KO[wms.by]}</span>}
-          {wms.wms_id && (
+          <span className={shown.status === "등록됨" ? "grade grade-ok" : "grade grade-check"}>{shown.status}</span>
+          {shown.by && <span className="hint">{BY_KO[shown.by]}</span>}
+          {shown.wms_id && (
             <span>
-              WMS 번호 <code>{wms.wms_id}</code>
+              WMS 번호 <code>{shown.wms_id}</code>
             </span>
           )}
+        </p>
+      )}
+
+      {/* 사람이 승인해 등록한 작업만 검수 완료서를 받는다 (X1 #258). 자동 등록은 검수자가 없어 링크를 숨긴다 */}
+      {shown?.status === "등록됨" && shown.by === "human" && (
+        <p className="wms-certificate">
+          {shown.approver && (
+            <span className="hint">
+              검수자 {shown.approver}
+              {shown.approved_at ? ` · ${shown.approved_at.slice(0, 16).replace("T", " ")}` : ""}
+            </span>
+          )}
+          <a className="wms-certificate-link" href={certificateUrl(jobId)} download>
+            검수 완료서 받기
+          </a>
+        </p>
+      )}
+      {canApprove && blocked && (
+        <p className="wms-blocked" role="note">
+          {blocked}
         </p>
       )}
 
@@ -56,7 +91,8 @@ export function WmsPanel({ jobId, jobStatus, wms }: { jobId: string; jobStatus: 
               onChange={(e) => setApprover(e.target.value)}
             />
           </label>
-          <button type="submit" className="primary" disabled={approver.trim() === "" || mutation.isPending}>
+          <p className="hint wms-approver-note">입력한 이름이 검수 완료서에 검수자로 찍힙니다.</p>
+          <button type="submit" className="primary" disabled={approver.trim() === "" || mutation.isPending || Boolean(blocked)}>
             {mutation.isPending ? "등록하는 중…" : "승인하고 WMS 등록"}
           </button>
         </form>

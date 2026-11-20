@@ -76,6 +76,10 @@ export interface HSResult {
   by: HSBy | null;
   hs_code: string | null;
   candidates: HSCandidate[];
+  /** 그 행의 품명 (서류에 적힌 글자, FB07 #164). 없으면 화면은 "N행"만 */
+  item_name?: string | null;
+  /** 서류에 적힌 HS (적힌 그대로. 예: "9401.61") */
+  doc_hs_code?: string | null;
 }
 export interface DeclarationField {
   name: string;
@@ -91,6 +95,10 @@ export interface WmsState {
   status: WmsStatus;
   by: WmsBy | null;
   wms_id?: string | null;
+  /** 검수자 이름 (사람 승인으로 등록됐을 때. X1 #258). 자동 등록·승인 대기는 null */
+  approver?: string | null;
+  /** 승인 시각, 한국 시간 ISO 8601 */
+  approved_at?: string | null;
 }
 export interface JobResult {
   issues: Issue[];
@@ -98,12 +106,21 @@ export interface JobResult {
   declaration_draft: DeclarationDraft | null;
   wms: WmsState | null;
 }
+/** 작업 화면 맨 위 '지금 상태와 다음 할 일' (FB22 #178, 서버 tools/models.py NextAction) */
+export type NextActionKind = "wait" | "fix_docs" | "choose_hs" | "approve" | "none" | "reupload";
+export interface NextAction {
+  kind: NextActionKind;
+  message: string;
+  count: number | null;
+}
 export interface Job {
   job_id: string;
   status: JobStatus;
   steps: Step[];
   result: JobResult | null;
   error?: string | null;
+  /** 서버가 응답 때 정한다. 옛 서버는 주지 않는다 (그때는 nextActionOf 가 같은 규칙으로 정한다) */
+  next_action?: NextAction | null;
 }
 
 // POST /api/jobs/{id}/hs
@@ -121,7 +138,7 @@ export interface ApproveResponse {
 }
 
 // POST /api/chat (docs/examples/chat_response.json)
-export type Period = "today" | "this_week" | "last_week" | "range";
+export type Period = "today" | "this_week" | "last_week" | "this_month" | "last_month" | "range";
 export interface ChatRequest {
   session_id: string;
   message: string;
@@ -131,6 +148,25 @@ export interface ChatFilters {
   period: Period | null;
   date_from?: string | null;
   date_to?: string | null;
+  /** 모델이 칸으로 나타내지 못한 조건 (#165). 비어 있지 않으면 서버는 조회하지 않는다 */
+  unsupported?: string[];
+  /** 현황 Agent 칸 (#257): status 와 함께 거르는 두 번째 상태('그중 검사 중'), 수입자·품명 일부, B/L 번호 */
+  and_status?: string | null;
+  consignee?: string | null;
+  item?: string | null;
+  bl_no?: string | null;
+}
+/** 현황 그래프 (#257). 값·축·제목은 서버 코드가 집계에서 채운다. 화면은 계산하지 않고 그린다 */
+export interface ChartPoint {
+  label: string;
+  value: number;
+}
+export interface Chart {
+  type: "bar" | "line" | "pie";
+  title: string;
+  x_label: string;
+  y_label: string;
+  points: ChartPoint[];
 }
 export interface PeriodResolved {
   from: string;
@@ -150,6 +186,25 @@ export interface ChatResponse {
   filters: ChatFilters;
   period_resolved: PeriodResolved | null;
   rows: Shipment[];
+  /** 가드레일이 막았으면 그 이유 (E7 #152), 아니면 null */
+  blocked?: string | null;
+  /** 그래프 (#257). 현황 Agent 가 만들었을 때만 */
+  chart?: Chart | null;
+}
+// GET /api/chat/{session_id} 대화 기록 (E6 #157, docs/examples/chat_history.json). 줄마다 질문 또는 답 하나
+export interface ChatHistoryLine {
+  session_id: string;
+  ts: string;
+  role: "user" | "assistant";
+  text: string;
+  filters: ChatFilters | null;
+  count: number | null;
+  rule: string | null;
+  blocked: boolean | null;
+  block_reason: string | null;
+}
+export interface ChatHistoryResponse {
+  messages: ChatHistoryLine[];
 }
 // GET /api/documents (문서 분류 내역, G10)
 // 임시(제안 중): 서버 약속 제안 이슈가 합쳐지기 전 모양이다. 합쳐지면 tools/models.py·docs/examples/documents.json 과 맞춘다.
@@ -233,7 +288,19 @@ export interface DocumentFilters {
 // GET /api/stats (대시보드, F11 #195). 숫자는 서버가 센 값 그대로 쓴다
 export interface StatsResponse {
   today: string;
-  todo: { waiting_approval: number; mismatch_jobs: number; hs_pending: number; unclassified: number; delayed: number };
+  todo: {
+    waiting_approval: number;
+    mismatch_jobs: number;
+    hs_pending: number;
+    unclassified: number;
+    delayed: number;
+    /** 다음 할 일별 작업 수 (#252). 옛 서버는 주지 않는다 (그때는 옛 타일로 그린다) */
+    fix_docs?: number;
+    choose_hs?: number;
+    approve?: number;
+    reupload?: number;
+    wait?: number;
+  };
   flow: { status: string; count: number }[];
   delayed: {
     bl_no: string;
@@ -246,6 +313,23 @@ export interface StatsResponse {
   }[];
   delay_rule: string;
   docs_by_type: Record<DocType, number>;
-  auto: { finished: number; auto: number };
-  top_rules: { rule_id: string; grade: Grade; count: number; example: string }[];
+  auto: { finished: number; auto: number; rule?: string };
+  /** name: 사람 말 이름 (#252, rules.csv description) */
+  top_rules: { rule_id: string; grade: Grade; count: number; example: string; name?: string | null }[];
+}
+
+// GET /api/jobs?next_action= (#252). 대시보드 카드를 누르면 그 자리에 펼치는 작업 목록
+export type TodoKind = "fix_docs" | "choose_hs" | "approve" | "reupload" | "wait";
+export interface JobSummary {
+  job_id: string;
+  status: JobStatus;
+  bl_no: string | null;
+  consignee: string | null;
+  created_at: string;
+  next_action: NextAction;
+  mismatch: number;
+  hs_pending: number;
+}
+export interface JobListResponse {
+  items: JobSummary[];
 }

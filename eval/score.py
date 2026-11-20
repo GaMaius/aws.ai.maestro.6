@@ -13,7 +13,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from tools.models import Cell, ExtractedDocument, ExtractedItem, Issue
+from tools.models import Cell, ExtractedContainer, ExtractedDocument, ExtractedItem, Issue
 
 EVAL_DIR = Path(__file__).parent
 _FIELD_ALIAS = {"doc_no": "invoice_no"}  # 약속 1의 doc_no = 정답지의 invoice_no
@@ -263,6 +263,13 @@ def format_report(detection: dict, fields: dict | None = None) -> str:
     return "\n".join(lines)
 
 
+SAMPLE_SETS_CSV = Path(__file__).resolve().parents[1] / "samples" / "data" / "sets.csv"
+def _sample_incoterms(path: Path = SAMPLE_SETS_CSV) -> dict[str, str]:
+    """세트 번호 → 상업송장 인코텀즈(예: 'FOB QINGDAO'). samples/data/sets.csv에서 읽기만 한다. 파일이 없으면 빈 값."""
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8", newline="") as fh:
+        return {row["set_id"]: row["incoterms"] for row in csv.DictReader(fh) if row.get("incoterms")}
 def oracle_docs(
     fields_csv: Path = EVAL_DIR / "fields.csv",
     split_prefix: str = "D",
@@ -277,6 +284,9 @@ def oracle_docs(
     정답지 CSV에 없는 두 값을 심기 전 값(answers.csv의 original_value)으로 채운다. 생성기는 오류를 한 칸에만 심기 때문이다.
       - 상업송장 줄 금액: 줄 하나에 심기 전 총금액 (총금액이 틀린 세트에서만 총금액과 달라진다)
       - 포장명세서 총포장수: 심기 전 선하증권 총포장수
+    현장 칸(B13 #229)도 정답 값으로 채운다: 화인(선하증권·포장명세서), 컨테이너 줄 포장 수(선하증권), 품목별 포장 수(포장명세서).
+    운임·원산지·소급 발급 칸(FB06 #163)도 채운다: 선하증권 운임 조건, 원산지증명서 출항일·발급일·소급 표시·품목별 HS와 원산지결정기준.
+    상업송장 인코텀즈는 fields.csv에 없어 samples/data/sets.csv(읽기만 한다)에서 가져온다. 없으면 X-FRT-01은 건너뛴다.
     """
     wanted = ("commercial_invoice", "packing_list") + (("bill_of_lading", "certificate_of_origin") if with_p1 else ())
     values: dict[tuple[str, str], dict[str, str]] = defaultdict(dict)
@@ -291,21 +301,55 @@ def oracle_docs(
 
     def number_cell(text: str | None, unit: str | None = None) -> Cell | None:
         return Cell(raw=text, value=_number(text), unit=unit) if text else None
+    def marks_cell(text: str | None) -> Cell | None:
+        return Cell(raw=text, value=" ".join(text.upper().split())) if text else None  # read_document가 푸는 방식과 같다
+    def indexed(f: dict[str, str], prefix: str, attr: str = "packages") -> list[tuple[int, str]]:
+        """fields.csv의 'containers[0].packages' 같은 줄별 칸을 (줄 번호, 정답)으로 모은다. 줄 번호는 1부터."""
+        found = [(int(m.group(1)) + 1, v) for k, v in f.items() if (m := re.fullmatch(re.escape(prefix) + r"\[(\d+)\]\." + attr, k))]
+        return sorted(found)
+    incoterms = _sample_incoterms()
 
     docs: dict[str, list[ExtractedDocument]] = defaultdict(list)
     for (set_id, doc_type), f in values.items():
         extra: dict = {}
         if with_p1 and doc_type == "bill_of_lading":
-            extra = {"container_no": text_cell(f.get("container_no")), "total_packages": number_cell(f.get("total_packages"), "CTN")}
+            extra = {
+                "container_no": text_cell(f.get("container_no")),
+                "total_packages": number_cell(f.get("total_packages"), "CTN"),
+                "marks": marks_cell(f.get("marks")),
+                "containers": [ExtractedContainer(line=n, packages=number_cell(v, "CTN")) for n, v in indexed(f, "containers")],
+                "freight_term": text_cell(f.get("freight_term")),
+            }
         elif with_p1 and doc_type == "packing_list":
             bl = values.get((set_id, "bill_of_lading"), {})
             packages = original.get((set_id, "bill_of_lading", "total_packages")) or bl.get("total_packages")
-            extra = {"total_packages": number_cell(packages, "CTN")}
+            extra = {
+                "total_packages": number_cell(packages, "CTN"),
+                "marks": marks_cell(f.get("marks")),
+                "items": [ExtractedItem(line=n, packages=number_cell(v, "CTN")) for n, v in indexed(f, "items")],
+            }
         elif with_p1 and doc_type == "commercial_invoice" and f.get("total_amount"):
             line = original.get((set_id, doc_type, "total_amount")) or f["total_amount"]
             extra = {
                 "total_amount": number_cell(f["total_amount"], "USD"),
                 "items": [ExtractedItem(line=1, amount=number_cell(line, "USD"))],
+                "incoterms": text_cell(incoterms.get(set_id)),
+            }
+        elif with_p1 and doc_type == "certificate_of_origin":
+            criteria = dict(indexed(f, "items", "origin_criterion"))
+            hs_codes = dict(indexed(f, "items", "hs_code"))
+            extra = {
+                "departure_date": text_cell(f.get("departure_date")),
+                "issue_date": text_cell(f.get("issue_date")),
+                "issued_retroactively": text_cell(f.get("issued_retroactively")),
+                "items": [
+                    ExtractedItem(
+                        line=n,
+                        hs_code=Cell(raw=hs_codes[n], value=re.sub(r"\D", "", hs_codes[n])) if hs_codes.get(n) else None,
+                        origin_criterion=text_cell(criteria.get(n)),
+                    )
+                    for n in sorted(set(criteria) | set(hs_codes))
+                ],
             }
         docs[set_id].append(
             ExtractedDocument(

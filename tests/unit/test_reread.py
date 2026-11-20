@@ -3,7 +3,7 @@
 import pytest
 
 from tools.models import ExtractedDocument, Issue, IssueCell, OcrLine, OcrResult, RawDocument, RereadResult
-from tools.reread import apply_rereads, field_raw, find_in_text, reread_field
+from tools.reread import apply_rereads, field_raw, find_in_text, reread_field, same_value
 
 
 def doc(file="uploads/s1/pl.pdf", **cells) -> ExtractedDocument:
@@ -241,3 +241,32 @@ def reread_doc_no(data: bytes) -> str:
 
 def test_label_window_constant():
     assert reread.LABEL_WINDOW == 60
+
+
+def test_field_raw_컨테이너_경로():
+    """B/L 컨테이너 줄 칸도 다시 확인할 수 있게 경로로 찾는다 (B12 #228)."""
+    bl = ExtractedDocument.model_validate({
+        "doc_type": "bill_of_lading", "file": "uploads/s1/bl.pdf",
+        "marks": {"raw": "EXAMPLE HOME LIVING\nBUSAN, KOREA C/NO. 1-535"},
+        "containers": [
+            {"line": 1, "seal_no": {"raw": "SM1470293"}, "packages": {"raw": "300 CTNS"}},
+            {"line": 2, "seal_no": {"raw": "SM1470294"}, "packages": {"raw": "235 CTNS"}},
+        ],
+    })
+    assert field_raw(bl, "containers[1].seal_no") == "SM1470294"
+    assert field_raw(bl, "containers[*].packages") == "300 CTNS + 235 CTNS"
+    assert field_raw(bl, "containers[5].seal_no") is None
+    assert field_raw(bl, "marks") == "EXAMPLE HOME LIVING\nBUSAN, KOREA C/NO. 1-535"
+    with pytest.raises(ValueError):
+        field_raw(bl, "boxes[0].seal_no")
+
+
+def test_포장_수와_용적은_숫자로_비교한다():
+    """B12 #228 새 칸과 총포장수·용적: 단위 표기만 다르면 같은 값이다 (리뷰 지적)."""
+    assert same_value("containers[0].packages", "300 CTNS", "300 CTN")
+    assert same_value("items[*].packages", "286 + 374", "286 + 374 CTNS")
+    assert same_value("total_packages", "SAY TOTAL 176 CARTONS ONLY", "176 CTNS")
+    assert same_value("containers[0].cbm", "35.000 CBM", "35 CBM")
+    assert same_value("total_cbm", "63.610", "63.61")
+    assert not same_value("containers[0].packages", "300 CTNS", "30 CTNS")
+    assert not same_value("total_packages", "176 CTNS", "176 PLTS")

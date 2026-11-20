@@ -23,8 +23,13 @@ HSStatus = Literal["자동 확정", "사람 확인 필요", "사람 확정"]
 HSBy = Literal["history", "auto_match", "human"]
 WmsStatus = Literal["승인 대기", "등록됨"]
 WmsBy = Literal["auto", "human"]
-Period = Literal["today", "this_week", "last_week", "range"]
+Period = Literal["today", "this_week", "last_week", "this_month", "last_month", "range"]
+# 현황 Agent의 집계 기준 (#257). 날짜 묶음(day·week·month)은 입항일, 주는 월요일~일요일
+GroupBy = Literal["status", "consignee", "item", "day", "week", "month"]
+ChartType = Literal["bar", "line", "pie"]
 ChatRole = Literal["user", "assistant"]
+# 작업 화면 맨 위 '다음 할 일' (FB22 #178). 코드가 결과로 정한다
+NextActionKind = Literal["wait", "fix_docs", "choose_hs", "approve", "none", "reupload"]
 
 DOC_TYPE_KO: dict[str, str] = {
     "bill_of_lading": "선하증권",
@@ -105,6 +110,25 @@ class ExtractedItem(_Strict):
         default=None,
         description="원산지 기준 칸(Origin Criterion, 원산지증명서 8번). 적힌 그대로. 예: 'PSR', 'WP', 'CTC', 'RVC 40%'",
     )
+    packages: Cell | None = Field(
+        default=None,
+        description=(
+            "그 행의 포장 개수 칸(No. of Pkgs, CTNS, 포장명세서). 품목 수량(qty)과 다르다. "
+            "value는 개수, unit은 포장 단위. 예: '286' (현장 칸, B12 #228)"
+        ),
+    )
+
+
+class ExtractedContainer(_Strict):
+    """B/L 컨테이너 한 줄 (CONTAINER DETAILS). 항만 현장(게이트·보세창고)이 실물과 맞춰 보는 칸 (B12 #228)."""
+
+    line: int = Field(description="컨테이너 줄 순서. 1부터 센다")
+    container_no: Cell | None = Field(default=None, description="컨테이너 번호(Container No.). 봉인 번호와 다르다. 예: 'EXMU6058591'")
+    seal_no: Cell | None = Field(default=None, description="봉인 번호(Seal No.). 컨테이너 번호와 다르다. 예: 'EX1470293'")
+    size_type: Cell | None = Field(default=None, description="컨테이너 규격(Size-Type). 적힌 그대로. 예: \"20'GP (22G1)\"")
+    packages: Cell | None = Field(default=None, description="그 컨테이너의 포장 개수. value는 개수, unit은 포장 단위. 예: '53 CTNS'")
+    gross_kg: Cell | None = Field(default=None, description="그 컨테이너의 총중량. 예: '842.700 KGS'")
+    cbm: Cell | None = Field(default=None, description="그 컨테이너의 용적(Measurement, CBM). 예: '3.710 CBM'")
 
 
 class ExtractedDocument(_Strict):
@@ -187,6 +211,17 @@ class ExtractedDocument(_Strict):
     issued_retroactively: Cell | None = Field(
         default=None, description="원산지증명서의 'ISSUED RETROACTIVELY' 표시(체크·도장)가 있으면 그 글자. 없으면 비운다"
     )
+    # 현장 칸 (B12 #228). 항만 현장이 실물과 맞춰 보는 칸. 기존 container_no는 그대로 두고 containers를 덧붙인다
+    marks: Cell | None = Field(
+        default=None,
+        description=(
+            "화인 칸(Marks & Numbers, Shipping Marks)의 글자. 여러 줄은 공백 하나로 잇는다. value는 대문자·공백 하나로 맞춘 글자. "
+            "예: 'EXAMPLE DISTRIBUTION KOREA INC. BUSAN, KOREA C/NO. 1-53 MADE IN CHINA' (B/L·포장명세서)"
+        ),
+    )
+    containers: list[ExtractedContainer] = Field(
+        default_factory=list, description="B/L 컨테이너 줄 목록 (CONTAINER DETAILS). 줄마다 하나. 다른 서류는 빈 목록"
+    )
 
 
 # 모델이 실제로 채우는 모양: raw와 못 읽은 이유만 낸다 (value는 코드가 푼다)
@@ -214,18 +249,21 @@ class RawItem(_Strict):
     net_kg: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["net_kg"].description)
     unit_price: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["unit_price"].description)
     amount: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["amount"].description)
+    packages: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["packages"].description)
 
     # 선택 속성 한도(12개) 때문에 새 칸은 스키마에서 필수(null 허용)로 둔다 (RawDocument와 같은 방식)
     model_config = {
         **_Strict.model_config,
         "json_schema_extra": lambda schema: schema.update(
-            required=sorted({*schema.get("required", []), "unit_price", "amount"})
+            required=sorted({*schema.get("required", []), "unit_price", "amount", "packages"})
         ),
     }
 
 
 # RawDocument에서 스키마로만 필수(null 허용)로 표시하는 칸 (#133 consignee_name과 B2 P1의 남은 칸)
-RAW_REQUIRED_NEW = ("consignee_name", "exporter_name", "total_amount", "incoterms", "payment_term", "origin", "total_packages")
+RAW_REQUIRED_NEW = (
+    "consignee_name", "exporter_name", "total_amount", "incoterms", "payment_term", "origin", "total_packages", "marks",
+)
 
 
 class RawDocument(_Strict):
@@ -248,6 +286,7 @@ class RawDocument(_Strict):
     total_packages: RawCell | None = Field(
         default=None, description=ExtractedDocument.model_fields["total_packages"].description
     )
+    marks: RawCell | None = Field(default=None, description=ExtractedDocument.model_fields["marks"].description)
 
     # Bedrock 구조화 출력은 필수가 아닌 속성을 전체 12개까지만 받는다 (agent-design.md 10번).
     # 지금까지 12개라서 새 칸은 스키마에서 필수(null 허용)로 둔다. 파이썬에서는 기본값 None이라 기존 가짜 응답도 그대로 검증된다.
@@ -269,6 +308,18 @@ def _item_desc(name: str) -> str:
     return field.description or ""
 
 
+class RawContainer(_Strict):
+    """B/L 컨테이너 한 줄. 칸은 모두 필수 + null 허용 (선택 속성 한도)."""
+
+    line: int = Field(description="CONTAINER DETAILS 줄 순서. 1부터 센다")
+    container_no: RawCell | None = Field(description=ExtractedContainer.model_fields["container_no"].description)
+    seal_no: RawCell | None = Field(description=ExtractedContainer.model_fields["seal_no"].description)
+    size_type: RawCell | None = Field(description=ExtractedContainer.model_fields["size_type"].description)
+    packages: RawCell | None = Field(description=ExtractedContainer.model_fields["packages"].description)
+    gross_kg: RawCell | None = Field(description=ExtractedContainer.model_fields["gross_kg"].description)
+    cbm: RawCell | None = Field(description=ExtractedContainer.model_fields["cbm"].description)
+
+
 class RawBillOfLading(_Strict):
     """모델이 B/L 한 장을 읽은 결과. 품목 행은 옮기지 않는다."""
 
@@ -287,6 +338,19 @@ class RawBillOfLading(_Strict):
         description="Gross Weight 칸의 총중량. Measurement(CBM)와 다르다. 단위가 칸 제목에만 있으면 숫자만 옮긴다"
     )
     total_cbm: RawCell | None = Field(description=_doc_desc("total_cbm"))
+    # 현장 칸 (B12 #228). 옛 가짜 응답도 받게 파이썬 기본값을 두고, 스키마에서는 필수로 표시한다 (RawDocument와 같은 방식)
+    marks: RawCell | None = Field(default=None, description=_doc_desc("marks"))
+    containers: list[RawContainer] = Field(
+        default_factory=list,
+        description="CONTAINER DETAILS(Container No. / Seal No. ...) 줄마다 하나. 적힌 줄을 빠짐없이 옮긴다. 줄이 없으면 빈 목록",
+    )
+
+    model_config = {
+        **_Strict.model_config,
+        "json_schema_extra": lambda schema: schema.update(
+            required=sorted({*schema.get("required", []), "marks", "containers"})
+        ),
+    }
 
 
 class RawOriginItem(_Strict):
@@ -401,6 +465,12 @@ class WmsState(_Strict):
     status: WmsStatus = Field(description="승인 대기 · 등록됨")
     by: WmsBy | None = Field(default=None, description="등록한 경로. 등록 전이면 null")
     wms_id: str | None = Field(default=None, description="WMS가 준 번호. 등록 전이면 null")
+    approver: str | None = Field(
+        default=None, description="검수자 이름(사람 승인으로 등록됐을 때 승인 입력의 approver). 자동 등록·승인 대기는 null (X1 #258)"
+    )
+    approved_at: str | None = Field(
+        default=None, description="승인 시각. 한국 시간 ISO 8601(예 2026-11-21T09:30:12+09:00). 사람 승인일 때만 (X1 #258)"
+    )
 
 
 class JobResult(_Strict):
@@ -412,6 +482,17 @@ class JobResult(_Strict):
     wms: WmsState | None = Field(default=None, description="WMS 상태")
 
 
+class NextAction(_Strict):
+    """작업 화면 맨 위에 보일 '지금 상태와 다음 할 일' 한 줄 (FB22 #178). 저장하지 않고 GET /jobs/{id} 때 코드가 결과로 정한다."""
+
+    kind: NextActionKind = Field(
+        description="wait 처리 중 · fix_docs 불일치가 남아 서류를 고쳐 다시 올려야 함 · choose_hs HS를 골라야 함 · "
+        "approve 확인하고 승인 · none 할 일 없음(등록됨) · reupload 실패해 다시 올림"
+    )
+    message: str = Field(description="화면에 그대로 보일 한 줄. 예: '불일치 1건: 서류를 고쳐 다시 올려야 등록할 수 있습니다'")
+    count: int | None = Field(default=None, description="불일치 건수·고를 HS 수·확인 필요 건수. 없으면 null")
+
+
 class Job(_Strict):
     """GET /jobs/{id} 응답."""
 
@@ -420,6 +501,9 @@ class Job(_Strict):
     steps: list[Step] = Field(default_factory=list, description="도구 호출 기록")
     result: JobResult | None = Field(default=None, description="결과. 끝나기 전이면 null")
     error: str | None = Field(default=None, description="failed일 때 이유")
+    next_action: NextAction | None = Field(
+        default=None, description="지금 상태와 다음 할 일 (FB22). GET /jobs/{id}가 채운다. 저장된 작업 줄에는 없다"
+    )
 
 
 class NoticeDocument(_Strict):
@@ -454,7 +538,9 @@ class ChatFilters(_Strict):
     """모델이 질문을 바꾼 조회 조건."""
 
     status: str | None = Field(default=None, description="상태 조건. 예: '통관 지연'")
-    period: Period | None = Field(default=None, description="today · this_week · last_week · range")
+    period: Period | None = Field(
+        default=None, description="today · this_week · last_week · this_month · last_month · range. 날짜는 코드가 한국 시간으로 계산한다"
+    )
     date_from: date | None = Field(default=None, description="period가 range일 때만: 시작일. 모델은 질문에 적힌 날짜만 옮긴다")
     date_to: date | None = Field(default=None, description="period가 range일 때만: 끝일")
     unsupported: list[str] = Field(
@@ -462,6 +548,14 @@ class ChatFilters(_Strict):
         description="질문에 있지만 위 칸으로 나타낼 수 없는 조건을 짧게. 예: '수하인 이그잼플유통', 'B/L 번호 EXSHSZX26003555', "
         "'상태 둘 이상: 수리, 반출'. 비어 있지 않으면 코드는 조회하지 않고 볼 수 없는 조건이라고 답한다 (#165)",
     )
+    # 현황 Agent 도구가 쓰는 칸 (#257). 조건 변환(옛 경로)은 쓰지 않는다
+    and_status: str | None = Field(
+        default=None,
+        description="status와 함께 거르는 두 번째 상태 (이어 묻기 '그중 검사 중인 건'). 예: status '통관 지연' + and_status '검사 중'",
+    )
+    consignee: str | None = Field(default=None, description="수하인(수입자) 이름 일부. 띄어쓰기·대소문자를 무시하고 포함하면 맞음")
+    item: str | None = Field(default=None, description="품명 일부. 띄어쓰기·대소문자를 무시하고 포함하면 맞음")
+    bl_no: str | None = Field(default=None, description="B/L 번호. 띄어쓰기·대소문자를 무시하고 같으면 맞음")
 
 
 class PeriodResolved(_Strict):
@@ -471,6 +565,23 @@ class PeriodResolved(_Strict):
 
     from_: date = Field(alias="from", description="시작일(포함)")
     to: date = Field(description="끝일(포함)")
+
+
+class ChartPoint(_Strict):
+    """그래프 점 하나 = 집계 묶음 하나 (#257)."""
+
+    label: str = Field(description="묶음 이름. 예: '샘플무역', '11/16~11/22'")
+    value: int = Field(description="코드가 센 건수")
+
+
+class Chart(_Strict):
+    """현황 그래프 (#257). 모델은 종류와 그릴 집계만 고르고, 값·축·제목은 코드가 집계 결과에서 채운다. 화면은 계산하지 않고 그린다."""
+
+    type: ChartType = Field(description="bar · line · pie")
+    title: str = Field(description="제목. 예: '이번 달(11/1~11/30) 수입자별 통관 지연'")
+    x_label: str = Field(description="묶음 축 이름. 예: '수입자'")
+    y_label: str = Field(description="값 축 이름. 지금은 '건수'")
+    points: list[ChartPoint] = Field(default_factory=list, description="집계 결과(count_shipments)와 같은 값, 같은 순서")
 
 
 class ChatResponse(_Strict):
@@ -485,6 +596,7 @@ class ChatResponse(_Strict):
         description="막았으면 그 이유, 막지 않았으면 null. 가드레일 필터 이름(예: '프롬프트 공격') 또는 '무관한 질문'. "
         "막으면 모델·조회를 하지 않고 정해 둔 답을 준다 (E7 #152). 채팅 기록(E6 #157)이 이 값을 남긴다",
     )
+    chart: Chart | None = Field(default=None, description="그래프 (#257). 현황 Agent가 make_chart로 만들었을 때만. 그 밖은 null")
 
 
 class ChatHistoryLine(_Strict):
@@ -589,6 +701,22 @@ class DocMark(_Strict):
     bbox: list[float] = Field(description="left, top, width, height (0~1 비율) 네 개")
 
 
+# 현장 칸 (B12 #228): 항만 현장 작업자에게 보여 줄 칸. 관리자는 모든 칸을 보므로 관리자 목록은 두지 않는다.
+# 품목·컨테이너 칸은 줄 번호 없이 'items.qty', 'containers.seal_no'로 적는다. 금액·단가·결제 조건은 현장 칸이 아닐 뿐 읽기·대조·통지에서 빠지지 않는다
+_CONTAINER_SITE = frozenset(f"containers.{name}" for name in ("container_no", "seal_no", "size_type", "packages", "gross_kg", "cbm"))
+SITE_FIELDS: dict[str, frozenset[str]] = {
+    "bill_of_lading": frozenset({
+        "doc_no", "consignee_name", "vessel_voyage", "port_discharge", "container_no", "total_packages", "total_gross_kg",
+        "total_cbm", "marks",
+    }) | _CONTAINER_SITE,
+    "packing_list": frozenset({
+        "marks", "total_packages", "total_gross_kg", "items.item_code", "items.name", "items.qty", "items.packages", "items.gross_kg",
+    }),
+    "commercial_invoice": frozenset({"items.name", "origin"}),
+    "certificate_of_origin": frozenset(),
+}
+
+
 class ReadField(_Strict):
     """읽은 칸 하나 (OCR 결과 표의 한 줄)."""
 
@@ -598,6 +726,7 @@ class ReadField(_Strict):
     value: str | int | float | None = Field(default=None, description="코드가 푼 값")
     unit: str | None = Field(default=None, description="단위나 통화")
     unreadable: Unreadable | None = Field(default=None, description="못 읽은 이유")
+    site: bool = Field(default=False, description="현장 칸인지 (SITE_FIELDS). 관리자는 모든 칸을 본다 (B12 #228)")
 
 
 class JobFileView(_Strict):
@@ -632,6 +761,13 @@ class TodoCounts(_Strict):
     hs_pending: int = Field(description="승인 대기 작업에서 사람이 HS를 골라야 하는 품목 수")
     unclassified: int = Field(description="분류 못 한 서류 수 (문서 분류 내역의 unknown)")
     delayed: int = Field(description="통관 지연 화물 수 (docs/schema.md 화물 기록 규칙)")
+    # 다음 할 일(Job.next_action)별 작업 수 (#252). 작업 하나는 정확히 한 칸에 들어가고, 끝난 작업은 세지 않는다.
+    # 합 = 승인 대기 + 실패 + 대기·처리 중 작업 수. 위 칸들은 옛 화면을 위해 그대로 둔다
+    fix_docs: int = Field(default=0, description="불일치가 남아 서류를 고쳐 다시 올려야 하는 작업 수")
+    choose_hs: int = Field(default=0, description="불일치는 없고 사람이 HS를 골라야 하는 작업 수")
+    approve: int = Field(default=0, description="확인 필요만 남았거나 승인만 남은 작업 수")
+    reupload: int = Field(default=0, description="처리에 실패해 다시 올려야 하는 작업 수")
+    wait: int = Field(default=0, description="대기·처리 중인 작업 수")
 
 
 class FlowStage(_Strict):
@@ -656,8 +792,9 @@ class DelayedShipment(_Strict):
 class AutoRate(_Strict):
     """자동 처리율의 분자·분모 (화면이 비율을 그린다)."""
 
-    finished: int = Field(description="처리가 끝난 작업 수 (승인 대기 + 끝남)")
+    finished: int = Field(description="처리를 마친 작업 수 (승인 대기 + 끝남. 승인 대기는 사람이 볼 일이 남은 작업)")
     auto: int = Field(description="그중 사람 손 없이 WMS에 자동 등록된 작업 수")
+    rule: str = Field(default="", description="자동 등록 조건 문장 (화면이 자동 처리율 아래에 그대로 보인다, #252)")
 
 
 class RuleCount(_Strict):
@@ -667,6 +804,9 @@ class RuleCount(_Strict):
     grade: Grade = Field(description="이 규칙으로 가장 많이 나온 등급")
     count: int = Field(description="걸린 문제 수")
     example: str = Field(description="예시 근거 문장 (같은 규칙으로 처음 센 것. 작업 순서는 정해지지 않는다)")
+    name: str | None = Field(
+        default=None, description="사람 말 이름 (tools/rules/rules.csv의 description, 그 등급 줄). 표에 없으면 null (#252)"
+    )
 
 
 class StatsResponse(_Strict):
@@ -679,7 +819,28 @@ class StatsResponse(_Strict):
     delay_rule: str = Field(description="통관 지연 기준 문장")
     docs_by_type: dict[DocType, int] = Field(description="종류별 서류 수 (문서 분류 내역 counts와 같다)")
     auto: AutoRate = Field(description="자동 처리율")
-    top_rules: list[RuleCount] = Field(default_factory=list, description="자주 걸린 오류 규칙 상위 5개")
+    top_rules: list[RuleCount] = Field(
+        default_factory=list, description="자주 걸린 오류 규칙 상위 5개. 불일치·확인 필요만 센다 ('참고'는 뺌, #252)"
+    )
+
+
+class JobSummary(_Strict):
+    """작업 목록 한 줄 (GET /jobs?next_action=, #252). 대시보드 카드를 누르면 그 자리에 펼친다."""
+
+    job_id: str = Field(description="작업 ID")
+    status: JobStatus = Field(description="작업 상태")
+    bl_no: str | None = Field(default=None, description="선하증권 B/L 번호 raw. 읽지 않았으면 null")
+    consignee: str | None = Field(default=None, description="수입자 (상업송장 수하인). 모르면 null")
+    created_at: str = Field(description="작업을 만든 시각, 한국 시간 'YYYY-MM-DD HH:MM'")
+    next_action: NextAction = Field(description="다음 할 일 (GET /jobs/{id}의 next_action과 같은 규칙)")
+    mismatch: int = Field(default=0, description="남은 불일치 건수")
+    hs_pending: int = Field(default=0, description="사람이 골라야 하는 HS 품목 수")
+
+
+class JobListResponse(_Strict):
+    """GET /jobs 응답 (#252). 최근 작업 먼저, 50건까지."""
+
+    items: list[JobSummary] = Field(default_factory=list, description="작업 목록")
 
 
 # ---------------------------------------------------------------------------
@@ -693,6 +854,18 @@ class QueryResult(_Strict):
     rule: str | None = Field(default=None, description="쓴 상태 규칙 설명. 예: '입항 후 3일 지나도 수리 안 됨'")
     rows: list[Shipment] = Field(default_factory=list, description="조회 결과")
     count: int = Field(description="코드가 센 건수")
+
+
+class CountResult(_Strict):
+    """count_shipments 반환값 (#257). 조회 조건으로 고른 화물을 group_by로 묶어 코드가 센다."""
+
+    filters: ChatFilters = Field(description="실제로 쓴 조회 조건")
+    period_resolved: PeriodResolved | None = Field(default=None, description="코드가 계산한 기간")
+    rule: str | None = Field(default=None, description="쓴 상태 규칙 설명 (통관 지연일 때만)")
+    group_by: GroupBy = Field(description="묶은 기준")
+    groups: list[ChartPoint] = Field(default_factory=list, description="묶음별 건수. 날짜 묶음은 날짜 순, 그 밖은 많은 순")
+    total: int = Field(description="고른 화물 수 (묶음 건수의 합)")
+    rows: list[Shipment] = Field(default_factory=list, description="고른 화물")
 
 
 class OcrLine(_Strict):

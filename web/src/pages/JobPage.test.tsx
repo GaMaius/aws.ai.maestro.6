@@ -1,5 +1,5 @@
 // G3 진행 화면: 2초 폴링 규칙과 steps 표시
-import { screen, within } from "@testing-library/react";
+import { act, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import jobExample from "../../../docs/examples/job_waiting_approval.json";
 import * as api from "../api";
@@ -8,7 +8,7 @@ import type { Job } from "../types";
 import { fileViewOf } from "../mockDocs";
 import draft from "../fixtures/documents.draft.json";
 import type { DocumentRecord } from "../types";
-import { JobPage, POLL_MS, pollInterval } from "./JobPage";
+import { elapsedText, JobPage, POLL_MS, pollInterval, SLOW_MS } from "./JobPage";
 
 vi.mock("../api", async (importOriginal) => {
   const real = await importOriginal<typeof import("../api")>();
@@ -114,5 +114,83 @@ describe("JobPage", () => {
     renderWithQuery(<JobPage jobId="job-7c1e" />);
     expect(await screen.findByText("오류 목록 (1)")).toBeInTheDocument();
     expect(screen.queryByRole("tablist")).not.toBeInTheDocument();
+  });
+
+  it("처리 중이 3분을 넘으면 경과 시간과 다시 올리라는 안내가 나온다 (FB20)", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      vi.mocked(api.getJob).mockResolvedValue(at("running", { steps: [example.steps[0]] }));
+      renderWithQuery(<JobPage jobId="job-0000abcd" />);
+      expect(await screen.findByText(/경과 0초/)).toBeInTheDocument();
+      expect(screen.queryByText(/3분이 넘었습니다/)).not.toBeInTheDocument();
+
+      await act(async () => {
+        vi.advanceTimersByTime(SLOW_MS - 2000);
+      });
+      expect(screen.getByText(/경과 2분 58초/)).toBeInTheDocument();
+      expect(screen.queryByText(/3분이 넘었습니다/)).not.toBeInTheDocument();
+
+      await act(async () => {
+        vi.advanceTimersByTime(3000);
+      });
+      expect(screen.getByRole("status")).toHaveTextContent("3분이 넘었습니다");
+      expect(screen.getByRole("button", { name: "파일 업로드로 가기" })).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("끝난 작업에는 경과 시간과 안내를 보이지 않는다", async () => {
+    vi.mocked(api.getJob).mockResolvedValue({ ...example, status: "done" });
+    renderWithQuery(<JobPage jobId="job-0000abcd" />);
+    expect(await screen.findByText("끝남")).toBeInTheDocument();
+    expect(screen.queryByText(/경과/)).not.toBeInTheDocument();
+  });
+
+  it("elapsedText 는 분·초로 적는다", () => {
+    expect([0, 59_999, 72_000, 180_000].map(elapsedText)).toEqual(["0초", "59초", "1분 12초", "3분 0초"]);
+  });
+
+  it("맨 위에 다음 할 일 한 줄을 보인다: 불일치 · HS · 확인만 남음 (FB22)", async () => {
+    const base = example.result!;
+    const cases: [Job, string, string][] = [
+      [{ ...example, next_action: undefined }, "불일치 1건: 서류를 고쳐 다시 올려야 등록할 수 있습니다", "파일 업로드로"],
+      [
+        { ...example, next_action: undefined, result: { ...base, issues: base.issues.map((i) => ({ ...i, grade: "확인 필요" as const })) } },
+        "HS 1개를 고르세요",
+        "HS 고르기로",
+      ],
+      [
+        {
+          ...example,
+          next_action: undefined,
+          result: { ...base, issues: base.issues.map((i) => ({ ...i, grade: "확인 필요" as const })), hs: base.hs.map((h) => ({ ...h, status: "사람 확정" as const, by: "human" as const, hs_code: "8507609000" })) },
+        },
+        "확인 필요 1건을 확인한 뒤 승인하세요",
+        "승인 칸으로",
+      ],
+    ];
+    for (const [job, message, button] of cases) {
+      vi.mocked(api.getJob).mockResolvedValue(job);
+      const { unmount } = renderWithQuery(<JobPage jobId="job-0000abcd" />);
+      const banner = await screen.findByRole("region", { name: "다음 할 일" });
+      expect(banner).toHaveTextContent(message);
+      expect(within(banner).getByRole("button", { name: button })).toBeInTheDocument();
+      unmount();
+    }
+  });
+
+  it("서버가 next_action 을 주면 그 문장을 그대로 보인다", async () => {
+    vi.mocked(api.getJob).mockResolvedValue({ ...example, next_action: { kind: "approve", message: "서버가 정한 문장", count: null } });
+    renderWithQuery(<JobPage jobId="job-0000abcd" />);
+    expect(await screen.findByRole("region", { name: "다음 할 일" })).toHaveTextContent("서버가 정한 문장");
+  });
+
+  it("불일치가 남으면 승인을 누르기 전에 막고 이유를 보인다", async () => {
+    vi.mocked(api.getJob).mockResolvedValue(example);
+    renderWithQuery(<JobPage jobId="job-0000abcd" />);
+    const notes = await screen.findAllByRole("note");
+    expect(notes.some((n) => n.classList.contains("wms-blocked") && n.textContent?.includes("서류를 고쳐 다시 올려야 등록할 수 있습니다"))).toBe(true);
+    expect(screen.getByRole("button", { name: "승인하고 WMS 등록" })).toBeDisabled();
   });
 });

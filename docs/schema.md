@@ -18,12 +18,17 @@
   | 서류 | 칸 |
   |---|---|
   | 상업송장 | `doc_no` `exporter_name` `consignee_name` `incoterms` `payment_term` `origin` `total_qty` `total_gross_kg` `total_amount`, 품목 `item_code` `name` `hs_code` `qty` `unit_price` `amount` `gross_kg` `net_kg` |
-  | 포장명세서 | `doc_no` `exporter_name` `consignee_name` `total_qty` `total_gross_kg` `total_packages`, 품목 `item_code` `name` `qty` `gross_kg` `net_kg` |
-  | 선하증권 | `doc_no`(B/L No.) `shipper_name` `consignee_name` `notify_name` `vessel_voyage` `port_loading` `port_discharge` `onboard_date` `container_no` `freight_term` `total_packages` `total_gross_kg` `total_cbm`. 품목 행은 없다 |
+  | 포장명세서 | `doc_no` `exporter_name` `consignee_name` `total_qty` `total_gross_kg` `total_packages` `marks`, 품목 `item_code` `name` `qty` `gross_kg` `net_kg` `packages` |
+  | 선하증권 | `doc_no`(B/L No.) `shipper_name` `consignee_name` `notify_name` `vessel_voyage` `port_loading` `port_discharge` `onboard_date` `container_no` `freight_term` `total_packages` `total_gross_kg` `total_cbm` `marks`, 컨테이너 줄 `containers[]`(`container_no` `seal_no` `size_type` `packages` `gross_kg` `cbm`). 품목 행은 없다 |
   | 원산지증명서 | `doc_no`(송장 번호) `co_no` `exporter_name` `consignee_name` `departure_date` `invoice_date` `issue_date` `issued_retroactively`, 품목 `name` `hs_code` `qty` `origin_criterion` |
 - 이름 칸(`*_name`)은 첫 이름 줄만 담고 주소는 뺀다. 선하증권의 'TO ORDER OF SHIPPER', 'SAME AS CONSIGNEE'는 적힌 그대로다.
 - 날짜 칸의 `value`는 `YYYY-MM-DD`이고, 숫자만 쓴 날짜(`10/11/2026`)는 일/월/연으로 푼다. 금액(`total_amount`·`unit_price`·`amount`)은 `value` 숫자, `unit` 통화.
 - `total_packages`는 포장 개수의 합계(`unit` CTN 등)로 `total_qty`(품목 수량)와 다르다. `container_no`는 여러 개면 공백 하나로 잇는다.
+- 현장 칸 (B12 #228): 항만 현장이 실물과 맞춰 보는 칸이다. 칸이 없는 양식은 `raw` null, `unreadable` '칸 없음'.
+  - `marks`: 화인(Marks & Numbers). 여러 줄은 공백 하나로 잇고, `value`는 대문자·공백 하나로 맞춘 글자.
+  - `containers[]`: 선하증권 CONTAINER DETAILS 줄마다 하나(`line` 1부터). `container_no`는 그대로 두고 덧붙인 것이다. 다른 서류는 빈 목록.
+  - 품목 `packages`: 포장명세서 그 행의 포장 개수(No. of Pkgs). `value` 개수, `unit` 포장 단위. 품목 수량 `qty`와 다르다.
+  - 현장 칸 목록은 `tools/models.py`의 `SITE_FIELDS`(서류 종류별). 관리자는 모든 칸을 보고, 금액·단가·결제 조건도 지금처럼 읽고 대조한다.
 - 모델이 채우는 모양: 상업송장·포장명세서는 `RawDocument`(새 칸은 필수 + null 허용), 선하증권·원산지증명서는 종류별 `RawBillOfLading`·`RawOrigin`(칸 모두 필수 + null 허용). 코드가 위 칸으로 바꾼다.
 - 예시: `docs/examples/extract_packing_list.json`
 ## 약속 2. 작업 API (화면 ↔ Lambda)
@@ -37,12 +42,16 @@ Lambda가 받는 이벤트는 HTTP API 2.0 형식이고 `rawPath`에 `/api`가 �
 | `GET /api/jobs/{id}` | - | 작업 상태 (`docs/examples/job_waiting_approval.json`) |
 | `POST /api/jobs/{id}/hs` | `{"choices":[{"line","hs"}]}` | `{"declaration_draft":{...}}` |
 | `POST /api/jobs/{id}/approve` | `{"approver"}` | `{"wms":{"status","wms_id"}}`, 불일치가 남았으면 409 |
-| `POST /api/chat` | `{"session_id","message"}` | `docs/examples/chat_response.json` |
+| `POST /api/chat` | `{"session_id","message"}` | `docs/examples/chat_response.json`, 그래프가 있는 답 `docs/examples/chat_chart_response.json` (#257) |
 | `GET /api/chat/{session_id}` | - | `docs/examples/chat_history.json` (대화 기록 최근 50줄, 오래된 순. #157) |
 | `GET /api/documents?doc_type=<종류>&cursor=<다음 쪽>` | - | `docs/examples/documents.json` (문서 분류 내역, #143) |
 | `GET /api/jobs/{id}/files` | - | `docs/examples/job_files.json` (서류 보기: 원본 주소 + 읽은 칸, #156) |
+| `GET /api/jobs/{id}/notice?format=md\|html` | - | 불일치 통지 문서 파일 (`content-disposition: attachment`, `notice-<B/L 또는 작업 ID>.md\|html`, 기본 html). 처리 중이면 409 (#155, 문서는 C7 `NoticeDocument`) |
+| `GET /api/jobs/{id}/hs-request` | - | HS 확인 요청서 PDF (`application/pdf`, `content-disposition: attachment`, `hs-request-<작업 ID>.pdf`). HS가 '사람 확인 필요'로 남은 품목을 서류별 값·후보 3개·미확정 사유와 함께 담아 관세사에게 전달한다. 없는 작업 404, 사람이 확인할 HS 품목이 없으면 409 `{"error"}` (X2 #260) |
+| `GET /api/jobs/{id}/certificate` | - | 검수 완료서 PDF (`application/pdf`, `content-disposition: attachment`, `certificate-<작업 ID>.pdf`). 사람 승인으로 등록된 작업만. 없는 작업 404, 승인 대기·자동 등록·옛 작업은 409 `{"error"}` (X1 #258) |
 | `GET /api/jobs/{id}/notice?format=md\|html` | - | 불일치 통지 문서 내려받기 (F9 #155, 아직 없음. 문서 내용은 아래 `NoticeDocument`, 예시 `docs/examples/notice.json`, C7 #158) |
 | `GET /api/stats` | - | `docs/examples/stats.json` (대시보드 통계, F11 #195) |
+| `GET /api/jobs?next_action=<종류>` | - | `docs/examples/jobs.json` (다음 할 일이 같은 작업 목록, #252) |
 
 불일치 통지 문서 (C7 #158. 모양은 `tools/models.py`의 `NoticeDocument`, 만드는 함수는 `tools/validate.py`의 `notice_document(job_id, docs, issues)`)
 - `subject`: `[불일치 확인 요청] B/L <번호> / 송장 <번호>`. 번호를 못 읽은 쪽은 빼고, 둘 다 없으면 작업 ID
@@ -70,7 +79,7 @@ Lambda가 받는 이벤트는 HTTP API 2.0 형식이고 `rawPath`에 `/api`가 �
 - 서류마다 `url`(원본, 미리 서명된 GET 300초, inline), `content_type`. 화면은 PDF는 iframe, 이미지는 img로 띄운다
 - `pages`: 이미지 서류는 원본 한 장과 크기(px). PDF는 처리 Lambda가 그려 둔 쪽 그림(JPEG, 150dpi, 앞 5쪽, `uploads/<원본 키>.pN.jpg`). 그리지 못한 PDF는 빈 목록 (F10 #188)
 - `marks`: 서류 위 표시와 위치(bbox, 쪽 그림에 대한 0~1 비율). 처리 Lambda가 서류마다 매번 Textract OCR을 돌려 저장하고(작업 줄의 `ocr` 칸), 코드가 OCR 글자 줄에서 분류 근거의 제목(`title`)·특징 칸(`feature`)과 읽은 칸의 raw(`field`)를 찾는다. 못 찾은 것은 넣지 않는다. OCR이나 쪽 그림이 없으면 빈 목록 (F10 #188)
-- `fields[]`: 읽은 칸 `{field, label, raw, value, unit, unreadable}`. `field`는 `IssueCell.field`와 같은 이름이라 `issues[].cells`의 `doc`+`field`로 불일치 칸을 바로 짚는다. 읽지 않은 서류는 빈 목록
+- `fields[]`: 읽은 칸 `{field, label, raw, value, unit, unreadable, site}`. `site`는 현장 칸이면 true (`SITE_FIELDS`, B12 #228. 채우는 것은 F12 #230). `field`는 `IssueCell.field`와 같은 이름이라 `issues[].cells`의 `doc`+`field`로 불일치 칸을 바로 짚는다. 읽지 않은 서류는 빈 목록
 - 분류 전(queued·running)인 서류는 빼고, 종류·근거는 문서 분류 내역과 같은 규칙
 
 문서 분류 내역 (`GET /api/documents`, G10 #143. 모양은 `tools/models.py`의 `DocumentsResponse`)
@@ -86,14 +95,25 @@ Lambda가 받는 이벤트는 HTTP API 2.0 형식이고 `rawPath`에 `/api`가 �
 - `hs[].status`: `자동 확정` | `사람 확인 필요` | `사람 확정`, `hs[].by`: `history` | `auto_match` | `human` | null
 - `hs[].item_name`: 그 행의 품명(서류에 적힌 글자, 못 읽었으면 null). `hs[].doc_hs_code`: 서류에 적힌 HS를 적힌 그대로(예: `8507.60`, 없으면 null). 화면이 "1행 · 품명 (서류 HS)"로 보여 준다 (FB07 #164)
 - `wms.status`: `승인 대기` | `등록됨`, `wms.by`: `auto` | `human` | null
+- `wms.approver`: 검수자 이름(사람 승인으로 등록됐을 때 승인 입력의 `approver`), `wms.approved_at`: 승인 시각(한국 시간 ISO 8601, 예 `2026-11-21T09:30:12+09:00`). 자동 등록·승인 대기는 둘 다 null. 검수 완료서가 이 두 칸을 쓴다 (X1 #258)
 - `suspect`: 서류가 셋 이상일 때 다수결로 고른 서류 종류, 둘뿐이면 null
+- `next_action` (FB22 #178): `GET /api/jobs/{id}`가 응답 때마다 결과로 정하는 '지금 상태와 다음 할 일' 한 줄 `{kind, message, count}`. 저장하지 않는다 (`tools/wms.py`의 `next_action`)
+  - `kind`: `wait`(대기·처리 중) | `fix_docs`(불일치가 남음. 승인해도 409라 서류를 고쳐 다시 올림) | `choose_hs`(HS를 사람이 골라야 함) | `approve`(확인 필요만 남았거나 승인만 남음) | `none`(끝남) | `reupload`(실패)
+  - 승인 대기는 이 순서로 가른다: 불일치 → 고를 HS → 확인 후 승인. 화면은 `message`를 작업 화면 맨 위에 그대로 보인다
 처리 방식: API Gateway는 요청 하나를 30초 안에 끝내야 해서, `POST /api/jobs`는 작업을 `queued`로 저장하고 `job_id`를 바로 돌려준다.
 처리 Lambda가 비동기로 `run_job`을 돌려 `running` → `waiting_approval`·`done`·`failed`로 바꾼다. 화면은 `GET /api/jobs/{id}`를 2초마다 부른다.
 대시보드 통계 (`GET /api/stats`, F11 #195. 모양은 `tools/models.py`의 `StatsResponse`)
 - 모델 호출 없이 코드가 team06-jobs·team06-shipments를 센다. 화면은 다시 세지 않는다. 날짜는 한국 시간
 - `todo`: 승인 대기 작업, 그중 불일치가 남은 작업, HS를 사람이 골라야 하는 품목, 분류 못 한 서류(문서 분류 내역의 unknown), 통관 지연 화물
+  - 다음 할 일별 **작업 수** (#252): `fix_docs`·`choose_hs`·`approve`·`reupload`·`wait`. 작업마다 `next_action`(아래 약속 2 값 목록)을 정해 정확히 한 칸에 센다. 끝난 작업(`none`)은 세지 않는다. 합 = 승인 대기 + 실패 + 대기·처리 중 작업 수
 - `flow`: 통관 상태 6개(진행 순서)별 화물 수. `delayed`: 통관 지연 화물(입항 후 지난 날 수가 큰 순서, 10건까지)
-- `auto`: 처리가 끝난 작업(승인 대기 + 끝남)과 그중 WMS에 자동 등록된 작업 수. `top_rules`: 걸린 문제 수가 많은 규칙 5개
+- `auto`: 처리를 마친 작업(승인 대기 + 끝남. 승인 대기는 사람이 볼 일이 남은 작업)과 그중 WMS에 자동 등록된 작업 수, 자동 등록 조건 문장 `rule`(#252)
+- `top_rules`: 걸린 문제 수가 많은 규칙 5개. 불일치·확인 필요만 센다('참고'는 뺌). `name`은 사람 말 이름(`tools/rules/rules.csv`의 description, #252)
+
+작업 목록 (`GET /api/jobs?next_action=<종류>`, #252. 모양은 `tools/models.py`의 `JobListResponse`)
+- 대시보드 카드를 누르면 그 자리에 펼치는 목록. `next_action`은 `fix_docs`·`choose_hs`·`approve`·`reupload`·`wait` 중 하나, 그 밖은 400. 없으면 끝난 작업을 뺀 전부
+- 줄마다 `job_id`·`status`·`bl_no`(선하증권 raw)·`consignee`(수입자)·`created_at`(한국 시간 `YYYY-MM-DD HH:MM`)·`next_action`(GET /jobs/{id}와 같음)·`mismatch`(남은 불일치)·`hs_pending`(고를 HS 품목). 최근 작업 먼저, 50건까지
+- 개수는 `GET /api/stats`의 `todo` 같은 칸과 같은 규칙이다. 화면은 줄을 누르면 `#/jobs/{id}`로 간다
 - 통계에서 문서 분류 내역으로 갈 때 `GET /api/documents`에 거르기를 붙인다: `job_status`, `grade`(그 등급의 문제가 남은 작업), `rule_id`(그 규칙에 걸린 작업), `hs=pending`(HS를 사람이 골라야 하는 작업). 거르기가 있으면 `counts`도 그 안에서 센다
   - `grade`·`hs=pending`은 모든 상태의 작업에서 찾는다. `todo.mismatch_jobs`·`todo.hs_pending`은 승인 대기 작업만 세므로, 숫자와 목록을 맞추려면 `job_status=waiting_approval`을 함께 붙인다
 
@@ -114,8 +134,14 @@ Lambda가 받는 이벤트는 HTTP API 2.0 형식이고 `rawPath`에 `/api`가 �
   - 오늘은 한국 시간(Asia/Seoul) 날짜다. 지연 일수 `DELAY_DAYS = 3`은 코드 한 곳에 상수로 둔다.
   - 3일은 데모용으로 정한 값이다. 법령이나 관세청 기준이 아니다. 바꿀 때는 이 문서와 `DELAY_DAYS`, 현황 질문 정답(`eval/queries.csv`)을 함께 고친다.
   - 답에는 쓴 규칙을 함께 보여 준다. 답 문장 끝에 "(통관 지연 기준: …)"으로 붙이고(`ChatResponse`에는 따로 칸이 없다), 대화 기록 줄에는 `rule` 칸으로 남긴다. 예: "입항 후 3일 지나도 수리·반출 아님".
-- 기간 조건(`today` · `this_week` · `last_week` · `range`)은 `arrived_at`(입항일) 기준이다. 주는 월요일부터 일요일까지이고, 날짜 계산은 코드가 한국 시간으로 한다.
-- 현황 조회 조건(`ChatFilters`, `POST /api/chat` 응답의 `filters`)은 상태 하나·기간만 담는다 (#165).
+- 기간 조건(`today` · `this_week` · `last_week` · `this_month` · `last_month` · `range`)은 `arrived_at`(입항일) 기준이다. 주는 월요일부터 일요일까지, 달은 1일부터 말일까지이고, 날짜 계산은 코드가 한국 시간으로 한다.
+- 현황 Agent (#257, `QUERY_AGENT=1`, agent-design.md 9번): 모델이 읽기 도구를 고르고 앞 대화(같은 세션 최근 6줄)를 이어 받아 답을 쓴다.
+  - `ChatFilters`에 Agent 도구만 쓰는 칸 `and_status`(status와 함께 거르는 두 번째 상태, '그중 검사 중'), `consignee`·`item`(띄어쓰기·대소문자 무시 포함), `bl_no`(같음)가 있다. 조건 변환(옛 경로)은 이 칸을 쓰지 않고 `unsupported`로 옮긴다.
+  - 대화 기록(team06-chat)의 `filters`에는 이 네 칸을 값이 있을 때만 쓴다 (옛 줄과 같은 모양). `count`는 조회·집계한 답일 때 `rows` 수, `rule`은 `status`나 `and_status`가 통관 지연일 때.
+  - `chart` (`ChatResponse`, null 가능): `{"type": "bar"|"line"|"pie", "title", "x_label", "y_label": "건수", "points": [{"label", "value"}]}`. `count_shipments` 결과를 코드가 그대로 옮긴 것이고 화면은 계산 없이 그린다. 그래프 아래에 같은 값의 표를 둔다.
+    묶음: `status`(진행 순서), `consignee`·`item`(많은 순), `day`(`11/17`)·`week`(`11/16~11/22`, 월~일)·`month`(`2026-11`) 날짜 순. 집계가 없거나 0건이면 `chart`는 null.
+  - 답에 나온 숫자·B/L 번호·작업 ID가 질문·앞 대화·도구 결과에 없으면 문장틀 답으로 바꾼다. `rows`·`filters`·`period_resolved`는 마지막 조회·집계 결과 그대로.
+- 조건 변환(옛 경로, `QUERY_AGENT`가 없을 때)의 현황 조회 조건(`ChatFilters`, `POST /api/chat` 응답의 `filters`)은 상태 하나·기간만 담는다 (#165).
   - `unsupported`: 모델이 이 칸으로 나타내지 못한 조건 목록 (예: 수하인, B/L 번호, 상태 둘 이상). 비어 있지 않으면 조회하지 않고 "… 조건은 아직 조회할 수 없습니다"로 답한다 (`rows` 빈 목록).
   - 조건이 하나도 없으면(상태·기간·`unsupported` 모두 비었음) 조회하지 않고 되묻는다. 전체 목록을 답하지 않는다.
 - 가드레일 (E7 #152, `ChatResponse.blocked`): 막으면 조회하지 않고 "통관·화물 현황 질문만 답합니다. 예: …"로 답하고 `blocked`에 이유를 넣는다. 막지 않았으면 `null`.

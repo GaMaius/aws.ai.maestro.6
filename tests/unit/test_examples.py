@@ -12,6 +12,7 @@ from tools.models import (
     ExtractedDocument,
     Job,
     JobFilesResponse,
+    JobListResponse,
     NoticeDocument,
     Shipment,
     StatsResponse,
@@ -23,12 +24,14 @@ CASES = [
     ("extract_packing_list.json", ExtractedDocument),
     ("job_waiting_approval.json", Job),
     ("chat_response.json", ChatResponse),
+    ("chat_chart_response.json", ChatResponse),
     ("shipment.json", Shipment),
     ("documents.json", DocumentsResponse),
     ("job_files.json", JobFilesResponse),
     ("notice.json", NoticeDocument),
     ("stats.json", StatsResponse),
     ("chat_history.json", ChatHistoryResponse),
+    ("jobs.json", JobListResponse),
 ]
 
 
@@ -55,3 +58,16 @@ def test_chat_history_example_shape():
     ts = [line["ts"] for line in lines]
     assert ts == sorted(ts)
     assert all(t[:17].isdigit() and t[17] == "#" for t in ts)
+
+
+def test_서류_보기_예시의_현장_표시는_SITE_FIELDS와_같다():
+    """job_files.json의 fields[].site가 SITE_FIELDS(서류 종류별 현장 칸)와 맞아야 화면이 예시대로 거른다 (B12 #228)."""
+    import re
+
+    from tools.models import SITE_FIELDS
+
+    data = json.loads((EXAMPLES / "job_files.json").read_text(encoding="utf-8"))
+    for file in data["files"]:
+        for f in file["fields"]:
+            expected = re.sub(r"\[\d+\]", "", f["field"]) in SITE_FIELDS[file["doc_type"]]
+            assert f.get("site", False) is expected, (file["doc_type"], f["field"])

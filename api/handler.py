@@ -12,7 +12,9 @@ CloudFront가 /api/*를 API Gateway로 보내고, rawPath에 /api가 붙어 온�
     GET  /api/documents?doc_type=…&cursor=… → DocumentsResponse (G10 #143, 문서 분류 내역. team06-jobs Scan)
          거르기(F11 #195): job_status · grade · rule_id · hs=pending
     GET  /api/stats           → StatsResponse          (F11 #195, 대시보드 통계. team06-jobs·team06-shipments Scan)
+    GET  /api/jobs?next_action=… → JobListResponse     (#252, 다음 할 일이 같은 작업 목록. team06-jobs Scan)
     GET  /api/jobs/{id}/files → JobFilesResponse        (F7 #156, 서류 보기: 원본 주소 + 읽은 칸)
+    GET  /api/jobs/{id}/notice?format=md|html → 파일    (F9 #155, 불일치 통지 문서 내려받기. C7 notice_document)
     GET  /api/chat/{id}      → {"messages"}            (E6 #157, 대화 기록 최근 50줄 오래된 순)
 서류 처리(run_job)는 처리 Lambda team06-worker(api/worker.py)가 한다. API Gateway는 요청 하나를 30초 안에 끝내야 한다.
 
@@ -34,7 +36,7 @@ from functools import cache
 from botocore.exceptions import BotoCoreError, ClientError
 from pydantic import TypeAdapter
 
-from tools import declaration, hs, report, wms
+from tools import certificate, declaration, hs, hs_request, report, wms
 from tools.models import (
     DOC_TYPE_KO,
     Cell,
@@ -47,11 +49,14 @@ from tools.models import (
     DocType,
     DocumentRecord,
     DocumentsResponse,
+    ExtractedContainer,
     ExtractedDocument,
     ExtractedItem,
     Job,
     JobFilesResponse,
     JobFileView,
+    JobListResponse,
+    JobSummary,
     AutoRate,
     DelayedShipment,
     FlowStage,
@@ -60,6 +65,7 @@ from tools.models import (
     StatsResponse,
     TodoCounts,
     ReadField,
+    SITE_FIELDS,
     Step,
     WmsState,
 )
@@ -171,7 +177,8 @@ def save_job(job: Job, keep: dict | None = None) -> None:
         Item={
             **(keep or {}),
             "job_id": job.job_id,
-            "data": job.model_dump_json(by_alias=True),
+            # next_action 은 GET 때마다 결과로 정하는 칸이라 저장하지 않는다 (FB22)
+            "data": job.model_dump_json(by_alias=True, exclude={"next_action"}),
             "updated_at": int(time.time()),
         }
     )
@@ -273,7 +280,9 @@ class DynamoChatHistory:
     def put(self, line: ChatHistoryLine, expires_at: int) -> None:
         item = {"session_id": line.session_id, "ts": line.ts, "role": line.role, "text": line.text, "expires_at": expires_at}
         if line.filters is not None:
-            item["filters"] = line.filters.model_dump(mode="json")  # 칸 모두. 날짜는 'YYYY-MM-DD', 빈 칸은 NULL
+            # 칸 모두. 날짜는 'YYYY-MM-DD', 빈 칸은 NULL. 현황 Agent 칸(#257)은 값이 있을 때만 (옛 줄과 같은 모양)
+            filters = line.filters.model_dump(mode="json")
+            item["filters"] = {k: v for k, v in filters.items() if v is not None or k not in AGENT_FILTER_KEYS}
         for name in ("count", "rule", "blocked", "block_reason"):
             value = getattr(line, name)
             if value is not None:
@@ -317,6 +326,7 @@ def _whole(value) -> int | None:
     return int(value)
 
 
+AGENT_FILTER_KEYS = ("and_status", "consignee", "item", "bl_no")  # 현황 Agent만 쓰는 조회 칸 (#257)
 CHAT_DB_TIMEOUT_S = 2  # 대화 기록 연결·읽기 타임아웃. 기록은 답 뒤에 붙는 부가 일이라 짧게 (API Gateway 30초)
 CHAT_DB_ATTEMPTS = 2  # 재시도 1회 (team.md)
 CHAT_PUT_WORST_S = 2 * CHAT_DB_TIMEOUT_S * CHAT_DB_ATTEMPTS  # put_item 한 번이 가장 오래 걸리는 시간 (8초)
@@ -353,6 +363,18 @@ def _response(status: int, body) -> dict:
 
 def _error(status: int, message: str) -> dict:
     return _response(status, {"error": message})
+def _pdf_response(data: bytes, filename: str) -> dict:
+    """PDF 바이트 응답. API Gateway HTTP API는 이진 본문을 base64 글자로 받는다 (isBase64Encoded)."""
+    return {
+        "statusCode": 200,
+        "isBase64Encoded": True,
+        "headers": {
+            "content-type": "application/pdf",
+            "content-disposition": f'attachment; filename="{filename}"',
+            "cache-control": "no-store",
+        },
+        "body": base64.b64encode(data).decode("ascii"),
+    }
 
 
 def _body(event: dict):
@@ -519,6 +541,8 @@ def get_job(job_id: str) -> dict:
     job = load_job(job_id)
     if job is None:
         return _error(404, "작업을 찾을 수 없습니다")
+    # 작업 화면 맨 위 '다음 할 일' (FB22 #178). 저장하지 않고 응답 때마다 결과로 정한다
+    job = job.model_copy(update={"next_action": wms.next_action(job)})
     return _response(200, job.model_dump(mode="json", by_alias=True))
 
 
@@ -635,7 +659,7 @@ def approve_job(job_id: str, body) -> dict:
         같은 B/L이 다른 작업으로 이미 등록됨(#176. 이때만 단계 기록에 이유를 한 줄 남긴다. 같은 이유면 다시 남기지 않는다)
       / 502 가상 WMS 저장 실패 (작업은 그대로라 다시 승인하면 된다).
     이미 등록된 작업이면 다시 등록하지 않고 그 상태를 돌려준다. WMS 쪽도 멱등 키라 재시도해도 한 번만 들어간다.
-    저장: result.wms = {등록됨, human, wms_id}, status = done, steps에 push_to_wms 한 줄과 mark_registered 한 줄(E3).
+    저장: result.wms = {등록됨, human, wms_id, approver, approved_at(한국 시간)}, status = done, steps에 push_to_wms 한 줄과 mark_registered 한 줄(E3).
       화면은 승인 뒤 GET /jobs/{id}를 다시 불러 result.wms(by 포함)를 쓴다.
     """
     if not JOB_ID.match(job_id):
@@ -678,6 +702,8 @@ def approve_job(job_id: str, body) -> dict:
     except (BotoCoreError, ClientError) as exc:
         print(f"[error] WMS 등록 실패 job={job_id} {type(exc).__name__}: {exc}")
         return _error(502, "가상 WMS에 등록하지 못했습니다. 잠시 뒤 다시 승인해 주세요 (같은 건은 한 번만 들어갑니다)")
+    # 검수자 이름과 승인 시각(한국 시간)을 칸으로 남긴다. 검수 완료서가 읽는다 (X1 #258). Lambda 시계는 UTC라 +09:00으로 고쳐 적는다
+    state = state.model_copy(update={"approver": approver, "approved_at": datetime.now(KST_OFFSET).isoformat(timespec="seconds")})
     job.result.wms = state
     job.status = "done"
     job.steps.append(Step(tool="push_to_wms", summary=f"사람 승인({approver})으로 WMS 등록: {state.wms_id}", ok=True))
@@ -686,6 +712,57 @@ def approve_job(job_id: str, body) -> dict:
     return _response(200, _wms_body(state))
 
 
+def job_certificate(job_id: str) -> dict:
+    """GET /jobs/{id}/certificate. 사람이 승인해 등록한 작업의 검수 완료서(PDF)를 만들어 돌려준다 (X1 #258).
+    언제: 화면의 '검수 완료서 받기'. 파일은 저장하지 않고 부를 때마다 저장된 작업에서 만든다. 모델·S3 호출 없음.
+    반환: 200 application/pdf(attachment, certificate-<작업 ID>.pdf) / 404 없는 작업
+      / 409 {"error"}: 승인 대기·자동 등록·등록 전, 검수자 이름이 없는 옛 작업
+      / 500 {"error"} PDF를 만들지 못함 (WMS 등록 상태는 바뀌지 않는다).
+    """
+    if not JOB_ID.match(job_id):
+        return _error(404, "작업을 찾을 수 없습니다")
+    item = _load_item(job_id)
+    if item is None:
+        return _error(404, "작업을 찾을 수 없습니다")
+    job = Job.model_validate_json(item["data"])
+    try:
+        certificate.check_issuable(job)
+    except certificate.NotIssuable as exc:
+        return _error(409, str(exc))
+    context = load_job_docs(item)
+    docs, importer = context if context is not None else ([], None)
+    try:
+        data = certificate.make_certificate(job, docs, importer=importer)
+    except Exception as exc:
+        print(f"[error] 검수 완료서 만들기 실패 job={job_id} {type(exc).__name__}: {exc}")
+        return _error(500, "검수 완료서를 만들지 못했습니다")
+    return _pdf_response(data, f"certificate-{job_id}.pdf")
+def job_hs_request(job_id: str) -> dict:
+    """GET /jobs/{id}/hs-request. HS를 사람이 확인해야 하는 품목을 담은 HS 확인 요청서(PDF)를 돌려준다 (X2 #260).
+    언제: 화면의 'HS 확인 요청서 받기'. 관세사에게 전달할 문서다. 파일은 저장하지 않고 부를 때마다 저장된 작업에서 만든다. 모델·S3 호출 없음.
+    반환: 200 application/pdf(attachment, hs-request-<작업 ID>.pdf) / 404 없는 작업
+      / 409 {"error"}: 사람이 확인해야 하는 HS 품목이 없음 (확정됐거나 아직 처리 전)
+      / 500 {"error"} PDF를 만들지 못함 (작업은 바뀌지 않는다).
+    서류 기록이 없으면 서류 값 칸은 비워 두고 작업 결과의 품명·서류 HS·후보만 담는다.
+    """
+    if not JOB_ID.match(job_id):
+        return _error(404, "작업을 찾을 수 없습니다")
+    item = _load_item(job_id)
+    if item is None:
+        return _error(404, "작업을 찾을 수 없습니다")
+    job = Job.model_validate_json(item["data"])
+    try:
+        hs_request.check_requestable(job)
+    except hs_request.NothingToRequest as exc:
+        return _error(409, str(exc))
+    context = load_job_docs(item)
+    docs, importer = context if context is not None else ([], None)
+    try:
+        data = hs_request.make_hs_request(job, docs, importer=importer)
+    except Exception as exc:
+        print(f"[error] HS 확인 요청서 만들기 실패 job={job_id} {type(exc).__name__}: {exc}")
+        return _error(500, "HS 확인 요청서를 만들지 못했습니다")
+    return _pdf_response(data, f"hs-request-{job_id}.pdf")
 MAX_QUESTION = 500  # 현황 질문 길이 한도
 # fullmatch로 쓴다('$'는 끝 줄바꿈 앞에서도 맞는다). 첫 글자는 영문·숫자: '-' 하나는 answer·로그의 익명 표시다
 SESSION_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9-]{0,63}")
@@ -739,6 +816,8 @@ def chat(body) -> dict:
     반환: 200 ChatResponse / 400 요청 형식. 기록 저장이 실패해도 본문은 같은 200이다 ([warn] chat-history 로그만).
       답이 늦어 CHAT_DEADLINE_S 안에 기록을 끝낼 수 없으면 기록을 건너뛴다 (API Gateway 30초 안에 답한다).
       가드레일(E7 #152)은 answer 안에서 돈다. 막힌 답(ChatResponse.blocked)은 blocked true와 그 이유로 남긴다.
+      현황 Agent(#257, 환경 변수 QUERY_AGENT=1)를 켜면 같은 세션의 앞 대화 HISTORY_TURN_LINES줄과 작업·서류 읽기(HandlerJobs)를 넘긴다.
+      앞 대화를 못 읽으면 앞 대화 없이 답한다.
     """
     started = _monotonic()
     message = body.get("message") if isinstance(body, dict) else None
@@ -754,10 +833,62 @@ def chat(body) -> dict:
 
     question = message.strip()
     ms, tag = _now_ms(), _request_tag()
-    res = answer(question, session_id or "-", store=dynamo_shipments())
+    agent_on = os.environ.get("QUERY_AGENT") == "1"  # 현황 Agent (#257). 켰을 때만 앞 대화를 읽어 넘긴다
+    history = _recent_turns(session_id, ms) if agent_on and session_id is not None else None
+    res = answer(question, session_id or "-", store=dynamo_shipments(), jobs=HandlerJobs() if agent_on else None, history=history)
     if session_id is not None:
         _save_turn(session_id, ms, tag, question, res, started)
     return _response(200, res.model_dump(mode="json", by_alias=True))
+
+
+HISTORY_TURN_LINES = 6  # 현황 Agent에 넘기는 앞 대화 줄 수 (질문·답 3턴, #257)
+
+
+def _recent_turns(session_id: str, ms: int) -> list[ChatHistoryLine]:
+    """현황 Agent에 넘길 같은 세션의 앞 대화 (오래된 순). 읽기 실패는 빈 목록 ([warn] 로그만, 답은 계속한다)."""
+    try:
+        return _chat_store().recent(session_id, HISTORY_TURN_LINES, ms // 1000)
+    except Exception as exc:
+        print(f"[warn] chat-history session={session_id} 앞 대화 못 읽음 {type(exc).__name__}: {exc}")
+        return []
+
+
+class HandlerJobs:
+    """현황 Agent의 작업·서류 읽기 (#257, tools.query.JobSource). GET /jobs/{id}·GET /jobs·GET /documents와 같은 코드. 읽기만 한다.
+
+    작업 줄 Scan은 질문 하나에 한 번만 한다 (find_jobs·list_documents가 함께 써도). 깨진 줄은 건너뛴다.
+    """
+
+    def __init__(self):
+        self._items: list[dict] | None = None
+
+    def _all(self) -> list[dict]:
+        if self._items is None:
+            self._items = sorted(
+                _scan_jobs(), key=lambda i: int(i.get("created_at") or i.get("updated_at") or 0), reverse=True
+            )
+        return self._items
+
+    def job(self, job_id: str) -> Job | None:
+        return load_job(job_id) if JOB_ID.match(job_id) else None
+
+    def jobs(self) -> list[JobSummary]:
+        rows = []
+        for item in self._all():
+            try:
+                rows.append(job_summary(item))
+            except Exception as exc:
+                print(f"[warn] chat jobs job={item.get('job_id')} 건너뜀: {type(exc).__name__}: {exc}")
+        return rows
+
+    def documents(self) -> list[DocumentRecord]:
+        records = []
+        for item in self._all():
+            try:
+                records += job_documents(item)
+            except Exception as exc:
+                print(f"[warn] chat documents job={item.get('job_id')} 건너뜀: {type(exc).__name__}: {exc}")
+        return records
 
 
 def _session_ok(value) -> bool:
@@ -768,14 +899,15 @@ def _session_ok(value) -> bool:
 def _queried(filters: ChatFilters) -> bool:
     """answer가 실제로 화물 기록을 조회했는지 응답 조건으로 가린다 (agent/query_agent.py answer의 분기와 같다).
 
-    조회하지 않는 답: 못 담는 조건(unsupported)이 있음, 상태·기간이 모두 없음(되묻기·조건을 못 만듦),
+    조회하지 않는 답: 못 담는 조건(unsupported)이 있음, 조건(상태·기간, #257의 그중 상태·수입자·품명·B/L)이 모두 없음(되묻기·조건을 못 만듦),
     상태가 화물 기록 값 목록에 없음. 조회했으면 응답 상태는 값 목록의 표기로 맞춰져 있다.
     """
     from agent.query_agent import STATUSES
 
-    if filters.unsupported or not (filters.status or filters.period):
+    conditions = (filters.status, filters.period, filters.and_status, filters.consignee, filters.item, filters.bl_no)
+    if filters.unsupported or not any(conditions):
         return False
-    return filters.status is None or filters.status in (*STATUSES, DELAY_STATUS)
+    return all(s is None or s in (*STATUSES, DELAY_STATUS) for s in (filters.status, filters.and_status))
 
 
 def _reply_fields(res: ChatResponse) -> dict:
@@ -788,7 +920,7 @@ def _reply_fields(res: ChatResponse) -> dict:
         return {"blocked": True, "block_reason": res.blocked}
     if not _queried(res.filters):
         return {"filters": res.filters, "blocked": False}
-    rule = DELAY_RULE if res.filters.status == DELAY_STATUS else None
+    rule = DELAY_RULE if DELAY_STATUS in (res.filters.status, res.filters.and_status) else None
     return {"filters": res.filters, "count": len(res.rows), "rule": rule, "blocked": False}
 
 
@@ -1000,6 +1132,10 @@ def list_documents(query: dict | None) -> dict:
 FLOW_STATUSES = ("입항", "수입신고", "심사 중", "검사 중", "수리", "반출")  # docs/schema.md 화물 기록 (진행 순서)
 DELAYED_MAX = 10
 TOP_RULES = 5
+# 다음 할 일별 작업 수 (#252). 'none'(끝남)은 세지 않는다
+NEXT_KINDS = ("fix_docs", "choose_hs", "approve", "reupload", "wait")
+AUTO_RULE = "불일치·확인 필요가 없고 모든 품목의 HS가 정해진 작업만 사람 손 없이 WMS에 등록합니다"
+JOB_LIST_MAX = 50
 
 
 def _squash_status(text: str) -> str:
@@ -1035,10 +1171,18 @@ def build_stats(items: list[dict], shipments: list, today) -> StatsResponse:
     rules: dict[str, dict] = {}
     for job in sorted(finished, key=lambda j: j.job_id):  # 같은 순서로 세어 예시 문장이 흔들리지 않게
         for issue in job.result.issues:
+            if issue.grade == "참고":  # 참고는 할 일이 아니라 순위에서 뺀다 (#252)
+                continue
             entry = rules.setdefault(issue.rule_id, {"count": 0, "grades": {}, "example": issue.evidence})
             entry["count"] += 1
             entry["grades"][issue.grade] = entry["grades"].get(issue.grade, 0) + 1
     top = sorted(rules.items(), key=lambda kv: (-kv[1]["count"], kv[0]))[:TOP_RULES]
+    # 다음 할 일별 작업 수 (#252). 작업 하나는 정확히 한 칸 (wms.next_action, GET /jobs/{id}와 같은 규칙)
+    kinds = {k: 0 for k in NEXT_KINDS}
+    for job in jobs:
+        kind = wms.next_action(job).kind
+        if kind in kinds:
+            kinds[kind] += 1
     return StatsResponse(
         today=today,
         todo=TodoCounts(
@@ -1047,6 +1191,7 @@ def build_stats(items: list[dict], shipments: list, today) -> StatsResponse:
             hs_pending=sum(1 for j in waiting for h in j.result.hs if h.status == "사람 확인 필요"),
             unclassified=docs_by_type["unknown"],
             delayed=len(delayed),
+            **kinds,
         ),
         flow=[FlowStage(status=s, count=n) for s, n in flow.items()],
         delayed=[
@@ -1060,13 +1205,72 @@ def build_stats(items: list[dict], shipments: list, today) -> StatsResponse:
         docs_by_type=docs_by_type,
         auto=AutoRate(
             finished=len(finished), auto=sum(1 for j in finished if j.result.wms and j.result.wms.by == "auto"),
+            rule=AUTO_RULE,
         ),
-        top_rules=[
-            RuleCount(rule_id=rule_id, grade=max(e["grades"], key=lambda g: (e["grades"][g], -GRADES.index(g))),
-                      count=e["count"], example=e["example"])
-            for rule_id, e in top
-        ],
+        top_rules=[_rule_count(rule_id, e) for rule_id, e in top],
     )
+
+
+def _rule_count(rule_id: str, e: dict) -> RuleCount:
+    """센 규칙 하나 → RuleCount. 가장 많이 나온 등급의 사람 말 이름(rules.csv description)을 붙인다."""
+    from tools.validate import load_rules
+
+    grade = max(e["grades"], key=lambda g: (e["grades"][g], -GRADES.index(g)))
+    row = load_rules().get((rule_id, grade))
+    return RuleCount(rule_id=rule_id, grade=grade, count=e["count"], example=e["example"], name=row["description"] if row else None)
+
+
+def job_summary(item: dict) -> JobSummary:
+    """작업 한 줄 → 목록 한 줄 (#252). B/L·수입자는 저장된 읽은 서류에서, 다음 할 일은 GET /jobs/{id}와 같은 규칙.
+
+    언제: GET /jobs. 받는 것: team06-jobs의 한 줄. 서류 기록이 없는 작업(처리 중·옛 작업)은 B/L·수입자가 null.
+    """
+    job = Job.model_validate_json(item["data"])
+    loaded = load_job_docs(item)
+    docs, importer = loaded if loaded else ([], None)
+    bl = next((d for d in docs if d.doc_type == "bill_of_lading"), None)
+    invoice = next((d for d in docs if d.doc_type == "commercial_invoice"), None)
+    result = job.result
+    return JobSummary(
+        job_id=job.job_id,
+        status=job.status,
+        bl_no=_raw(bl.doc_no) if bl else None,
+        consignee=importer or (_raw(invoice.consignee_name) if invoice else None),
+        created_at=_kst_minute(int(item.get("created_at") or item.get("updated_at") or 0)),
+        next_action=wms.next_action(job),
+        mismatch=sum(1 for i in result.issues if i.grade == "불일치") if result else 0,
+        hs_pending=sum(1 for h in result.hs if h.status == "사람 확인 필요") if result else 0,
+    )
+
+
+def list_jobs(query) -> dict:
+    """GET /jobs?next_action=<kind>. 다음 할 일이 같은 작업 목록 (#252, 대시보드 카드를 누르면 그 자리에 펼친다).
+
+    받는 것: next_action(fix_docs·choose_hs·approve·reupload·wait 중 하나, 없으면 끝난 작업을 뺀 전부).
+    반환: 200 JobListResponse (최근 작업 먼저, JOB_LIST_MAX건) / 400 next_action 값 / 502 읽기 실패.
+      개수는 GET /stats의 todo 같은 칸과 같은 규칙이다. 깨진 작업 줄은 건너뛴다.
+    """
+    kind = (query or {}).get("next_action")
+    if kind is not None and kind not in NEXT_KINDS:
+        return _error(400, f"next_action은 {', '.join(NEXT_KINDS)} 중 하나입니다")
+    try:
+        items = _scan_jobs()
+    except Exception as exc:
+        print(f"[error] list_jobs {type(exc).__name__}: {exc}")
+        return _error(502, "작업 목록을 읽지 못했습니다")
+    rows: list[tuple[int, JobSummary]] = []
+    for item in items:
+        try:
+            row = job_summary(item)
+        except Exception as exc:  # 깨진 줄 하나 때문에 목록 전체가 실패하지 않게 한다
+            print(f"[warn] list_jobs job={item.get('job_id')} 건너뜀: {type(exc).__name__}: {exc}")
+            continue
+        if row.next_action.kind == "none" or (kind and row.next_action.kind != kind):
+            continue
+        rows.append((int(item.get("created_at") or item.get("updated_at") or 0), row))
+    rows.sort(key=lambda r: (r[0], r[1].job_id), reverse=True)
+    print(f"[api] jobs next_action={kind} {len(rows)}건")
+    return _response(200, JobListResponse(items=[r for _, r in rows[:JOB_LIST_MAX]]).model_dump(mode="json"))
 
 
 def stats() -> dict:
@@ -1095,7 +1299,10 @@ _LABELS = {
     "issue_date": "발급일", "departure_date": "출항일", "invoice_date": "송장 날짜", "issued_retroactively": "소급 발급",
     "item_code": "품목 코드", "name": "품명", "hs_code": "HS 코드", "qty": "수량", "gross_kg": "총중량",
     "net_kg": "순중량", "unit_price": "단가", "amount": "금액", "origin_criterion": "원산지 기준",
+    "marks": "화인", "packages": "포장 수", "seal_no": "봉인 번호", "size_type": "규격", "cbm": "용적(CBM)",
 }
+_CONTAINER_LABELS = {"container_no": "번호"}  # "1번 컨테이너 컨테이너 번호"가 되지 않게 컨테이너 줄에서만 바꾼다
+_LINE_INDEX = re.compile(r"\[\d+\]")
 
 
 def presign_view(key: str, content_type: str) -> str:
@@ -1125,20 +1332,32 @@ def image_size(key: str) -> tuple[int, int] | None:
 
 
 def read_fields(doc: ExtractedDocument | None) -> list[ReadField]:
-    """읽은 서류를 칸 한 줄씩 펼친다. 칸 경로는 IssueCell.field와 같아 화면이 불일치 칸을 바로 짚는다. 비어 있는 칸은 뺀다."""
+    """읽은 서류를 칸 한 줄씩 펼친다. 칸 경로는 IssueCell.field와 같아 화면이 불일치 칸을 바로 짚는다. 비어 있는 칸은 뺀다.
+
+    받는 것: 읽은 서류(없으면 빈 목록). 반환: 서류 전체 칸 → 품목 줄(items[i]) → B/L 컨테이너 줄(containers[i]) 순서의 ReadField.
+    site는 경로에서 줄 번호([숫자])를 뺀 이름이 그 서류 종류의 SITE_FIELDS에 있으면 true다 (F12 #230). 관리자 칸도 빠짐없이 나간다.
+    """
     if doc is None:
         return []
+    site_fields = SITE_FIELDS.get(doc.doc_type, frozenset())
     out: list[ReadField] = []
 
     def add(path: str, label: str, cell) -> None:
         if isinstance(cell, Cell) and (cell.raw is not None or cell.unreadable is not None):
-            out.append(ReadField(field=path, label=label, raw=cell.raw, value=cell.value, unit=cell.unit, unreadable=cell.unreadable))
+            out.append(ReadField(
+                field=path, label=label, raw=cell.raw, value=cell.value, unit=cell.unit, unreadable=cell.unreadable,
+                site=_LINE_INDEX.sub("", path) in site_fields,
+            ))
 
     for name in ExtractedDocument.model_fields:
         add(name, _LABELS.get(name, name), getattr(doc, name))
     for i, item in enumerate(doc.items):
         for name in ExtractedItem.model_fields:
             add(f"items[{i}].{name}", f"{item.line}행 {_LABELS.get(name, name)}", getattr(item, name))
+    for i, box in enumerate(doc.containers):
+        for name in ExtractedContainer.model_fields:
+            label = _CONTAINER_LABELS.get(name) or _LABELS.get(name, name)
+            add(f"containers[{i}].{name}", f"{box.line}번 컨테이너 {label}", getattr(box, name))
     return out
 
 
@@ -1180,6 +1399,54 @@ def job_files(job_id: str) -> dict:
     return _response(200, JobFilesResponse(files=views).model_dump(mode="json"))
 
 
+# ---------------------------------------------------------------------------
+# 불일치 통지 문서 내려받기 (F9 #155). 문서는 C7(#158) tools.validate.notice_document가 코드로 만든다
+# ---------------------------------------------------------------------------
+NOTICE_FORMATS = {"md": ("text/markdown; charset=utf-8", "markdown"), "html": ("text/html; charset=utf-8", "html")}
+
+
+def _notice_name(subject: str, job_id: str, ext: str) -> str:
+    """내려받을 파일 이름. 제목의 B/L 번호(영문·숫자)를 쓰고, 없으면 작업 ID. 헤더에 넣으므로 영문·숫자·-·_만 남긴다."""
+    match = re.search(r"B/L\s+([A-Za-z0-9-]+)", subject)
+    stem = re.sub(r"[^A-Za-z0-9_-]", "", match.group(1) if match else job_id)[:60] or job_id
+    return f"notice-{stem}.{ext}"
+
+
+def job_notice(job_id: str, query: dict | None) -> dict:
+    """GET /jobs/{id}/notice?format=md|html. 불일치 통지 문서를 파일로 내려받는다 (F9 #155). 모델 호출 없음.
+
+    언제: 위변조 확인 화면(G12)의 '관리자에게 보낼 문서 받기'. 보내기 전에 사람이 검토한다 (메일 보내기는 하지 않는다).
+    받는 것: format(md 또는 html, 없으면 html).
+    반환: 200 파일(content-disposition: attachment) / 400 형식 / 404 없는 작업 / 409 처리 중이거나 서류 기록이 없음.
+    """
+    from tools.validate import notice_document
+
+    fmt = (query or {}).get("format") or "html"
+    if fmt not in NOTICE_FORMATS:
+        return _error(400, f"format은 {', '.join(NOTICE_FORMATS)} 중 하나입니다")
+    if not JOB_ID.match(job_id):
+        return _error(404, "작업을 찾을 수 없습니다")
+    item = _load_item(job_id)
+    if item is None:
+        return _error(404, "작업을 찾을 수 없습니다")
+    job = Job.model_validate_json(item["data"])
+    if job.status in ("queued", "running") or job.result is None:
+        return _error(409, f"처리가 끝난 작업에서만 문서를 만들 수 있습니다 (지금: {job.status})")
+    context = load_job_docs(item)
+    if context is None:
+        return _error(409, "이 작업에는 저장된 서류 기록이 없어 문서를 만들 수 없습니다")
+    docs, _ = context
+    notice = notice_document(job_id, docs, job.result.issues)
+    content_type, attr = NOTICE_FORMATS[fmt]
+    name = _notice_name(notice.subject, job_id, fmt)
+    print(f"[api] notice job={job_id} format={fmt} 불일치 {notice.mismatch_count} 확인 필요 {notice.check_count}")
+    return {
+        "statusCode": 200,
+        "headers": {"content-type": content_type, "content-disposition": f'attachment; filename="{name}"'},
+        "body": getattr(notice, attr),
+    }
+
+
 # 약속 2에 있지만 아직 없는 경로 → 작업 ID (e2e-plan.md). 만들면 여기서 지운다.
 _PLANNED: dict[tuple[str, str], str] = {}
 
@@ -1214,6 +1481,8 @@ def lambda_handler(event, context):
             return create_uploads(_body(event))
         if method == "POST" and path == "/jobs":
             return create_job(_body(event))
+        if method == "GET" and path == "/jobs":
+            return list_jobs(event.get("queryStringParameters"))
         if method == "GET" and path.startswith("/jobs/") and path.count("/") == 2:
             return get_job(path.split("/")[2])
         parts = path.split("/")
@@ -1221,6 +1490,12 @@ def lambda_handler(event, context):
             return get_chat_history(parts[2])
         if method == "GET" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "files":
             return job_files(parts[2])
+        if method == "GET" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "notice":
+            return job_notice(parts[2], event.get("queryStringParameters"))
+        if method == "GET" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "certificate":
+            return job_certificate(parts[2])
+        if method == "GET" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "hs-request":
+            return job_hs_request(parts[2])
         if method == "POST" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "hs":
             return choose_hs(parts[2], _body(event))
         if method == "POST" and len(parts) == 4 and parts[1] == "jobs" and parts[3] == "approve":

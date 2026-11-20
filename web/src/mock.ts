@@ -1,16 +1,21 @@
 // 가짜 서버 (npm run dev 전용). docs/examples/ 의 예시로 /api 에 답한다.
 // 예시를 직접 읽으므로 예시가 바뀌면 가짜 응답도 같이 바뀐다.
 // 판정·신고서 채우기는 흉내 내지 않는다. 사람이 고른 값을 상태에 반영하는 것만 한다.
+import chatChartExample from "../../docs/examples/chat_chart_response.json";
 import chatExample from "../../docs/examples/chat_response.json";
 import jobExample from "../../docs/examples/job_waiting_approval.json";
 // 임시(제안 중): 서버 약속이 합쳐지면 docs/examples/documents.json 으로 바꾼다
 import documentsDraft from "./fixtures/documents.draft.json";
 // 임시(제안 중): F11(#195)이 합쳐지면 docs/examples/stats.json 으로 바꾼다
 import statsDraft from "./fixtures/stats.draft.json";
+// 임시: #252 PR A(작업 목록 API)가 합쳐지면 docs/examples/jobs.json 으로 바꾼다
+import jobsDraft from "./fixtures/jobs.draft.json";
 import { ApiError } from "./api";
 import { fileViewOf } from "./mockDocs";
+import { nextActionOf } from "./nextAction";
 import type {
   ApproveResponse,
+  ChatHistoryLine,
   ChatRequest,
   ChatResponse,
   ChooseHsResponse,
@@ -21,6 +26,7 @@ import type {
   HSChoice,
   Job,
   JobFilesResponse,
+  JobListResponse,
   StatsResponse,
   UploadRequestFile,
   UploadsResponse,
@@ -91,7 +97,13 @@ function approve(body: unknown): ApproveResponse {
   if (result.issues.some((i) => i.grade === "불일치")) {
     throw new ApiError(409, "불일치가 남아 있어 WMS에 등록할 수 없습니다");
   }
-  result.wms = { status: "등록됨", by: "human", wms_id: "WMS-MOCK-0001" };
+  result.wms = {
+    status: "등록됨",
+    by: "human",
+    wms_id: "WMS-MOCK-0001",
+    approver,
+    approved_at: new Date().toISOString().slice(0, 19) + "+09:00",
+  };
   finalJob.steps.push({ tool: "push_to_wms", summary: `사람 승인(${approver})으로 WMS 등록`, ok: true });
   return { wms: { status: "등록됨", wms_id: "WMS-MOCK-0001" } };
 }
@@ -145,6 +157,47 @@ function jobFiles(jobId: string): JobFilesResponse {
   return { files: records.map(fileViewOf) };
 }
 
+// 대화 기록 (E6 #157 흉내): 새로 고쳐도 남도록 브라우저 localStorage 에 둔다. 개발용 가짜 서버만 쓴다
+const CHAT_STORE = "team06-mock-chat";
+
+function chatStore(): Record<string, ChatHistoryLine[]> {
+  try {
+    return JSON.parse(localStorage.getItem(CHAT_STORE) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function chatLines(sessionId: string): ChatHistoryLine[] {
+  return (chatStore()[sessionId] ?? []).slice(-50);
+}
+
+function saveChatLines(sessionId: string, question: string, res: ChatResponse): void {
+  const store = chatStore();
+  const ts = `${Date.now()}#mock`;
+  const blocked = res.blocked ?? null;
+  store[sessionId] = [
+    ...(store[sessionId] ?? []),
+    { session_id: sessionId, ts: `${ts}#0`, role: "user", text: question, filters: null, count: null, rule: null, blocked: null, block_reason: null },
+    {
+      session_id: sessionId,
+      ts: `${ts}#1`,
+      role: "assistant",
+      text: res.answer,
+      filters: blocked ? null : res.filters,
+      count: blocked ? null : res.rows.length,
+      rule: null,
+      blocked: blocked !== null,
+      block_reason: blocked,
+    },
+  ];
+  try {
+    localStorage.setItem(CHAT_STORE, JSON.stringify(store));
+  } catch {
+    // 저장 못 해도 가짜 응답은 계속 준다
+  }
+}
+
 /** api.ts 의 request 대신 불린다. 서버와 같은 경로·모양으로 답한다. */
 export async function mockRequest(method: string, path: string, body: unknown): Promise<unknown> {
   await wait(DELAY_MS);
@@ -164,11 +217,21 @@ export async function mockRequest(method: string, path: string, body: unknown): 
   if (method === "POST" && path === "/api/chat") {
     const req = body as Partial<ChatRequest> | undefined;
     if (!req?.session_id || !req.message?.trim()) throw new ApiError(400, "session_id와 message가 필요합니다");
-    // 가짜는 질문과 상관없이 예시 답을 준다
-    return copy(chatExample as ChatResponse);
+    // 가짜는 질문과 상관없이 예시 답을 준다 (그래프·차트를 물으면 그래프 예시, #257). 서버처럼 질문·답 두 줄을 기록에 남긴다 (E6)
+    const wantsChart = /그래프|차트/.test(req.message);
+    const res = copy((wantsChart ? chatChartExample : chatExample) as ChatResponse);
+    saveChatLines(req.session_id, req.message.trim(), res);
+    return res;
   }
+  const chatRoute = path.match(/^\/api\/chat\/([^/]+)$/);
+  if (method === "GET" && chatRoute) return { messages: chatLines(decodeURIComponent(chatRoute[1])) };
   const [pathname, search = ""] = path.split("?");
   if (method === "GET" && pathname === "/api/documents") return documents(new URLSearchParams(search));
+  if (method === "GET" && pathname === "/api/jobs") {
+    const kind = new URLSearchParams(search).get("next_action");
+    const items = (jobsDraft as unknown as JobListResponse).items.filter((j) => !kind || j.next_action.kind === kind);
+    return copy({ items });
+  }
   if (method === "GET" && pathname === "/api/stats") {
     const { _note, ...stats } = statsDraft as StatsResponse & { _note?: string };
     void _note;
@@ -182,7 +245,9 @@ export async function mockRequest(method: string, path: string, body: unknown): 
     if (method === "GET" && !route[2]) {
       const n = polls.get(jobId) ?? 0;
       polls.set(jobId, n + 1);
-      return mockJobAt(jobId, n, finalJob);
+      // 서버처럼 응답 때마다 다음 할 일을 정한다 (FB22). 예시에 적힌 값은 처리 전 단계와 맞지 않으므로 다시 정한다
+      const job = mockJobAt(jobId, n, finalJob);
+      return { ...job, next_action: nextActionOf({ ...job, next_action: null }) };
     }
     if (method === "POST" && route[2] === "hs") return chooseHs(body);
     if (method === "POST" && route[2] === "approve") return approve(body);

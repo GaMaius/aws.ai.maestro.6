@@ -3,6 +3,7 @@
 // npm run dev(모드 mock)에서는 mock.ts 가 docs/examples/ 로 대신 답한다. 빌드에는 들어가지 않는다.
 import type {
   ApproveResponse,
+  ChatHistoryResponse,
   ChatRequest,
   ChatResponse,
   ChooseHsResponse,
@@ -13,7 +14,9 @@ import type {
   HSChoice,
   Job,
   JobFilesResponse,
+  JobListResponse,
   StatsResponse,
+  TodoKind,
   JobFile,
   UploadRequestFile,
   UploadsResponse,
@@ -78,6 +81,14 @@ export function chooseHs(jobId: string, choices: HSChoice[]): Promise<ChooseHsRe
 export function approveJob(jobId: string, approver: string): Promise<ApproveResponse> {
   return request("POST", `/api/jobs/${encodeURIComponent(jobId)}/approve`, { approver });
 }
+/** HS 확인 요청서 PDF 내려받기 주소 (GET /api/jobs/{id}/hs-request, X2 #260). HS가 '사람 확인 필요'로 남은 품목이 있을 때 받는다 */
+export function hsRequestUrl(jobId: string): string {
+  return `/api/jobs/${encodeURIComponent(jobId)}/hs-request`;
+}
+/** 검수 완료서 PDF 내려받기 주소 (GET /api/jobs/{id}/certificate, X1 #258). 사람이 승인해 등록한 작업만 받을 수 있다 */
+export function certificateUrl(jobId: string): string {
+  return `/api/jobs/${encodeURIComponent(jobId)}/certificate`;
+}
 
 /** 현황 채팅에 질문을 보낸다. 서버는 앞 질문을 기억하지 않고 질문마다 따로 답한다 (session_id 는 기록용, FB09 #166). */
 export function sendChat(req: ChatRequest): Promise<ChatResponse> {
@@ -102,6 +113,11 @@ export function getStats(): Promise<StatsResponse> {
   return request("GET", "/api/stats");
 }
 
+/** 다음 할 일이 같은 작업 목록 (#252). 대시보드 카드를 누르면 그 자리에 펼친다. 개수는 통계의 같은 칸과 같다. */
+export function getJobs(kind: TodoKind): Promise<JobListResponse> {
+  return request("GET", `/api/jobs?${new URLSearchParams({ next_action: kind }).toString()}`);
+}
+
 /** 서류 보기: 작업에 올라온 서류의 원본 주소·쪽 그림·칸 위치·읽은 칸 (G11, docs/schema.md GET /api/jobs/{id}/files #156·#189). */
 export function getJobFiles(jobId: string): Promise<JobFilesResponse> {
   return request("GET", `/api/jobs/${encodeURIComponent(jobId)}/files`);
@@ -110,4 +126,9 @@ export function getJobFiles(jobId: string): Promise<JobFilesResponse> {
 /** 브라우저가 type 을 모르는 파일은 이 값으로 보낸다. */
 export function contentTypeOf(file: File): string {
   return file.type || "application/octet-stream";
+}
+
+/** 현황 채팅 기록 (E6 #157): 그 세션의 최근 질문·답 줄, 오래된 순. 화면을 열 때 불러와 새로 고쳐도 대화가 남게 한다 (G14). */
+export function getChatHistory(sessionId: string): Promise<ChatHistoryResponse> {
+  return request("GET", `/api/chat/${encodeURIComponent(sessionId)}`);
 }
