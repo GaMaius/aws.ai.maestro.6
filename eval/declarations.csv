@@ -1,0 +1,2296 @@
+set_id,split,line,field,label,answer,source,expect_blank
+D001,dev,,bl_no,B/L 번호,EXSHTAO26027846,bill_of_lading.bl_no,0
+D001,dev,,vessel,선기명,EXAMPLE PEARL 999E,bill_of_lading.vessel_voyage,0
+D001,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D001,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D001,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D001,dev,,total_gross_kg,총중량(kg),842.7,packing_list.total_gross_kg,0
+D001,dev,,total_packages,총포장갯수,53,packing_list.total_packages,0
+D001,dev,,package_kind,포장종류,CT,packing_list,0
+D001,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D001,dev,,currency,통화,USD,commercial_invoice,0
+D001,dev,,total_amount,결제금액,11130,commercial_invoice.total_amount,0
+D001,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D001,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D001,dev,1,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D001,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D001,dev,1,qty,수량,2650,commercial_invoice.items[0].qty,0
+D001,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D001,dev,1,net_kg,순중량(kg),795,packing_list.items[0].net_kg,0
+D001,dev,1,unit_price,단가,4.2,commercial_invoice.items[0].unit_price,0
+D001,dev,1,amount,금액,11130,commercial_invoice.items[0].amount,0
+D001,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D001,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D001,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D002,dev,,bl_no,B/L 번호,SMLNNGB26012050,bill_of_lading.bl_no,0
+D002,dev,,vessel,선기명,EXAMPLE VOYAGER 131E,bill_of_lading.vessel_voyage,0
+D002,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D002,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D002,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D002,dev,,total_gross_kg,총중량(kg),4949.46,packing_list.total_gross_kg,1
+D002,dev,,total_packages,총포장갯수,337,packing_list.total_packages,0
+D002,dev,,package_kind,포장종류,CT,packing_list,0
+D002,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D002,dev,,currency,통화,USD,commercial_invoice,0
+D002,dev,,total_amount,결제금액,13091.8,commercial_invoice.total_amount,0
+D002,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D002,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D002,dev,1,description,품명,"MELAMINE DINNER PLATE 10 INCH, WHITE",commercial_invoice.items[0].name,0
+D002,dev,1,hs_code,세번부호,3924100000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D002,dev,1,qty,수량,3552,commercial_invoice.items[0].qty,0
+D002,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D002,dev,1,net_kg,순중량(kg),994.56,packing_list.items[0].net_kg,0
+D002,dev,1,unit_price,단가,0.65,commercial_invoice.items[0].unit_price,0
+D002,dev,1,amount,금액,2308.8,commercial_invoice.items[0].amount,0
+D002,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D002,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D002,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D002,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[1].name,0
+D002,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D002,dev,2,qty,수량,2630,commercial_invoice.items[1].qty,0
+D002,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D002,dev,2,net_kg,순중량(kg),3550.5,packing_list.items[1].net_kg,0
+D002,dev,2,unit_price,단가,4.1,commercial_invoice.items[1].unit_price,0
+D002,dev,2,amount,금액,10783,commercial_invoice.items[1].amount,0
+D002,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D002,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D002,dev,2,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[1].origin_criterion,0
+D003,dev,,bl_no,B/L 번호,SOCLSGN26021841,bill_of_lading.bl_no,0
+D003,dev,,vessel,선기명,SAMPLE HORIZON 484N,bill_of_lading.vessel_voyage,0
+D003,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D003,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D003,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D003,dev,,total_gross_kg,총중량(kg),12683.1,packing_list.total_gross_kg,1
+D003,dev,,total_packages,총포장갯수,467,packing_list.total_packages,0
+D003,dev,,package_kind,포장종류,CT,packing_list,0
+D003,dev,,incoterms,인도조건,EXW,commercial_invoice.incoterms,0
+D003,dev,,currency,통화,USD,commercial_invoice,0
+D003,dev,,total_amount,결제금액,37764,commercial_invoice.total_amount,0
+D003,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D003,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D003,dev,1,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D003,dev,1,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D003,dev,1,qty,수량,351,commercial_invoice.items[0].qty,0
+D003,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D003,dev,1,net_kg,순중량(kg),2035.8,packing_list.items[0].net_kg,0
+D003,dev,1,unit_price,단가,28,commercial_invoice.items[0].unit_price,0
+D003,dev,1,amount,금액,9828,commercial_invoice.items[0].amount,0
+D003,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D003,dev,1,fta,협정,VK,certificate_of_origin,0
+D003,dev,1,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[0].origin_criterion,0
+D003,dev,2,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D003,dev,2,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D003,dev,2,qty,수량,291,commercial_invoice.items[1].qty,0
+D003,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D003,dev,2,net_kg,순중량(kg),9312,packing_list.items[1].net_kg,0
+D003,dev,2,unit_price,단가,96,commercial_invoice.items[1].unit_price,0
+D003,dev,2,amount,금액,27936,commercial_invoice.items[1].amount,0
+D003,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D003,dev,2,fta,협정,VK,certificate_of_origin,0
+D003,dev,2,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[1].origin_criterion,0
+D004,dev,,bl_no,B/L 번호,EXSHSGN26027425,bill_of_lading.bl_no,0
+D004,dev,,vessel,선기명,SAMPLE HORIZON 509N,bill_of_lading.vessel_voyage,0
+D004,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D004,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D004,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D004,dev,,total_gross_kg,총중량(kg),12185.6,packing_list.total_gross_kg,1
+D004,dev,,total_packages,총포장갯수,476,packing_list.total_packages,0
+D004,dev,,package_kind,포장종류,CT,packing_list,0
+D004,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D004,dev,,currency,통화,USD,commercial_invoice,0
+D004,dev,,total_amount,결제금액,76160,commercial_invoice.total_amount,0
+D004,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D004,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D004,dev,1,description,품명,"CASHEW KERNELS W320, SHELLED, NOT ROASTED",commercial_invoice.items[0].name,0
+D004,dev,1,hs_code,세번부호,0801320000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D004,dev,1,qty,수량,11900,commercial_invoice.items[0].qty,0
+D004,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D004,dev,1,net_kg,순중량(kg),11900,packing_list.items[0].net_kg,0
+D004,dev,1,unit_price,단가,6.4,commercial_invoice.items[0].unit_price,0
+D004,dev,1,amount,금액,76160,commercial_invoice.items[0].amount,0
+D004,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D004,dev,1,fta,협정,VK,certificate_of_origin,0
+D004,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D005,dev,,bl_no,B/L 번호,SMLNSGN26012216,bill_of_lading.bl_no,0
+D005,dev,,vessel,선기명,EXAMPLE VOYAGER 236N,bill_of_lading.vessel_voyage,0
+D005,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D005,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D005,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D005,dev,,total_gross_kg,총중량(kg),7914.6,packing_list.total_gross_kg,0
+D005,dev,,total_packages,총포장갯수,535,packing_list.total_packages,0
+D005,dev,,package_kind,포장종류,CT,packing_list,0
+D005,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D005,dev,,currency,통화,USD,commercial_invoice,0
+D005,dev,,total_amount,결제금액,31292,commercial_invoice.total_amount,0
+D005,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D005,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D005,dev,1,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D005,dev,1,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D005,dev,1,qty,수량,1001,commercial_invoice.items[0].qty,0
+D005,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D005,dev,1,net_kg,순중량(kg),5805.8,packing_list.items[0].net_kg,0
+D005,dev,1,unit_price,단가,28,commercial_invoice.items[0].unit_price,0
+D005,dev,1,amount,금액,28028,commercial_invoice.items[0].amount,0
+D005,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D005,dev,1,fta,협정,,certificate_of_origin,0
+D005,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D005,dev,2,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D005,dev,2,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D005,dev,2,qty,수량,34,commercial_invoice.items[1].qty,0
+D005,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D005,dev,2,net_kg,순중량(kg),1088,packing_list.items[1].net_kg,0
+D005,dev,2,unit_price,단가,96,commercial_invoice.items[1].unit_price,0
+D005,dev,2,amount,금액,3264,commercial_invoice.items[1].amount,0
+D005,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D005,dev,2,fta,협정,,certificate_of_origin,0
+D005,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D006,dev,,bl_no,B/L 번호,SMLNSGN26012167,bill_of_lading.bl_no,0
+D006,dev,,vessel,선기명,SAMPLE STAR 303N,bill_of_lading.vessel_voyage,0
+D006,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D006,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D006,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D006,dev,,total_gross_kg,총중량(kg),241.4,packing_list.total_gross_kg,1
+D006,dev,,total_packages,총포장갯수,17,packing_list.total_packages,0
+D006,dev,,package_kind,포장종류,CT,packing_list,0
+D006,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D006,dev,,currency,통화,USD,commercial_invoice,0
+D006,dev,,total_amount,결제금액,4488,commercial_invoice.total_amount,0
+D006,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D006,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D006,dev,1,description,품명,"MEN'S WOVEN SHIRT, 65% POLYESTER 35% COTTON, SHORT SLEEVE",commercial_invoice.items[0].name,0
+D006,dev,1,hs_code,세번부호,6205301000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D006,dev,1,qty,수량,1020,commercial_invoice.items[0].qty,0
+D006,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D006,dev,1,net_kg,순중량(kg),224.4,packing_list.items[0].net_kg,0
+D006,dev,1,unit_price,단가,4.4,commercial_invoice.items[0].unit_price,0
+D006,dev,1,amount,금액,4488,commercial_invoice.items[0].amount,0
+D006,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D006,dev,1,fta,협정,VK,certificate_of_origin,0
+D006,dev,1,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[0].origin_criterion,0
+D007,dev,,bl_no,B/L 번호,SMLNSZX26012105,bill_of_lading.bl_no,0
+D007,dev,,vessel,선기명,SAMPLE HORIZON 965E,bill_of_lading.vessel_voyage,0
+D007,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D007,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D007,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D007,dev,,total_gross_kg,총중량(kg),883.2,packing_list.total_gross_kg,1
+D007,dev,,total_packages,총포장갯수,92,packing_list.total_packages,0
+D007,dev,,package_kind,포장종류,CT,packing_list,0
+D007,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D007,dev,,currency,통화,USD,commercial_invoice,0
+D007,dev,,total_amount,결제금액,2502.4,commercial_invoice.total_amount,0
+D007,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D007,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D007,dev,1,description,품명,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",commercial_invoice.items[0].name,0
+D007,dev,1,hs_code,세번부호,9405110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D007,dev,1,qty,수량,368,commercial_invoice.items[0].qty,0
+D007,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D007,dev,1,net_kg,순중량(kg),772.8,packing_list.items[0].net_kg,0
+D007,dev,1,unit_price,단가,6.8,commercial_invoice.items[0].unit_price,0
+D007,dev,1,amount,금액,2502.4,commercial_invoice.items[0].amount,0
+D007,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D007,dev,1,fta,협정,,certificate_of_origin,0
+D007,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D008,dev,,bl_no,B/L 번호,EXSHHPH26027330,bill_of_lading.bl_no,0
+D008,dev,,vessel,선기명,EXAMPLE OCEAN 702N,bill_of_lading.vessel_voyage,0
+D008,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D008,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D008,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D008,dev,,total_gross_kg,총중량(kg),5786.88,packing_list.total_gross_kg,1
+D008,dev,,total_packages,총포장갯수,660,packing_list.total_packages,0
+D008,dev,,package_kind,포장종류,CT,packing_list,0
+D008,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D008,dev,,currency,통화,USD,commercial_invoice,0
+D008,dev,,total_amount,결제금액,98366.4,commercial_invoice.total_amount,0
+D008,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D008,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D008,dev,1,description,품명,"SPORTS SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[0].name,0
+D008,dev,1,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D008,dev,1,qty,수량,3432,commercial_invoice.items[0].qty,1
+D008,dev,1,unit,단위,PRS,commercial_invoice.items[0].qty,0
+D008,dev,1,net_kg,순중량(kg),2127.84,packing_list.items[0].net_kg,0
+D008,dev,1,unit_price,단가,11.4,commercial_invoice.items[0].unit_price,0
+D008,dev,1,amount,금액,39124.8,commercial_invoice.items[0].amount,0
+D008,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D008,dev,1,fta,협정,,certificate_of_origin,0
+D008,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D008,dev,2,description,품명,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[1].name,0
+D008,dev,2,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D008,dev,2,qty,수량,4488,commercial_invoice.items[1].qty,0
+D008,dev,2,unit,단위,PRS,commercial_invoice.items[1].qty,0
+D008,dev,2,net_kg,순중량(kg),2603.04,packing_list.items[1].net_kg,0
+D008,dev,2,unit_price,단가,13.2,commercial_invoice.items[1].unit_price,0
+D008,dev,2,amount,금액,59241.6,commercial_invoice.items[1].amount,0
+D008,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D008,dev,2,fta,협정,,certificate_of_origin,0
+D008,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D009,dev,,bl_no,B/L 번호,EXSHHPH26027685,bill_of_lading.bl_no,0
+D009,dev,,vessel,선기명,SAMPLE HARMONY 549N,bill_of_lading.vessel_voyage,0
+D009,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D009,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D009,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D009,dev,,total_gross_kg,총중량(kg),1669.2,packing_list.total_gross_kg,0
+D009,dev,,total_packages,총포장갯수,195,packing_list.total_packages,0
+D009,dev,,package_kind,포장종류,CT,packing_list,0
+D009,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D009,dev,,currency,통화,USD,commercial_invoice,0
+D009,dev,,total_amount,결제금액,30888,commercial_invoice.total_amount,0
+D009,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D009,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D009,dev,1,description,품명,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[0].name,0
+D009,dev,1,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D009,dev,1,qty,수량,2340,commercial_invoice.items[0].qty,0
+D009,dev,1,unit,단위,PRS,commercial_invoice.items[0].qty,0
+D009,dev,1,net_kg,순중량(kg),1357.2,packing_list.items[0].net_kg,0
+D009,dev,1,unit_price,단가,13.2,commercial_invoice.items[0].unit_price,0
+D009,dev,1,amount,금액,30888,commercial_invoice.items[0].amount,0
+D009,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D009,dev,1,fta,협정,AK,certificate_of_origin,0
+D009,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D010,dev,,bl_no,B/L 번호,SOCLHPH26021779,bill_of_lading.bl_no,0
+D010,dev,,vessel,선기명,SAMPLE HARMONY 596N,bill_of_lading.vessel_voyage,0
+D010,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D010,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D010,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D010,dev,,total_gross_kg,총중량(kg),2184,packing_list.total_gross_kg,0
+D010,dev,,total_packages,총포장갯수,156,packing_list.total_packages,0
+D010,dev,,package_kind,포장종류,CT,packing_list,0
+D010,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D010,dev,,currency,통화,USD,commercial_invoice,0
+D010,dev,,total_amount,결제금액,20904,commercial_invoice.total_amount,0
+D010,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D010,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D010,dev,1,description,품명,"BACKPACK, OUTER SURFACE OF POLYESTER TEXTILE",commercial_invoice.items[0].name,0
+D010,dev,1,hs_code,세번부호,4202922000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D010,dev,1,qty,수량,3120,commercial_invoice.items[0].qty,0
+D010,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D010,dev,1,net_kg,순중량(kg),2028,packing_list.items[0].net_kg,0
+D010,dev,1,unit_price,단가,6.7,commercial_invoice.items[0].unit_price,0
+D010,dev,1,amount,금액,20904,commercial_invoice.items[0].amount,0
+D010,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D010,dev,1,fta,협정,AK,certificate_of_origin,0
+D010,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D011,dev,,bl_no,B/L 번호,SOCLTAO26021558,bill_of_lading.bl_no,0
+D011,dev,,vessel,선기명,EXAMPLE OCEAN 195E,bill_of_lading.vessel_voyage,0
+D011,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D011,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D011,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D011,dev,,total_gross_kg,총중량(kg),8374.46,packing_list.total_gross_kg,0
+D011,dev,,total_packages,총포장갯수,327,packing_list.total_packages,1
+D011,dev,,package_kind,포장종류,CT,packing_list,0
+D011,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D011,dev,,currency,통화,USD,commercial_invoice,0
+D011,dev,,total_amount,결제금액,40784.8,commercial_invoice.total_amount,0
+D011,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D011,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D011,dev,1,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D011,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D011,dev,1,qty,수량,4600,commercial_invoice.items[0].qty,0
+D011,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D011,dev,1,net_kg,순중량(kg),1380,packing_list.items[0].net_kg,0
+D011,dev,1,unit_price,단가,4.2,commercial_invoice.items[0].unit_price,0
+D011,dev,1,amount,금액,19320,commercial_invoice.items[0].amount,0
+D011,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D011,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D011,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D011,dev,2,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[1].name,0
+D011,dev,2,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D011,dev,2,qty,수량,4168,commercial_invoice.items[1].qty,0
+D011,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D011,dev,2,net_kg,순중량(kg),3000.96,packing_list.items[1].net_kg,0
+D011,dev,2,unit_price,단가,3.6,commercial_invoice.items[1].unit_price,0
+D011,dev,2,amount,금액,15004.8,commercial_invoice.items[1].amount,0
+D011,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D011,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D011,dev,2,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[1].origin_criterion,0
+D011,dev,3,description,품명,"RETREADED TRUCK TYRE 11R22.5, RADIAL, FOR LORRIES",commercial_invoice.items[2].name,0
+D011,dev,3,hs_code,세번부호,4012120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D011,dev,3,qty,수량,68,commercial_invoice.items[2].qty,0
+D011,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D011,dev,3,net_kg,순중량(kg),3740,packing_list.items[2].net_kg,0
+D011,dev,3,unit_price,단가,95,commercial_invoice.items[2].unit_price,0
+D011,dev,3,amount,금액,6460,commercial_invoice.items[2].amount,0
+D011,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D011,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D011,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D012,dev,,bl_no,B/L 번호,SOCLNGB26021528,bill_of_lading.bl_no,0
+D012,dev,,vessel,선기명,EXAMPLE PEARL 668E,bill_of_lading.vessel_voyage,0
+D012,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D012,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D012,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D012,dev,,total_gross_kg,총중량(kg),4651.32,packing_list.total_gross_kg,1
+D012,dev,,total_packages,총포장갯수,346,packing_list.total_packages,0
+D012,dev,,package_kind,포장종류,CT,packing_list,0
+D012,dev,,incoterms,인도조건,EXW,commercial_invoice.incoterms,0
+D012,dev,,currency,통화,USD,commercial_invoice,0
+D012,dev,,total_amount,결제금액,11647.8,commercial_invoice.total_amount,0
+D012,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D012,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D012,dev,1,description,품명,"MELAMINE DINNER PLATE 10 INCH, WHITE",commercial_invoice.items[0].name,0
+D012,dev,1,hs_code,세번부호,3924100000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D012,dev,1,qty,수량,6864,commercial_invoice.items[0].qty,0
+D012,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D012,dev,1,net_kg,순중량(kg),1921.92,packing_list.items[0].net_kg,0
+D012,dev,1,unit_price,단가,0.65,commercial_invoice.items[0].unit_price,0
+D012,dev,1,amount,금액,4461.6,commercial_invoice.items[0].amount,0
+D012,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D012,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D012,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D012,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[1].name,0
+D012,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D012,dev,2,qty,수량,2436,commercial_invoice.items[1].qty,0
+D012,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D012,dev,2,net_kg,순중량(kg),2314.2,packing_list.items[1].net_kg,0
+D012,dev,2,unit_price,단가,2.95,commercial_invoice.items[1].unit_price,0
+D012,dev,2,amount,금액,7186.2,commercial_invoice.items[1].amount,0
+D012,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D012,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D012,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D013,dev,,bl_no,B/L 번호,SOCLSGN26021477,bill_of_lading.bl_no,0
+D013,dev,,vessel,선기명,EXAMPLE VOYAGER 461N,bill_of_lading.vessel_voyage,0
+D013,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D013,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D013,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D013,dev,,total_gross_kg,총중량(kg),34048,packing_list.total_gross_kg,0
+D013,dev,,total_packages,총포장갯수,560,packing_list.total_packages,0
+D013,dev,,package_kind,포장종류,CT,packing_list,0
+D013,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D013,dev,,currency,통화,USD,commercial_invoice,0
+D013,dev,,total_amount,결제금액,172512,commercial_invoice.total_amount,0
+D013,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D013,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D013,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D013,dev,1,hs_code,세번부호,0901120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D013,dev,1,qty,수량,17520,commercial_invoice.items[0].qty,0
+D013,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D013,dev,1,net_kg,순중량(kg),17520,packing_list.items[0].net_kg,0
+D013,dev,1,unit_price,단가,5.9,commercial_invoice.items[0].unit_price,0
+D013,dev,1,amount,금액,103368,commercial_invoice.items[0].amount,0
+D013,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D013,dev,1,fta,협정,AK,certificate_of_origin,0
+D013,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D013,dev,2,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[1].name,0
+D013,dev,2,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D013,dev,2,qty,수량,16080,commercial_invoice.items[1].qty,0
+D013,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D013,dev,2,net_kg,순중량(kg),16080,packing_list.items[1].net_kg,0
+D013,dev,2,unit_price,단가,4.3,commercial_invoice.items[1].unit_price,0
+D013,dev,2,amount,금액,69144,commercial_invoice.items[1].amount,0
+D013,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D013,dev,2,fta,협정,AK,certificate_of_origin,0
+D013,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D014,dev,,bl_no,B/L 번호,EXSHSGN26027748,bill_of_lading.bl_no,0
+D014,dev,,vessel,선기명,SAMPLE HARMONY 278N,bill_of_lading.vessel_voyage,0
+D014,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D014,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D014,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D014,dev,,total_gross_kg,총중량(kg),12956.2,packing_list.total_gross_kg,1
+D014,dev,,total_packages,총포장갯수,703,packing_list.total_packages,0
+D014,dev,,package_kind,포장종류,CT,packing_list,0
+D014,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D014,dev,,currency,통화,USD,commercial_invoice,0
+D014,dev,,total_amount,결제금액,45768,commercial_invoice.total_amount,0
+D014,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D014,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D014,dev,1,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D014,dev,1,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D014,dev,1,qty,수량,1086,commercial_invoice.items[0].qty,0
+D014,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D014,dev,1,net_kg,순중량(kg),6298.8,packing_list.items[0].net_kg,0
+D014,dev,1,unit_price,단가,28,commercial_invoice.items[0].unit_price,0
+D014,dev,1,amount,금액,30408,commercial_invoice.items[0].amount,0
+D014,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D014,dev,1,fta,협정,,certificate_of_origin,0
+D014,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D014,dev,2,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D014,dev,2,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D014,dev,2,qty,수량,160,commercial_invoice.items[1].qty,0
+D014,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D014,dev,2,net_kg,순중량(kg),5120,packing_list.items[1].net_kg,0
+D014,dev,2,unit_price,단가,96,commercial_invoice.items[1].unit_price,0
+D014,dev,2,amount,금액,15360,commercial_invoice.items[1].amount,0
+D014,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D014,dev,2,fta,협정,,certificate_of_origin,0
+D014,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D015,dev,,bl_no,B/L 번호,SOCLSHA26021608,bill_of_lading.bl_no,0
+D015,dev,,vessel,선기명,EXAMPLE PEARL 015E,bill_of_lading.vessel_voyage,0
+D015,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D015,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D015,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D015,dev,,total_gross_kg,총중량(kg),18140,packing_list.total_gross_kg,0
+D015,dev,,total_packages,총포장갯수,36,packing_list.total_packages,0
+D015,dev,,package_kind,포장종류,CT,packing_list,0
+D015,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D015,dev,,currency,통화,USD,commercial_invoice,0
+D015,dev,,total_amount,결제금액,67115,commercial_invoice.total_amount,0
+D015,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D015,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D015,dev,1,description,품명,"ALUMINIUM ALLOY 6063-T5 EQUAL ANGLE PROFILE 40X40X3MM, SOLID, MILL FINISH",commercial_invoice.items[0].name,0
+D015,dev,1,hs_code,세번부호,7604299000,eval/sets.csv hs_answer (관세청 HS부호 표),1
+D015,dev,1,qty,수량,12000,commercial_invoice.items[0].qty,0
+D015,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D015,dev,1,net_kg,순중량(kg),12000,packing_list.items[0].net_kg,0
+D015,dev,1,unit_price,단가,3.7,commercial_invoice.items[0].unit_price,0
+D015,dev,1,amount,금액,44400,commercial_invoice.items[0].amount,0
+D015,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D015,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D015,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D015,dev,2,description,품명,"ALUMINIUM ALLOY HOLLOW PROFILE 6063-T5, MILL FINISH",commercial_invoice.items[1].name,0
+D015,dev,2,hs_code,세번부호,7604210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D015,dev,2,qty,수량,5900,commercial_invoice.items[1].qty,0
+D015,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D015,dev,2,net_kg,순중량(kg),5900,packing_list.items[1].net_kg,0
+D015,dev,2,unit_price,단가,3.85,commercial_invoice.items[1].unit_price,0
+D015,dev,2,amount,금액,22715,commercial_invoice.items[1].amount,0
+D015,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D015,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D015,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D016,dev,,bl_no,B/L 번호,SMLNSGN26012192,bill_of_lading.bl_no,0
+D016,dev,,vessel,선기명,SAMPLE STAR 622N,bill_of_lading.vessel_voyage,0
+D016,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D016,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D016,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D016,dev,,total_gross_kg,총중량(kg),10365.5,packing_list.total_gross_kg,0
+D016,dev,,total_packages,총포장갯수,541,packing_list.total_packages,0
+D016,dev,,package_kind,포장종류,CT,packing_list,0
+D016,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D016,dev,,currency,통화,USD,commercial_invoice,0
+D016,dev,,total_amount,결제금액,35936,commercial_invoice.total_amount,0
+D016,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D016,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D016,dev,1,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D016,dev,1,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D016,dev,1,qty,수량,141,commercial_invoice.items[0].qty,0
+D016,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D016,dev,1,net_kg,순중량(kg),4512,packing_list.items[0].net_kg,0
+D016,dev,1,unit_price,단가,96,commercial_invoice.items[0].unit_price,0
+D016,dev,1,amount,금액,13536,commercial_invoice.items[0].amount,0
+D016,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D016,dev,1,fta,협정,AK,certificate_of_origin,0
+D016,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D016,dev,2,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D016,dev,2,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D016,dev,2,qty,수량,800,commercial_invoice.items[1].qty,0
+D016,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D016,dev,2,net_kg,순중량(kg),4640,packing_list.items[1].net_kg,0
+D016,dev,2,unit_price,단가,28,commercial_invoice.items[1].unit_price,0
+D016,dev,2,amount,금액,22400,commercial_invoice.items[1].amount,0
+D016,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D016,dev,2,fta,협정,AK,certificate_of_origin,0
+D016,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D017,dev,,bl_no,B/L 번호,EXSHSGN26027395,bill_of_lading.bl_no,0
+D017,dev,,vessel,선기명,EXAMPLE VOYAGER 352N,bill_of_lading.vessel_voyage,0
+D017,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D017,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D017,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D017,dev,,total_gross_kg,총중량(kg),11058.6,packing_list.total_gross_kg,1
+D017,dev,,total_packages,총포장갯수,535,packing_list.total_packages,0
+D017,dev,,package_kind,포장종류,CT,packing_list,0
+D017,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D017,dev,,currency,통화,USD,commercial_invoice,0
+D017,dev,,total_amount,결제금액,37000,commercial_invoice.total_amount,0
+D017,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D017,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D017,dev,1,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D017,dev,1,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D017,dev,1,qty,수량,176,commercial_invoice.items[0].qty,0
+D017,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D017,dev,1,net_kg,순중량(kg),5632,packing_list.items[0].net_kg,0
+D017,dev,1,unit_price,단가,96,commercial_invoice.items[0].unit_price,0
+D017,dev,1,amount,금액,16896,commercial_invoice.items[0].amount,0
+D017,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D017,dev,1,fta,협정,AK,certificate_of_origin,0
+D017,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D017,dev,2,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D017,dev,2,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D017,dev,2,qty,수량,718,commercial_invoice.items[1].qty,0
+D017,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D017,dev,2,net_kg,순중량(kg),4164.4,packing_list.items[1].net_kg,0
+D017,dev,2,unit_price,단가,28,commercial_invoice.items[1].unit_price,0
+D017,dev,2,amount,금액,20104,commercial_invoice.items[1].amount,0
+D017,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D017,dev,2,fta,협정,AK,certificate_of_origin,0
+D017,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D018,dev,,bl_no,B/L 번호,SOCLCAN26021740,bill_of_lading.bl_no,0
+D018,dev,,vessel,선기명,SAMPLE HORIZON 230E,bill_of_lading.vessel_voyage,0
+D018,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D018,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D018,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D018,dev,,total_gross_kg,총중량(kg),4309,packing_list.total_gross_kg,0
+D018,dev,,total_packages,총포장갯수,155,packing_list.total_packages,0
+D018,dev,,package_kind,포장종류,CT,packing_list,0
+D018,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D018,dev,,currency,통화,USD,commercial_invoice,0
+D018,dev,,total_amount,결제금액,8556,commercial_invoice.total_amount,1
+D018,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D018,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D018,dev,1,description,품명,"PORCELAIN DINNER PLATE 25CM, WHITE",commercial_invoice.items[0].name,0
+D018,dev,1,hs_code,세번부호,6911102000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D018,dev,1,qty,수량,7440,commercial_invoice.items[0].qty,1
+D018,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D018,dev,1,net_kg,순중량(kg),4092,packing_list.items[0].net_kg,0
+D018,dev,1,unit_price,단가,1.15,commercial_invoice.items[0].unit_price,0
+D018,dev,1,amount,금액,8556,commercial_invoice.items[0].amount,1
+D018,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D018,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D018,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D019,dev,,bl_no,B/L 번호,SMLNCAN26012089,bill_of_lading.bl_no,0
+D019,dev,,vessel,선기명,SAMPLE HARMONY 535E,bill_of_lading.vessel_voyage,0
+D019,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D019,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D019,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D019,dev,,total_gross_kg,총중량(kg),53955,packing_list.total_gross_kg,0
+D019,dev,,total_packages,총포장갯수,2475,packing_list.total_packages,0
+D019,dev,,package_kind,포장종류,CT,packing_list,0
+D019,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D019,dev,,currency,통화,USD,commercial_invoice,0
+D019,dev,,total_amount,결제금액,17820,commercial_invoice.total_amount,0
+D019,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D019,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D019,dev,1,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[0].name,0
+D019,dev,1,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D019,dev,1,qty,수량,2475,commercial_invoice.items[0].qty,0
+D019,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D019,dev,1,net_kg,순중량(kg),51975,packing_list.items[0].net_kg,0
+D019,dev,1,unit_price,단가,7.2,commercial_invoice.items[0].unit_price,0
+D019,dev,1,amount,금액,17820,commercial_invoice.items[0].amount,0
+D019,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D019,dev,1,fta,협정,,certificate_of_origin,0
+D019,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D020,dev,,bl_no,B/L 번호,EXSHTAO26027460,bill_of_lading.bl_no,0
+D020,dev,,vessel,선기명,SAMPLE HORIZON 881E,bill_of_lading.vessel_voyage,0
+D020,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D020,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D020,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D020,dev,,total_gross_kg,총중량(kg),12524.9,packing_list.total_gross_kg,0
+D020,dev,,total_packages,총포장갯수,335,packing_list.total_packages,0
+D020,dev,,package_kind,포장종류,CT,packing_list,0
+D020,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D020,dev,,currency,통화,USD,commercial_invoice,0
+D020,dev,,total_amount,결제금액,39550,commercial_invoice.total_amount,0
+D020,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D020,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D020,dev,1,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D020,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D020,dev,1,qty,수량,2200,commercial_invoice.items[0].qty,0
+D020,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D020,dev,1,net_kg,순중량(kg),1584,packing_list.items[0].net_kg,0
+D020,dev,1,unit_price,단가,3.6,commercial_invoice.items[0].unit_price,0
+D020,dev,1,amount,금액,7920,commercial_invoice.items[0].amount,0
+D020,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D020,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D020,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D020,dev,2,description,품명,"RETREADED TRUCK TYRE 11R22.5, RADIAL, FOR LORRIES",commercial_invoice.items[1].name,0
+D020,dev,2,hs_code,세번부호,4012120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D020,dev,2,qty,수량,176,commercial_invoice.items[1].qty,0
+D020,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D020,dev,2,net_kg,순중량(kg),9680,packing_list.items[1].net_kg,0
+D020,dev,2,unit_price,단가,95,commercial_invoice.items[1].unit_price,0
+D020,dev,2,amount,금액,16720,commercial_invoice.items[1].amount,0
+D020,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D020,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D020,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D020,dev,3,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[2].name,0
+D020,dev,3,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D020,dev,3,qty,수량,3550,commercial_invoice.items[2].qty,0
+D020,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D020,dev,3,net_kg,순중량(kg),1065,packing_list.items[2].net_kg,0
+D020,dev,3,unit_price,단가,4.2,commercial_invoice.items[2].unit_price,0
+D020,dev,3,amount,금액,14910,commercial_invoice.items[2].amount,0
+D020,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D020,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D020,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D021,dev,,bl_no,B/L 번호,SOCLSGN26021670,bill_of_lading.bl_no,0
+D021,dev,,vessel,선기명,SAMPLE PIONEER 570N,bill_of_lading.vessel_voyage,0
+D021,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D021,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D021,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D021,dev,,total_gross_kg,총중량(kg),13740.8,packing_list.total_gross_kg,0
+D021,dev,,total_packages,총포장갯수,226,packing_list.total_packages,0
+D021,dev,,package_kind,포장종류,CT,packing_list,0
+D021,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D021,dev,,currency,통화,USD,commercial_invoice,0
+D021,dev,,total_amount,결제금액,58308,commercial_invoice.total_amount,0
+D021,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D021,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D021,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D021,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D021,dev,1,qty,수량,13560,commercial_invoice.items[0].qty,1
+D021,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D021,dev,1,net_kg,순중량(kg),13560,packing_list.items[0].net_kg,0
+D021,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D021,dev,1,amount,금액,58308,commercial_invoice.items[0].amount,0
+D021,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D021,dev,1,fta,협정,VK,certificate_of_origin,0
+D021,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D022,dev,,bl_no,B/L 번호,SOCLCAN26021569,bill_of_lading.bl_no,0
+D022,dev,,vessel,선기명,EXAMPLE PEARL 619E,bill_of_lading.vessel_voyage,0
+D022,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D022,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D022,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D022,dev,,total_gross_kg,총중량(kg),54500,packing_list.total_gross_kg,0
+D022,dev,,total_packages,총포장갯수,2500,packing_list.total_packages,0
+D022,dev,,package_kind,포장종류,CT,packing_list,0
+D022,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D022,dev,,currency,통화,USD,commercial_invoice,0
+D022,dev,,total_amount,결제금액,18000,commercial_invoice.total_amount,0
+D022,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D022,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D022,dev,1,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[0].name,0
+D022,dev,1,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D022,dev,1,qty,수량,2500,commercial_invoice.items[0].qty,0
+D022,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D022,dev,1,net_kg,순중량(kg),52500,packing_list.items[0].net_kg,0
+D022,dev,1,unit_price,단가,7.2,commercial_invoice.items[0].unit_price,0
+D022,dev,1,amount,금액,18000,commercial_invoice.items[0].amount,0
+D022,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D022,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D022,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D023,dev,,bl_no,B/L 번호,EXSHNGB26027785,bill_of_lading.bl_no,0
+D023,dev,,vessel,선기명,EXAMPLE OCEAN 242E,bill_of_lading.vessel_voyage,0
+D023,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D023,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D023,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D023,dev,,total_gross_kg,총중량(kg),7508.98,packing_list.total_gross_kg,0
+D023,dev,,total_packages,총포장갯수,524,packing_list.total_packages,0
+D023,dev,,package_kind,포장종류,CT,packing_list,0
+D023,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D023,dev,,currency,통화,USD,commercial_invoice,0
+D023,dev,,total_amount,결제금액,19353.1,commercial_invoice.total_amount,0
+D023,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D023,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D023,dev,1,description,품명,"MELAMINE DINNER PLATE 10 INCH, WHITE",commercial_invoice.items[0].name,0
+D023,dev,1,hs_code,세번부호,3924100000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D023,dev,1,qty,수량,8016,commercial_invoice.items[0].qty,0
+D023,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D023,dev,1,net_kg,순중량(kg),2244.48,packing_list.items[0].net_kg,0
+D023,dev,1,unit_price,단가,0.65,commercial_invoice.items[0].unit_price,0
+D023,dev,1,amount,금액,5210.4,commercial_invoice.items[0].amount,0
+D023,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D023,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D023,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D023,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[1].name,0
+D023,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D023,dev,2,qty,수량,986,commercial_invoice.items[1].qty,0
+D023,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D023,dev,2,net_kg,순중량(kg),936.7,packing_list.items[1].net_kg,0
+D023,dev,2,unit_price,단가,2.95,commercial_invoice.items[1].unit_price,0
+D023,dev,2,amount,금액,2908.7,commercial_invoice.items[1].amount,0
+D023,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D023,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D023,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D023,dev,3,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[2].name,0
+D023,dev,3,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D023,dev,3,qty,수량,2740,commercial_invoice.items[2].qty,0
+D023,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D023,dev,3,net_kg,순중량(kg),3699,packing_list.items[2].net_kg,0
+D023,dev,3,unit_price,단가,4.1,commercial_invoice.items[2].unit_price,0
+D023,dev,3,amount,금액,11234,commercial_invoice.items[2].amount,0
+D023,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D023,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D023,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D024,dev,,bl_no,B/L 번호,EXSHSGN26027817,bill_of_lading.bl_no,0
+D024,dev,,vessel,선기명,EXAMPLE BRIDGE 192N,bill_of_lading.vessel_voyage,0
+D024,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D024,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D024,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D024,dev,,total_gross_kg,총중량(kg),5722.9,packing_list.total_gross_kg,0
+D024,dev,,total_packages,총포장갯수,263,packing_list.total_packages,0
+D024,dev,,package_kind,포장종류,CT,packing_list,0
+D024,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D024,dev,,currency,통화,USD,commercial_invoice,0
+D024,dev,,total_amount,결제금액,46117.5,commercial_invoice.total_amount,0
+D024,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D024,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D024,dev,1,description,품명,COTTON TERRY BATH TOWEL 70X140CM,commercial_invoice.items[0].name,0
+D024,dev,1,hs_code,세번부호,6302600000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D024,dev,1,qty,수량,8650,commercial_invoice.items[0].qty,0
+D024,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D024,dev,1,net_kg,순중량(kg),3892.5,packing_list.items[0].net_kg,0
+D024,dev,1,unit_price,단가,2.9,commercial_invoice.items[0].unit_price,0
+D024,dev,1,amount,금액,25085,commercial_invoice.items[0].amount,0
+D024,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D024,dev,1,fta,협정,AK,certificate_of_origin,0
+D024,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D024,dev,2,description,품명,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",commercial_invoice.items[1].name,0
+D024,dev,2,hs_code,세번부호,6109101000,eval/sets.csv hs_answer (관세청 HS부호 표),1
+D024,dev,2,qty,수량,8950,commercial_invoice.items[1].qty,0
+D024,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D024,dev,2,net_kg,순중량(kg),1611,packing_list.items[1].net_kg,0
+D024,dev,2,unit_price,단가,2.35,commercial_invoice.items[1].unit_price,0
+D024,dev,2,amount,금액,21032.5,commercial_invoice.items[1].amount,0
+D024,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D024,dev,2,fta,협정,AK,certificate_of_origin,0
+D024,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D025,dev,,bl_no,B/L 번호,EXSHTAO26027272,bill_of_lading.bl_no,0
+D025,dev,,vessel,선기명,SAMPLE HORIZON 009E,bill_of_lading.vessel_voyage,0
+D025,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D025,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D025,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D025,dev,,total_gross_kg,총중량(kg),23002.8,packing_list.total_gross_kg,0
+D025,dev,,total_packages,총포장갯수,585,packing_list.total_packages,0
+D025,dev,,package_kind,포장종류,CT,packing_list,0
+D025,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D025,dev,,currency,통화,USD,commercial_invoice,0
+D025,dev,,total_amount,결제금액,65256.6,commercial_invoice.total_amount,0
+D025,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D025,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D025,dev,1,description,품명,"RETREADED TRUCK TYRE 11R22.5, RADIAL, FOR LORRIES",commercial_invoice.items[0].name,0
+D025,dev,1,hs_code,세번부호,4012120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D025,dev,1,qty,수량,336,commercial_invoice.items[0].qty,0
+D025,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D025,dev,1,net_kg,순중량(kg),18480,packing_list.items[0].net_kg,0
+D025,dev,1,unit_price,단가,95,commercial_invoice.items[0].unit_price,0
+D025,dev,1,amount,금액,31920,commercial_invoice.items[0].amount,0
+D025,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D025,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D025,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D025,dev,2,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[1].name,0
+D025,dev,2,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D025,dev,2,qty,수량,4573,commercial_invoice.items[1].qty,0
+D025,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D025,dev,2,net_kg,순중량(kg),1371.9,packing_list.items[1].net_kg,0
+D025,dev,2,unit_price,단가,4.2,commercial_invoice.items[1].unit_price,0
+D025,dev,2,amount,금액,19206.6,commercial_invoice.items[1].amount,0
+D025,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D025,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D025,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D025,dev,3,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[2].name,0
+D025,dev,3,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D025,dev,3,qty,수량,3925,commercial_invoice.items[2].qty,0
+D025,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D025,dev,3,net_kg,순중량(kg),2826,packing_list.items[2].net_kg,0
+D025,dev,3,unit_price,단가,3.6,commercial_invoice.items[2].unit_price,0
+D025,dev,3,amount,금액,14130,commercial_invoice.items[2].amount,0
+D025,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D025,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D025,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D026,dev,,bl_no,B/L 번호,SOCLSZX26021423,bill_of_lading.bl_no,0
+D026,dev,,vessel,선기명,SAMPLE HARMONY 440E,bill_of_lading.vessel_voyage,0
+D026,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D026,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D026,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D026,dev,,total_gross_kg,총중량(kg),3435.78,packing_list.total_gross_kg,1
+D026,dev,,total_packages,총포장갯수,152,packing_list.total_packages,0
+D026,dev,,package_kind,포장종류,CT,packing_list,0
+D026,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D026,dev,,currency,통화,USD,commercial_invoice,0
+D026,dev,,total_amount,결제금액,32648.86,commercial_invoice.total_amount,0
+D026,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D026,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D026,dev,1,description,품명,"MONOCRYSTALLINE SILICON SOLAR CELL 182X182MM, NOT ASSEMBLED IN MODULES",commercial_invoice.items[0].name,0
+D026,dev,1,hs_code,세번부호,8541420000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D026,dev,1,qty,수량,70622,commercial_invoice.items[0].qty,0
+D026,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D026,dev,1,net_kg,순중량(kg),882.78,packing_list.items[0].net_kg,0
+D026,dev,1,unit_price,단가,0.38,commercial_invoice.items[0].unit_price,0
+D026,dev,1,amount,금액,26836.36,commercial_invoice.items[0].amount,0
+D026,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D026,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D026,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D026,dev,2,description,품명,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,commercial_invoice.items[1].name,0
+D026,dev,2,hs_code,세번부호,8541430000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D026,dev,2,qty,수량,93,commercial_invoice.items[1].qty,0
+D026,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D026,dev,2,net_kg,순중량(kg),2232,packing_list.items[1].net_kg,0
+D026,dev,2,unit_price,단가,62.5,commercial_invoice.items[1].unit_price,0
+D026,dev,2,amount,금액,5812.5,commercial_invoice.items[1].amount,0
+D026,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D026,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D026,dev,2,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[1].origin_criterion,0
+D027,dev,,bl_no,B/L 번호,SMLNSZX26012119,bill_of_lading.bl_no,0
+D027,dev,,vessel,선기명,EXAMPLE BRIDGE 750E,bill_of_lading.vessel_voyage,0
+D027,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D027,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D027,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D027,dev,,total_gross_kg,총중량(kg),13375.3,packing_list.total_gross_kg,0
+D027,dev,,total_packages,총포장갯수,831,packing_list.total_packages,0
+D027,dev,,package_kind,포장종류,CT,packing_list,0
+D027,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D027,dev,,currency,통화,USD,commercial_invoice,0
+D027,dev,,total_amount,결제금액,43408.6,commercial_invoice.total_amount,0
+D027,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D027,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D027,dev,1,description,품명,"MONOCRYSTALLINE SILICON SOLAR CELL 182X182MM, NOT ASSEMBLED IN MODULES",commercial_invoice.items[0].name,0
+D027,dev,1,hs_code,세번부호,8541420000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D027,dev,1,qty,수량,27600,commercial_invoice.items[0].qty,0
+D027,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D027,dev,1,net_kg,순중량(kg),345,packing_list.items[0].net_kg,0
+D027,dev,1,unit_price,단가,0.38,commercial_invoice.items[0].unit_price,0
+D027,dev,1,amount,금액,10488,commercial_invoice.items[0].amount,0
+D027,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D027,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D027,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D027,dev,2,description,품명,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",commercial_invoice.items[1].name,0
+D027,dev,2,hs_code,세번부호,9405110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D027,dev,2,qty,수량,1992,commercial_invoice.items[1].qty,0
+D027,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D027,dev,2,net_kg,순중량(kg),4183.2,packing_list.items[1].net_kg,0
+D027,dev,2,unit_price,단가,6.8,commercial_invoice.items[1].unit_price,0
+D027,dev,2,amount,금액,13545.6,commercial_invoice.items[1].amount,0
+D027,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D027,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D027,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D027,dev,3,description,품명,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,commercial_invoice.items[2].name,0
+D027,dev,3,hs_code,세번부호,8541430000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D027,dev,3,qty,수량,310,commercial_invoice.items[2].qty,0
+D027,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D027,dev,3,net_kg,순중량(kg),7440,packing_list.items[2].net_kg,0
+D027,dev,3,unit_price,단가,62.5,commercial_invoice.items[2].unit_price,0
+D027,dev,3,amount,금액,19375,commercial_invoice.items[2].amount,0
+D027,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D027,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D027,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D028,dev,,bl_no,B/L 번호,SMLNSHA26011989,bill_of_lading.bl_no,0
+D028,dev,,vessel,선기명,SAMPLE STAR 996E,bill_of_lading.vessel_voyage,0
+D028,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D028,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D028,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D028,dev,,total_gross_kg,총중량(kg),16834,packing_list.total_gross_kg,0
+D028,dev,,total_packages,총포장갯수,34,packing_list.total_packages,0
+D028,dev,,package_kind,포장종류,CT,packing_list,0
+D028,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D028,dev,,currency,통화,USD,commercial_invoice,0
+D028,dev,,total_amount,결제금액,62545,commercial_invoice.total_amount,0
+D028,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D028,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D028,dev,1,description,품명,"ALUMINIUM ALLOY HOLLOW PROFILE 6063-T5, MILL FINISH",commercial_invoice.items[0].name,0
+D028,dev,1,hs_code,세번부호,7604210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D028,dev,1,qty,수량,7500,commercial_invoice.items[0].qty,0
+D028,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D028,dev,1,net_kg,순중량(kg),7500,packing_list.items[0].net_kg,0
+D028,dev,1,unit_price,단가,3.85,commercial_invoice.items[0].unit_price,0
+D028,dev,1,amount,금액,28875,commercial_invoice.items[0].amount,0
+D028,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D028,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D028,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D028,dev,2,description,품명,"ALUMINIUM ALLOY 6063-T5 EQUAL ANGLE PROFILE 40X40X3MM, SOLID, MILL FINISH",commercial_invoice.items[1].name,0
+D028,dev,2,hs_code,세번부호,7604299000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D028,dev,2,qty,수량,9100,commercial_invoice.items[1].qty,0
+D028,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D028,dev,2,net_kg,순중량(kg),9100,packing_list.items[1].net_kg,0
+D028,dev,2,unit_price,단가,3.7,commercial_invoice.items[1].unit_price,0
+D028,dev,2,amount,금액,33670,commercial_invoice.items[1].amount,0
+D028,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D028,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D028,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D029,dev,,bl_no,B/L 번호,SOCLSGN26021407,bill_of_lading.bl_no,0
+D029,dev,,vessel,선기명,SAMPLE HARMONY 562N,bill_of_lading.vessel_voyage,0
+D029,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D029,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D029,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D029,dev,,total_gross_kg,총중량(kg),3369.2,packing_list.total_gross_kg,1
+D029,dev,,total_packages,총포장갯수,154,packing_list.total_packages,0
+D029,dev,,package_kind,포장종류,CT,packing_list,0
+D029,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D029,dev,,currency,통화,USD,commercial_invoice,0
+D029,dev,,total_amount,결제금액,28420,commercial_invoice.total_amount,0
+D029,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D029,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D029,dev,1,description,품명,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",commercial_invoice.items[0].name,0
+D029,dev,1,hs_code,세번부호,6205200000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D029,dev,1,qty,수량,1800,commercial_invoice.items[0].qty,0
+D029,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D029,dev,1,net_kg,순중량(kg),450,packing_list.items[0].net_kg,0
+D029,dev,1,unit_price,단가,5.8,commercial_invoice.items[0].unit_price,0
+D029,dev,1,amount,금액,10440,commercial_invoice.items[0].amount,0
+D029,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D029,dev,1,fta,협정,VK,certificate_of_origin,0
+D029,dev,1,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[0].origin_criterion,0
+D029,dev,2,description,품명,COTTON TERRY BATH TOWEL 70X140CM,commercial_invoice.items[1].name,0
+D029,dev,2,hs_code,세번부호,6302600000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D029,dev,2,qty,수량,6200,commercial_invoice.items[1].qty,0
+D029,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D029,dev,2,net_kg,순중량(kg),2790,packing_list.items[1].net_kg,0
+D029,dev,2,unit_price,단가,2.9,commercial_invoice.items[1].unit_price,0
+D029,dev,2,amount,금액,17980,commercial_invoice.items[1].amount,0
+D029,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D029,dev,2,fta,협정,VK,certificate_of_origin,0
+D029,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D030,dev,,bl_no,B/L 번호,SMLNSGN26011935,bill_of_lading.bl_no,0
+D030,dev,,vessel,선기명,SAMPLE STAR 085N,bill_of_lading.vessel_voyage,0
+D030,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D030,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D030,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D030,dev,,total_gross_kg,총중량(kg),25860.8,packing_list.total_gross_kg,0
+D030,dev,,total_packages,총포장갯수,2309,packing_list.total_packages,0
+D030,dev,,package_kind,포장종류,CT,packing_list,0
+D030,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D030,dev,,currency,통화,USD,commercial_invoice,0
+D030,dev,,total_amount,결제금액,191936,commercial_invoice.total_amount,0
+D030,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D030,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D030,dev,1,description,품명,"FROZEN RAW WHITE LEG SHRIMP (L. VANNAMEI), PEELED AND DEVEINED, 31/40",commercial_invoice.items[0].name,0
+D030,dev,1,hs_code,세번부호,0306171090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D030,dev,1,qty,수량,6350,commercial_invoice.items[0].qty,0
+D030,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D030,dev,1,net_kg,순중량(kg),6350,packing_list.items[0].net_kg,0
+D030,dev,1,unit_price,단가,9.4,commercial_invoice.items[0].unit_price,0
+D030,dev,1,amount,금액,59690,commercial_invoice.items[0].amount,0
+D030,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D030,dev,1,fta,협정,,certificate_of_origin,0
+D030,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D030,dev,2,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[1].name,0
+D030,dev,2,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D030,dev,2,qty,수량,16740,commercial_invoice.items[1].qty,0
+D030,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D030,dev,2,net_kg,순중량(kg),16740,packing_list.items[1].net_kg,0
+D030,dev,2,unit_price,단가,7.9,commercial_invoice.items[1].unit_price,0
+D030,dev,2,amount,금액,132246,commercial_invoice.items[1].amount,0
+D030,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D030,dev,2,fta,협정,,certificate_of_origin,0
+D030,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D031,dev,,bl_no,B/L 번호,SOCLSGN26021505,bill_of_lading.bl_no,0
+D031,dev,,vessel,선기명,EXAMPLE PEARL 179N,bill_of_lading.vessel_voyage,0
+D031,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D031,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D031,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D031,dev,,total_gross_kg,총중량(kg),26073.6,packing_list.total_gross_kg,0
+D031,dev,,total_packages,총포장갯수,2328,packing_list.total_packages,0
+D031,dev,,package_kind,포장종류,CT,packing_list,0
+D031,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D031,dev,,currency,통화,USD,commercial_invoice,0
+D031,dev,,total_amount,결제금액,207282,commercial_invoice.total_amount,0
+D031,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D031,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D031,dev,1,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[0].name,0
+D031,dev,1,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D031,dev,1,qty,수량,7700,commercial_invoice.items[0].qty,0
+D031,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D031,dev,1,net_kg,순중량(kg),7700,packing_list.items[0].net_kg,0
+D031,dev,1,unit_price,단가,7.9,commercial_invoice.items[0].unit_price,0
+D031,dev,1,amount,금액,60830,commercial_invoice.items[0].amount,0
+D031,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D031,dev,1,fta,협정,AK,certificate_of_origin,0
+D031,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D031,dev,2,description,품명,"FROZEN RAW WHITE LEG SHRIMP (L. VANNAMEI), PEELED AND DEVEINED, 31/40",commercial_invoice.items[1].name,0
+D031,dev,2,hs_code,세번부호,0306171090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D031,dev,2,qty,수량,15580,commercial_invoice.items[1].qty,0
+D031,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D031,dev,2,net_kg,순중량(kg),15580,packing_list.items[1].net_kg,0
+D031,dev,2,unit_price,단가,9.4,commercial_invoice.items[1].unit_price,0
+D031,dev,2,amount,금액,146452,commercial_invoice.items[1].amount,0
+D031,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D031,dev,2,fta,협정,AK,certificate_of_origin,0
+D031,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D032,dev,,bl_no,B/L 번호,SOCLNGB26021495,bill_of_lading.bl_no,0
+D032,dev,,vessel,선기명,SAMPLE HARMONY 284E,bill_of_lading.vessel_voyage,0
+D032,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D032,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D032,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D032,dev,,total_gross_kg,총중량(kg),3690.84,packing_list.total_gross_kg,0
+D032,dev,,total_packages,총포장갯수,262,packing_list.total_packages,0
+D032,dev,,package_kind,포장종류,CT,packing_list,0
+D032,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D032,dev,,currency,통화,USD,commercial_invoice,0
+D032,dev,,total_amount,결제금액,8472.6,commercial_invoice.total_amount,0
+D032,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D032,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D032,dev,1,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[0].name,0
+D032,dev,1,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D032,dev,1,qty,수량,852,commercial_invoice.items[0].qty,0
+D032,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D032,dev,1,net_kg,순중량(kg),809.4,packing_list.items[0].net_kg,0
+D032,dev,1,unit_price,단가,2.95,commercial_invoice.items[0].unit_price,0
+D032,dev,1,amount,금액,2513.4,commercial_invoice.items[0].amount,0
+D032,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D032,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D032,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D032,dev,2,description,품명,"MELAMINE DINNER PLATE 10 INCH, WHITE",commercial_invoice.items[1].name,0
+D032,dev,2,hs_code,세번부호,3924100000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D032,dev,2,qty,수량,9168,commercial_invoice.items[1].qty,0
+D032,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D032,dev,2,net_kg,순중량(kg),2567.04,packing_list.items[1].net_kg,0
+D032,dev,2,unit_price,단가,0.65,commercial_invoice.items[1].unit_price,0
+D032,dev,2,amount,금액,5959.2,commercial_invoice.items[1].amount,0
+D032,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D032,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D032,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D033,dev,,bl_no,B/L 번호,EXSHSGN26027901,bill_of_lading.bl_no,0
+D033,dev,,vessel,선기명,SAMPLE HORIZON 023N,bill_of_lading.vessel_voyage,0
+D033,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D033,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D033,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D033,dev,,total_gross_kg,총중량(kg),652.5,packing_list.total_gross_kg,0
+D033,dev,,total_packages,총포장갯수,35,packing_list.total_packages,0
+D033,dev,,package_kind,포장종류,CT,packing_list,0
+D033,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,1
+D033,dev,,currency,통화,USD,commercial_invoice,0
+D033,dev,,total_amount,결제금액,8107.5,commercial_invoice.total_amount,1
+D033,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D033,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D033,dev,1,description,품명,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",commercial_invoice.items[0].name,0
+D033,dev,1,hs_code,세번부호,6109101000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D033,dev,1,qty,수량,3450,commercial_invoice.items[0].qty,1
+D033,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D033,dev,1,net_kg,순중량(kg),621,packing_list.items[0].net_kg,0
+D033,dev,1,unit_price,단가,2.35,commercial_invoice.items[0].unit_price,0
+D033,dev,1,amount,금액,8107.5,commercial_invoice.items[0].amount,1
+D033,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D033,dev,1,fta,협정,VK,certificate_of_origin,0
+D033,dev,1,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[0].origin_criterion,0
+D034,dev,,bl_no,B/L 번호,SMLNSHA26011954,bill_of_lading.bl_no,0
+D034,dev,,vessel,선기명,EXAMPLE BRIDGE 752E,bill_of_lading.vessel_voyage,0
+D034,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D034,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D034,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D034,dev,,total_gross_kg,총중량(kg),4031.4,packing_list.total_gross_kg,0
+D034,dev,,total_packages,총포장갯수,299,packing_list.total_packages,0
+D034,dev,,package_kind,포장종류,CT,packing_list,0
+D034,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D034,dev,,currency,통화,USD,commercial_invoice,0
+D034,dev,,total_amount,결제금액,40621,commercial_invoice.total_amount,0
+D034,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D034,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D034,dev,1,description,품명,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",commercial_invoice.items[0].name,0
+D034,dev,1,hs_code,세번부호,8211920000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D034,dev,1,qty,수량,2750,commercial_invoice.items[0].qty,0
+D034,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D034,dev,1,net_kg,순중량(kg),577.5,packing_list.items[0].net_kg,0
+D034,dev,1,unit_price,단가,3.2,commercial_invoice.items[0].unit_price,0
+D034,dev,1,amount,금액,8800,commercial_invoice.items[0].amount,0
+D034,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D034,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D034,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D034,dev,2,description,품명,CORDLESS DRILL 18V WITH LI-ION BATTERY,commercial_invoice.items[1].name,0
+D034,dev,2,hs_code,세번부호,8467210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D034,dev,2,qty,수량,1038,commercial_invoice.items[1].qty,0
+D034,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D034,dev,2,net_kg,순중량(kg),1660.8,packing_list.items[1].net_kg,0
+D034,dev,2,unit_price,단가,24.5,commercial_invoice.items[1].unit_price,0
+D034,dev,2,amount,금액,25431,commercial_invoice.items[1].amount,0
+D034,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D034,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D034,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D034,dev,3,description,품명,STAINLESS STEEL HEX BOLT M10X50 A2-70,commercial_invoice.items[2].name,0
+D034,dev,3,hs_code,세번부호,7318152000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D034,dev,3,qty,수량,35500,commercial_invoice.items[2].qty,0
+D034,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D034,dev,3,net_kg,순중량(kg),1491,packing_list.items[2].net_kg,0
+D034,dev,3,unit_price,단가,0.18,commercial_invoice.items[2].unit_price,0
+D034,dev,3,amount,금액,6390,commercial_invoice.items[2].amount,0
+D034,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D034,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D034,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D035,dev,,bl_no,B/L 번호,SMLNSHA26012287,bill_of_lading.bl_no,0
+D035,dev,,vessel,선기명,SAMPLE STAR 043E,bill_of_lading.vessel_voyage,0
+D035,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D035,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D035,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D035,dev,,total_gross_kg,총중량(kg),1722.2,packing_list.total_gross_kg,0
+D035,dev,,total_packages,총포장갯수,79,packing_list.total_packages,0
+D035,dev,,package_kind,포장종류,CT,packing_list,0
+D035,dev,,incoterms,인도조건,EXW,commercial_invoice.incoterms,0
+D035,dev,,currency,통화,USD,commercial_invoice,0
+D035,dev,,total_amount,결제금액,7110,commercial_invoice.total_amount,0
+D035,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D035,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D035,dev,1,description,품명,STAINLESS STEEL HEX BOLT M10X50 A2-70,commercial_invoice.items[0].name,0
+D035,dev,1,hs_code,세번부호,7318152000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D035,dev,1,qty,수량,39500,commercial_invoice.items[0].qty,1
+D035,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D035,dev,1,net_kg,순중량(kg),1659,packing_list.items[0].net_kg,0
+D035,dev,1,unit_price,단가,0.18,commercial_invoice.items[0].unit_price,0
+D035,dev,1,amount,금액,7110,commercial_invoice.items[0].amount,0
+D035,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D035,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D035,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D036,dev,,bl_no,B/L 번호,SOCLHPH26021861,bill_of_lading.bl_no,0
+D036,dev,,vessel,선기명,EXAMPLE BRIDGE 452N,bill_of_lading.vessel_voyage,0
+D036,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D036,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D036,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D036,dev,,total_gross_kg,총중량(kg),700,packing_list.total_gross_kg,0
+D036,dev,,total_packages,총포장갯수,50,packing_list.total_packages,0
+D036,dev,,package_kind,포장종류,CT,packing_list,0
+D036,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D036,dev,,currency,통화,USD,commercial_invoice,0
+D036,dev,,total_amount,결제금액,6700,commercial_invoice.total_amount,0
+D036,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D036,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D036,dev,1,description,품명,"BACKPACK, OUTER SURFACE OF POLYESTER TEXTILE",commercial_invoice.items[0].name,0
+D036,dev,1,hs_code,세번부호,4202922000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D036,dev,1,qty,수량,1000,commercial_invoice.items[0].qty,0
+D036,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D036,dev,1,net_kg,순중량(kg),650,packing_list.items[0].net_kg,0
+D036,dev,1,unit_price,단가,6.7,commercial_invoice.items[0].unit_price,0
+D036,dev,1,amount,금액,6700,commercial_invoice.items[0].amount,0
+D036,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D036,dev,1,fta,협정,,certificate_of_origin,0
+D036,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D037,dev,,bl_no,B/L 번호,SOCLSZX26021654,bill_of_lading.bl_no,0
+D037,dev,,vessel,선기명,EXAMPLE VOYAGER 473E,bill_of_lading.vessel_voyage,0
+D037,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D037,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D037,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D037,dev,,total_gross_kg,총중량(kg),1251,packing_list.total_gross_kg,0
+D037,dev,,total_packages,총포장갯수,90,packing_list.total_packages,0
+D037,dev,,package_kind,포장종류,CT,packing_list,0
+D037,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D037,dev,,currency,통화,USD,commercial_invoice,0
+D037,dev,,total_amount,결제금액,33300,commercial_invoice.total_amount,1
+D037,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D037,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D037,dev,1,description,품명,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,commercial_invoice.items[0].name,0
+D037,dev,1,hs_code,세번부호,8507603000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D037,dev,1,qty,수량,180,commercial_invoice.items[0].qty,1
+D037,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D037,dev,1,net_kg,순중량(kg),1116,packing_list.items[0].net_kg,0
+D037,dev,1,unit_price,단가,185,commercial_invoice.items[0].unit_price,0
+D037,dev,1,amount,금액,33300,commercial_invoice.items[0].amount,1
+D037,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D037,dev,1,fta,협정,,certificate_of_origin,0
+D037,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D038,dev,,bl_no,B/L 번호,SMLNCAN26012294,bill_of_lading.bl_no,0
+D038,dev,,vessel,선기명,EXAMPLE PEARL 229E,bill_of_lading.vessel_voyage,0
+D038,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D038,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D038,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D038,dev,,total_gross_kg,총중량(kg),47765,packing_list.total_gross_kg,0
+D038,dev,,total_packages,총포장갯수,2575,packing_list.total_packages,0
+D038,dev,,package_kind,포장종류,CT,packing_list,0
+D038,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D038,dev,,currency,통화,USD,commercial_invoice,0
+D038,dev,,total_amount,결제금액,15030,commercial_invoice.total_amount,0
+D038,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D038,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D038,dev,1,description,품명,"CERAMIC WALL TILE 300X600X9MM, GLAZED, WATER ABSORPTION OVER 10%",commercial_invoice.items[0].name,0
+D038,dev,1,hs_code,세번부호,6907230000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D038,dev,1,qty,수량,1350,commercial_invoice.items[0].qty,0
+D038,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D038,dev,1,net_kg,순중량(kg),20250,packing_list.items[0].net_kg,0
+D038,dev,1,unit_price,단가,4.6,commercial_invoice.items[0].unit_price,0
+D038,dev,1,amount,금액,6210,commercial_invoice.items[0].amount,0
+D038,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D038,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D038,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D038,dev,2,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[1].name,0
+D038,dev,2,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D038,dev,2,qty,수량,1225,commercial_invoice.items[1].qty,0
+D038,dev,2,unit,단위,M2,commercial_invoice.items[1].qty,0
+D038,dev,2,net_kg,순중량(kg),25725,packing_list.items[1].net_kg,0
+D038,dev,2,unit_price,단가,7.2,commercial_invoice.items[1].unit_price,0
+D038,dev,2,amount,금액,8820,commercial_invoice.items[1].amount,0
+D038,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D038,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D038,dev,2,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[1].origin_criterion,0
+D039,dev,,bl_no,B/L 번호,EXSHSZX26027493,bill_of_lading.bl_no,0
+D039,dev,,vessel,선기명,EXAMPLE VOYAGER 785E,bill_of_lading.vessel_voyage,0
+D039,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D039,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D039,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D039,dev,,total_gross_kg,총중량(kg),16697,packing_list.total_gross_kg,0
+D039,dev,,total_packages,총포장갯수,749,packing_list.total_packages,0
+D039,dev,,package_kind,포장종류,CT,packing_list,0
+D039,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D039,dev,,currency,통화,USD,commercial_invoice,0
+D039,dev,,total_amount,결제금액,76281.5,commercial_invoice.total_amount,0
+D039,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D039,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D039,dev,1,description,품명,"MONOCRYSTALLINE SILICON SOLAR CELL 182X182MM, NOT ASSEMBLED IN MODULES",commercial_invoice.items[0].name,0
+D039,dev,1,hs_code,세번부호,8541420000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D039,dev,1,qty,수량,104400,commercial_invoice.items[0].qty,0
+D039,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D039,dev,1,net_kg,순중량(kg),1305,packing_list.items[0].net_kg,0
+D039,dev,1,unit_price,단가,0.38,commercial_invoice.items[0].unit_price,0
+D039,dev,1,amount,금액,39672,commercial_invoice.items[0].amount,0
+D039,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D039,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D039,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D039,dev,2,description,품명,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",commercial_invoice.items[1].name,0
+D039,dev,2,hs_code,세번부호,9405110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D039,dev,2,qty,수량,540,commercial_invoice.items[1].qty,0
+D039,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D039,dev,2,net_kg,순중량(kg),1134,packing_list.items[1].net_kg,0
+D039,dev,2,unit_price,단가,6.8,commercial_invoice.items[1].unit_price,0
+D039,dev,2,amount,금액,3672,commercial_invoice.items[1].amount,0
+D039,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D039,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D039,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D039,dev,3,description,품명,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,commercial_invoice.items[2].name,0
+D039,dev,3,hs_code,세번부호,8541430000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D039,dev,3,qty,수량,527,commercial_invoice.items[2].qty,0
+D039,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D039,dev,3,net_kg,순중량(kg),12648,packing_list.items[2].net_kg,0
+D039,dev,3,unit_price,단가,62.5,commercial_invoice.items[2].unit_price,0
+D039,dev,3,amount,금액,32937.5,commercial_invoice.items[2].amount,0
+D039,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D039,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D039,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D040,dev,,bl_no,B/L 번호,EXSHNGB26027562,bill_of_lading.bl_no,0
+D040,dev,,vessel,선기명,SAMPLE STAR 550E,bill_of_lading.vessel_voyage,0
+D040,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D040,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D040,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D040,dev,,total_gross_kg,총중량(kg),3714.9,packing_list.total_gross_kg,0
+D040,dev,,total_packages,총포장갯수,277,packing_list.total_packages,0
+D040,dev,,package_kind,포장종류,CT,packing_list,0
+D040,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D040,dev,,currency,통화,USD,commercial_invoice,0
+D040,dev,,total_amount,결제금액,10405,commercial_invoice.total_amount,0
+D040,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D040,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D040,dev,1,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[0].name,0
+D040,dev,1,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D040,dev,1,qty,수량,2040,commercial_invoice.items[0].qty,0
+D040,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D040,dev,1,net_kg,순중량(kg),1938,packing_list.items[0].net_kg,0
+D040,dev,1,unit_price,단가,2.95,commercial_invoice.items[0].unit_price,0
+D040,dev,1,amount,금액,6018,commercial_invoice.items[0].amount,0
+D040,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D040,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D040,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D040,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[1].name,0
+D040,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D040,dev,2,qty,수량,1070,commercial_invoice.items[1].qty,0
+D040,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D040,dev,2,net_kg,순중량(kg),1444.5,packing_list.items[1].net_kg,0
+D040,dev,2,unit_price,단가,4.1,commercial_invoice.items[1].unit_price,0
+D040,dev,2,amount,금액,4387,commercial_invoice.items[1].amount,0
+D040,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D040,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D040,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D041,dev,,bl_no,B/L 번호,SOCLSGN26021760,bill_of_lading.bl_no,0
+D041,dev,,vessel,선기명,SAMPLE PIONEER 533N,bill_of_lading.vessel_voyage,0
+D041,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D041,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D041,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D041,dev,,total_gross_kg,총중량(kg),27907.2,packing_list.total_gross_kg,0
+D041,dev,,total_packages,총포장갯수,459,packing_list.total_packages,0
+D041,dev,,package_kind,포장종류,CT,packing_list,0
+D041,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D041,dev,,currency,통화,USD,commercial_invoice,0
+D041,dev,,total_amount,결제금액,138774,commercial_invoice.total_amount,0
+D041,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D041,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D041,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D041,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D041,dev,1,qty,수량,14820,commercial_invoice.items[0].qty,1
+D041,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D041,dev,1,net_kg,순중량(kg),14820,packing_list.items[0].net_kg,0
+D041,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D041,dev,1,amount,금액,63726,commercial_invoice.items[0].amount,0
+D041,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D041,dev,1,fta,협정,AK,certificate_of_origin,0
+D041,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D041,dev,2,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, DECAFFEINATED, SCREEN 18",commercial_invoice.items[1].name,0
+D041,dev,2,hs_code,세번부호,0901120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D041,dev,2,qty,수량,12720,commercial_invoice.items[1].qty,0
+D041,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D041,dev,2,net_kg,순중량(kg),12720,packing_list.items[1].net_kg,0
+D041,dev,2,unit_price,단가,5.9,commercial_invoice.items[1].unit_price,0
+D041,dev,2,amount,금액,75048,commercial_invoice.items[1].amount,0
+D041,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D041,dev,2,fta,협정,AK,certificate_of_origin,0
+D041,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D042,dev,,bl_no,B/L 번호,EXSHHPH26027720,bill_of_lading.bl_no,0
+D042,dev,,vessel,선기명,SAMPLE HORIZON 307N,bill_of_lading.vessel_voyage,0
+D042,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D042,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D042,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D042,dev,,total_gross_kg,총중량(kg),4293.36,packing_list.total_gross_kg,0
+D042,dev,,total_packages,총포장갯수,483,packing_list.total_packages,0
+D042,dev,,package_kind,포장종류,CT,packing_list,0
+D042,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D042,dev,,currency,통화,USD,commercial_invoice,0
+D042,dev,,total_amount,결제금액,69357.6,commercial_invoice.total_amount,1
+D042,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D042,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D042,dev,1,description,품명,"SPORTS SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[0].name,0
+D042,dev,1,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D042,dev,1,qty,수량,3972,commercial_invoice.items[0].qty,0
+D042,dev,1,unit,단위,PRS,commercial_invoice.items[0].qty,0
+D042,dev,1,net_kg,순중량(kg),2462.64,packing_list.items[0].net_kg,0
+D042,dev,1,unit_price,단가,11.4,commercial_invoice.items[0].unit_price,0
+D042,dev,1,amount,금액,45280.8,commercial_invoice.items[0].amount,0
+D042,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D042,dev,1,fta,협정,,certificate_of_origin,0
+D042,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D042,dev,2,description,품명,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[1].name,0
+D042,dev,2,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D042,dev,2,qty,수량,1824,commercial_invoice.items[1].qty,1
+D042,dev,2,unit,단위,PRS,commercial_invoice.items[1].qty,0
+D042,dev,2,net_kg,순중량(kg),1057.92,packing_list.items[1].net_kg,0
+D042,dev,2,unit_price,단가,13.2,commercial_invoice.items[1].unit_price,0
+D042,dev,2,amount,금액,24076.8,commercial_invoice.items[1].amount,1
+D042,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D042,dev,2,fta,협정,,certificate_of_origin,0
+D042,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D043,dev,,bl_no,B/L 번호,EXSHSGN26027898,bill_of_lading.bl_no,0
+D043,dev,,vessel,선기명,SAMPLE PIONEER 207N,bill_of_lading.vessel_voyage,0
+D043,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D043,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D043,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D043,dev,,total_gross_kg,총중량(kg),31676.8,packing_list.total_gross_kg,0
+D043,dev,,total_packages,총포장갯수,521,packing_list.total_packages,0
+D043,dev,,package_kind,포장종류,CT,packing_list,0
+D043,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D043,dev,,currency,통화,USD,commercial_invoice,0
+D043,dev,,total_amount,결제금액,154386,commercial_invoice.total_amount,0
+D043,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D043,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D043,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D043,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D043,dev,1,qty,수량,18780,commercial_invoice.items[0].qty,0
+D043,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D043,dev,1,net_kg,순중량(kg),18780,packing_list.items[0].net_kg,0
+D043,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D043,dev,1,amount,금액,80754,commercial_invoice.items[0].amount,0
+D043,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D043,dev,1,fta,협정,,certificate_of_origin,0
+D043,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D043,dev,2,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, DECAFFEINATED, SCREEN 18",commercial_invoice.items[1].name,0
+D043,dev,2,hs_code,세번부호,0901120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D043,dev,2,qty,수량,12480,commercial_invoice.items[1].qty,0
+D043,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D043,dev,2,net_kg,순중량(kg),12480,packing_list.items[1].net_kg,0
+D043,dev,2,unit_price,단가,5.9,commercial_invoice.items[1].unit_price,0
+D043,dev,2,amount,금액,73632,commercial_invoice.items[1].amount,0
+D043,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D043,dev,2,fta,협정,,certificate_of_origin,0
+D043,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D044,dev,,bl_no,B/L 번호,SMLNSGN26012325,bill_of_lading.bl_no,0
+D044,dev,,vessel,선기명,EXAMPLE OCEAN 282N,bill_of_lading.vessel_voyage,0
+D044,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D044,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D044,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D044,dev,,total_gross_kg,총중량(kg),7784,packing_list.total_gross_kg,0
+D044,dev,,total_packages,총포장갯수,695,packing_list.total_packages,0
+D044,dev,,package_kind,포장종류,CT,packing_list,0
+D044,dev,,incoterms,인도조건,EXW,commercial_invoice.incoterms,0
+D044,dev,,currency,통화,USD,commercial_invoice,0
+D044,dev,,total_amount,결제금액,54905,commercial_invoice.total_amount,0
+D044,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D044,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D044,dev,1,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[0].name,0
+D044,dev,1,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D044,dev,1,qty,수량,6950,commercial_invoice.items[0].qty,0
+D044,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D044,dev,1,net_kg,순중량(kg),6950,packing_list.items[0].net_kg,0
+D044,dev,1,unit_price,단가,7.9,commercial_invoice.items[0].unit_price,0
+D044,dev,1,amount,금액,54905,commercial_invoice.items[0].amount,0
+D044,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D044,dev,1,fta,협정,VK,certificate_of_origin,0
+D044,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D045,dev,,bl_no,B/L 번호,SOCLNGB26021638,bill_of_lading.bl_no,0
+D045,dev,,vessel,선기명,EXAMPLE BRIDGE 403E,bill_of_lading.vessel_voyage,0
+D045,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D045,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D045,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D045,dev,,total_gross_kg,총중량(kg),6295.5,packing_list.total_gross_kg,0
+D045,dev,,total_packages,총포장갯수,442,packing_list.total_packages,0
+D045,dev,,package_kind,포장종류,CT,packing_list,0
+D045,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D045,dev,,currency,통화,USD,commercial_invoice,0
+D045,dev,,total_amount,결제금액,16860.6,commercial_invoice.total_amount,0
+D045,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D045,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D045,dev,1,description,품명,"MELAMINE DINNER PLATE 10 INCH, WHITE",commercial_invoice.items[0].name,0
+D045,dev,1,hs_code,세번부호,3924100000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D045,dev,1,qty,수량,3600,commercial_invoice.items[0].qty,0
+D045,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D045,dev,1,net_kg,순중량(kg),1008,packing_list.items[0].net_kg,0
+D045,dev,1,unit_price,단가,0.65,commercial_invoice.items[0].unit_price,0
+D045,dev,1,amount,금액,2340,commercial_invoice.items[0].amount,0
+D045,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D045,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D045,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D045,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[1].name,0
+D045,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D045,dev,2,qty,수량,1128,commercial_invoice.items[1].qty,1
+D045,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D045,dev,2,net_kg,순중량(kg),1071.6,packing_list.items[1].net_kg,0
+D045,dev,2,unit_price,단가,2.95,commercial_invoice.items[1].unit_price,0
+D045,dev,2,amount,금액,3327.6,commercial_invoice.items[1].amount,0
+D045,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D045,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D045,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D045,dev,3,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[2].name,0
+D045,dev,3,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D045,dev,3,qty,수량,2730,commercial_invoice.items[2].qty,0
+D045,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D045,dev,3,net_kg,순중량(kg),3685.5,packing_list.items[2].net_kg,0
+D045,dev,3,unit_price,단가,4.1,commercial_invoice.items[2].unit_price,0
+D045,dev,3,amount,금액,11193,commercial_invoice.items[2].amount,0
+D045,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D045,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D045,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D046,dev,,bl_no,B/L 번호,EXSHSGN26027488,bill_of_lading.bl_no,0
+D046,dev,,vessel,선기명,SAMPLE STAR 139N,bill_of_lading.vessel_voyage,0
+D046,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D046,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D046,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D046,dev,,total_gross_kg,총중량(kg),12707.2,packing_list.total_gross_kg,0
+D046,dev,,total_packages,총포장갯수,209,packing_list.total_packages,0
+D046,dev,,package_kind,포장종류,CT,packing_list,0
+D046,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D046,dev,,currency,통화,USD,commercial_invoice,0
+D046,dev,,total_amount,결제금액,53922,commercial_invoice.total_amount,0
+D046,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D046,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D046,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D046,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D046,dev,1,qty,수량,12540,commercial_invoice.items[0].qty,0
+D046,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D046,dev,1,net_kg,순중량(kg),12540,packing_list.items[0].net_kg,0
+D046,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D046,dev,1,amount,금액,53922,commercial_invoice.items[0].amount,0
+D046,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D046,dev,1,fta,협정,AK,certificate_of_origin,0
+D046,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D047,dev,,bl_no,B/L 번호,EXSHSHA26027620,bill_of_lading.bl_no,0
+D047,dev,,vessel,선기명,EXAMPLE VOYAGER 489E,bill_of_lading.vessel_voyage,0
+D047,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D047,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D047,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D047,dev,,total_gross_kg,총중량(kg),9960,packing_list.total_gross_kg,0
+D047,dev,,total_packages,총포장갯수,20,packing_list.total_packages,0
+D047,dev,,package_kind,포장종류,CT,packing_list,0
+D047,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D047,dev,,currency,통화,USD,commercial_invoice,0
+D047,dev,,total_amount,결제금액,37730,commercial_invoice.total_amount,1
+D047,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D047,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D047,dev,1,description,품명,"ALUMINIUM ALLOY HOLLOW PROFILE 6063-T5, MILL FINISH",commercial_invoice.items[0].name,0
+D047,dev,1,hs_code,세번부호,7604210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D047,dev,1,qty,수량,9800,commercial_invoice.items[0].qty,1
+D047,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D047,dev,1,net_kg,순중량(kg),9800,packing_list.items[0].net_kg,0
+D047,dev,1,unit_price,단가,3.85,commercial_invoice.items[0].unit_price,0
+D047,dev,1,amount,금액,37730,commercial_invoice.items[0].amount,1
+D047,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D047,dev,1,fta,협정,,certificate_of_origin,0
+D047,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D048,dev,,bl_no,B/L 번호,SOCLSGN26021833,bill_of_lading.bl_no,0
+D048,dev,,vessel,선기명,SAMPLE STAR 873N,bill_of_lading.vessel_voyage,0
+D048,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D048,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D048,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D048,dev,,total_gross_kg,총중량(kg),26432,packing_list.total_gross_kg,0
+D048,dev,,total_packages,총포장갯수,2360,packing_list.total_packages,0
+D048,dev,,package_kind,포장종류,CT,packing_list,0
+D048,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D048,dev,,currency,통화,USD,commercial_invoice,0
+D048,dev,,total_amount,결제금액,200465,commercial_invoice.total_amount,0
+D048,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D048,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D048,dev,1,description,품명,"FROZEN RAW WHITE LEG SHRIMP (L. VANNAMEI), PEELED AND DEVEINED, 31/40",commercial_invoice.items[0].name,0
+D048,dev,1,hs_code,세번부호,0306171090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D048,dev,1,qty,수량,9350,commercial_invoice.items[0].qty,0
+D048,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D048,dev,1,net_kg,순중량(kg),9350,packing_list.items[0].net_kg,0
+D048,dev,1,unit_price,단가,9.4,commercial_invoice.items[0].unit_price,0
+D048,dev,1,amount,금액,87890,commercial_invoice.items[0].amount,0
+D048,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D048,dev,1,fta,협정,VK,certificate_of_origin,0
+D048,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D048,dev,2,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[1].name,0
+D048,dev,2,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D048,dev,2,qty,수량,14250,commercial_invoice.items[1].qty,0
+D048,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D048,dev,2,net_kg,순중량(kg),14250,packing_list.items[1].net_kg,0
+D048,dev,2,unit_price,단가,7.9,commercial_invoice.items[1].unit_price,0
+D048,dev,2,amount,금액,112575,commercial_invoice.items[1].amount,0
+D048,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D048,dev,2,fta,협정,VK,certificate_of_origin,0
+D048,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D049,dev,,bl_no,B/L 번호,EXSHSHA26027793,bill_of_lading.bl_no,0
+D049,dev,,vessel,선기명,SAMPLE HORIZON 382E,bill_of_lading.vessel_voyage,0
+D049,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D049,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D049,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D049,dev,,total_gross_kg,총중량(kg),3445.8,packing_list.total_gross_kg,0
+D049,dev,,total_packages,총포장갯수,420,packing_list.total_packages,0
+D049,dev,,package_kind,포장종류,CT,packing_list,0
+D049,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D049,dev,,currency,통화,USD,commercial_invoice,0
+D049,dev,,total_amount,결제금액,43020,commercial_invoice.total_amount,0
+D049,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D049,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D049,dev,1,description,품명,CORDLESS DRILL 18V WITH LI-ION BATTERY,commercial_invoice.items[0].name,0
+D049,dev,1,hs_code,세번부호,8467210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D049,dev,1,qty,수량,780,commercial_invoice.items[0].qty,0
+D049,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D049,dev,1,net_kg,순중량(kg),1248,packing_list.items[0].net_kg,0
+D049,dev,1,unit_price,단가,24.5,commercial_invoice.items[0].unit_price,0
+D049,dev,1,amount,금액,19110,commercial_invoice.items[0].amount,0
+D049,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D049,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D049,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D049,dev,2,description,품명,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",commercial_invoice.items[1].name,0
+D049,dev,2,hs_code,세번부호,8211920000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D049,dev,2,qty,수량,5850,commercial_invoice.items[1].qty,0
+D049,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D049,dev,2,net_kg,순중량(kg),1228.5,packing_list.items[1].net_kg,0
+D049,dev,2,unit_price,단가,3.2,commercial_invoice.items[1].unit_price,0
+D049,dev,2,amount,금액,18720,commercial_invoice.items[1].amount,0
+D049,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D049,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D049,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D049,dev,3,description,품명,"STAINLESS STEEL SELF-TAPPING SCREW ST4.2X25, PAN HEAD, A2",commercial_invoice.items[2].name,0
+D049,dev,3,hs_code,세번부호,7318140000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D049,dev,3,qty,수량,173000,commercial_invoice.items[2].qty,0
+D049,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D049,dev,3,net_kg,순중량(kg),605.5,packing_list.items[2].net_kg,0
+D049,dev,3,unit_price,단가,0.03,commercial_invoice.items[2].unit_price,0
+D049,dev,3,amount,금액,5190,commercial_invoice.items[2].amount,0
+D049,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D049,dev,3,fta,협정,KCFTA,certificate_of_origin,0
+D049,dev,3,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[2].origin_criterion,0
+D050,dev,,bl_no,B/L 번호,SOCLTAO26021811,bill_of_lading.bl_no,0
+D050,dev,,vessel,선기명,EXAMPLE BRIDGE 454E,bill_of_lading.vessel_voyage,0
+D050,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D050,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D050,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D050,dev,,total_gross_kg,총중량(kg),4415.7,packing_list.total_gross_kg,0
+D050,dev,,total_packages,총포장갯수,248,packing_list.total_packages,0
+D050,dev,,package_kind,포장종류,CT,packing_list,0
+D050,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D050,dev,,currency,통화,USD,commercial_invoice,0
+D050,dev,,total_amount,결제금액,33099,commercial_invoice.total_amount,0
+D050,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D050,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D050,dev,1,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D050,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D050,dev,1,qty,수량,3950,commercial_invoice.items[0].qty,0
+D050,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D050,dev,1,net_kg,순중량(kg),2844,packing_list.items[0].net_kg,0
+D050,dev,1,unit_price,단가,3.6,commercial_invoice.items[0].unit_price,0
+D050,dev,1,amount,금액,14220,commercial_invoice.items[0].amount,0
+D050,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D050,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D050,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D050,dev,2,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[1].name,0
+D050,dev,2,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D050,dev,2,qty,수량,4495,commercial_invoice.items[1].qty,0
+D050,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D050,dev,2,net_kg,순중량(kg),1348.5,packing_list.items[1].net_kg,0
+D050,dev,2,unit_price,단가,4.2,commercial_invoice.items[1].unit_price,0
+D050,dev,2,amount,금액,18879,commercial_invoice.items[1].amount,0
+D050,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D050,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D050,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D051,dev,,bl_no,B/L 번호,SMLNSGN26012256,bill_of_lading.bl_no,0
+D051,dev,,vessel,선기명,EXAMPLE BRIDGE 100N,bill_of_lading.vessel_voyage,0
+D051,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D051,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D051,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D051,dev,,total_gross_kg,총중량(kg),23800,packing_list.total_gross_kg,0
+D051,dev,,total_packages,총포장갯수,2125,packing_list.total_packages,0
+D051,dev,,package_kind,포장종류,CT,packing_list,0
+D051,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D051,dev,,currency,통화,USD,commercial_invoice,0
+D051,dev,,total_amount,결제금액,180805,commercial_invoice.total_amount,0
+D051,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D051,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D051,dev,1,description,품명,"FROZEN RAW WHITE LEG SHRIMP (L. VANNAMEI), PEELED AND DEVEINED, 31/40",commercial_invoice.items[0].name,0
+D051,dev,1,hs_code,세번부호,0306171090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D051,dev,1,qty,수량,8620,commercial_invoice.items[0].qty,0
+D051,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D051,dev,1,net_kg,순중량(kg),8620,packing_list.items[0].net_kg,0
+D051,dev,1,unit_price,단가,9.4,commercial_invoice.items[0].unit_price,0
+D051,dev,1,amount,금액,81028,commercial_invoice.items[0].amount,0
+D051,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D051,dev,1,fta,협정,AK,certificate_of_origin,0
+D051,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D051,dev,2,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[1].name,0
+D051,dev,2,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D051,dev,2,qty,수량,12630,commercial_invoice.items[1].qty,0
+D051,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D051,dev,2,net_kg,순중량(kg),12630,packing_list.items[1].net_kg,0
+D051,dev,2,unit_price,단가,7.9,commercial_invoice.items[1].unit_price,0
+D051,dev,2,amount,금액,99777,commercial_invoice.items[1].amount,0
+D051,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D051,dev,2,fta,협정,AK,certificate_of_origin,0
+D051,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D052,dev,,bl_no,B/L 번호,EXSHSGN26027236,bill_of_lading.bl_no,0
+D052,dev,,vessel,선기명,EXAMPLE PEARL 363N,bill_of_lading.vessel_voyage,0
+D052,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D052,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D052,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D052,dev,,total_gross_kg,총중량(kg),2966.22,packing_list.total_gross_kg,0
+D052,dev,,total_packages,총포장갯수,157,packing_list.total_packages,0
+D052,dev,,package_kind,포장종류,CT,packing_list,0
+D052,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D052,dev,,currency,통화,USD,commercial_invoice,0
+D052,dev,,total_amount,결제금액,36880.9,commercial_invoice.total_amount,0
+D052,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D052,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D052,dev,1,description,품명,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",commercial_invoice.items[0].name,0
+D052,dev,1,hs_code,세번부호,6109101000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D052,dev,1,qty,수량,15694,commercial_invoice.items[0].qty,0
+D052,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D052,dev,1,net_kg,순중량(kg),2824.92,packing_list.items[0].net_kg,0
+D052,dev,1,unit_price,단가,2.35,commercial_invoice.items[0].unit_price,0
+D052,dev,1,amount,금액,36880.9,commercial_invoice.items[0].amount,0
+D052,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D052,dev,1,fta,협정,VK,certificate_of_origin,0
+D052,dev,1,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[0].origin_criterion,0
+D053,dev,,bl_no,B/L 번호,EXSHTAO26027312,bill_of_lading.bl_no,0
+D053,dev,,vessel,선기명,SAMPLE PIONEER 714E,bill_of_lading.vessel_voyage,0
+D053,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D053,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D053,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D053,dev,,total_gross_kg,총중량(kg),7937.9,packing_list.total_gross_kg,0
+D053,dev,,total_packages,총포장갯수,293,packing_list.total_packages,0
+D053,dev,,package_kind,포장종류,CT,packing_list,0
+D053,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D053,dev,,currency,통화,USD,commercial_invoice,0
+D053,dev,,total_amount,결제금액,29710,commercial_invoice.total_amount,1
+D053,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D053,dev,,co_present,원산지증명서 유무,N,certificate_of_origin,0
+D053,dev,1,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D053,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D053,dev,1,qty,수량,1250,commercial_invoice.items[0].qty,0
+D053,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D053,dev,1,net_kg,순중량(kg),375,packing_list.items[0].net_kg,0
+D053,dev,1,unit_price,단가,4.2,commercial_invoice.items[0].unit_price,0
+D053,dev,1,amount,금액,5250,commercial_invoice.items[0].amount,0
+D053,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D053,dev,1,fta,협정,,certificate_of_origin,0
+D053,dev,1,origin_criterion,원산지결정기준,,certificate_of_origin.items[0].origin_criterion,0
+D053,dev,2,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[1].name,0
+D053,dev,2,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D053,dev,2,qty,수량,5000,commercial_invoice.items[1].qty,0
+D053,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D053,dev,2,net_kg,순중량(kg),3600,packing_list.items[1].net_kg,0
+D053,dev,2,unit_price,단가,3.6,commercial_invoice.items[1].unit_price,0
+D053,dev,2,amount,금액,18000,commercial_invoice.items[1].amount,0
+D053,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D053,dev,2,fta,협정,,certificate_of_origin,0
+D053,dev,2,origin_criterion,원산지결정기준,,certificate_of_origin.items[1].origin_criterion,0
+D053,dev,3,description,품명,"RETREADED TRUCK TYRE 11R22.5, RADIAL, FOR LORRIES",commercial_invoice.items[2].name,0
+D053,dev,3,hs_code,세번부호,4012120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D053,dev,3,qty,수량,68,commercial_invoice.items[2].qty,0
+D053,dev,3,unit,단위,PCS,commercial_invoice.items[2].qty,0
+D053,dev,3,net_kg,순중량(kg),3740,packing_list.items[2].net_kg,0
+D053,dev,3,unit_price,단가,95,commercial_invoice.items[2].unit_price,0
+D053,dev,3,amount,금액,6460,commercial_invoice.items[2].amount,0
+D053,dev,3,origin,원산지,CN,commercial_invoice.origin,0
+D053,dev,3,fta,협정,,certificate_of_origin,0
+D053,dev,3,origin_criterion,원산지결정기준,,certificate_of_origin.items[2].origin_criterion,0
+D054,dev,,bl_no,B/L 번호,SOCLSGN26021597,bill_of_lading.bl_no,0
+D054,dev,,vessel,선기명,SAMPLE HARMONY 868N,bill_of_lading.vessel_voyage,0
+D054,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D054,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D054,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D054,dev,,total_gross_kg,총중량(kg),9418.1,packing_list.total_gross_kg,0
+D054,dev,,total_packages,총포장갯수,467,packing_list.total_packages,0
+D054,dev,,package_kind,포장종류,CT,packing_list,0
+D054,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D054,dev,,currency,통화,USD,commercial_invoice,0
+D054,dev,,total_amount,결제금액,31872,commercial_invoice.total_amount,0
+D054,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D054,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D054,dev,1,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D054,dev,1,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D054,dev,1,qty,수량,143,commercial_invoice.items[0].qty,0
+D054,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D054,dev,1,net_kg,순중량(kg),4576,packing_list.items[0].net_kg,0
+D054,dev,1,unit_price,단가,96,commercial_invoice.items[0].unit_price,0
+D054,dev,1,amount,금액,13728,commercial_invoice.items[0].amount,0
+D054,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D054,dev,1,fta,협정,AK,certificate_of_origin,0
+D054,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D054,dev,2,description,품명,"WOODEN DINING CHAIR, OAK FRAME, NOT UPHOLSTERED, KNOCK-DOWN",commercial_invoice.items[1].name,0
+D054,dev,2,hs_code,세번부호,9401699000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D054,dev,2,qty,수량,648,commercial_invoice.items[1].qty,0
+D054,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D054,dev,2,net_kg,순중량(kg),3758.4,packing_list.items[1].net_kg,0
+D054,dev,2,unit_price,단가,28,commercial_invoice.items[1].unit_price,0
+D054,dev,2,amount,금액,18144,commercial_invoice.items[1].amount,0
+D054,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D054,dev,2,fta,협정,AK,certificate_of_origin,0
+D054,dev,2,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[1].origin_criterion,0
+D055,dev,,bl_no,B/L 번호,SOCLSGN26021603,bill_of_lading.bl_no,0
+D055,dev,,vessel,선기명,SAMPLE HARMONY 777N,bill_of_lading.vessel_voyage,0
+D055,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D055,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D055,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D055,dev,,total_gross_kg,총중량(kg),32224,packing_list.total_gross_kg,0
+D055,dev,,total_packages,총포장갯수,530,packing_list.total_packages,0
+D055,dev,,package_kind,포장종류,CT,packing_list,0
+D055,dev,,incoterms,인도조건,EXW,commercial_invoice.incoterms,0
+D055,dev,,currency,통화,USD,commercial_invoice,0
+D055,dev,,total_amount,결제금액,161028,commercial_invoice.total_amount,0
+D055,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D055,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D055,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D055,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D055,dev,1,qty,수량,16620,commercial_invoice.items[0].qty,0
+D055,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D055,dev,1,net_kg,순중량(kg),16620,packing_list.items[0].net_kg,0
+D055,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D055,dev,1,amount,금액,71466,commercial_invoice.items[0].amount,0
+D055,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D055,dev,1,fta,협정,AK,certificate_of_origin,0
+D055,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D055,dev,2,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, DECAFFEINATED, SCREEN 18",commercial_invoice.items[1].name,0
+D055,dev,2,hs_code,세번부호,0901120000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D055,dev,2,qty,수량,15180,commercial_invoice.items[1].qty,0
+D055,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D055,dev,2,net_kg,순중량(kg),15180,packing_list.items[1].net_kg,0
+D055,dev,2,unit_price,단가,5.9,commercial_invoice.items[1].unit_price,0
+D055,dev,2,amount,금액,89562,commercial_invoice.items[1].amount,0
+D055,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D055,dev,2,fta,협정,AK,certificate_of_origin,0
+D055,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D056,dev,,bl_no,B/L 번호,SOCLNGB26021734,bill_of_lading.bl_no,0
+D056,dev,,vessel,선기명,EXAMPLE BRIDGE 261E,bill_of_lading.vessel_voyage,0
+D056,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D056,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D056,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D056,dev,,total_gross_kg,총중량(kg),4134.6,packing_list.total_gross_kg,0
+D056,dev,,total_packages,총포장갯수,282,packing_list.total_packages,0
+D056,dev,,package_kind,포장종류,CT,packing_list,0
+D056,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D056,dev,,currency,통화,USD,commercial_invoice,0
+D056,dev,,total_amount,결제금액,11529.2,commercial_invoice.total_amount,0
+D056,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D056,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D056,dev,1,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[0].name,0
+D056,dev,1,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D056,dev,1,qty,수량,2812,commercial_invoice.items[0].qty,0
+D056,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D056,dev,1,net_kg,순중량(kg),3796.2,packing_list.items[0].net_kg,0
+D056,dev,1,unit_price,단가,4.1,commercial_invoice.items[0].unit_price,0
+D056,dev,1,amount,금액,11529.2,commercial_invoice.items[0].amount,0
+D056,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D056,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D056,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D057,dev,,bl_no,B/L 번호,SMLNSZX26011907,bill_of_lading.bl_no,0
+D057,dev,,vessel,선기명,EXAMPLE VOYAGER 778E,bill_of_lading.vessel_voyage,0
+D057,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D057,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D057,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D057,dev,,total_gross_kg,총중량(kg),12604,packing_list.total_gross_kg,1
+D057,dev,,total_packages,총포장갯수,570,packing_list.total_packages,0
+D057,dev,,package_kind,포장종류,CT,packing_list,0
+D057,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D057,dev,,currency,통화,USD,commercial_invoice,0
+D057,dev,,total_amount,결제금액,96325,commercial_invoice.total_amount,0
+D057,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D057,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D057,dev,1,description,품명,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,commercial_invoice.items[0].name,0
+D057,dev,1,hs_code,세번부호,8507603000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D057,dev,1,qty,수량,395,commercial_invoice.items[0].qty,0
+D057,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D057,dev,1,net_kg,순중량(kg),2449,packing_list.items[0].net_kg,0
+D057,dev,1,unit_price,단가,185,commercial_invoice.items[0].unit_price,0
+D057,dev,1,amount,금액,73075,commercial_invoice.items[0].amount,0
+D057,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D057,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D057,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D057,dev,2,description,품명,SOLAR PHOTOVOLTAIC MODULE 450W MONOCRYSTALLINE,commercial_invoice.items[1].name,0
+D057,dev,2,hs_code,세번부호,8541430000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D057,dev,2,qty,수량,372,commercial_invoice.items[1].qty,0
+D057,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D057,dev,2,net_kg,순중량(kg),8928,packing_list.items[1].net_kg,0
+D057,dev,2,unit_price,단가,62.5,commercial_invoice.items[1].unit_price,0
+D057,dev,2,amount,금액,23250,commercial_invoice.items[1].amount,0
+D057,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D057,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D057,dev,2,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[1].origin_criterion,0
+D058,dev,,bl_no,B/L 번호,EXSHCAN26027605,bill_of_lading.bl_no,0
+D058,dev,,vessel,선기명,EXAMPLE BRIDGE 144E,bill_of_lading.vessel_voyage,0
+D058,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D058,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D058,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D058,dev,,total_gross_kg,총중량(kg),41965,packing_list.total_gross_kg,0
+D058,dev,,total_packages,총포장갯수,1925,packing_list.total_packages,0
+D058,dev,,package_kind,포장종류,CT,packing_list,0
+D058,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D058,dev,,currency,통화,USD,commercial_invoice,0
+D058,dev,,total_amount,결제금액,13860,commercial_invoice.total_amount,0
+D058,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D058,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D058,dev,1,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[0].name,0
+D058,dev,1,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D058,dev,1,qty,수량,1925,commercial_invoice.items[0].qty,0
+D058,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D058,dev,1,net_kg,순중량(kg),40425,packing_list.items[0].net_kg,0
+D058,dev,1,unit_price,단가,7.2,commercial_invoice.items[0].unit_price,0
+D058,dev,1,amount,금액,13860,commercial_invoice.items[0].amount,0
+D058,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D058,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D058,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D059,dev,,bl_no,B/L 번호,EXSHSGN26027591,bill_of_lading.bl_no,0
+D059,dev,,vessel,선기명,EXAMPLE OCEAN 355N,bill_of_lading.vessel_voyage,0
+D059,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D059,dev,,supplier,해외공급자,"TAY NGUYEN SAMPLE COFFEE CO., LTD.",commercial_invoice.exporter_name,0
+D059,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D059,dev,,total_gross_kg,총중량(kg),12403.2,packing_list.total_gross_kg,0
+D059,dev,,total_packages,총포장갯수,204,packing_list.total_packages,0
+D059,dev,,package_kind,포장종류,CT,packing_list,0
+D059,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D059,dev,,currency,통화,USD,commercial_invoice,0
+D059,dev,,total_amount,결제금액,52632,commercial_invoice.total_amount,0
+D059,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D059,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D059,dev,1,description,품명,"ROBUSTA COFFEE BEANS, NOT ROASTED, NOT DECAFFEINATED, SCREEN 18",commercial_invoice.items[0].name,0
+D059,dev,1,hs_code,세번부호,0901110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D059,dev,1,qty,수량,12240,commercial_invoice.items[0].qty,0
+D059,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D059,dev,1,net_kg,순중량(kg),12240,packing_list.items[0].net_kg,0
+D059,dev,1,unit_price,단가,4.3,commercial_invoice.items[0].unit_price,0
+D059,dev,1,amount,금액,52632,commercial_invoice.items[0].amount,0
+D059,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D059,dev,1,fta,협정,AK,certificate_of_origin,0
+D059,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D060,dev,,bl_no,B/L 번호,SOCLHPH26021773,bill_of_lading.bl_no,0
+D060,dev,,vessel,선기명,EXAMPLE BRIDGE 322N,bill_of_lading.vessel_voyage,0
+D060,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D060,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D060,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D060,dev,,total_gross_kg,총중량(kg),3843.44,packing_list.total_gross_kg,0
+D060,dev,,total_packages,총포장갯수,449,packing_list.total_packages,0
+D060,dev,,package_kind,포장종류,CT,packing_list,0
+D060,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D060,dev,,currency,통화,USD,commercial_invoice,0
+D060,dev,,total_amount,결제금액,71121.6,commercial_invoice.total_amount,0
+D060,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D060,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D060,dev,1,description,품명,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[0].name,0
+D060,dev,1,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D060,dev,1,qty,수량,5388,commercial_invoice.items[0].qty,0
+D060,dev,1,unit,단위,PRS,commercial_invoice.items[0].qty,0
+D060,dev,1,net_kg,순중량(kg),3125.04,packing_list.items[0].net_kg,0
+D060,dev,1,unit_price,단가,13.2,commercial_invoice.items[0].unit_price,0
+D060,dev,1,amount,금액,71121.6,commercial_invoice.items[0].amount,0
+D060,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D060,dev,1,fta,협정,VK,certificate_of_origin,1
+D060,dev,1,origin_criterion,원산지결정기준,CTC,certificate_of_origin.items[0].origin_criterion,1
+D061,dev,,bl_no,B/L 번호,SOCLSHA26021587,bill_of_lading.bl_no,0
+D061,dev,,vessel,선기명,EXAMPLE BRIDGE 796E,bill_of_lading.vessel_voyage,0
+D061,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D061,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D061,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D061,dev,,total_gross_kg,총중량(kg),6684,packing_list.total_gross_kg,0
+D061,dev,,total_packages,총포장갯수,14,packing_list.total_packages,0
+D061,dev,,package_kind,포장종류,CT,packing_list,0
+D061,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D061,dev,,currency,통화,USD,commercial_invoice,0
+D061,dev,,total_amount,결제금액,24420,commercial_invoice.total_amount,0
+D061,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D061,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D061,dev,1,description,품명,"ALUMINIUM ALLOY 6063-T5 EQUAL ANGLE PROFILE 40X40X3MM, SOLID, MILL FINISH",commercial_invoice.items[0].name,0
+D061,dev,1,hs_code,세번부호,7604299000,eval/sets.csv hs_answer (관세청 HS부호 표),1
+D061,dev,1,qty,수량,6600,commercial_invoice.items[0].qty,0
+D061,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D061,dev,1,net_kg,순중량(kg),6600,packing_list.items[0].net_kg,0
+D061,dev,1,unit_price,단가,3.7,commercial_invoice.items[0].unit_price,0
+D061,dev,1,amount,금액,24420,commercial_invoice.items[0].amount,0
+D061,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D061,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D061,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D062,dev,,bl_no,B/L 번호,EXSHSGN26027378,bill_of_lading.bl_no,0
+D062,dev,,vessel,선기명,EXAMPLE BRIDGE 676N,bill_of_lading.vessel_voyage,0
+D062,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D062,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D062,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D062,dev,,total_gross_kg,총중량(kg),3121.6,packing_list.total_gross_kg,1
+D062,dev,,total_packages,총포장갯수,175,packing_list.total_packages,0
+D062,dev,,package_kind,포장종류,CT,packing_list,0
+D062,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D062,dev,,currency,통화,USD,commercial_invoice,0
+D062,dev,,total_amount,결제금액,47900.5,commercial_invoice.total_amount,0
+D062,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D062,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D062,dev,1,description,품명,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",commercial_invoice.items[0].name,0
+D062,dev,1,hs_code,세번부호,6205200000,eval/sets.csv hs_answer (관세청 HS부호 표),1
+D062,dev,1,qty,수량,3660,commercial_invoice.items[0].qty,0
+D062,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D062,dev,1,net_kg,순중량(kg),915,packing_list.items[0].net_kg,0
+D062,dev,1,unit_price,단가,5.8,commercial_invoice.items[0].unit_price,0
+D062,dev,1,amount,금액,21228,commercial_invoice.items[0].amount,0
+D062,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D062,dev,1,fta,협정,AK,certificate_of_origin,0
+D062,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D062,dev,2,description,품명,"MEN'S 100% COTTON KNITTED T-SHIRT, SHORT SLEEVE",commercial_invoice.items[1].name,0
+D062,dev,2,hs_code,세번부호,6109101000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D062,dev,2,qty,수량,11350,commercial_invoice.items[1].qty,0
+D062,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D062,dev,2,net_kg,순중량(kg),2043,packing_list.items[1].net_kg,0
+D062,dev,2,unit_price,단가,2.35,commercial_invoice.items[1].unit_price,0
+D062,dev,2,amount,금액,26672.5,commercial_invoice.items[1].amount,0
+D062,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D062,dev,2,fta,협정,AK,certificate_of_origin,0
+D062,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D063,dev,,bl_no,B/L 번호,SOCLSZX26021445,bill_of_lading.bl_no,0
+D063,dev,,vessel,선기명,EXAMPLE VOYAGER 986E,bill_of_lading.vessel_voyage,0
+D063,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D063,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D063,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D063,dev,,total_gross_kg,총중량(kg),6598.2,packing_list.total_gross_kg,1
+D063,dev,,total_packages,총포장갯수,604,packing_list.total_packages,0
+D063,dev,,package_kind,포장종류,CT,packing_list,0
+D063,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D063,dev,,currency,통화,USD,commercial_invoice,0
+D063,dev,,total_amount,결제금액,80189.6,commercial_invoice.total_amount,0
+D063,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D063,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D063,dev,1,description,품명,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,commercial_invoice.items[0].name,0
+D063,dev,1,hs_code,세번부호,8507603000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D063,dev,1,qty,수량,372,commercial_invoice.items[0].qty,0
+D063,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D063,dev,1,net_kg,순중량(kg),2306.4,packing_list.items[0].net_kg,0
+D063,dev,1,unit_price,단가,185,commercial_invoice.items[0].unit_price,0
+D063,dev,1,amount,금액,68820,commercial_invoice.items[0].amount,0
+D063,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D063,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D063,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D063,dev,2,description,품명,"LED PANEL LIGHT 600X600MM 40W, CEILING MOUNTED",commercial_invoice.items[1].name,0
+D063,dev,2,hs_code,세번부호,9405110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D063,dev,2,qty,수량,1672,commercial_invoice.items[1].qty,0
+D063,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D063,dev,2,net_kg,순중량(kg),3511.2,packing_list.items[1].net_kg,0
+D063,dev,2,unit_price,단가,6.8,commercial_invoice.items[1].unit_price,0
+D063,dev,2,amount,금액,11369.6,commercial_invoice.items[1].amount,0
+D063,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D063,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D063,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D064,dev,,bl_no,B/L 번호,SOCLCAN26021706,bill_of_lading.bl_no,0
+D064,dev,,vessel,선기명,SAMPLE HORIZON 285E,bill_of_lading.vessel_voyage,0
+D064,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D064,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D064,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D064,dev,,total_gross_kg,총중량(kg),47415,packing_list.total_gross_kg,0
+D064,dev,,total_packages,총포장갯수,2175,packing_list.total_packages,0
+D064,dev,,package_kind,포장종류,CT,packing_list,0
+D064,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D064,dev,,currency,통화,USD,commercial_invoice,0
+D064,dev,,total_amount,결제금액,15660,commercial_invoice.total_amount,0
+D064,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D064,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D064,dev,1,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[0].name,0
+D064,dev,1,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D064,dev,1,qty,수량,2175,commercial_invoice.items[0].qty,0
+D064,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D064,dev,1,net_kg,순중량(kg),45675,packing_list.items[0].net_kg,0
+D064,dev,1,unit_price,단가,7.2,commercial_invoice.items[0].unit_price,0
+D064,dev,1,amount,금액,15660,commercial_invoice.items[0].amount,0
+D064,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D064,dev,1,fta,협정,KCFTA,certificate_of_origin,1
+D064,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,1
+D065,dev,,bl_no,B/L 번호,EXSHSGN26027659,bill_of_lading.bl_no,0
+D065,dev,,vessel,선기명,SAMPLE HARMONY 841N,bill_of_lading.vessel_voyage,0
+D065,dev,,importer,수입자,"SAMPLE FOODS KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D065,dev,,supplier,해외공급자,MEKONG EXAMPLE SEAFOOD & AGRO JSC,commercial_invoice.exporter_name,0
+D065,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D065,dev,,total_gross_kg,총중량(kg),32972.8,packing_list.total_gross_kg,0
+D065,dev,,total_packages,총포장갯수,2944,packing_list.total_packages,0
+D065,dev,,package_kind,포장종류,CT,packing_list,0
+D065,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D065,dev,,currency,통화,USD,commercial_invoice,0
+D065,dev,,total_amount,결제금액,253906,commercial_invoice.total_amount,0
+D065,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D065,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D065,dev,1,description,품명,"FROZEN WHITE LEG SHRIMP (LITOPENAEUS VANNAMEI), HEAD-ON SHELL-ON, 31/40",commercial_invoice.items[0].name,0
+D065,dev,1,hs_code,세번부호,0306179091,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D065,dev,1,qty,수량,15220,commercial_invoice.items[0].qty,0
+D065,dev,1,unit,단위,KGS,commercial_invoice.items[0].qty,0
+D065,dev,1,net_kg,순중량(kg),15220,packing_list.items[0].net_kg,0
+D065,dev,1,unit_price,단가,7.9,commercial_invoice.items[0].unit_price,0
+D065,dev,1,amount,금액,120238,commercial_invoice.items[0].amount,0
+D065,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D065,dev,1,fta,협정,AK,certificate_of_origin,0
+D065,dev,1,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[0].origin_criterion,0
+D065,dev,2,description,품명,"FROZEN RAW WHITE LEG SHRIMP (L. VANNAMEI), PEELED AND DEVEINED, 31/40",commercial_invoice.items[1].name,0
+D065,dev,2,hs_code,세번부호,0306171090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D065,dev,2,qty,수량,14220,commercial_invoice.items[1].qty,0
+D065,dev,2,unit,단위,KGS,commercial_invoice.items[1].qty,0
+D065,dev,2,net_kg,순중량(kg),14220,packing_list.items[1].net_kg,0
+D065,dev,2,unit_price,단가,9.4,commercial_invoice.items[1].unit_price,0
+D065,dev,2,amount,금액,133668,commercial_invoice.items[1].amount,0
+D065,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D065,dev,2,fta,협정,AK,certificate_of_origin,0
+D065,dev,2,origin_criterion,원산지결정기준,WO,certificate_of_origin.items[1].origin_criterion,0
+D066,dev,,bl_no,B/L 번호,SMLNSGN26012012,bill_of_lading.bl_no,0
+D066,dev,,vessel,선기명,SAMPLE PIONEER 811N,bill_of_lading.vessel_voyage,0
+D066,dev,,importer,수입자,"EXAMPLE HOME LIVING CO., LTD.",commercial_invoice.consignee_name,0
+D066,dev,,supplier,해외공급자,BINH DUONG EXAMPLE FURNITURE JSC,commercial_invoice.exporter_name,0
+D066,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D066,dev,,total_gross_kg,총중량(kg),1775,packing_list.total_gross_kg,0
+D066,dev,,total_packages,총포장갯수,50,packing_list.total_packages,0
+D066,dev,,package_kind,포장종류,CT,packing_list,0
+D066,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D066,dev,,currency,통화,USD,commercial_invoice,0
+D066,dev,,total_amount,결제금액,4800,commercial_invoice.total_amount,0
+D066,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D066,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D066,dev,1,description,품명,"WOODEN DINING TABLE, OAK, 160X90CM, KNOCK-DOWN",commercial_invoice.items[0].name,0
+D066,dev,1,hs_code,세번부호,9403609090,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D066,dev,1,qty,수량,50,commercial_invoice.items[0].qty,0
+D066,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D066,dev,1,net_kg,순중량(kg),1600,packing_list.items[0].net_kg,0
+D066,dev,1,unit_price,단가,96,commercial_invoice.items[0].unit_price,0
+D066,dev,1,amount,금액,4800,commercial_invoice.items[0].amount,0
+D066,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D066,dev,1,fta,협정,VK,certificate_of_origin,0
+D066,dev,1,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[0].origin_criterion,0
+D067,dev,,bl_no,B/L 번호,EXSHHPH26027860,bill_of_lading.bl_no,0
+D067,dev,,vessel,선기명,SAMPLE HORIZON 890N,bill_of_lading.vessel_voyage,0
+D067,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D067,dev,,supplier,해외공급자,"HAIPHONG SAMPLE FOOTWEAR CO., LTD.",commercial_invoice.exporter_name,0
+D067,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D067,dev,,total_gross_kg,총중량(kg),7134.88,packing_list.total_gross_kg,0
+D067,dev,,total_packages,총포장갯수,814,packing_list.total_packages,0
+D067,dev,,package_kind,포장종류,CT,packing_list,0
+D067,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D067,dev,,currency,통화,USD,commercial_invoice,0
+D067,dev,,total_amount,결제금액,121420.8,commercial_invoice.total_amount,0
+D067,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D067,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D067,dev,1,description,품명,"RUNNING SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[0].name,0
+D067,dev,1,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D067,dev,1,qty,수량,5592,commercial_invoice.items[0].qty,0
+D067,dev,1,unit,단위,PRS,commercial_invoice.items[0].qty,0
+D067,dev,1,net_kg,순중량(kg),3243.36,packing_list.items[0].net_kg,0
+D067,dev,1,unit_price,단가,13.2,commercial_invoice.items[0].unit_price,0
+D067,dev,1,amount,금액,73814.4,commercial_invoice.items[0].amount,0
+D067,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D067,dev,1,fta,협정,AK,certificate_of_origin,0
+D067,dev,1,origin_criterion,원산지결정기준,CTH,certificate_of_origin.items[0].origin_criterion,0
+D067,dev,2,description,품명,"SPORTS SHOES, RUBBER OUTSOLE, TEXTILE UPPER",commercial_invoice.items[1].name,0
+D067,dev,2,hs_code,세번부호,6404110000,eval/sets.csv hs_answer (관세청 HS부호 표),1
+D067,dev,2,qty,수량,4176,commercial_invoice.items[1].qty,0
+D067,dev,2,unit,단위,PRS,commercial_invoice.items[1].qty,0
+D067,dev,2,net_kg,순중량(kg),2589.12,packing_list.items[1].net_kg,0
+D067,dev,2,unit_price,단가,11.4,commercial_invoice.items[1].unit_price,0
+D067,dev,2,amount,금액,47606.4,commercial_invoice.items[1].amount,0
+D067,dev,2,origin,원산지,VN,commercial_invoice.origin,0
+D067,dev,2,fta,협정,AK,certificate_of_origin,0
+D067,dev,2,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[1].origin_criterion,0
+D068,dev,,bl_no,B/L 번호,SMLNCAN26012131,bill_of_lading.bl_no,0
+D068,dev,,vessel,선기명,SAMPLE HORIZON 319E,bill_of_lading.vessel_voyage,0
+D068,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D068,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D068,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D068,dev,,total_gross_kg,총중량(kg),59910,packing_list.total_gross_kg,1
+D068,dev,,total_packages,총포장갯수,3125,packing_list.total_packages,0
+D068,dev,,package_kind,포장종류,CT,packing_list,0
+D068,dev,,incoterms,인도조건,CIF,commercial_invoice.incoterms,0
+D068,dev,,currency,통화,USD,commercial_invoice,0
+D068,dev,,total_amount,결제금액,19055,commercial_invoice.total_amount,0
+D068,dev,,payment,결제방법,T/T IN ADVANCE,commercial_invoice.payment_term,0
+D068,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D068,dev,1,description,품명,"CERAMIC WALL TILE 300X600X9MM, GLAZED, WATER ABSORPTION OVER 10%",commercial_invoice.items[0].name,0
+D068,dev,1,hs_code,세번부호,6907230000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D068,dev,1,qty,수량,1325,commercial_invoice.items[0].qty,0
+D068,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D068,dev,1,net_kg,순중량(kg),19875,packing_list.items[0].net_kg,0
+D068,dev,1,unit_price,단가,4.6,commercial_invoice.items[0].unit_price,0
+D068,dev,1,amount,금액,6095,commercial_invoice.items[0].amount,0
+D068,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D068,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D068,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D068,dev,2,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[1].name,0
+D068,dev,2,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D068,dev,2,qty,수량,1800,commercial_invoice.items[1].qty,0
+D068,dev,2,unit,단위,M2,commercial_invoice.items[1].qty,0
+D068,dev,2,net_kg,순중량(kg),37800,packing_list.items[1].net_kg,0
+D068,dev,2,unit_price,단가,7.2,commercial_invoice.items[1].unit_price,0
+D068,dev,2,amount,금액,12960,commercial_invoice.items[1].amount,0
+D068,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D068,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D068,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D069,dev,,bl_no,B/L 번호,SOCLNGB26021509,bill_of_lading.bl_no,0
+D069,dev,,vessel,선기명,SAMPLE HARMONY 670E,bill_of_lading.vessel_voyage,0
+D069,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D069,dev,,supplier,해외공급자,"NINGBO EXAMPLE HOUSEWARE CO., LTD.",commercial_invoice.exporter_name,0
+D069,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D069,dev,,total_gross_kg,총중량(kg),3410.4,packing_list.total_gross_kg,0
+D069,dev,,total_packages,총포장갯수,247,packing_list.total_packages,0
+D069,dev,,package_kind,포장종류,CT,packing_list,0
+D069,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D069,dev,,currency,통화,USD,commercial_invoice,0
+D069,dev,,total_amount,결제금액,9539,commercial_invoice.total_amount,0
+D069,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D069,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D069,dev,1,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 30L WITH LID,commercial_invoice.items[0].name,0
+D069,dev,1,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D069,dev,1,qty,수량,1260,commercial_invoice.items[0].qty,0
+D069,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D069,dev,1,net_kg,순중량(kg),1197,packing_list.items[0].net_kg,0
+D069,dev,1,unit_price,단가,2.95,commercial_invoice.items[0].unit_price,0
+D069,dev,1,amount,금액,3717,commercial_invoice.items[0].amount,0
+D069,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D069,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D069,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D069,dev,2,description,품명,POLYPROPYLENE HOUSEHOLD STORAGE BOX 50L WITH LID,commercial_invoice.items[1].name,0
+D069,dev,2,hs_code,세번부호,3924909000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D069,dev,2,qty,수량,1420,commercial_invoice.items[1].qty,0
+D069,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D069,dev,2,net_kg,순중량(kg),1917,packing_list.items[1].net_kg,0
+D069,dev,2,unit_price,단가,4.1,commercial_invoice.items[1].unit_price,0
+D069,dev,2,amount,금액,5822,commercial_invoice.items[1].amount,0
+D069,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D069,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D069,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D070,dev,,bl_no,B/L 번호,SOCLTAO26021439,bill_of_lading.bl_no,0
+D070,dev,,vessel,선기명,EXAMPLE OCEAN 907E,bill_of_lading.vessel_voyage,0
+D070,dev,,importer,수입자,HANBIT SAMPLE CORPORATION,commercial_invoice.consignee_name,0
+D070,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D070,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D070,dev,,total_gross_kg,총중량(kg),1516.5,packing_list.total_gross_kg,0
+D070,dev,,total_packages,총포장갯수,85,packing_list.total_packages,0
+D070,dev,,package_kind,포장종류,CT,packing_list,0
+D070,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D070,dev,,currency,통화,USD,commercial_invoice,0
+D070,dev,,total_amount,결제금액,11250,commercial_invoice.total_amount,0
+D070,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D070,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D070,dev,1,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D070,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D070,dev,1,qty,수량,1500,commercial_invoice.items[0].qty,0
+D070,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D070,dev,1,net_kg,순중량(kg),450,packing_list.items[0].net_kg,0
+D070,dev,1,unit_price,단가,4.2,commercial_invoice.items[0].unit_price,0
+D070,dev,1,amount,금액,6300,commercial_invoice.items[0].amount,0
+D070,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D070,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D070,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D070,dev,2,description,품명,"BICYCLE TYRE 26X1.95, NEW PNEUMATIC RUBBER",commercial_invoice.items[1].name,0
+D070,dev,2,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D070,dev,2,qty,수량,1375,commercial_invoice.items[1].qty,0
+D070,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D070,dev,2,net_kg,순중량(kg),990,packing_list.items[1].net_kg,0
+D070,dev,2,unit_price,단가,3.6,commercial_invoice.items[1].unit_price,0
+D070,dev,2,amount,금액,4950,commercial_invoice.items[1].amount,0
+D070,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D070,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D070,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D071,dev,,bl_no,B/L 번호,EXSHTAO26027609,bill_of_lading.bl_no,0
+D071,dev,,vessel,선기명,EXAMPLE BRIDGE 812E,bill_of_lading.vessel_voyage,0
+D071,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D071,dev,,supplier,해외공급자,"QINGDAO SAMPLE TYRE CO., LTD.",commercial_invoice.exporter_name,0
+D071,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D071,dev,,total_gross_kg,총중량(kg),1128.9,packing_list.total_gross_kg,0
+D071,dev,,total_packages,총포장갯수,71,packing_list.total_packages,0
+D071,dev,,package_kind,포장종류,CT,packing_list,0
+D071,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D071,dev,,currency,통화,USD,commercial_invoice,0
+D071,dev,,total_amount,결제금액,14910,commercial_invoice.total_amount,0
+D071,dev,,payment,결제방법,L/C AT SIGHT,commercial_invoice.payment_term,0
+D071,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D071,dev,1,description,품명,"BICYCLE TYRE 700X23C, NEW PNEUMATIC RUBBER",commercial_invoice.items[0].name,0
+D071,dev,1,hs_code,세번부호,4011500000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D071,dev,1,qty,수량,3550,commercial_invoice.items[0].qty,1
+D071,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D071,dev,1,net_kg,순중량(kg),1065,packing_list.items[0].net_kg,0
+D071,dev,1,unit_price,단가,4.2,commercial_invoice.items[0].unit_price,0
+D071,dev,1,amount,금액,14910,commercial_invoice.items[0].amount,0
+D071,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D071,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D071,dev,1,origin_criterion,원산지결정기준,WP,certificate_of_origin.items[0].origin_criterion,0
+D072,dev,,bl_no,B/L 번호,EXSHCAN26027349,bill_of_lading.bl_no,0
+D072,dev,,vessel,선기명,EXAMPLE PEARL 283E,bill_of_lading.vessel_voyage,0
+D072,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D072,dev,,supplier,해외공급자,"FOSHAN EXAMPLE CERAMICS CO., LTD.",commercial_invoice.exporter_name,0
+D072,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D072,dev,,total_gross_kg,총중량(kg),54710,packing_list.total_gross_kg,0
+D072,dev,,total_packages,총포장갯수,3050,packing_list.total_packages,0
+D072,dev,,package_kind,포장종류,CT,packing_list,0
+D072,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D072,dev,,currency,통화,USD,commercial_invoice,0
+D072,dev,,total_amount,결제금액,17020,commercial_invoice.total_amount,0
+D072,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D072,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D072,dev,1,description,품명,"CERAMIC WALL TILE 300X600X9MM, GLAZED, WATER ABSORPTION OVER 10%",commercial_invoice.items[0].name,0
+D072,dev,1,hs_code,세번부호,6907230000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D072,dev,1,qty,수량,1900,commercial_invoice.items[0].qty,0
+D072,dev,1,unit,단위,M2,commercial_invoice.items[0].qty,0
+D072,dev,1,net_kg,순중량(kg),28500,packing_list.items[0].net_kg,0
+D072,dev,1,unit_price,단가,4.6,commercial_invoice.items[0].unit_price,0
+D072,dev,1,amount,금액,8740,commercial_invoice.items[0].amount,0
+D072,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D072,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D072,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D072,dev,2,description,품명,"GLAZED PORCELAIN FLOOR TILE 500X500X9MM, WATER ABSORPTION 0.5% OR LESS",commercial_invoice.items[1].name,0
+D072,dev,2,hs_code,세번부호,6907210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D072,dev,2,qty,수량,1150,commercial_invoice.items[1].qty,0
+D072,dev,2,unit,단위,M2,commercial_invoice.items[1].qty,0
+D072,dev,2,net_kg,순중량(kg),24150,packing_list.items[1].net_kg,0
+D072,dev,2,unit_price,단가,7.2,commercial_invoice.items[1].unit_price,0
+D072,dev,2,amount,금액,8280,commercial_invoice.items[1].amount,0
+D072,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D072,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D072,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D073,dev,,bl_no,B/L 번호,SMLNSZX26012115,bill_of_lading.bl_no,0
+D073,dev,,vessel,선기명,SAMPLE STAR 660E,bill_of_lading.vessel_voyage,0
+D073,dev,,importer,수입자,"SAMPLE TRADING KOREA CO., LTD.",commercial_invoice.consignee_name,0
+D073,dev,,supplier,해외공급자,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD.",commercial_invoice.exporter_name,0
+D073,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D073,dev,,total_gross_kg,총중량(kg),1223.2,packing_list.total_gross_kg,0
+D073,dev,,total_packages,총포장갯수,88,packing_list.total_packages,0
+D073,dev,,package_kind,포장종류,CT,packing_list,0
+D073,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D073,dev,,currency,통화,USD,commercial_invoice,0
+D073,dev,,total_amount,결제금액,32560,commercial_invoice.total_amount,0
+D073,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D073,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D073,dev,1,description,품명,LITHIUM-ION BATTERY PACK 48V 20AH FOR ENERGY STORAGE SYSTEM,commercial_invoice.items[0].name,0
+D073,dev,1,hs_code,세번부호,8507603000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D073,dev,1,qty,수량,176,commercial_invoice.items[0].qty,0
+D073,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D073,dev,1,net_kg,순중량(kg),1091.2,packing_list.items[0].net_kg,0
+D073,dev,1,unit_price,단가,185,commercial_invoice.items[0].unit_price,0
+D073,dev,1,amount,금액,32560,commercial_invoice.items[0].amount,0
+D073,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D073,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D073,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D074,dev,,bl_no,B/L 번호,EXSHSHA26027533,bill_of_lading.bl_no,0
+D074,dev,,vessel,선기명,SAMPLE HORIZON 734E,bill_of_lading.vessel_voyage,0
+D074,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D074,dev,,supplier,해외공급자,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)",commercial_invoice.exporter_name,0
+D074,dev,,export_country,적출국,CN,bill_of_lading.port_loading,0
+D074,dev,,total_gross_kg,총중량(kg),1804.2,packing_list.total_gross_kg,1
+D074,dev,,total_packages,총포장갯수,166,packing_list.total_packages,0
+D074,dev,,package_kind,포장종류,CT,packing_list,0
+D074,dev,,incoterms,인도조건,CFR,commercial_invoice.incoterms,0
+D074,dev,,currency,통화,USD,commercial_invoice,0
+D074,dev,,total_amount,결제금액,24857,commercial_invoice.total_amount,0
+D074,dev,,payment,결제방법,D/P AT SIGHT,commercial_invoice.payment_term,0
+D074,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D074,dev,1,description,품명,CORDLESS DRILL 18V WITH LI-ION BATTERY,commercial_invoice.items[0].name,0
+D074,dev,1,hs_code,세번부호,8467210000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D074,dev,1,qty,수량,786,commercial_invoice.items[0].qty,0
+D074,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D074,dev,1,net_kg,순중량(kg),1257.6,packing_list.items[0].net_kg,0
+D074,dev,1,unit_price,단가,24.5,commercial_invoice.items[0].unit_price,0
+D074,dev,1,amount,금액,19257,commercial_invoice.items[0].amount,0
+D074,dev,1,origin,원산지,CN,commercial_invoice.origin,0
+D074,dev,1,fta,협정,KCFTA,certificate_of_origin,0
+D074,dev,1,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[0].origin_criterion,0
+D074,dev,2,description,품명,"STAINLESS STEEL KITCHEN KNIFE 8 INCH, FIXED BLADE",commercial_invoice.items[1].name,0
+D074,dev,2,hs_code,세번부호,8211920000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D074,dev,2,qty,수량,1750,commercial_invoice.items[1].qty,0
+D074,dev,2,unit,단위,PCS,commercial_invoice.items[1].qty,0
+D074,dev,2,net_kg,순중량(kg),367.5,packing_list.items[1].net_kg,0
+D074,dev,2,unit_price,단가,3.2,commercial_invoice.items[1].unit_price,0
+D074,dev,2,amount,금액,5600,commercial_invoice.items[1].amount,0
+D074,dev,2,origin,원산지,CN,commercial_invoice.origin,0
+D074,dev,2,fta,협정,KCFTA,certificate_of_origin,0
+D074,dev,2,origin_criterion,원산지결정기준,PSR,certificate_of_origin.items[1].origin_criterion,0
+D075,dev,,bl_no,B/L 번호,EXSHSGN26027804,bill_of_lading.bl_no,0
+D075,dev,,vessel,선기명,EXAMPLE OCEAN 012N,bill_of_lading.vessel_voyage,0
+D075,dev,,importer,수입자,EXAMPLE DISTRIBUTION KOREA INC.,commercial_invoice.consignee_name,0
+D075,dev,,supplier,해외공급자,SAIGON SAMPLE TEXTILE JSC,commercial_invoice.exporter_name,0
+D075,dev,,export_country,적출국,VN,bill_of_lading.port_loading,0
+D075,dev,,total_gross_kg,총중량(kg),1712,packing_list.total_gross_kg,0
+D075,dev,,total_packages,총포장갯수,107,packing_list.total_packages,0
+D075,dev,,package_kind,포장종류,CT,packing_list,0
+D075,dev,,incoterms,인도조건,FOB,commercial_invoice.incoterms,0
+D075,dev,,currency,통화,USD,commercial_invoice,0
+D075,dev,,total_amount,결제금액,37236,commercial_invoice.total_amount,0
+D075,dev,,payment,결제방법,T/T 30 DAYS AFTER B/L DATE,commercial_invoice.payment_term,0
+D075,dev,,co_present,원산지증명서 유무,Y,certificate_of_origin,0
+D075,dev,1,description,품명,"MEN'S WOVEN 100% COTTON SHIRT, LONG SLEEVE",commercial_invoice.items[0].name,0
+D075,dev,1,hs_code,세번부호,6205200000,eval/sets.csv hs_answer (관세청 HS부호 표),0
+D075,dev,1,qty,수량,6420,commercial_invoice.items[0].qty,0
+D075,dev,1,unit,단위,PCS,commercial_invoice.items[0].qty,0
+D075,dev,1,net_kg,순중량(kg),1605,packing_list.items[0].net_kg,0
+D075,dev,1,unit_price,단가,5.8,commercial_invoice.items[0].unit_price,0
+D075,dev,1,amount,금액,37236,commercial_invoice.items[0].amount,0
+D075,dev,1,origin,원산지,VN,commercial_invoice.origin,0
+D075,dev,1,fta,협정,VK,certificate_of_origin,0
+D075,dev,1,origin_criterion,원산지결정기준,RVC 40%,certificate_of_origin.items[0].origin_criterion,0

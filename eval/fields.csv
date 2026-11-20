@@ -1,0 +1,2529 @@
+set_id,doc,field,answer
+D001,commercial_invoice,invoice_no,QDT/26/0289
+D001,commercial_invoice,total_qty,2650
+D001,commercial_invoice,total_gross_kg,842.7
+D001,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D001,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D001,packing_list,invoice_no,QDT/26/0829
+D001,packing_list,total_qty,2650
+D001,packing_list,total_gross_kg,842.7
+D001,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D001,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D001,commercial_invoice,total_amount,11130
+D001,bill_of_lading,bl_no,EXSHTAO26027846
+D001,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO.,LTD"
+D001,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D001,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D001,bill_of_lading,vessel_voyage,EXAMPLE PEARL 999E
+D001,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D001,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D001,bill_of_lading,onboard_date,2026-11-02
+D001,bill_of_lading,container_no,EXMU6058591
+D001,bill_of_lading,total_packages,53
+D001,bill_of_lading,total_gross_kg,842.7
+D001,bill_of_lading,total_cbm,3.71
+D001,bill_of_lading,freight_term,FREIGHT COLLECT
+D001,certificate_of_origin,co_no,K26TAO0001737
+D001,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D001,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D001,certificate_of_origin,invoice_no,QDT/26/0289
+D001,certificate_of_origin,invoice_date,2026-10-24
+D001,certificate_of_origin,departure_date,2026-11-02
+D001,certificate_of_origin,issue_date,2026-11-08
+D001,certificate_of_origin,issued_retroactively,
+D001,certificate_of_origin,items[0].hs_code,4011.50
+D001,certificate_of_origin,items[0].origin_criterion,PSR
+D002,commercial_invoice,invoice_no,NBH2026-207
+D002,commercial_invoice,total_qty,6182
+D002,commercial_invoice,total_gross_kg,4949.46
+D002,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D002,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D002,packing_list,invoice_no,NBH2026-207
+D002,packing_list,total_qty,6182
+D002,packing_list,total_gross_kg,39744.36
+D002,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D002,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D002,commercial_invoice,total_amount,13091.8
+D002,bill_of_lading,bl_no,SMLNNGB26012050
+D002,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO.,LTD"
+D002,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D002,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D002,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 131E
+D002,bill_of_lading,port_loading,"NINGBO, CHINA"
+D002,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D002,bill_of_lading,onboard_date,2026-10-10
+D002,bill_of_lading,container_no,SMCU8393918 SMCU2669249
+D002,bill_of_lading,total_packages,337
+D002,bill_of_lading,total_gross_kg,4949.46
+D002,bill_of_lading,total_cbm,69.45
+D002,bill_of_lading,freight_term,FREIGHT COLLECT
+D002,certificate_of_origin,co_no,K26NGB0001561
+D002,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D002,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D002,certificate_of_origin,invoice_no,NBH2026-207
+D002,certificate_of_origin,invoice_date,2026-10-05
+D002,certificate_of_origin,departure_date,2026-10-10
+D002,certificate_of_origin,issue_date,2026-10-18
+D002,certificate_of_origin,issued_retroactively,
+D002,certificate_of_origin,items[0].hs_code,3924.10
+D002,certificate_of_origin,items[0].origin_criterion,PSR
+D002,certificate_of_origin,items[1].hs_code,3924.90
+D002,certificate_of_origin,items[1].origin_criterion,WP
+D003,commercial_invoice,invoice_no,BDF-2026-259
+D003,commercial_invoice,total_qty,642
+D003,commercial_invoice,total_gross_kg,21683.1
+D003,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D003,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D003,packing_list,invoice_no,BDF-2026-259
+D003,packing_list,total_qty,642
+D003,packing_list,total_gross_kg,12683.1
+D003,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D003,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D003,commercial_invoice,total_amount,37764
+D003,bill_of_lading,bl_no,SOCLSGN26021841
+D003,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D003,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D003,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D003,bill_of_lading,vessel_voyage,SAMPLE HORIZON 484N
+D003,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D003,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D003,bill_of_lading,onboard_date,2026-11-10
+D003,bill_of_lading,container_no,SOLU1263698 SOCU3917512
+D003,bill_of_lading,total_packages,467
+D003,bill_of_lading,total_gross_kg,12683.1
+D003,bill_of_lading,total_cbm,92.11
+D003,bill_of_lading,freight_term,FREIGHT COLLECT
+D003,certificate_of_origin,co_no,VN-KR 26/04/02422
+D003,certificate_of_origin,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D003,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D003,certificate_of_origin,invoice_no,BDF-2026-259
+D003,certificate_of_origin,invoice_date,2026-11-04
+D003,certificate_of_origin,departure_date,2026-11-10
+D003,certificate_of_origin,issue_date,2026-11-09
+D003,certificate_of_origin,issued_retroactively,
+D003,certificate_of_origin,items[0].hs_code,9401.69
+D003,certificate_of_origin,items[0].origin_criterion,RVC 40%
+D003,certificate_of_origin,items[1].hs_code,9403.60
+D003,certificate_of_origin,items[1].origin_criterion,CTC
+D004,commercial_invoice,invoice_no,MKS-260246
+D004,commercial_invoice,total_qty,11900
+D004,commercial_invoice,total_gross_kg,12185.6
+D004,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D004,packing_list,invoice_no,MKS-260246
+D004,packing_list,total_qty,11900
+D004,packing_list,total_gross_kg,12185.6
+D004,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D004,commercial_invoice,total_amount,76160
+D004,bill_of_lading,bl_no,EXSHSGN26027425
+D004,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D004,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D004,bill_of_lading,vessel_voyage,SAMPLE HORIZON 509N
+D004,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D004,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D004,bill_of_lading,onboard_date,2026-09-21
+D004,bill_of_lading,container_no,EXMU2119868
+D004,bill_of_lading,total_packages,476
+D004,bill_of_lading,total_gross_kg,11900
+D004,bill_of_lading,total_cbm,19.04
+D004,bill_of_lading,freight_term,FREIGHT COLLECT
+D004,certificate_of_origin,co_no,VN-KR 26/03/02336
+D004,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D004,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D004,certificate_of_origin,invoice_no,MKS-260246
+D004,certificate_of_origin,invoice_date,2026-09-14
+D004,certificate_of_origin,departure_date,2026-09-21
+D004,certificate_of_origin,issue_date,2026-09-20
+D004,certificate_of_origin,issued_retroactively,
+D004,certificate_of_origin,items[0].hs_code,0801.32
+D004,certificate_of_origin,items[0].origin_criterion,WO
+D005,commercial_invoice,invoice_no,BDF-2026-256
+D005,commercial_invoice,total_qty,1035
+D005,commercial_invoice,total_gross_kg,7914.6
+D005,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D005,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D005,packing_list,invoice_no,BDF-2026-256
+D005,packing_list,total_qty,1035
+D005,packing_list,total_gross_kg,7914.6
+D005,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D005,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D005,commercial_invoice,total_amount,31292
+D005,bill_of_lading,bl_no,SMLNSGN26012216
+D005,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D005,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D005,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D005,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 236N
+D005,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D005,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D005,bill_of_lading,onboard_date,2026-10-25
+D005,bill_of_lading,container_no,SMCU8379226
+D005,bill_of_lading,total_packages,535
+D005,bill_of_lading,total_gross_kg,7914.6
+D005,bill_of_lading,total_cbm,63.61
+D005,bill_of_lading,freight_term,FREIGHT PREPAID
+D006,commercial_invoice,invoice_no,SST-26-0141
+D006,commercial_invoice,total_qty,1020
+D006,commercial_invoice,total_gross_kg,241.4
+D006,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D006,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D006,packing_list,invoice_no,SST-26-0141
+D006,packing_list,total_qty,1020
+D006,packing_list,total_gross_kg,224.4
+D006,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D006,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D006,commercial_invoice,total_amount,4488
+D006,bill_of_lading,bl_no,SMLNSGN26012167
+D006,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D006,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D006,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D006,bill_of_lading,vessel_voyage,SAMPLE STAR 303N
+D006,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D006,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D006,bill_of_lading,onboard_date,2026-10-20
+D006,bill_of_lading,container_no,SMLU6859182
+D006,bill_of_lading,total_packages,17
+D006,bill_of_lading,total_gross_kg,241.4
+D006,bill_of_lading,total_cbm,1.53
+D006,bill_of_lading,freight_term,FREIGHT PREPAID
+D006,certificate_of_origin,co_no,VN-KR 26/02/02387
+D006,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D006,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D006,certificate_of_origin,invoice_no,SST-26-0141
+D006,certificate_of_origin,invoice_date,2026-10-18
+D006,certificate_of_origin,departure_date,2026-10-20
+D006,certificate_of_origin,issue_date,2026-10-22
+D006,certificate_of_origin,issued_retroactively,
+D006,certificate_of_origin,items[0].hs_code,6205.30
+D006,certificate_of_origin,items[0].origin_criterion,CTC
+D007,commercial_invoice,invoice_no,SZP2600141
+D007,commercial_invoice,total_qty,368
+D007,commercial_invoice,total_gross_kg,1947.12
+D007,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D007,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D007,packing_list,invoice_no,SZP2600141
+D007,packing_list,total_qty,368
+D007,packing_list,total_gross_kg,883.2
+D007,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D007,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D007,commercial_invoice,total_amount,2502.4
+D007,bill_of_lading,bl_no,SMLNSZX26012105
+D007,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D007,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D007,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D007,bill_of_lading,vessel_voyage,SAMPLE HORIZON 965E
+D007,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D007,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D007,bill_of_lading,onboard_date,2026-10-13
+D007,bill_of_lading,container_no,SMLU9491284
+D007,bill_of_lading,total_packages,92
+D007,bill_of_lading,total_gross_kg,883.2
+D007,bill_of_lading,total_cbm,5.52
+D007,bill_of_lading,freight_term,FREIGHT COLLECT
+D008,commercial_invoice,invoice_no,HSF-26-0276
+D008,commercial_invoice,total_qty,7920
+D008,commercial_invoice,total_gross_kg,57868.8
+D008,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D008,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D008,packing_list,invoice_no,HSF-26-0276
+D008,packing_list,total_qty,7830
+D008,packing_list,total_gross_kg,5786.88
+D008,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D008,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D008,commercial_invoice,total_amount,98366.4
+D008,bill_of_lading,bl_no,EXSHHPH26027330
+D008,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D008,bill_of_lading,consignee_name,"TO ORDER OF SAMPLE BANK OF KOREA, BUSAN BRANCH"
+D008,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D008,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 702N
+D008,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D008,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D008,bill_of_lading,onboard_date,2026-09-13
+D008,bill_of_lading,container_no,EXSU9856832
+D008,bill_of_lading,total_packages,660
+D008,bill_of_lading,total_gross_kg,5786.88
+D008,bill_of_lading,total_cbm,46.2
+D008,bill_of_lading,freight_term,FREIGHT COLLECT
+D009,commercial_invoice,invoice_no,HSF-26-0283
+D009,commercial_invoice,total_qty,2340
+D009,commercial_invoice,total_gross_kg,1669.2
+D009,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D009,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D009,packing_list,invoice_no,HSF-26-0285
+D009,packing_list,total_qty,2340
+D009,packing_list,total_gross_kg,1669.2
+D009,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D009,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D009,commercial_invoice,total_amount,30888
+D009,bill_of_lading,bl_no,EXSHHPH26027685
+D009,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO.,LTD"
+D009,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D009,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D009,bill_of_lading,vessel_voyage,SAMPLE HARMONY 549N
+D009,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D009,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D009,bill_of_lading,onboard_date,2026-10-24
+D009,bill_of_lading,container_no,EXSU6798666
+D009,bill_of_lading,total_packages,195
+D009,bill_of_lading,total_gross_kg,1669.2
+D009,bill_of_lading,total_cbm,13.65
+D009,bill_of_lading,freight_term,FREIGHT PREPAID
+D009,certificate_of_origin,co_no,VN-KR 26/04/02266
+D009,certificate_of_origin,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D009,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D009,certificate_of_origin,invoice_no,HSF-26-0285
+D009,certificate_of_origin,invoice_date,2026-10-22
+D009,certificate_of_origin,departure_date,2026-10-24
+D009,certificate_of_origin,issue_date,2026-10-23
+D009,certificate_of_origin,issued_retroactively,
+D009,certificate_of_origin,items[0].hs_code,6404.11
+D009,certificate_of_origin,items[0].origin_criterion,CTH
+D010,commercial_invoice,invoice_no,HSF-26-0289
+D010,commercial_invoice,total_qty,3120
+D010,commercial_invoice,total_gross_kg,2184
+D010,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D010,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D010,packing_list,invoice_no,HSF-26-0289
+D010,packing_list,total_qty,3120
+D010,packing_list,total_gross_kg,2184
+D010,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D010,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D010,commercial_invoice,total_amount,20904
+D010,bill_of_lading,bl_no,SOCLHPH26021779
+D010,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO.,LTD"
+D010,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D010,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D010,bill_of_lading,vessel_voyage,SAMPLE HARMONY 596N
+D010,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D010,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D010,bill_of_lading,onboard_date,2026-11-01
+D010,bill_of_lading,container_no,SOCU1623170
+D010,bill_of_lading,total_packages,156
+D010,bill_of_lading,total_gross_kg,2184
+D010,bill_of_lading,total_cbm,18.72
+D010,bill_of_lading,freight_term,FREIGHT COLLECT
+D010,certificate_of_origin,co_no,VN-KR 26/03/02316
+D010,certificate_of_origin,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D010,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D010,certificate_of_origin,invoice_no,HSF-26-0289
+D010,certificate_of_origin,invoice_date,2026-10-25
+D010,certificate_of_origin,departure_date,2026-11-01
+D010,certificate_of_origin,issue_date,2026-11-01
+D010,certificate_of_origin,issued_retroactively,
+D010,certificate_of_origin,items[0].hs_code,4202.92
+D010,certificate_of_origin,items[0].origin_criterion,CTH
+D011,commercial_invoice,invoice_no,QDT/26/0285
+D011,commercial_invoice,total_qty,8836
+D011,commercial_invoice,total_gross_kg,8374.46
+D011,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D011,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D011,packing_list,invoice_no,QDT/26/0285
+D011,packing_list,total_qty,8836
+D011,packing_list,total_gross_kg,8374.46
+D011,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D011,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D011,commercial_invoice,total_amount,40784.8
+D011,bill_of_lading,bl_no,SOCLTAO26021558
+D011,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D011,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D011,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D011,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 195E
+D011,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D011,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D011,bill_of_lading,onboard_date,2026-09-23
+D011,bill_of_lading,container_no,SOCU2176631
+D011,bill_of_lading,total_packages,325
+D011,bill_of_lading,total_gross_kg,8374.46
+D011,bill_of_lading,total_cbm,27.96
+D011,bill_of_lading,freight_term,FREIGHT COLLECT
+D011,certificate_of_origin,co_no,K26TAO0001390
+D011,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D011,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D011,certificate_of_origin,invoice_no,QDT/26/0285
+D011,certificate_of_origin,invoice_date,2026-09-18
+D011,certificate_of_origin,departure_date,2026-09-23
+D011,certificate_of_origin,issue_date,2026-09-21
+D011,certificate_of_origin,issued_retroactively,
+D011,certificate_of_origin,items[0].hs_code,4011.50
+D011,certificate_of_origin,items[0].origin_criterion,PSR
+D011,certificate_of_origin,items[1].hs_code,4011.50
+D011,certificate_of_origin,items[1].origin_criterion,WP
+D011,certificate_of_origin,items[2].hs_code,4012.12
+D011,certificate_of_origin,items[2].origin_criterion,PSR
+D012,commercial_invoice,invoice_no,NBH2026-189
+D012,commercial_invoice,total_qty,9300
+D012,commercial_invoice,total_gross_kg,4651.32
+D012,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D012,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D012,packing_list,invoice_no,NBH2026-198
+D012,packing_list,total_qty,9300
+D012,packing_list,total_gross_kg,2557.8
+D012,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D012,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D012,commercial_invoice,total_amount,11647.8
+D012,bill_of_lading,bl_no,SOCLNGB26021528
+D012,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D012,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D012,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D012,bill_of_lading,vessel_voyage,EXAMPLE PEARL 668E
+D012,bill_of_lading,port_loading,"NINGBO, CHINA"
+D012,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D012,bill_of_lading,onboard_date,2026-09-22
+D012,bill_of_lading,container_no,SOCU2938784
+D012,bill_of_lading,total_packages,346
+D012,bill_of_lading,total_gross_kg,4651.32
+D012,bill_of_lading,total_cbm,47.75
+D012,bill_of_lading,freight_term,FREIGHT COLLECT
+D012,certificate_of_origin,co_no,K26NGB0001409
+D012,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D012,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D012,certificate_of_origin,invoice_no,NBH2026-198
+D012,certificate_of_origin,invoice_date,2026-09-17
+D012,certificate_of_origin,departure_date,2026-09-22
+D012,certificate_of_origin,issue_date,2026-09-22
+D012,certificate_of_origin,issued_retroactively,
+D012,certificate_of_origin,items[0].hs_code,3924.10
+D012,certificate_of_origin,items[0].origin_criterion,WP
+D012,certificate_of_origin,items[1].hs_code,3924.90
+D012,certificate_of_origin,items[1].origin_criterion,PSR
+D013,commercial_invoice,invoice_no,TNC-26-0264
+D013,commercial_invoice,total_qty,33600
+D013,commercial_invoice,total_gross_kg,34048
+D013,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D013,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D013,packing_list,invoice_no,TNC-26-0264
+D013,packing_list,total_qty,33600
+D013,packing_list,total_gross_kg,34048
+D013,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D013,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D013,commercial_invoice,total_amount,172512
+D013,bill_of_lading,bl_no,SOCLSGN26021477
+D013,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D013,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D013,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D013,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 461N
+D013,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D013,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D013,bill_of_lading,onboard_date,2026-09-18
+D013,bill_of_lading,container_no,SOCU7718205 SOLU7986014 SOLU4760466
+D013,bill_of_lading,total_packages,560
+D013,bill_of_lading,total_gross_kg,34048
+D013,bill_of_lading,total_cbm,61.6
+D013,bill_of_lading,freight_term,FREIGHT COLLECT
+D013,certificate_of_origin,co_no,VN-KR 26/04/02115
+D013,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D013,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D013,certificate_of_origin,invoice_no,TNC-26-0264
+D013,certificate_of_origin,invoice_date,2026-09-13
+D013,certificate_of_origin,departure_date,2026-09-18
+D013,certificate_of_origin,issue_date,2026-09-18
+D013,certificate_of_origin,issued_retroactively,
+D013,certificate_of_origin,items[0].hs_code,0901.12
+D013,certificate_of_origin,items[0].origin_criterion,WO
+D013,certificate_of_origin,items[1].hs_code,0901.11
+D013,certificate_of_origin,items[1].origin_criterion,WO
+D014,commercial_invoice,invoice_no,BDF-2026-257
+D014,commercial_invoice,total_qty,1246
+D014,commercial_invoice,total_gross_kg,12956.2
+D014,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D014,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D014,packing_list,invoice_no,BDF-2026-257
+D014,packing_list,total_qty,1246
+D014,packing_list,total_gross_kg,8456.2
+D014,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D014,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D014,commercial_invoice,total_amount,45768
+D014,bill_of_lading,bl_no,EXSHSGN26027748
+D014,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D014,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D014,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D014,bill_of_lading,vessel_voyage,SAMPLE HARMONY 278N
+D014,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D014,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D014,bill_of_lading,onboard_date,2026-10-25
+D014,bill_of_lading,container_no,EXMU0885020 EXSU5333031
+D014,bill_of_lading,total_packages,703
+D014,bill_of_lading,total_gross_kg,12956.2
+D014,bill_of_lading,total_cbm,99.73
+D014,bill_of_lading,freight_term,FREIGHT COLLECT
+D015,commercial_invoice,invoice_no,SHE-2026-0258
+D015,commercial_invoice,total_qty,17900
+D015,commercial_invoice,total_gross_kg,18140
+D015,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D015,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D015,packing_list,invoice_no,SHE-2026-0258
+D015,packing_list,total_qty,17900
+D015,packing_list,total_gross_kg,18140
+D015,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D015,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D015,commercial_invoice,total_amount,67115
+D015,bill_of_lading,bl_no,SOCLSHA26021608
+D015,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D015,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D015,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D015,bill_of_lading,vessel_voyage,EXAMPLE PEARL 015E
+D015,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D015,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D015,bill_of_lading,onboard_date,2026-10-04
+D015,bill_of_lading,container_no,SOLU1358638
+D015,bill_of_lading,total_packages,36
+D015,bill_of_lading,total_gross_kg,18140
+D015,bill_of_lading,total_cbm,11.88
+D015,bill_of_lading,freight_term,FREIGHT PREPAID
+D015,certificate_of_origin,co_no,K26SHA0001498
+D015,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D015,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D015,certificate_of_origin,invoice_no,SHE-2026-0258
+D015,certificate_of_origin,invoice_date,2026-10-02
+D015,certificate_of_origin,departure_date,2026-10-04
+D015,certificate_of_origin,issue_date,2026-10-02
+D015,certificate_of_origin,issued_retroactively,
+D015,certificate_of_origin,items[0].hs_code,7604.21
+D015,certificate_of_origin,items[0].origin_criterion,PSR
+D015,certificate_of_origin,items[1].hs_code,7604.21
+D015,certificate_of_origin,items[1].origin_criterion,PSR
+D016,commercial_invoice,invoice_no,BDF-2026-253
+D016,commercial_invoice,total_qty,941
+D016,commercial_invoice,total_gross_kg,10365.5
+D016,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D016,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D016,packing_list,invoice_no,BDF-2026-253
+D016,packing_list,total_qty,941
+D016,packing_list,total_gross_kg,10365.5
+D016,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D016,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D016,commercial_invoice,total_amount,35936
+D016,bill_of_lading,bl_no,SMLNSGN26012192
+D016,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D016,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D016,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D016,bill_of_lading,vessel_voyage,SAMPLE STAR 622N
+D016,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D016,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D016,bill_of_lading,onboard_date,2026-10-21
+D016,bill_of_lading,container_no,SMLU7779294 SMCU4612216
+D016,bill_of_lading,total_packages,541
+D016,bill_of_lading,total_gross_kg,10365.5
+D016,bill_of_lading,total_cbm,79.25
+D016,bill_of_lading,freight_term,FREIGHT PREPAID
+D016,certificate_of_origin,co_no,VN-KR 26/02/02239
+D016,certificate_of_origin,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D016,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D016,certificate_of_origin,invoice_no,BDF-2026-253
+D016,certificate_of_origin,invoice_date,2026-10-12
+D016,certificate_of_origin,departure_date,2026-10-21
+D016,certificate_of_origin,issue_date,2026-10-22
+D016,certificate_of_origin,issued_retroactively,
+D016,certificate_of_origin,items[0].hs_code,9403.60
+D016,certificate_of_origin,items[0].origin_criterion,CTH
+D016,certificate_of_origin,items[1].hs_code,9401.69
+D016,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D017,commercial_invoice,invoice_no,BDF-2026-238
+D017,commercial_invoice,total_qty,894
+D017,commercial_invoice,total_gross_kg,9796.4
+D017,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D017,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D017,packing_list,invoice_no,BDF-2026-238
+D017,packing_list,total_qty,894
+D017,packing_list,total_gross_kg,11058.6
+D017,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D017,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D017,commercial_invoice,total_amount,37000
+D017,bill_of_lading,bl_no,EXSHSGN26027395
+D017,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D017,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D017,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D017,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 352N
+D017,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D017,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D017,bill_of_lading,onboard_date,2026-09-17
+D017,bill_of_lading,container_no,EXMU5157579 EXMU5577550
+D017,bill_of_lading,total_packages,535
+D017,bill_of_lading,total_gross_kg,11058.6
+D017,bill_of_lading,total_cbm,83.49
+D017,bill_of_lading,freight_term,FREIGHT PREPAID
+D017,certificate_of_origin,co_no,VN-KR 26/02/02086
+D017,certificate_of_origin,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D017,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D017,certificate_of_origin,invoice_no,BDF-2026-238
+D017,certificate_of_origin,invoice_date,2026-09-09
+D017,certificate_of_origin,departure_date,2026-09-17
+D017,certificate_of_origin,issue_date,2026-09-16
+D017,certificate_of_origin,issued_retroactively,
+D017,certificate_of_origin,items[0].hs_code,9403.60
+D017,certificate_of_origin,items[0].origin_criterion,CTH
+D017,certificate_of_origin,items[1].hs_code,9401.69
+D017,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D018,commercial_invoice,invoice_no,FEC-26-0262
+D018,commercial_invoice,total_qty,744
+D018,commercial_invoice,total_gross_kg,4309
+D018,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D018,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D018,packing_list,invoice_no,FEC-26-0262
+D018,packing_list,total_qty,7440
+D018,packing_list,total_gross_kg,4309
+D018,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D018,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D018,commercial_invoice,total_amount,855.6
+D018,bill_of_lading,bl_no,SOCLCAN26021740
+D018,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D018,bill_of_lading,consignee_name,"TO ORDER OF SAMPLE BANK OF KOREA, BUSAN BRANCH"
+D018,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D018,bill_of_lading,vessel_voyage,SAMPLE HORIZON 230E
+D018,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D018,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D018,bill_of_lading,onboard_date,2026-10-26
+D018,bill_of_lading,container_no,SOCU4829421
+D018,bill_of_lading,total_packages,155
+D018,bill_of_lading,total_gross_kg,4309
+D018,bill_of_lading,total_cbm,7.75
+D018,bill_of_lading,freight_term,FREIGHT COLLECT
+D018,certificate_of_origin,co_no,K26CAN0001701
+D018,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D018,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D018,certificate_of_origin,invoice_no,FEC-26-0262
+D018,certificate_of_origin,invoice_date,2026-10-22
+D018,certificate_of_origin,departure_date,2026-10-26
+D018,certificate_of_origin,issue_date,2026-11-01
+D018,certificate_of_origin,issued_retroactively,
+D018,certificate_of_origin,items[0].hs_code,6911.10
+D018,certificate_of_origin,items[0].origin_criterion,PSR
+D019,commercial_invoice,invoice_no,FEC-26-0246
+D019,commercial_invoice,total_qty,2475
+D019,commercial_invoice,total_gross_kg,53955
+D019,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D019,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D019,packing_list,invoice_no,FEC-26-0286
+D019,packing_list,total_qty,2475
+D019,packing_list,total_gross_kg,53955
+D019,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D019,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D019,commercial_invoice,total_amount,17820
+D019,bill_of_lading,bl_no,SMLNCAN26012089
+D019,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO.,LTD"
+D019,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D019,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D019,bill_of_lading,vessel_voyage,SAMPLE HARMONY 535E
+D019,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D019,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D019,bill_of_lading,onboard_date,2026-10-12
+D019,bill_of_lading,container_no,SMCU2897589 SMLU1318816 SMCU2717460
+D019,bill_of_lading,total_packages,2475
+D019,bill_of_lading,total_gross_kg,53955
+D019,bill_of_lading,total_cbm,74.25
+D019,bill_of_lading,freight_term,FREIGHT PREPAID
+D020,commercial_invoice,invoice_no,QDT/26/0279
+D020,commercial_invoice,total_qty,5926
+D020,commercial_invoice,total_gross_kg,12524.9
+D020,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D020,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D020,packing_list,invoice_no,QDT26/0279
+D020,packing_list,total_qty,5926
+D020,packing_list,total_gross_kg,12524.9
+D020,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D020,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D020,commercial_invoice,total_amount,39550
+D020,bill_of_lading,bl_no,EXSHTAO26027460
+D020,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D020,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D020,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D020,bill_of_lading,vessel_voyage,SAMPLE HORIZON 881E
+D020,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D020,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D020,bill_of_lading,onboard_date,2026-09-21
+D020,bill_of_lading,container_no,EXMU8631660
+D020,bill_of_lading,total_packages,335
+D020,bill_of_lading,total_gross_kg,12524.9
+D020,bill_of_lading,total_cbm,33.13
+D020,bill_of_lading,freight_term,FREIGHT PREPAID
+D020,certificate_of_origin,co_no,K26TAO0001423
+D020,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D020,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D020,certificate_of_origin,invoice_no,QDT/26/0279
+D020,certificate_of_origin,invoice_date,2026-09-15
+D020,certificate_of_origin,departure_date,2026-09-21
+D020,certificate_of_origin,issue_date,2026-09-23
+D020,certificate_of_origin,issued_retroactively,
+D020,certificate_of_origin,items[0].hs_code,4011.50
+D020,certificate_of_origin,items[0].origin_criterion,PSR
+D020,certificate_of_origin,items[1].hs_code,4012.12
+D020,certificate_of_origin,items[1].origin_criterion,PSR
+D020,certificate_of_origin,items[2].hs_code,4011.50
+D020,certificate_of_origin,items[2].origin_criterion,PSR
+D021,commercial_invoice,invoice_no,TNC-26-0282
+D021,commercial_invoice,total_qty,13560
+D021,commercial_invoice,total_gross_kg,13740.8
+D021,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D021,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D021,packing_list,invoice_no,TNC-26-0282
+D021,packing_list,total_qty,13500
+D021,packing_list,total_gross_kg,13740.8
+D021,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D021,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D021,commercial_invoice,total_amount,58308
+D021,bill_of_lading,bl_no,SOCLSGN26021670
+D021,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D021,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D021,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D021,bill_of_lading,vessel_voyage,SAMPLE PIONEER 570N
+D021,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D021,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D021,bill_of_lading,onboard_date,2026-10-17
+D021,bill_of_lading,container_no,SOCU0198605
+D021,bill_of_lading,total_packages,226
+D021,bill_of_lading,total_gross_kg,13740.8
+D021,bill_of_lading,total_cbm,24.86
+D021,bill_of_lading,freight_term,FREIGHT COLLECT
+D021,certificate_of_origin,co_no,VN-KR 26/02/02366
+D021,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D021,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D021,certificate_of_origin,invoice_no,TNC-26-0282
+D021,certificate_of_origin,invoice_date,2026-10-13
+D021,certificate_of_origin,departure_date,2026-10-17
+D021,certificate_of_origin,issue_date,2026-10-18
+D021,certificate_of_origin,issued_retroactively,
+D021,certificate_of_origin,items[0].hs_code,0901.11
+D021,certificate_of_origin,items[0].origin_criterion,WO
+D022,commercial_invoice,invoice_no,FEC-26-0422
+D022,commercial_invoice,total_qty,2500
+D022,commercial_invoice,total_gross_kg,54500
+D022,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D022,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D022,packing_list,invoice_no,FEC-26-0242
+D022,packing_list,total_qty,2500
+D022,packing_list,total_gross_kg,54500
+D022,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D022,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D022,commercial_invoice,total_amount,18000
+D022,bill_of_lading,bl_no,SOCLCAN26021569
+D022,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D022,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D022,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D022,bill_of_lading,vessel_voyage,EXAMPLE PEARL 619E
+D022,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D022,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D022,bill_of_lading,onboard_date,2026-09-23
+D022,bill_of_lading,container_no,SOLU2135897 SOCU0295462 SOLU0555191
+D022,bill_of_lading,total_packages,2500
+D022,bill_of_lading,total_gross_kg,54500
+D022,bill_of_lading,total_cbm,75.0
+D022,bill_of_lading,freight_term,FREIGHT PREPAID
+D022,certificate_of_origin,co_no,K26CAN0001450
+D022,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D022,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D022,certificate_of_origin,invoice_no,FEC-26-0242
+D022,certificate_of_origin,invoice_date,2026-09-15
+D022,certificate_of_origin,departure_date,2026-09-23
+D022,certificate_of_origin,issue_date,2026-09-29
+D022,certificate_of_origin,issued_retroactively,
+D022,certificate_of_origin,items[0].hs_code,6908.90
+D022,certificate_of_origin,items[0].origin_criterion,PSR
+D023,commercial_invoice,invoice_no,NBH2026-214
+D023,commercial_invoice,total_qty,11742
+D023,commercial_invoice,total_gross_kg,7508.98
+D023,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D023,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D023,packing_list,invoice_no,NBH2026-294
+D023,packing_list,total_qty,11742
+D023,packing_list,total_gross_kg,7508.98
+D023,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D023,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D023,commercial_invoice,total_amount,19353.1
+D023,bill_of_lading,bl_no,EXSHNGB26027785
+D023,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO.,LTD"
+D023,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D023,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D023,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 242E
+D023,bill_of_lading,port_loading,"NINGBO, CHINA"
+D023,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D023,bill_of_lading,onboard_date,2026-10-27
+D023,bill_of_lading,container_no,EXSU7524612 EXSU0176449
+D023,bill_of_lading,total_packages,524
+D023,bill_of_lading,total_gross_kg,7508.98
+D023,bill_of_lading,total_cbm,93.45
+D023,bill_of_lading,freight_term,FREIGHT COLLECT
+D023,certificate_of_origin,co_no,K26NGB0001695
+D023,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D023,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D023,certificate_of_origin,invoice_no,NBH2026-214
+D023,certificate_of_origin,invoice_date,2026-10-18
+D023,certificate_of_origin,departure_date,2026-10-27
+D023,certificate_of_origin,issue_date,2026-10-30
+D023,certificate_of_origin,issued_retroactively,
+D023,certificate_of_origin,items[0].hs_code,3924.10
+D023,certificate_of_origin,items[0].origin_criterion,WP
+D023,certificate_of_origin,items[1].hs_code,3924.90
+D023,certificate_of_origin,items[1].origin_criterion,PSR
+D023,certificate_of_origin,items[2].hs_code,3924.90
+D023,certificate_of_origin,items[2].origin_criterion,PSR
+D024,commercial_invoice,invoice_no,SST-26-0147
+D024,commercial_invoice,total_qty,17600
+D024,commercial_invoice,total_gross_kg,5722.9
+D024,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D024,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,packing_list,invoice_no,SST-26-0147
+D024,packing_list,total_qty,17600
+D024,packing_list,total_gross_kg,5722.9
+D024,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D024,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,commercial_invoice,total_amount,46117.5
+D024,bill_of_lading,bl_no,EXSHSGN26027817
+D024,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D024,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D024,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 192N
+D024,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D024,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D024,bill_of_lading,onboard_date,2026-10-31
+D024,bill_of_lading,container_no,EXSU3335800
+D024,bill_of_lading,total_packages,263
+D024,bill_of_lading,total_gross_kg,5722.9
+D024,bill_of_lading,total_cbm,19.76
+D024,bill_of_lading,freight_term,FREIGHT PREPAID
+D024,certificate_of_origin,co_no,VN-KR 26/02/02297
+D024,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D024,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D024,certificate_of_origin,invoice_no,SST-26-0147
+D024,certificate_of_origin,invoice_date,2026-10-28
+D024,certificate_of_origin,departure_date,2026-10-31
+D024,certificate_of_origin,issue_date,2026-10-31
+D024,certificate_of_origin,issued_retroactively,
+D024,certificate_of_origin,items[0].hs_code,6302.60
+D024,certificate_of_origin,items[0].origin_criterion,CTH
+D024,certificate_of_origin,items[1].hs_code,6105.10
+D024,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D025,commercial_invoice,invoice_no,QDT/26/0267
+D025,commercial_invoice,total_qty,8834
+D025,commercial_invoice,total_gross_kg,23002.8
+D025,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D025,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D025,packing_list,invoice_no,QDT/26/0267
+D025,packing_list,total_qty,8834
+D025,packing_list,total_gross_kg,23002.8
+D025,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D025,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D025,commercial_invoice,total_amount,65256.6
+D025,bill_of_lading,bl_no,EXSHTAO26027272
+D025,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO.,LTD"
+D025,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D025,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D025,bill_of_lading,vessel_voyage,SAMPLE HORIZON 009E
+D025,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D025,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D025,bill_of_lading,onboard_date,2026-09-08
+D025,bill_of_lading,container_no,EXSU4608073
+D025,bill_of_lading,total_packages,585
+D025,bill_of_lading,total_gross_kg,23002.8
+D025,bill_of_lading,total_cbm,59.32
+D025,bill_of_lading,freight_term,FREIGHT COLLECT
+D025,certificate_of_origin,co_no,K26TAO0001261
+D025,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D025,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D025,certificate_of_origin,invoice_no,QDT/26/0267
+D025,certificate_of_origin,invoice_date,2026-09-03
+D025,certificate_of_origin,departure_date,2026-09-08
+D025,certificate_of_origin,issue_date,2026-09-09
+D025,certificate_of_origin,issued_retroactively,
+D025,certificate_of_origin,items[0].hs_code,4012.12
+D025,certificate_of_origin,items[0].origin_criterion,PSR
+D025,certificate_of_origin,items[1].hs_code,4011.50
+D025,certificate_of_origin,items[1].origin_criterion,PSR
+D025,certificate_of_origin,items[2].hs_code,4011.50
+D025,certificate_of_origin,items[2].origin_criterion,PSR
+D026,commercial_invoice,invoice_no,SZP2600123
+D026,commercial_invoice,total_qty,70715
+D026,commercial_invoice,total_gross_kg,3435.78
+D026,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D026,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D026,packing_list,invoice_no,SZP2600123
+D026,packing_list,total_qty,70715
+D026,packing_list,total_gross_kg,6404.57
+D026,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D026,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D026,commercial_invoice,total_amount,32648.86
+D026,bill_of_lading,bl_no,SOCLSZX26021423
+D026,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO.,LTD"
+D026,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D026,bill_of_lading,notify_name,HANBIT SAMPLE CORPORATION
+D026,bill_of_lading,vessel_voyage,SAMPLE HARMONY 440E
+D026,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D026,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D026,bill_of_lading,onboard_date,2026-09-09
+D026,bill_of_lading,container_no,SOCU7631147
+D026,bill_of_lading,total_packages,152
+D026,bill_of_lading,total_gross_kg,3435.78
+D026,bill_of_lading,total_cbm,20.37
+D026,bill_of_lading,freight_term,FREIGHT PREPAID
+D026,certificate_of_origin,co_no,K26SZX0001304
+D026,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D026,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D026,certificate_of_origin,invoice_no,SZP2600123
+D026,certificate_of_origin,invoice_date,2026-09-01
+D026,certificate_of_origin,departure_date,2026-09-09
+D026,certificate_of_origin,issue_date,2026-09-17
+D026,certificate_of_origin,issued_retroactively,
+D026,certificate_of_origin,items[0].hs_code,8541.40
+D026,certificate_of_origin,items[0].origin_criterion,PSR
+D026,certificate_of_origin,items[1].hs_code,8541.40
+D026,certificate_of_origin,items[1].origin_criterion,WP
+D027,commercial_invoice,invoice_no,SZP2600146
+D027,commercial_invoice,total_qty,29902
+D027,commercial_invoice,total_gross_kg,13375.3
+D027,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D027,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D027,packing_list,invoice_no,SZP2600146
+D027,packing_list,total_qty,29902
+D027,packing_list,total_gross_kg,13375.3
+D027,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D027,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D027,commercial_invoice,total_amount,43408.6
+D027,bill_of_lading,bl_no,SMLNSZX26012119
+D027,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO.,LTD"
+D027,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D027,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D027,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 750E
+D027,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D027,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D027,bill_of_lading,onboard_date,2026-10-17
+D027,bill_of_lading,container_no,SMLU9892501 SMLU6078770
+D027,bill_of_lading,total_packages,831
+D027,bill_of_lading,total_gross_kg,13375.3
+D027,bill_of_lading,total_cbm,92.57
+D027,bill_of_lading,freight_term,FREIGHT PREPAID
+D027,certificate_of_origin,co_no,K26SZX0001579
+D027,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D027,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D027,certificate_of_origin,invoice_no,SZP2600146
+D027,certificate_of_origin,invoice_date,2026-10-15
+D027,certificate_of_origin,departure_date,2026-10-17
+D027,certificate_of_origin,issue_date,2026-10-18
+D027,certificate_of_origin,issued_retroactively,
+D027,certificate_of_origin,items[0].hs_code,8541.40
+D027,certificate_of_origin,items[0].origin_criterion,PSR
+D027,certificate_of_origin,items[1].hs_code,9405.10
+D027,certificate_of_origin,items[1].origin_criterion,PSR
+D027,certificate_of_origin,items[2].hs_code,8541.40
+D027,certificate_of_origin,items[2].origin_criterion,PSR
+D028,commercial_invoice,invoice_no,SHE-2026-0248
+D028,commercial_invoice,total_qty,16600
+D028,commercial_invoice,total_gross_kg,16834
+D028,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D028,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D028,packing_list,invoice_no,SHE-2026-0248
+D028,packing_list,total_qty,16600
+D028,packing_list,total_gross_kg,16834
+D028,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D028,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D028,commercial_invoice,total_amount,62545
+D028,bill_of_lading,bl_no,SMLNSHA26011989
+D028,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D028,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D028,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D028,bill_of_lading,vessel_voyage,SAMPLE STAR 996E
+D028,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D028,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D028,bill_of_lading,onboard_date,2026-10-01
+D028,bill_of_lading,container_no,SMCU4939338
+D028,bill_of_lading,total_packages,34
+D028,bill_of_lading,total_gross_kg,16834
+D028,bill_of_lading,total_cbm,11.33
+D028,bill_of_lading,freight_term,FREIGHT COLLECT
+D028,certificate_of_origin,co_no,K26SHA0001496
+D028,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D028,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D028,certificate_of_origin,invoice_no,SHE-2026-0248
+D028,certificate_of_origin,invoice_date,2026-09-24
+D028,certificate_of_origin,departure_date,2026-10-01
+D028,certificate_of_origin,issue_date,2026-09-30
+D028,certificate_of_origin,issued_retroactively,
+D028,certificate_of_origin,items[0].hs_code,7604.21
+D028,certificate_of_origin,items[0].origin_criterion,PSR
+D028,certificate_of_origin,items[1].hs_code,7604.29
+D028,certificate_of_origin,items[1].origin_criterion,PSR
+D029,commercial_invoice,invoice_no,SST-26-0137
+D029,commercial_invoice,total_qty,8000
+D029,commercial_invoice,total_gross_kg,33692
+D029,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D029,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D029,packing_list,invoice_no,SST-26-0137
+D029,packing_list,total_qty,8000
+D029,packing_list,total_gross_kg,3369.2
+D029,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D029,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D029,commercial_invoice,total_amount,28420
+D029,bill_of_lading,bl_no,SOCLSGN26021407
+D029,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D029,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D029,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D029,bill_of_lading,vessel_voyage,SAMPLE HARMONY 562N
+D029,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D029,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D029,bill_of_lading,onboard_date,2026-09-04
+D029,bill_of_lading,container_no,SOCU6364004
+D029,bill_of_lading,total_packages,154
+D029,bill_of_lading,total_gross_kg,3369.2
+D029,bill_of_lading,total_cbm,11.38
+D029,bill_of_lading,freight_term,FREIGHT COLLECT
+D029,certificate_of_origin,co_no,VN-KR 26/04/02319
+D029,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D029,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D029,certificate_of_origin,invoice_no,SST-26-0137
+D029,certificate_of_origin,invoice_date,2026-09-02
+D029,certificate_of_origin,departure_date,2026-09-04
+D029,certificate_of_origin,issue_date,2026-09-04
+D029,certificate_of_origin,issued_retroactively,
+D029,certificate_of_origin,items[0].hs_code,6205.20
+D029,certificate_of_origin,items[0].origin_criterion,CTC
+D029,certificate_of_origin,items[1].hs_code,6302.60
+D029,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D030,commercial_invoice,invoice_no,MKS-260242
+D030,commercial_invoice,total_qty,23090
+D030,commercial_invoice,total_gross_kg,25860.8
+D030,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D030,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D030,packing_list,invoice_no,MKS-260242
+D030,packing_list,total_qty,23090
+D030,packing_list,total_gross_kg,25860.8
+D030,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D030,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D030,commercial_invoice,total_amount,191936
+D030,bill_of_lading,bl_no,SMLNSGN26011935
+D030,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D030,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D030,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D030,bill_of_lading,vessel_voyage,SAMPLE STAR 085N
+D030,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D030,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D030,bill_of_lading,onboard_date,2026-09-13
+D030,bill_of_lading,container_no,SMLU7531726 SMLU6624697
+D030,bill_of_lading,total_packages,2309
+D030,bill_of_lading,total_gross_kg,25860.8
+D030,bill_of_lading,total_cbm,69.27
+D030,bill_of_lading,freight_term,FREIGHT PREPAID
+D031,commercial_invoice,invoice_no,MKS-260244
+D031,commercial_invoice,total_qty,23280
+D031,commercial_invoice,total_gross_kg,26073.6
+D031,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D031,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D031,packing_list,invoice_no,MKS-260244
+D031,packing_list,total_qty,23280
+D031,packing_list,total_gross_kg,26073.6
+D031,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D031,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D031,commercial_invoice,total_amount,207282
+D031,bill_of_lading,bl_no,SOCLSGN26021505
+D031,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D031,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D031,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D031,bill_of_lading,vessel_voyage,EXAMPLE PEARL 179N
+D031,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D031,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D031,bill_of_lading,onboard_date,2026-09-20
+D031,bill_of_lading,container_no,SOLU4113623 SOLU7193962
+D031,bill_of_lading,total_packages,2328
+D031,bill_of_lading,total_gross_kg,26073.6
+D031,bill_of_lading,total_cbm,69.84
+D031,bill_of_lading,freight_term,FREIGHT COLLECT
+D031,certificate_of_origin,co_no,VN-KR 26/04/02135
+D031,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D031,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D031,certificate_of_origin,invoice_no,MKS-260244
+D031,certificate_of_origin,invoice_date,2026-09-12
+D031,certificate_of_origin,departure_date,2026-09-20
+D031,certificate_of_origin,issue_date,2026-10-15
+D031,certificate_of_origin,issued_retroactively,ISSUED RETROACTIVELY
+D031,certificate_of_origin,items[0].hs_code,0306.17
+D031,certificate_of_origin,items[0].origin_criterion,WO
+D031,certificate_of_origin,items[1].hs_code,0306.17
+D031,certificate_of_origin,items[1].origin_criterion,WO
+D032,commercial_invoice,invoice_no,NBH2026-192
+D032,commercial_invoice,total_qty,10020
+D032,commercial_invoice,total_gross_kg,3690.84
+D032,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D032,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D032,packing_list,invoice_no,NBH2026-192
+D032,packing_list,total_qty,10020
+D032,packing_list,total_gross_kg,3690.84
+D032,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D032,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D032,commercial_invoice,total_amount,8472.6
+D032,bill_of_lading,bl_no,SOCLNGB26021495
+D032,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO.,LTD"
+D032,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D032,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D032,bill_of_lading,vessel_voyage,SAMPLE HARMONY 284E
+D032,bill_of_lading,port_loading,"NINGBO, CHINA"
+D032,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D032,bill_of_lading,onboard_date,2026-09-18
+D032,bill_of_lading,container_no,SOCU5861881
+D032,bill_of_lading,total_packages,262
+D032,bill_of_lading,total_gross_kg,3690.84
+D032,bill_of_lading,total_cbm,23.75
+D032,bill_of_lading,freight_term,FREIGHT COLLECT
+D032,certificate_of_origin,co_no,K26NGB0001330
+D032,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D032,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D032,certificate_of_origin,invoice_no,NBH2026-192
+D032,certificate_of_origin,invoice_date,2026-09-10
+D032,certificate_of_origin,departure_date,2026-09-18
+D032,certificate_of_origin,issue_date,2026-09-17
+D032,certificate_of_origin,issued_retroactively,
+D032,certificate_of_origin,items[0].hs_code,3924.90
+D032,certificate_of_origin,items[0].origin_criterion,PSR
+D032,certificate_of_origin,items[1].hs_code,3924.10
+D032,certificate_of_origin,items[1].origin_criterion,PSR
+D033,commercial_invoice,invoice_no,SST-26-0149
+D033,commercial_invoice,total_qty,4350
+D033,commercial_invoice,total_gross_kg,652.5
+D033,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D033,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D033,packing_list,invoice_no,SST-26-0149
+D033,packing_list,total_qty,3450
+D033,packing_list,total_gross_kg,652.5
+D033,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D033,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D033,commercial_invoice,total_amount,10222.5
+D033,bill_of_lading,bl_no,EXSHSGN26027901
+D033,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D033,bill_of_lading,consignee_name,"TO ORDER OF SAMPLE BANK OF KOREA, BUSAN BRANCH"
+D033,bill_of_lading,notify_name,EXAMPLE DISTRIBUTION KOREA INC.
+D033,bill_of_lading,vessel_voyage,SAMPLE HORIZON 023N
+D033,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D033,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D033,bill_of_lading,onboard_date,2026-11-13
+D033,bill_of_lading,container_no,EXMU1992471
+D033,bill_of_lading,total_packages,35
+D033,bill_of_lading,total_gross_kg,652.5
+D033,bill_of_lading,total_cbm,2.975
+D033,bill_of_lading,freight_term,FREIGHT PREPAID
+D033,certificate_of_origin,co_no,VN-KR 26/02/02475
+D033,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D033,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D033,certificate_of_origin,invoice_no,SST-26-0149
+D033,certificate_of_origin,invoice_date,2026-11-05
+D033,certificate_of_origin,departure_date,2026-11-13
+D033,certificate_of_origin,issue_date,2026-11-12
+D033,certificate_of_origin,issued_retroactively,
+D033,certificate_of_origin,items[0].hs_code,6109.10
+D033,certificate_of_origin,items[0].origin_criterion,CTC
+D034,commercial_invoice,invoice_no,SHE-2026-0239
+D034,commercial_invoice,total_qty,39288
+D034,commercial_invoice,total_gross_kg,4031.4
+D034,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D034,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D034,packing_list,invoice_no,SHE-2026-0239
+D034,packing_list,total_qty,39288
+D034,packing_list,total_gross_kg,4031.4
+D034,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D034,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D034,commercial_invoice,total_amount,40621
+D034,bill_of_lading,bl_no,SMLNSHA26011954
+D034,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO.,LTD"
+D034,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D034,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D034,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 752E
+D034,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D034,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D034,bill_of_lading,onboard_date,2026-09-16
+D034,bill_of_lading,container_no,SMLU4817737
+D034,bill_of_lading,total_packages,299
+D034,bill_of_lading,total_gross_kg,4031.4
+D034,bill_of_lading,total_cbm,11.152
+D034,bill_of_lading,freight_term,FREIGHT PREPAID
+D034,certificate_of_origin,co_no,K26SHA0001438
+D034,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D034,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D034,certificate_of_origin,invoice_no,SHE-2026-0239
+D034,certificate_of_origin,invoice_date,2026-09-13
+D034,certificate_of_origin,departure_date,2026-09-16
+D034,certificate_of_origin,issue_date,2026-09-24
+D034,certificate_of_origin,issued_retroactively,
+D034,certificate_of_origin,items[0].hs_code,8211.92
+D034,certificate_of_origin,items[0].origin_criterion,PSR
+D034,certificate_of_origin,items[1].hs_code,8467.21
+D034,certificate_of_origin,items[1].origin_criterion,PSR
+D034,certificate_of_origin,items[2].hs_code,7318.15
+D034,certificate_of_origin,items[2].origin_criterion,PSR
+D035,commercial_invoice,invoice_no,SHE-2026-0268
+D035,commercial_invoice,total_qty,39500
+D035,commercial_invoice,total_gross_kg,1722.2
+D035,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D035,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D035,packing_list,invoice_no,SHE-2026-0268
+D035,packing_list,total_qty,3950
+D035,packing_list,total_gross_kg,1722.2
+D035,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D035,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D035,commercial_invoice,total_amount,7110
+D035,bill_of_lading,bl_no,SMLNSHA26012287
+D035,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO.,LTD"
+D035,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D035,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D035,bill_of_lading,vessel_voyage,SAMPLE STAR 043E
+D035,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D035,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D035,bill_of_lading,onboard_date,2026-11-04
+D035,bill_of_lading,container_no,SMCU3785855
+D035,bill_of_lading,total_packages,79
+D035,bill_of_lading,total_gross_kg,1722.2
+D035,bill_of_lading,total_cbm,0.948
+D035,bill_of_lading,freight_term,FREIGHT COLLECT
+D035,certificate_of_origin,co_no,K26SHA0001746
+D035,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D035,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D035,certificate_of_origin,invoice_no,SHE-2026-0268
+D035,certificate_of_origin,invoice_date,2026-10-26
+D035,certificate_of_origin,departure_date,2026-11-04
+D035,certificate_of_origin,issue_date,2026-11-11
+D035,certificate_of_origin,issued_retroactively,
+D035,certificate_of_origin,items[0].hs_code,7318.15
+D035,certificate_of_origin,items[0].origin_criterion,PSR
+D036,commercial_invoice,invoice_no,HSF-26-0295
+D036,commercial_invoice,total_qty,1000
+D036,commercial_invoice,total_gross_kg,700
+D036,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D036,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D036,packing_list,invoice_no,HSF26-0295
+D036,packing_list,total_qty,1000
+D036,packing_list,total_gross_kg,700
+D036,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D036,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D036,commercial_invoice,total_amount,6700
+D036,bill_of_lading,bl_no,SOCLHPH26021861
+D036,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO.,LTD"
+D036,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D036,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D036,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 452N
+D036,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D036,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D036,bill_of_lading,onboard_date,2026-11-12
+D036,bill_of_lading,container_no,SOLU6353198
+D036,bill_of_lading,total_packages,50
+D036,bill_of_lading,total_gross_kg,700
+D036,bill_of_lading,total_cbm,6.0
+D036,bill_of_lading,freight_term,FREIGHT COLLECT
+D037,commercial_invoice,invoice_no,SZP2600140
+D037,commercial_invoice,total_qty,182
+D037,commercial_invoice,total_gross_kg,1251
+D037,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D037,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D037,packing_list,invoice_no,SZP2600140
+D037,packing_list,total_qty,180
+D037,packing_list,total_gross_kg,1251
+D037,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D037,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D037,commercial_invoice,total_amount,33670
+D037,bill_of_lading,bl_no,SOCLSZX26021654
+D037,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D037,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D037,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D037,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 473E
+D037,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D037,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D037,bill_of_lading,onboard_date,2026-10-13
+D037,bill_of_lading,container_no,SOLU3542686
+D037,bill_of_lading,total_packages,90
+D037,bill_of_lading,total_gross_kg,1251
+D037,bill_of_lading,total_cbm,4.05
+D037,bill_of_lading,freight_term,FREIGHT COLLECT
+D038,commercial_invoice,invoice_no,FEC-26-0264
+D038,commercial_invoice,total_qty,2575
+D038,commercial_invoice,total_gross_kg,47765
+D038,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D038,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D038,packing_list,invoice_no,FEC-26-0264
+D038,packing_list,total_qty,2575
+D038,packing_list,total_gross_kg,47765
+D038,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D038,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D038,commercial_invoice,total_amount,15030
+D038,bill_of_lading,bl_no,SMLNCAN26012294
+D038,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D038,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D038,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D038,bill_of_lading,vessel_voyage,EXAMPLE PEARL 229E
+D038,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D038,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D038,bill_of_lading,onboard_date,2026-11-11
+D038,bill_of_lading,container_no,SMLU9141331 SMLU4211009 SMLU5708659
+D038,bill_of_lading,total_packages,2575
+D038,bill_of_lading,total_gross_kg,47765
+D038,bill_of_lading,total_cbm,70.5
+D038,bill_of_lading,freight_term,FREIGHT PREPAID
+D038,certificate_of_origin,co_no,K26CAN0001774
+D038,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D038,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D038,certificate_of_origin,invoice_no,FEC-26-0264
+D038,certificate_of_origin,invoice_date,2026-11-04
+D038,certificate_of_origin,departure_date,2026-11-11
+D038,certificate_of_origin,issue_date,2026-11-13
+D038,certificate_of_origin,issued_retroactively,
+D038,certificate_of_origin,items[0].hs_code,6908.90
+D038,certificate_of_origin,items[0].origin_criterion,WP
+D038,certificate_of_origin,items[1].hs_code,6908.90
+D038,certificate_of_origin,items[1].origin_criterion,WP
+D039,commercial_invoice,invoice_no,SZP2600134
+D039,commercial_invoice,total_qty,105467
+D039,commercial_invoice,total_gross_kg,16697
+D039,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D039,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D039,packing_list,invoice_no,SZP2600134
+D039,packing_list,total_qty,105467
+D039,packing_list,total_gross_kg,16697
+D039,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D039,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D039,commercial_invoice,total_amount,76281.5
+D039,bill_of_lading,bl_no,EXSHSZX26027493
+D039,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO.,LTD"
+D039,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D039,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D039,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 785E
+D039,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D039,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D039,bill_of_lading,onboard_date,2026-09-25
+D039,bill_of_lading,container_no,EXSU8624262 EXSU9891746
+D039,bill_of_lading,total_packages,749
+D039,bill_of_lading,total_gross_kg,16697
+D039,bill_of_lading,total_cbm,116.11
+D039,bill_of_lading,freight_term,FREIGHT COLLECT
+D039,certificate_of_origin,co_no,K26SZX0001435
+D039,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D039,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D039,certificate_of_origin,invoice_no,SZP2600134
+D039,certificate_of_origin,invoice_date,2026-09-16
+D039,certificate_of_origin,departure_date,2026-09-25
+D039,certificate_of_origin,issue_date,2026-09-23
+D039,certificate_of_origin,issued_retroactively,
+D039,certificate_of_origin,items[0].hs_code,8541.40
+D039,certificate_of_origin,items[0].origin_criterion,PSR
+D039,certificate_of_origin,items[1].hs_code,9405.10
+D039,certificate_of_origin,items[1].origin_criterion,PSR
+D039,certificate_of_origin,items[2].hs_code,8541.40
+D039,certificate_of_origin,items[2].origin_criterion,PSR
+D040,commercial_invoice,invoice_no,NBH2026-202
+D040,commercial_invoice,total_qty,3110
+D040,commercial_invoice,total_gross_kg,3714.9
+D040,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D040,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D040,packing_list,invoice_no,NBH2026-202
+D040,packing_list,total_qty,3110
+D040,packing_list,total_gross_kg,3714.9
+D040,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D040,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D040,commercial_invoice,total_amount,10405
+D040,bill_of_lading,bl_no,EXSHNGB26027562
+D040,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO.,LTD"
+D040,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D040,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D040,bill_of_lading,vessel_voyage,SAMPLE STAR 550E
+D040,bill_of_lading,port_loading,"NINGBO, CHINA"
+D040,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D040,bill_of_lading,onboard_date,2026-10-03
+D040,bill_of_lading,container_no,EXSU6514707
+D040,bill_of_lading,total_packages,277
+D040,bill_of_lading,total_gross_kg,3714.9
+D040,bill_of_lading,total_cbm,60.75
+D040,bill_of_lading,freight_term,FREIGHT COLLECT
+D040,certificate_of_origin,co_no,K26NGB0001521
+D040,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D040,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D040,certificate_of_origin,invoice_no,NBH2026-202
+D040,certificate_of_origin,invoice_date,2026-09-28
+D040,certificate_of_origin,departure_date,2026-10-03
+D040,certificate_of_origin,issue_date,2026-10-03
+D040,certificate_of_origin,issued_retroactively,
+D040,certificate_of_origin,items[0].hs_code,3924.90
+D040,certificate_of_origin,items[0].origin_criterion,PSR
+D040,certificate_of_origin,items[1].hs_code,3924.90
+D040,certificate_of_origin,items[1].origin_criterion,PSR
+D041,commercial_invoice,invoice_no,TNC-26-0288
+D041,commercial_invoice,total_qty,27540
+D041,commercial_invoice,total_gross_kg,27907.2
+D041,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D041,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D041,packing_list,invoice_no,TNC-26-0288
+D041,packing_list,total_qty,54540
+D041,packing_list,total_gross_kg,27907.2
+D041,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D041,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D041,commercial_invoice,total_amount,138774
+D041,bill_of_lading,bl_no,SOCLSGN26021760
+D041,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D041,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D041,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D041,bill_of_lading,vessel_voyage,SAMPLE PIONEER 533N
+D041,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D041,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D041,bill_of_lading,onboard_date,2026-10-26
+D041,bill_of_lading,container_no,SOLU5289833 SOLU9690171
+D041,bill_of_lading,total_packages,459
+D041,bill_of_lading,total_gross_kg,27907.2
+D041,bill_of_lading,total_cbm,50.49
+D041,bill_of_lading,freight_term,FREIGHT PREPAID
+D041,certificate_of_origin,co_no,VN-KR 26/03/02285
+D041,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D041,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D041,certificate_of_origin,invoice_no,TNC-26-0288
+D041,certificate_of_origin,invoice_date,2026-10-24
+D041,certificate_of_origin,departure_date,2026-10-26
+D041,certificate_of_origin,issue_date,2026-10-27
+D041,certificate_of_origin,issued_retroactively,
+D041,certificate_of_origin,items[0].hs_code,0901.11
+D041,certificate_of_origin,items[0].origin_criterion,WO
+D041,certificate_of_origin,items[1].hs_code,0901.12
+D041,certificate_of_origin,items[1].origin_criterion,WO
+D042,commercial_invoice,invoice_no,HSF-26-0278
+D042,commercial_invoice,total_qty,22212
+D042,commercial_invoice,total_gross_kg,4293.36
+D042,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D042,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D042,packing_list,invoice_no,HSF-26-0278
+D042,packing_list,total_qty,5796
+D042,packing_list,total_gross_kg,4293.36
+D042,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D042,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D042,commercial_invoice,total_amount,286048.8
+D042,bill_of_lading,bl_no,EXSHHPH26027720
+D042,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO.,LTD"
+D042,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D042,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D042,bill_of_lading,vessel_voyage,SAMPLE HORIZON 307N
+D042,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D042,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D042,bill_of_lading,onboard_date,2026-10-24
+D042,bill_of_lading,container_no,EXMU2071297
+D042,bill_of_lading,total_packages,483
+D042,bill_of_lading,total_gross_kg,4293.36
+D042,bill_of_lading,total_cbm,33.81
+D042,bill_of_lading,freight_term,FREIGHT PREPAID
+D043,commercial_invoice,invoice_no,TNC-26-0293
+D043,commercial_invoice,total_qty,31260
+D043,commercial_invoice,total_gross_kg,31676.8
+D043,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D043,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D043,packing_list,invoice_no,TNC-26-0293
+D043,packing_list,total_qty,31260
+D043,packing_list,total_gross_kg,31676.8
+D043,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D043,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D043,commercial_invoice,total_amount,154386
+D043,bill_of_lading,bl_no,EXSHSGN26027898
+D043,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D043,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D043,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D043,bill_of_lading,vessel_voyage,SAMPLE PIONEER 207N
+D043,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D043,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D043,bill_of_lading,onboard_date,2026-11-11
+D043,bill_of_lading,container_no,EXSU6662263 EXSU5892430 EXMU0400731
+D043,bill_of_lading,total_packages,521
+D043,bill_of_lading,total_gross_kg,31676.8
+D043,bill_of_lading,total_cbm,57.31
+D043,bill_of_lading,freight_term,FREIGHT COLLECT
+D044,commercial_invoice,invoice_no,MKS-260264
+D044,commercial_invoice,total_qty,6950
+D044,commercial_invoice,total_gross_kg,7784
+D044,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D044,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D044,packing_list,invoice_no,MKS-260264
+D044,packing_list,total_qty,6950
+D044,packing_list,total_gross_kg,7784
+D044,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D044,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D044,commercial_invoice,total_amount,54905
+D044,bill_of_lading,bl_no,SMLNSGN26012325
+D044,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D044,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D044,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D044,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 282N
+D044,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D044,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D044,bill_of_lading,onboard_date,2026-11-12
+D044,bill_of_lading,container_no,SMCU6376275
+D044,bill_of_lading,total_packages,695
+D044,bill_of_lading,total_gross_kg,7784
+D044,bill_of_lading,total_cbm,20.85
+D044,bill_of_lading,freight_term,FREIGHT COLLECT
+D044,certificate_of_origin,co_no,VN-KR 26/04/02455
+D044,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D044,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D044,certificate_of_origin,invoice_no,MKS-260264
+D044,certificate_of_origin,invoice_date,2026-11-03
+D044,certificate_of_origin,departure_date,2026-11-12
+D044,certificate_of_origin,issue_date,2026-11-11
+D044,certificate_of_origin,issued_retroactively,
+D044,certificate_of_origin,items[0].hs_code,0306.17
+D044,certificate_of_origin,items[0].origin_criterion,WO
+D045,commercial_invoice,invoice_no,NBH2026-023
+D045,commercial_invoice,total_qty,7458
+D045,commercial_invoice,total_gross_kg,6295.5
+D045,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D045,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D045,packing_list,invoice_no,NBH2026-203
+D045,packing_list,total_qty,7470
+D045,packing_list,total_gross_kg,6295.5
+D045,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D045,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D045,commercial_invoice,total_amount,16860.6
+D045,bill_of_lading,bl_no,SOCLNGB26021638
+D045,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO.,LTD"
+D045,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D045,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D045,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 403E
+D045,bill_of_lading,port_loading,"NINGBO, CHINA"
+D045,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D045,bill_of_lading,onboard_date,2026-10-05
+D045,bill_of_lading,container_no,SOLU0908811 SOLU2776627
+D045,bill_of_lading,total_packages,442
+D045,bill_of_lading,total_gross_kg,6295.5
+D045,bill_of_lading,total_cbm,90.8
+D045,bill_of_lading,freight_term,FREIGHT COLLECT
+D045,certificate_of_origin,co_no,K26NGB0001538
+D045,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D045,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D045,certificate_of_origin,invoice_no,NBH2026-203
+D045,certificate_of_origin,invoice_date,2026-10-01
+D045,certificate_of_origin,departure_date,2026-10-05
+D045,certificate_of_origin,issue_date,2026-10-05
+D045,certificate_of_origin,issued_retroactively,
+D045,certificate_of_origin,items[0].hs_code,3924.10
+D045,certificate_of_origin,items[0].origin_criterion,PSR
+D045,certificate_of_origin,items[1].hs_code,3924.90
+D045,certificate_of_origin,items[1].origin_criterion,PSR
+D045,certificate_of_origin,items[2].hs_code,3924.90
+D045,certificate_of_origin,items[2].origin_criterion,PSR
+D046,commercial_invoice,invoice_no,TNC-26-0269
+D046,commercial_invoice,total_qty,12540
+D046,commercial_invoice,total_gross_kg,12707.2
+D046,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D046,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D046,packing_list,invoice_no,TNC-26-0269
+D046,packing_list,total_qty,12540
+D046,packing_list,total_gross_kg,12707.2
+D046,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D046,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D046,commercial_invoice,total_amount,53922
+D046,bill_of_lading,bl_no,EXSHSGN26027488
+D046,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D046,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D046,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D046,bill_of_lading,vessel_voyage,SAMPLE STAR 139N
+D046,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D046,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D046,bill_of_lading,onboard_date,2026-09-21
+D046,bill_of_lading,container_no,EXMU9090067
+D046,bill_of_lading,total_packages,209
+D046,bill_of_lading,total_gross_kg,12707.2
+D046,bill_of_lading,total_cbm,22.99
+D046,bill_of_lading,freight_term,FREIGHT COLLECT
+D046,certificate_of_origin,co_no,VN-KR 26/03/02151
+D046,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D046,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D046,certificate_of_origin,invoice_no,TNC-26-0296
+D046,certificate_of_origin,invoice_date,2026-09-16
+D046,certificate_of_origin,departure_date,2026-09-21
+D046,certificate_of_origin,issue_date,2026-09-21
+D046,certificate_of_origin,issued_retroactively,
+D046,certificate_of_origin,items[0].hs_code,0901.11
+D046,certificate_of_origin,items[0].origin_criterion,WO
+D047,commercial_invoice,invoice_no,SHE-2026-0261
+D047,commercial_invoice,total_qty,9080
+D047,commercial_invoice,total_gross_kg,9960
+D047,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D047,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D047,packing_list,invoice_no,SHE-2026-0261
+D047,packing_list,total_qty,9800
+D047,packing_list,total_gross_kg,9960
+D047,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D047,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D047,commercial_invoice,total_amount,34958
+D047,bill_of_lading,bl_no,EXSHSHA26027620
+D047,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D047,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D047,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D047,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 489E
+D047,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D047,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D047,bill_of_lading,onboard_date,2026-10-15
+D047,bill_of_lading,container_no,EXSU2209876
+D047,bill_of_lading,total_packages,20
+D047,bill_of_lading,total_gross_kg,9960
+D047,bill_of_lading,total_cbm,7.0
+D047,bill_of_lading,freight_term,FREIGHT COLLECT
+D048,commercial_invoice,invoice_no,MKS-260658
+D048,commercial_invoice,total_qty,23600
+D048,commercial_invoice,total_gross_kg,26432
+D048,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D048,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D048,packing_list,invoice_no,MKS-260258
+D048,packing_list,total_qty,23600
+D048,packing_list,total_gross_kg,26432
+D048,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D048,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D048,commercial_invoice,total_amount,200465
+D048,bill_of_lading,bl_no,SOCLSGN26021833
+D048,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D048,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D048,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D048,bill_of_lading,vessel_voyage,SAMPLE STAR 873N
+D048,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D048,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D048,bill_of_lading,onboard_date,2026-11-07
+D048,bill_of_lading,container_no,SOLU7655398 SOLU6285318
+D048,bill_of_lading,total_packages,2360
+D048,bill_of_lading,total_gross_kg,26432
+D048,bill_of_lading,total_cbm,70.8
+D048,bill_of_lading,freight_term,FREIGHT PREPAID
+D048,certificate_of_origin,co_no,VN-KR 26/03/02441
+D048,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D048,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D048,certificate_of_origin,invoice_no,MKS-260258
+D048,certificate_of_origin,invoice_date,2026-11-02
+D048,certificate_of_origin,departure_date,2026-11-07
+D048,certificate_of_origin,issue_date,2026-11-10
+D048,certificate_of_origin,issued_retroactively,
+D048,certificate_of_origin,items[0].hs_code,0306.17
+D048,certificate_of_origin,items[0].origin_criterion,WO
+D048,certificate_of_origin,items[1].hs_code,0306.17
+D048,certificate_of_origin,items[1].origin_criterion,WO
+D049,commercial_invoice,invoice_no,SHE-2026-0267
+D049,commercial_invoice,total_qty,179630
+D049,commercial_invoice,total_gross_kg,3445.8
+D049,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D049,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D049,packing_list,invoice_no,SHE-20260267
+D049,packing_list,total_qty,179630
+D049,packing_list,total_gross_kg,3445.8
+D049,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D049,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D049,commercial_invoice,total_amount,43020
+D049,bill_of_lading,bl_no,EXSHSHA26027793
+D049,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D049,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D049,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D049,bill_of_lading,vessel_voyage,SAMPLE HORIZON 382E
+D049,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D049,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D049,bill_of_lading,onboard_date,2026-10-30
+D049,bill_of_lading,container_no,EXSU3825900
+D049,bill_of_lading,total_packages,420
+D049,bill_of_lading,total_gross_kg,3445.8
+D049,bill_of_lading,total_cbm,11.394
+D049,bill_of_lading,freight_term,FREIGHT PREPAID
+D049,certificate_of_origin,co_no,K26SHA0001707
+D049,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D049,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D049,certificate_of_origin,invoice_no,SHE-2026-0267
+D049,certificate_of_origin,invoice_date,2026-10-24
+D049,certificate_of_origin,departure_date,2026-10-30
+D049,certificate_of_origin,issue_date,2026-11-05
+D049,certificate_of_origin,issued_retroactively,
+D049,certificate_of_origin,items[0].hs_code,8467.21
+D049,certificate_of_origin,items[0].origin_criterion,PSR
+D049,certificate_of_origin,items[1].hs_code,8211.92
+D049,certificate_of_origin,items[1].origin_criterion,PSR
+D049,certificate_of_origin,items[2].hs_code,7318.14
+D049,certificate_of_origin,items[2].origin_criterion,PSR
+D050,commercial_invoice,invoice_no,QDT/26/0292
+D050,commercial_invoice,total_qty,8445
+D050,commercial_invoice,total_gross_kg,4415.7
+D050,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D050,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D050,packing_list,invoice_no,QDT/26/0292
+D050,packing_list,total_qty,8445
+D050,packing_list,total_gross_kg,4415.7
+D050,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D050,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D050,commercial_invoice,total_amount,33099
+D050,bill_of_lading,bl_no,SOCLTAO26021811
+D050,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO.,LTD"
+D050,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D050,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D050,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 454E
+D050,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D050,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D050,bill_of_lading,onboard_date,2026-11-04
+D050,bill_of_lading,container_no,SOCU0794461
+D050,bill_of_lading,total_packages,248
+D050,bill_of_lading,total_gross_kg,4415.7
+D050,bill_of_lading,total_cbm,18.94
+D050,bill_of_lading,freight_term,FREIGHT COLLECT
+D050,certificate_of_origin,co_no,K26TAO0001739
+D050,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D050,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D050,certificate_of_origin,invoice_no,QDT/26/0292
+D050,certificate_of_origin,invoice_date,2026-11-02
+D050,certificate_of_origin,departure_date,2026-11-04
+D050,certificate_of_origin,issue_date,2026-11-08
+D050,certificate_of_origin,issued_retroactively,
+D050,certificate_of_origin,items[0].hs_code,4011.50
+D050,certificate_of_origin,items[0].origin_criterion,PSR
+D050,certificate_of_origin,items[1].hs_code,4011.50
+D050,certificate_of_origin,items[1].origin_criterion,PSR
+D051,commercial_invoice,invoice_no,MKS-260256
+D051,commercial_invoice,total_qty,21250
+D051,commercial_invoice,total_gross_kg,23800
+D051,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D051,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D051,packing_list,invoice_no,MKS-260256
+D051,packing_list,total_qty,21250
+D051,packing_list,total_gross_kg,23800
+D051,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D051,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D051,commercial_invoice,total_amount,180805
+D051,bill_of_lading,bl_no,SMLNSGN26012256
+D051,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D051,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D051,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D051,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 100N
+D051,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D051,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D051,bill_of_lading,onboard_date,2026-10-26
+D051,bill_of_lading,container_no,SMCU4519269 SMLU6477359
+D051,bill_of_lading,total_packages,2125
+D051,bill_of_lading,total_gross_kg,23800
+D051,bill_of_lading,total_cbm,63.75
+D051,bill_of_lading,freight_term,FREIGHT COLLECT
+D051,certificate_of_origin,co_no,VN-KR 26/04/02293
+D051,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D051,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D051,certificate_of_origin,invoice_no,MKS-260256
+D051,certificate_of_origin,invoice_date,2026-10-23
+D051,certificate_of_origin,departure_date,2026-10-26
+D051,certificate_of_origin,issue_date,2026-10-28
+D051,certificate_of_origin,issued_retroactively,
+D051,certificate_of_origin,items[0].hs_code,0306.17
+D051,certificate_of_origin,items[0].origin_criterion,WO
+D051,certificate_of_origin,items[1].hs_code,0306.17
+D051,certificate_of_origin,items[1].origin_criterion,WO
+D052,commercial_invoice,invoice_no,SST-26-0135
+D052,commercial_invoice,total_qty,15694
+D052,commercial_invoice,total_gross_kg,2966.22
+D052,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D052,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D052,packing_list,invoice_no,SST-260135
+D052,packing_list,total_qty,15694
+D052,packing_list,total_gross_kg,2966.22
+D052,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D052,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D052,commercial_invoice,total_amount,36880.9
+D052,bill_of_lading,bl_no,EXSHSGN26027236
+D052,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D052,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D052,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D052,bill_of_lading,vessel_voyage,EXAMPLE PEARL 363N
+D052,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D052,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D052,bill_of_lading,onboard_date,2026-09-05
+D052,bill_of_lading,container_no,EXSU9531950
+D052,bill_of_lading,total_packages,157
+D052,bill_of_lading,total_gross_kg,2966.22
+D052,bill_of_lading,total_cbm,13.345
+D052,bill_of_lading,freight_term,FREIGHT PREPAID
+D052,certificate_of_origin,co_no,VN-KR 26/02/02321
+D052,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D052,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D052,certificate_of_origin,invoice_no,SST-26-0135
+D052,certificate_of_origin,invoice_date,2026-09-01
+D052,certificate_of_origin,departure_date,2026-09-05
+D052,certificate_of_origin,issue_date,2026-09-07
+D052,certificate_of_origin,issued_retroactively,
+D052,certificate_of_origin,items[0].hs_code,6109.10
+D052,certificate_of_origin,items[0].origin_criterion,CTC
+D053,commercial_invoice,invoice_no,QDT/26/0275
+D053,commercial_invoice,total_qty,6318
+D053,commercial_invoice,total_gross_kg,7937.9
+D053,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D053,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D053,packing_list,invoice_no,QDT/26/0275
+D053,packing_list,total_qty,6318
+D053,packing_list,total_gross_kg,7937.9
+D053,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D053,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D053,commercial_invoice,total_amount,29701
+D053,bill_of_lading,bl_no,EXSHTAO26027312
+D053,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO.,LTD"
+D053,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D053,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D053,bill_of_lading,vessel_voyage,SAMPLE PIONEER 714E
+D053,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D053,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D053,bill_of_lading,onboard_date,2026-09-09
+D053,bill_of_lading,container_no,EXSU0746243
+D053,bill_of_lading,total_packages,293
+D053,bill_of_lading,total_gross_kg,7937.9
+D053,bill_of_lading,total_cbm,25.91
+D053,bill_of_lading,freight_term,FREIGHT COLLECT
+D054,commercial_invoice,invoice_no,BDF-2026-242
+D054,commercial_invoice,total_qty,791
+D054,commercial_invoice,total_gross_kg,9418.1
+D054,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D054,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D054,packing_list,invoice_no,BDF-2026-242
+D054,packing_list,total_qty,791
+D054,packing_list,total_gross_kg,9418.1
+D054,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D054,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D054,commercial_invoice,total_amount,31872
+D054,bill_of_lading,bl_no,SOCLSGN26021597
+D054,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D054,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D054,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D054,bill_of_lading,vessel_voyage,SAMPLE HARMONY 868N
+D054,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D054,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D054,bill_of_lading,onboard_date,2026-09-25
+D054,bill_of_lading,container_no,SOCU7762722 SOLU5697901
+D054,bill_of_lading,total_packages,467
+D054,bill_of_lading,total_gross_kg,9418.1
+D054,bill_of_lading,total_cbm,71.39
+D054,bill_of_lading,freight_term,FREIGHT COLLECT
+D054,certificate_of_origin,co_no,VN-KR 26/04/02181
+D054,certificate_of_origin,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D054,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D054,certificate_of_origin,invoice_no,BDF-2026-242
+D054,certificate_of_origin,invoice_date,2026-09-18
+D054,certificate_of_origin,departure_date,2026-09-25
+D054,certificate_of_origin,issue_date,2026-09-27
+D054,certificate_of_origin,issued_retroactively,
+D054,certificate_of_origin,items[0].hs_code,9403.60
+D054,certificate_of_origin,items[0].origin_criterion,CTH
+D054,certificate_of_origin,items[1].hs_code,9401.69
+D054,certificate_of_origin,items[1].origin_criterion,CTH
+D055,commercial_invoice,invoice_no,TNC-26-0273
+D055,commercial_invoice,total_qty,31800
+D055,commercial_invoice,total_gross_kg,32224
+D055,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D055,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,packing_list,invoice_no,TNC-26-0273
+D055,packing_list,total_qty,31800
+D055,packing_list,total_gross_kg,32224
+D055,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D055,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,commercial_invoice,total_amount,161028
+D055,bill_of_lading,bl_no,SOCLSGN26021603
+D055,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO.,LTD"
+D055,bill_of_lading,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D055,bill_of_lading,vessel_voyage,SAMPLE HARMONY 777N
+D055,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D055,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D055,bill_of_lading,onboard_date,2026-10-03
+D055,bill_of_lading,container_no,SOCU8499570 SOCU1846786 SOLU5715796
+D055,bill_of_lading,total_packages,530
+D055,bill_of_lading,total_gross_kg,32224
+D055,bill_of_lading,total_cbm,58.3
+D055,bill_of_lading,freight_term,FREIGHT COLLECT
+D055,certificate_of_origin,co_no,VN-KR 26/02/02201
+D055,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D055,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D055,certificate_of_origin,invoice_no,TNC-26-0273
+D055,certificate_of_origin,invoice_date,2026-09-28
+D055,certificate_of_origin,departure_date,2026-10-03
+D055,certificate_of_origin,issue_date,2026-10-21
+D055,certificate_of_origin,issued_retroactively,ISSUED RETROACTIVELY
+D055,certificate_of_origin,items[0].hs_code,0901.11
+D055,certificate_of_origin,items[0].origin_criterion,WO
+D055,certificate_of_origin,items[1].hs_code,0901.12
+D055,certificate_of_origin,items[1].origin_criterion,WO
+D056,commercial_invoice,invoice_no,NBH2026-213
+D056,commercial_invoice,total_qty,2812
+D056,commercial_invoice,total_gross_kg,4134.6
+D056,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D056,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D056,packing_list,invoice_no,NBH2026-213
+D056,packing_list,total_qty,2812
+D056,packing_list,total_gross_kg,4134.6
+D056,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D056,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D056,commercial_invoice,total_amount,11529.2
+D056,bill_of_lading,bl_no,SOCLNGB26021734
+D056,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D056,bill_of_lading,consignee_name,"TO ORDER OF SAMPLE BANK OF KOREA, BUSAN BRANCH"
+D056,bill_of_lading,notify_name,"EXAMPLE HOME LIVING CO., LTD."
+D056,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 261E
+D056,bill_of_lading,port_loading,"NINGBO, CHINA"
+D056,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D056,bill_of_lading,onboard_date,2026-10-25
+D056,bill_of_lading,container_no,SOLU8958188 SOCU3648080
+D056,bill_of_lading,total_packages,282
+D056,bill_of_lading,total_gross_kg,4134.6
+D056,bill_of_lading,total_cbm,70.5
+D056,bill_of_lading,freight_term,FREIGHT PREPAID
+D056,certificate_of_origin,co_no,K26NGB0001636
+D056,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D056,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D056,certificate_of_origin,invoice_no,NBH2026-213
+D056,certificate_of_origin,invoice_date,2026-10-16
+D056,certificate_of_origin,departure_date,2026-10-25
+D056,certificate_of_origin,issue_date,2026-10-23
+D056,certificate_of_origin,issued_retroactively,
+D056,certificate_of_origin,items[0].hs_code,3924.90
+D056,certificate_of_origin,items[0].origin_criterion,PSR
+D057,commercial_invoice,invoice_no,SZP2600132
+D057,commercial_invoice,total_qty,767
+D057,commercial_invoice,total_gross_kg,12604
+D057,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D057,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D057,packing_list,invoice_no,SZP2600132
+D057,packing_list,total_qty,767
+D057,packing_list,total_gross_kg,11704
+D057,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D057,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D057,commercial_invoice,total_amount,96325
+D057,bill_of_lading,bl_no,SMLNSZX26011907
+D057,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D057,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D057,bill_of_lading,notify_name,HANBIT SAMPLE CORPORATION
+D057,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 778E
+D057,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D057,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D057,bill_of_lading,onboard_date,2026-09-12
+D057,bill_of_lading,container_no,SMCU1366715 SMCU6982971
+D057,bill_of_lading,total_packages,570
+D057,bill_of_lading,total_gross_kg,12604
+D057,bill_of_lading,total_cbm,83.31
+D057,bill_of_lading,freight_term,FREIGHT COLLECT
+D057,certificate_of_origin,co_no,K26SZX0001348
+D057,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D057,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D057,certificate_of_origin,invoice_no,SZP2600132
+D057,certificate_of_origin,invoice_date,2026-09-09
+D057,certificate_of_origin,departure_date,2026-09-12
+D057,certificate_of_origin,issue_date,2026-09-18
+D057,certificate_of_origin,issued_retroactively,
+D057,certificate_of_origin,items[0].hs_code,8507.60
+D057,certificate_of_origin,items[0].origin_criterion,WP
+D057,certificate_of_origin,items[1].hs_code,8541.40
+D057,certificate_of_origin,items[1].origin_criterion,WP
+D058,commercial_invoice,invoice_no,FEC-26-0249
+D058,commercial_invoice,total_qty,1925
+D058,commercial_invoice,total_gross_kg,41965
+D058,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D058,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D058,packing_list,invoice_no,FEC-26-0429
+D058,packing_list,total_qty,1925
+D058,packing_list,total_gross_kg,41965
+D058,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D058,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D058,commercial_invoice,total_amount,13860
+D058,bill_of_lading,bl_no,EXSHCAN26027605
+D058,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO.,LTD"
+D058,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D058,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D058,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 144E
+D058,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D058,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D058,bill_of_lading,onboard_date,2026-10-13
+D058,bill_of_lading,container_no,EXSU6106731 EXSU5762632 EXMU4339429
+D058,bill_of_lading,total_packages,1925
+D058,bill_of_lading,total_gross_kg,41965
+D058,bill_of_lading,total_cbm,57.75
+D058,bill_of_lading,freight_term,FREIGHT PREPAID
+D058,certificate_of_origin,co_no,K26CAN0001554
+D058,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D058,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D058,certificate_of_origin,invoice_no,FEC-26-0249
+D058,certificate_of_origin,invoice_date,2026-10-08
+D058,certificate_of_origin,departure_date,2026-10-13
+D058,certificate_of_origin,issue_date,2026-10-16
+D058,certificate_of_origin,issued_retroactively,
+D058,certificate_of_origin,items[0].hs_code,6908.90
+D058,certificate_of_origin,items[0].origin_criterion,WP
+D059,commercial_invoice,invoice_no,TNC-26-0277
+D059,commercial_invoice,total_qty,12240
+D059,commercial_invoice,total_gross_kg,12403.2
+D059,commercial_invoice,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D059,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D059,packing_list,invoice_no,TNC-26-0277
+D059,packing_list,total_qty,12240
+D059,packing_list,total_gross_kg,12403.2
+D059,packing_list,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D059,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D059,commercial_invoice,total_amount,52632
+D059,bill_of_lading,bl_no,EXSHSGN26027591
+D059,bill_of_lading,shipper_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D059,bill_of_lading,consignee_name,"TO ORDER OF SAMPLE BANK OF KOREA, BUSAN BRANCH"
+D059,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D059,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 355N
+D059,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D059,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D059,bill_of_lading,onboard_date,2026-10-12
+D059,bill_of_lading,container_no,EXSU5365419
+D059,bill_of_lading,total_packages,204
+D059,bill_of_lading,total_gross_kg,12403.2
+D059,bill_of_lading,total_cbm,22.44
+D059,bill_of_lading,freight_term,FREIGHT PREPAID
+D059,certificate_of_origin,co_no,VN-KR 26/02/02219
+D059,certificate_of_origin,exporter_name,"TAY NGUYEN SAMPLE COFFEE CO., LTD."
+D059,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D059,certificate_of_origin,invoice_no,TNC-26-0277
+D059,certificate_of_origin,invoice_date,2026-10-03
+D059,certificate_of_origin,departure_date,2026-10-12
+D059,certificate_of_origin,issue_date,2026-11-13
+D059,certificate_of_origin,issued_retroactively,ISSUED RETROACTIVELY
+D059,certificate_of_origin,items[0].hs_code,0901.11
+D059,certificate_of_origin,items[0].origin_criterion,WO
+D060,commercial_invoice,invoice_no,HSF-26-0281
+D060,commercial_invoice,total_qty,5388
+D060,commercial_invoice,total_gross_kg,3843.44
+D060,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D060,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D060,packing_list,invoice_no,HSF-26-0281
+D060,packing_list,total_qty,5388
+D060,packing_list,total_gross_kg,3843.44
+D060,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D060,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D060,commercial_invoice,total_amount,71121.6
+D060,bill_of_lading,bl_no,SOCLHPH26021773
+D060,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO.,LTD"
+D060,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D060,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D060,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 322N
+D060,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D060,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D060,bill_of_lading,onboard_date,2026-10-30
+D060,bill_of_lading,container_no,SOCU9012136
+D060,bill_of_lading,total_packages,449
+D060,bill_of_lading,total_gross_kg,3843.44
+D060,bill_of_lading,total_cbm,31.43
+D060,bill_of_lading,freight_term,FREIGHT COLLECT
+D060,certificate_of_origin,co_no,VN-KR 26/04/02390
+D060,certificate_of_origin,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D060,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D060,certificate_of_origin,invoice_no,HSF-26-0281
+D060,certificate_of_origin,invoice_date,2026-10-21
+D060,certificate_of_origin,departure_date,2026-10-30
+D060,certificate_of_origin,issue_date,2026-10-28
+D060,certificate_of_origin,issued_retroactively,
+D060,certificate_of_origin,items[0].hs_code,6404.11
+D060,certificate_of_origin,items[0].origin_criterion,WO
+D061,commercial_invoice,invoice_no,SHE-2026-0242
+D061,commercial_invoice,total_qty,6600
+D061,commercial_invoice,total_gross_kg,6684
+D061,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D061,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D061,packing_list,invoice_no,SHE-2026-0242
+D061,packing_list,total_qty,6600
+D061,packing_list,total_gross_kg,6684
+D061,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D061,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D061,commercial_invoice,total_amount,24420
+D061,bill_of_lading,bl_no,SOCLSHA26021587
+D061,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO.,LTD"
+D061,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D061,bill_of_lading,notify_name,HANBIT SAMPLE CORPORATION
+D061,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 796E
+D061,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D061,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D061,bill_of_lading,onboard_date,2026-09-23
+D061,bill_of_lading,container_no,SOLU4906015
+D061,bill_of_lading,total_packages,14
+D061,bill_of_lading,total_gross_kg,6684
+D061,bill_of_lading,total_cbm,4.48
+D061,bill_of_lading,freight_term,FREIGHT COLLECT
+D061,certificate_of_origin,co_no,K26SHA0001410
+D061,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D061,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D061,certificate_of_origin,invoice_no,SHE-2026-0242
+D061,certificate_of_origin,invoice_date,2026-09-14
+D061,certificate_of_origin,departure_date,2026-09-23
+D061,certificate_of_origin,issue_date,2026-09-22
+D061,certificate_of_origin,issued_retroactively,
+D061,certificate_of_origin,items[0].hs_code,7604.29
+D061,certificate_of_origin,items[0].origin_criterion,PSR
+D062,commercial_invoice,invoice_no,SST-26-0140
+D062,commercial_invoice,total_qty,15010
+D062,commercial_invoice,total_gross_kg,2958
+D062,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D062,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D062,packing_list,invoice_no,SST-26-0140
+D062,packing_list,total_qty,15010
+D062,packing_list,total_gross_kg,3121.6
+D062,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D062,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D062,commercial_invoice,total_amount,47900.5
+D062,bill_of_lading,bl_no,EXSHSGN26027378
+D062,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D062,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D062,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D062,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 676N
+D062,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D062,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D062,bill_of_lading,onboard_date,2026-09-14
+D062,bill_of_lading,container_no,EXSU1077158
+D062,bill_of_lading,total_packages,175
+D062,bill_of_lading,total_gross_kg,3121.6
+D062,bill_of_lading,total_cbm,15.18
+D062,bill_of_lading,freight_term,FREIGHT PREPAID
+D062,certificate_of_origin,co_no,VN-KR 26/03/02113
+D062,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D062,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D062,certificate_of_origin,invoice_no,SST-26-0140
+D062,certificate_of_origin,invoice_date,2026-09-06
+D062,certificate_of_origin,departure_date,2026-09-14
+D062,certificate_of_origin,issue_date,2026-09-16
+D062,certificate_of_origin,issued_retroactively,
+D062,certificate_of_origin,items[0].hs_code,6105.10
+D062,certificate_of_origin,items[0].origin_criterion,CTH
+D062,certificate_of_origin,items[1].hs_code,6109.10
+D062,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D063,commercial_invoice,invoice_no,SZP2600129
+D063,commercial_invoice,total_qty,2044
+D063,commercial_invoice,total_gross_kg,6598.2
+D063,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D063,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D063,packing_list,invoice_no,SZP2600129
+D063,packing_list,total_qty,2044
+D063,packing_list,total_gross_kg,4012.8
+D063,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D063,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D063,commercial_invoice,total_amount,80189.6
+D063,bill_of_lading,bl_no,SOCLSZX26021445
+D063,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO.,LTD"
+D063,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D063,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D063,bill_of_lading,vessel_voyage,EXAMPLE VOYAGER 986E
+D063,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D063,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D063,bill_of_lading,onboard_date,2026-09-12
+D063,bill_of_lading,container_no,SOCU6632241
+D063,bill_of_lading,total_packages,604
+D063,bill_of_lading,total_gross_kg,6598.2
+D063,bill_of_lading,total_cbm,33.45
+D063,bill_of_lading,freight_term,FREIGHT PREPAID
+D063,certificate_of_origin,co_no,K26SZX0001291
+D063,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D063,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D063,certificate_of_origin,invoice_no,SZP2600129
+D063,certificate_of_origin,invoice_date,2026-09-08
+D063,certificate_of_origin,departure_date,2026-09-12
+D063,certificate_of_origin,issue_date,2026-09-16
+D063,certificate_of_origin,issued_retroactively,
+D063,certificate_of_origin,items[0].hs_code,8507.60
+D063,certificate_of_origin,items[0].origin_criterion,PSR
+D063,certificate_of_origin,items[1].hs_code,9405.10
+D063,certificate_of_origin,items[1].origin_criterion,PSR
+D064,commercial_invoice,invoice_no,FEC-26-0256
+D064,commercial_invoice,total_qty,2175
+D064,commercial_invoice,total_gross_kg,47415
+D064,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D064,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D064,packing_list,invoice_no,FEC-26-0256
+D064,packing_list,total_qty,2175
+D064,packing_list,total_gross_kg,47415
+D064,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D064,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D064,commercial_invoice,total_amount,15660
+D064,bill_of_lading,bl_no,SOCLCAN26021706
+D064,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D064,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D064,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D064,bill_of_lading,vessel_voyage,SAMPLE HORIZON 285E
+D064,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D064,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D064,bill_of_lading,onboard_date,2026-10-21
+D064,bill_of_lading,container_no,SOCU7350026 SOCU7388905 SOLU5561880
+D064,bill_of_lading,total_packages,2175
+D064,bill_of_lading,total_gross_kg,47415
+D064,bill_of_lading,total_cbm,65.25
+D064,bill_of_lading,freight_term,FREIGHT COLLECT
+D064,certificate_of_origin,co_no,K26CAN0001656
+D064,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D064,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D064,certificate_of_origin,invoice_no,FEC-26-0256
+D064,certificate_of_origin,invoice_date,2026-10-16
+D064,certificate_of_origin,departure_date,2026-10-21
+D064,certificate_of_origin,issue_date,2026-11-10
+D064,certificate_of_origin,issued_retroactively,
+D064,certificate_of_origin,items[0].hs_code,6908.90
+D064,certificate_of_origin,items[0].origin_criterion,PSR
+D065,commercial_invoice,invoice_no,MKS-260220
+D065,commercial_invoice,total_qty,29440
+D065,commercial_invoice,total_gross_kg,32972.8
+D065,commercial_invoice,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D065,commercial_invoice,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D065,packing_list,invoice_no,MKS-260250
+D065,packing_list,total_qty,29440
+D065,packing_list,total_gross_kg,32972.8
+D065,packing_list,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D065,packing_list,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D065,commercial_invoice,total_amount,253906
+D065,bill_of_lading,bl_no,EXSHSGN26027659
+D065,bill_of_lading,shipper_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D065,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D065,bill_of_lading,notify_name,"SAMPLE FOODS KOREA CO., LTD."
+D065,bill_of_lading,vessel_voyage,SAMPLE HARMONY 841N
+D065,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D065,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D065,bill_of_lading,onboard_date,2026-10-20
+D065,bill_of_lading,container_no,EXSU3229434 EXMU0509147
+D065,bill_of_lading,total_packages,2944
+D065,bill_of_lading,total_gross_kg,32972.8
+D065,bill_of_lading,total_cbm,88.32
+D065,bill_of_lading,freight_term,FREIGHT COLLECT
+D065,certificate_of_origin,co_no,VN-KR 26/03/02254
+D065,certificate_of_origin,exporter_name,MEKONG EXAMPLE SEAFOOD & AGRO JSC
+D065,certificate_of_origin,consignee_name,"SAMPLE FOODS KOREA CO., LTD."
+D065,certificate_of_origin,invoice_no,MKS-260250
+D065,certificate_of_origin,invoice_date,2026-10-11
+D065,certificate_of_origin,departure_date,2026-10-20
+D065,certificate_of_origin,issue_date,2026-10-22
+D065,certificate_of_origin,issued_retroactively,
+D065,certificate_of_origin,items[0].hs_code,0306.17
+D065,certificate_of_origin,items[0].origin_criterion,WO
+D065,certificate_of_origin,items[1].hs_code,0306.17
+D065,certificate_of_origin,items[1].origin_criterion,WO
+D066,commercial_invoice,invoice_no,BDF-2026-247
+D066,commercial_invoice,total_qty,50
+D066,commercial_invoice,total_gross_kg,1775
+D066,commercial_invoice,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D066,commercial_invoice,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D066,packing_list,invoice_no,BDF-2026-247
+D066,packing_list,total_qty,50
+D066,packing_list,total_gross_kg,1775
+D066,packing_list,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D066,packing_list,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D066,commercial_invoice,total_amount,4800
+D066,bill_of_lading,bl_no,SMLNSGN26012012
+D066,bill_of_lading,shipper_name,BINH DUONG EXAMPLE FURNITURE JSC
+D066,bill_of_lading,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D066,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D066,bill_of_lading,vessel_voyage,SAMPLE PIONEER 811N
+D066,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D066,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D066,bill_of_lading,onboard_date,2026-10-08
+D066,bill_of_lading,container_no,SMCU8579590
+D066,bill_of_lading,total_packages,50
+D066,bill_of_lading,total_gross_kg,1775
+D066,bill_of_lading,total_cbm,12.5
+D066,bill_of_lading,freight_term,FREIGHT COLLECT
+D066,certificate_of_origin,co_no,VN-KR 26/03/02364
+D066,certificate_of_origin,exporter_name,BINH DUONG EXAMPLE FURNITURE JSC
+D066,certificate_of_origin,consignee_name,"EXAMPLE HOME LIVING CO., LTD."
+D066,certificate_of_origin,invoice_no,BDF-2026-247
+D066,certificate_of_origin,invoice_date,2026-10-02
+D066,certificate_of_origin,departure_date,2026-10-08
+D066,certificate_of_origin,issue_date,2026-10-06
+D066,certificate_of_origin,issued_retroactively,
+D066,certificate_of_origin,items[0].hs_code,9403.60
+D066,certificate_of_origin,items[0].origin_criterion,RVC 40%
+D067,commercial_invoice,invoice_no,HSF-26-0294
+D067,commercial_invoice,total_qty,9768
+D067,commercial_invoice,total_gross_kg,7134.88
+D067,commercial_invoice,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D067,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D067,packing_list,invoice_no,HSF-26-0294
+D067,packing_list,total_qty,9768
+D067,packing_list,total_gross_kg,7134.88
+D067,packing_list,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D067,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D067,commercial_invoice,total_amount,121420.8
+D067,bill_of_lading,bl_no,EXSHHPH26027860
+D067,bill_of_lading,shipper_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D067,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D067,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D067,bill_of_lading,vessel_voyage,SAMPLE HORIZON 890N
+D067,bill_of_lading,port_loading,"HAIPHONG, VIETNAM"
+D067,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D067,bill_of_lading,onboard_date,2026-11-06
+D067,bill_of_lading,container_no,EXMU1813869
+D067,bill_of_lading,total_packages,814
+D067,bill_of_lading,total_gross_kg,7134.88
+D067,bill_of_lading,total_cbm,56.98
+D067,bill_of_lading,freight_term,FREIGHT PREPAID
+D067,certificate_of_origin,co_no,VN-KR 26/02/02317
+D067,certificate_of_origin,exporter_name,"HAIPHONG SAMPLE FOOTWEAR CO., LTD."
+D067,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D067,certificate_of_origin,invoice_no,HSF-26-0294
+D067,certificate_of_origin,invoice_date,2026-10-30
+D067,certificate_of_origin,departure_date,2026-11-06
+D067,certificate_of_origin,issue_date,2026-11-04
+D067,certificate_of_origin,issued_retroactively,
+D067,certificate_of_origin,items[0].hs_code,6404.11
+D067,certificate_of_origin,items[0].origin_criterion,CTH
+D067,certificate_of_origin,items[1].hs_code,6404.11
+D067,certificate_of_origin,items[1].origin_criterion,RVC 40%
+D068,commercial_invoice,invoice_no,FEC-26-0255
+D068,commercial_invoice,total_qty,3125
+D068,commercial_invoice,total_gross_kg,59910
+D068,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D068,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D068,packing_list,invoice_no,FEC-26-0255
+D068,packing_list,total_qty,3125
+D068,packing_list,total_gross_kg,84809.5
+D068,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D068,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D068,commercial_invoice,total_amount,19055
+D068,bill_of_lading,bl_no,SMLNCAN26012131
+D068,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO.,LTD"
+D068,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D068,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D068,bill_of_lading,vessel_voyage,SAMPLE HORIZON 319E
+D068,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D068,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D068,bill_of_lading,onboard_date,2026-10-18
+D068,bill_of_lading,container_no,SMCU1000921 SMLU7569090 SMCU8945679 SMLU5377592
+D068,bill_of_lading,total_packages,3125
+D068,bill_of_lading,total_gross_kg,59910
+D068,bill_of_lading,total_cbm,87.125
+D068,bill_of_lading,freight_term,FREIGHT PREPAID
+D068,certificate_of_origin,co_no,K26CAN0001681
+D068,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D068,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D068,certificate_of_origin,invoice_no,FEC-26-0255
+D068,certificate_of_origin,invoice_date,2026-10-12
+D068,certificate_of_origin,departure_date,2026-10-18
+D068,certificate_of_origin,issue_date,2026-10-27
+D068,certificate_of_origin,issued_retroactively,
+D068,certificate_of_origin,items[0].hs_code,6908.90
+D068,certificate_of_origin,items[0].origin_criterion,PSR
+D068,certificate_of_origin,items[1].hs_code,6908.90
+D068,certificate_of_origin,items[1].origin_criterion,PSR
+D069,commercial_invoice,invoice_no,NBH2026-197
+D069,commercial_invoice,total_qty,2680
+D069,commercial_invoice,total_gross_kg,3410.4
+D069,commercial_invoice,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D069,packing_list,invoice_no,NBH2026-197
+D069,packing_list,total_qty,2680
+D069,packing_list,total_gross_kg,3410.4
+D069,packing_list,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D069,commercial_invoice,total_amount,9539
+D069,bill_of_lading,bl_no,SOCLNGB26021509
+D069,bill_of_lading,shipper_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D069,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D069,bill_of_lading,vessel_voyage,SAMPLE HARMONY 670E
+D069,bill_of_lading,port_loading,"NINGBO, CHINA"
+D069,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D069,bill_of_lading,onboard_date,2026-09-20
+D069,bill_of_lading,container_no,SOLU1652093
+D069,bill_of_lading,total_packages,247
+D069,bill_of_lading,total_gross_kg,3410.4
+D069,bill_of_lading,total_cbm,56.5
+D069,bill_of_lading,freight_term,FREIGHT COLLECT
+D069,certificate_of_origin,co_no,K26NGB0001475
+D069,certificate_of_origin,exporter_name,"NINGBO EXAMPLE HOUSEWARE CO., LTD."
+D069,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D069,certificate_of_origin,invoice_no,NBH2026-197
+D069,certificate_of_origin,invoice_date,2026-09-14
+D069,certificate_of_origin,departure_date,2026-09-20
+D069,certificate_of_origin,issue_date,2026-09-29
+D069,certificate_of_origin,issued_retroactively,
+D069,certificate_of_origin,items[0].hs_code,3924.90
+D069,certificate_of_origin,items[0].origin_criterion,PSR
+D069,certificate_of_origin,items[1].hs_code,3924.90
+D069,certificate_of_origin,items[1].origin_criterion,PSR
+D070,commercial_invoice,invoice_no,QDT/26/0272
+D070,commercial_invoice,total_qty,2875
+D070,commercial_invoice,total_gross_kg,1516.5
+D070,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D070,commercial_invoice,consignee_name,HANBIT SAMPLE CORPORATION
+D070,packing_list,invoice_no,QDT/26/0722
+D070,packing_list,total_qty,2875
+D070,packing_list,total_gross_kg,1516.5
+D070,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D070,packing_list,consignee_name,HANBIT SAMPLE CORPORATION
+D070,commercial_invoice,total_amount,11250
+D070,bill_of_lading,bl_no,SOCLTAO26021439
+D070,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D070,bill_of_lading,consignee_name,HANBIT SAMPLE CORPORATION
+D070,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D070,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 907E
+D070,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D070,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D070,bill_of_lading,onboard_date,2026-09-09
+D070,bill_of_lading,container_no,SOLU9056336
+D070,bill_of_lading,total_packages,85
+D070,bill_of_lading,total_gross_kg,1516.5
+D070,bill_of_lading,total_cbm,6.5
+D070,bill_of_lading,freight_term,FREIGHT COLLECT
+D070,certificate_of_origin,co_no,K26TAO0001270
+D070,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D070,certificate_of_origin,consignee_name,HANBIT SAMPLE CORPORATION
+D070,certificate_of_origin,invoice_no,QDT/26/0272
+D070,certificate_of_origin,invoice_date,2026-09-03
+D070,certificate_of_origin,departure_date,2026-09-09
+D070,certificate_of_origin,issue_date,2026-09-11
+D070,certificate_of_origin,issued_retroactively,
+D070,certificate_of_origin,items[0].hs_code,4011.50
+D070,certificate_of_origin,items[0].origin_criterion,PSR
+D070,certificate_of_origin,items[1].hs_code,4011.50
+D070,certificate_of_origin,items[1].origin_criterion,PSR
+D071,commercial_invoice,invoice_no,QDT/26/0236
+D071,commercial_invoice,total_qty,3550
+D071,commercial_invoice,total_gross_kg,1128.9
+D071,commercial_invoice,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D071,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D071,packing_list,invoice_no,QDT/26/0286
+D071,packing_list,total_qty,35500
+D071,packing_list,total_gross_kg,1128.9
+D071,packing_list,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D071,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D071,commercial_invoice,total_amount,14910
+D071,bill_of_lading,bl_no,EXSHTAO26027609
+D071,bill_of_lading,shipper_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D071,bill_of_lading,consignee_name,"TO ORDER OF EXAMPLE COMMERCIAL BANK, BUSAN BRANCH"
+D071,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D071,bill_of_lading,vessel_voyage,EXAMPLE BRIDGE 812E
+D071,bill_of_lading,port_loading,"QINGDAO, CHINA"
+D071,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D071,bill_of_lading,onboard_date,2026-10-13
+D071,bill_of_lading,container_no,EXMU3670622
+D071,bill_of_lading,total_packages,71
+D071,bill_of_lading,total_gross_kg,1128.9
+D071,bill_of_lading,total_cbm,4.97
+D071,bill_of_lading,freight_term,FREIGHT PREPAID
+D071,certificate_of_origin,co_no,K26TAO0001600
+D071,certificate_of_origin,exporter_name,"QINGDAO SAMPLE TYRE CO., LTD."
+D071,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D071,certificate_of_origin,invoice_no,QDT/26/0286
+D071,certificate_of_origin,invoice_date,2026-10-11
+D071,certificate_of_origin,departure_date,2026-10-13
+D071,certificate_of_origin,issue_date,2026-10-18
+D071,certificate_of_origin,issued_retroactively,
+D071,certificate_of_origin,items[0].hs_code,4011.50
+D071,certificate_of_origin,items[0].origin_criterion,WP
+D072,commercial_invoice,invoice_no,FEC-26-0237
+D072,commercial_invoice,total_qty,3050
+D072,commercial_invoice,total_gross_kg,54710
+D072,commercial_invoice,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D072,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D072,packing_list,invoice_no,FEC-26-0237
+D072,packing_list,total_qty,3050
+D072,packing_list,total_gross_kg,54710
+D072,packing_list,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D072,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D072,commercial_invoice,total_amount,17020
+D072,bill_of_lading,bl_no,EXSHCAN26027349
+D072,bill_of_lading,shipper_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D072,bill_of_lading,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D072,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D072,bill_of_lading,vessel_voyage,EXAMPLE PEARL 283E
+D072,bill_of_lading,port_loading,"GUANGZHOU, CHINA"
+D072,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D072,bill_of_lading,onboard_date,2026-09-13
+D072,bill_of_lading,container_no,EXMU9669130 EXSU1642290 EXMU2651525 EXMU3471066
+D072,bill_of_lading,total_packages,3050
+D072,bill_of_lading,total_gross_kg,54710
+D072,bill_of_lading,total_cbm,82.0
+D072,bill_of_lading,freight_term,FREIGHT PREPAID
+D072,certificate_of_origin,co_no,K26CAN0001368
+D072,certificate_of_origin,exporter_name,"FOSHAN EXAMPLE CERAMICS CO., LTD."
+D072,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D072,certificate_of_origin,invoice_no,FEC-26-0237
+D072,certificate_of_origin,invoice_date,2026-09-04
+D072,certificate_of_origin,departure_date,2026-09-13
+D072,certificate_of_origin,issue_date,2026-09-18
+D072,certificate_of_origin,issued_retroactively,
+D072,certificate_of_origin,items[0].hs_code,6908.90
+D072,certificate_of_origin,items[0].origin_criterion,PSR
+D072,certificate_of_origin,items[1].hs_code,6908.90
+D072,certificate_of_origin,items[1].origin_criterion,PSR
+D073,commercial_invoice,invoice_no,SZP2600142
+D073,commercial_invoice,total_qty,176
+D073,commercial_invoice,total_gross_kg,1223.2
+D073,commercial_invoice,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D073,commercial_invoice,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D073,packing_list,invoice_no,SZP2600142
+D073,packing_list,total_qty,176
+D073,packing_list,total_gross_kg,1223.2
+D073,packing_list,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D073,packing_list,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D073,commercial_invoice,total_amount,32560
+D073,bill_of_lading,bl_no,SMLNSZX26012115
+D073,bill_of_lading,shipper_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D073,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D073,bill_of_lading,notify_name,"SAMPLE TRADING KOREA CO., LTD."
+D073,bill_of_lading,vessel_voyage,SAMPLE STAR 660E
+D073,bill_of_lading,port_loading,"SHENZHEN, CHINA"
+D073,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D073,bill_of_lading,onboard_date,2026-10-13
+D073,bill_of_lading,container_no,SMLU2631830
+D073,bill_of_lading,total_packages,88
+D073,bill_of_lading,total_gross_kg,1223.2
+D073,bill_of_lading,total_cbm,3.96
+D073,bill_of_lading,freight_term,FREIGHT COLLECT
+D073,certificate_of_origin,co_no,K26SZX0001619
+D073,certificate_of_origin,exporter_name,"SHENZHEN SAMPLE POWER TECHNOLOGY CO., LTD."
+D073,certificate_of_origin,consignee_name,"SAMPLE TRADING KOREA CO., LTD."
+D073,certificate_of_origin,invoice_no,SZP2600142
+D073,certificate_of_origin,invoice_date,2026-10-09
+D073,certificate_of_origin,departure_date,2026-10-13
+D073,certificate_of_origin,issue_date,2026-10-19
+D073,certificate_of_origin,issued_retroactively,
+D073,certificate_of_origin,items[0].hs_code,8507.60
+D073,certificate_of_origin,items[0].origin_criterion,PSR
+D074,commercial_invoice,invoice_no,SHE-2026-0254
+D074,commercial_invoice,total_qty,2536
+D074,commercial_invoice,total_gross_kg,1804.2
+D074,commercial_invoice,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D074,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D074,packing_list,invoice_no,SHE-2026-0254
+D074,packing_list,total_qty,2536
+D074,packing_list,total_gross_kg,1804.2
+D074,packing_list,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D074,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D074,commercial_invoice,total_amount,24857
+D074,bill_of_lading,bl_no,EXSHSHA26027533
+D074,bill_of_lading,shipper_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D074,bill_of_lading,consignee_name,TO ORDER OF SHIPPER
+D074,bill_of_lading,notify_name,EXAMPLE DISTRIBUTION KOREA INC.
+D074,bill_of_lading,vessel_voyage,SAMPLE HORIZON 734E
+D074,bill_of_lading,port_loading,"SHANGHAI, CHINA"
+D074,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D074,bill_of_lading,onboard_date,2026-09-28
+D074,bill_of_lading,container_no,EXSU0103714
+D074,bill_of_lading,total_packages,166
+D074,bill_of_lading,total_gross_kg,1840.2
+D074,bill_of_lading,total_cbm,7.6
+D074,bill_of_lading,freight_term,FREIGHT PREPAID
+D074,certificate_of_origin,co_no,K26SHA0001499
+D074,certificate_of_origin,exporter_name,"SHANGHAI EXAMPLE HARDWARE CO., LTD. (SAMPLE)"
+D074,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D074,certificate_of_origin,invoice_no,SHE-2026-0254
+D074,certificate_of_origin,invoice_date,2026-09-26
+D074,certificate_of_origin,departure_date,2026-09-28
+D074,certificate_of_origin,issue_date,2026-10-02
+D074,certificate_of_origin,issued_retroactively,
+D074,certificate_of_origin,items[0].hs_code,8467.21
+D074,certificate_of_origin,items[0].origin_criterion,PSR
+D074,certificate_of_origin,items[1].hs_code,8211.92
+D074,certificate_of_origin,items[1].origin_criterion,PSR
+D075,commercial_invoice,invoice_no,SST-26-0142
+D075,commercial_invoice,total_qty,6420
+D075,commercial_invoice,total_gross_kg,1712
+D075,commercial_invoice,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D075,commercial_invoice,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D075,packing_list,invoice_no,SST-26-0142
+D075,packing_list,total_qty,6420
+D075,packing_list,total_gross_kg,1712
+D075,packing_list,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D075,packing_list,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D075,commercial_invoice,total_amount,37236
+D075,bill_of_lading,bl_no,EXSHSGN26027804
+D075,bill_of_lading,shipper_name,SAIGON SAMPLE TEXTILE JSC
+D075,bill_of_lading,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D075,bill_of_lading,notify_name,SAME AS CONSIGNEE
+D075,bill_of_lading,vessel_voyage,EXAMPLE OCEAN 012N
+D075,bill_of_lading,port_loading,"HO CHI MINH CITY, VIETNAM"
+D075,bill_of_lading,port_discharge,"BUSAN, KOREA"
+D075,bill_of_lading,onboard_date,2026-10-30
+D075,bill_of_lading,container_no,EXSU0652102
+D075,bill_of_lading,total_packages,107
+D075,bill_of_lading,total_gross_kg,1712
+D075,bill_of_lading,total_cbm,9.63
+D075,bill_of_lading,freight_term,FREIGHT COLLECT
+D075,certificate_of_origin,co_no,VN-KR 26/02/02395
+D075,certificate_of_origin,exporter_name,SAIGON SAMPLE TEXTILE JSC
+D075,certificate_of_origin,consignee_name,EXAMPLE DISTRIBUTION KOREA INC.
+D075,certificate_of_origin,invoice_no,SST-26-0142
+D075,certificate_of_origin,invoice_date,2026-10-21
+D075,certificate_of_origin,departure_date,2026-10-30
+D075,certificate_of_origin,issue_date,2026-10-31
+D075,certificate_of_origin,issued_retroactively,
+D075,certificate_of_origin,items[0].hs_code,6205.20
+D075,certificate_of_origin,items[0].origin_criterion,RVC 40%
