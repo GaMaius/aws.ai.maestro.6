@@ -360,6 +360,8 @@ def summarize(
     issues = {r["set_id"]: [Issue.model_validate(i) for i in r["issues"]] for r in rows if r["status"]}
     docs = {r["set_id"]: [ExtractedDocument.model_validate(d) for d in r["docs"]] for r in rows if r["status"]}
     detection = score_detection(load_answers(), issues, "dev", fmt_by_doc=formats)
+    # P1(B/L·원산지증명서·총금액)까지 정답으로 본 채점. P0만 보면 P1 세트에서 바르게 찾은 것이 오탐으로 잡힌다
+    detection_p1 = score_detection(load_answers(), issues, "dev", fmt_by_doc=formats, phases=("P0", "P1"))
     fields = score_fields(EVAL / "fields.csv", docs, fmt_by_doc=formats)
     by_fmt: dict[str, Counter] = defaultdict(Counter)
     seconds: dict[str, list[float]] = defaultdict(list)
@@ -392,6 +394,9 @@ def summarize(
         "detection": {k: detection[k] for k in ("planted", "detected", "flagged", "normal_sets", "false_positive_sets",
                                                 "check_needed_sets", "wrong_cell_sets", "by_format", "by_error_type")},
         "false_positives": detection["false_positives"], "misses": detection["misses"],
+        "detection_p0_p1": {k: detection_p1[k] for k in ("planted", "detected", "flagged", "normal_sets", "false_positive_sets",
+                                                         "check_needed_sets", "wrong_cell_sets", "by_format", "by_error_type",
+                                                         "false_positives", "misses")},
         "fields": {k: fields[k] for k in ("docs", "docs_correct", "cells", "cells_correct", "unread", "by_field", "by_format")},
         "hs": dict(hs), "hs_score": score_hs_rows(rows),
         "warnings": sum(len(r.get("warnings", [])) for r in rows),
