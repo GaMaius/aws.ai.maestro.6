@@ -1,7 +1,35 @@
+# 비밀값
 .env
+.env.*
 .aws/
 *.pem
-__pycache__/
+*.key
+# Python
 .venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# 배포 산출물
 build/
+*.zip
 function.zip
+# 판독 캐시·임시
+.cache/
+tmp/
+# 에디터·OS
+.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# 레퍼런스 원본은 저작권이 있어서 공개 저장소에 올리지 않는다. 출처만 올린다.
+refs/*
+!refs/sources.csv
+# 발표용(test) 세트: 입력·정답지·서류와 발표용에만 쓰는 거래처·품목은 올리지 않는다 (잠금 해시만 올린다)
+samples/test/
+samples/data/sets_test.csv
+samples/data/items_test.csv
+samples/data/parties_test.csv
+samples/gen/items_test.csv
+samples/gen/parties_test.csv
+eval/test/

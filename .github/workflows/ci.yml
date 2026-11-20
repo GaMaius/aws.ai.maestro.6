@@ -1,0 +1,24 @@
+name: ci
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  test:            # 이 job 이름 "test"가 보호 규칙의 필수 검사 이름이다. 바꾸지 않는다.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: 의존성 설치
+        run: uv sync --locked
+      - name: 문법 검사
+        run: uv run python -m compileall -q agent tools api scripts
+      - name: 단위 테스트
+        run: uv run pytest -q
+      - name: 액세스 키 커밋 검사
+        run: |
+          if git grep -nE 'AKIA[0-9A-Z]{16}'; then
+            echo "AWS 액세스 키로 보이는 문자열이 있습니다. 제거하고 키를 비활성화하세요."
+            exit 1
+          fi

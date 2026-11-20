@@ -1,0 +1,44 @@
+{
+  "job_id": "job-7c1e",
+  "status": "waiting_approval",
+  "steps": [
+    {"tool": "classify_document", "summary": "bl.jpg → 선하증권", "ok": true},
+    {"tool": "read_document", "summary": "invoice.pdf → 상업송장, 1행", "ok": true},
+    {"tool": "cross_check", "summary": "불일치 1건", "ok": true},
+    {"tool": "reread_field", "summary": "포장명세서 1행 총중량: Textract에서 6,520 확인", "ok": true}
+  ],
+  "result": {
+    "issues": [
+      {
+        "rule_id": "X-WT-01",
+        "grade": "불일치",
+        "cells": [
+          {"doc": "commercial_invoice", "field": "items[0].gross_kg", "raw": "6,250.00 KGS"},
+          {"doc": "packing_list", "field": "items[0].gross_kg", "raw": "6,520.00 KGS"}
+        ],
+        "suspect": null,
+        "evidence": "상업송장 1행 총중량 6,250kg과 포장명세서 6,520kg이 다릅니다.",
+        "checked_by": "textract"
+      }
+    ],
+    "hs": [
+      {
+        "line": 1,
+        "status": "사람 확인 필요",
+        "by": null,
+        "hs_code": null,
+        "candidates": [
+          {"hs": "8507600000", "name": "(HS 표의 품목명)", "reason": "품명과 용도 칸 근거"}
+        ]
+      }
+    ],
+    "declaration_draft": {
+      "fields": [
+        {"name": "품명", "value": "LITHIUM-ION BATTERY PACK", "source": "commercial_invoice.items[0].name"}
+      ],
+      "blank_fields": ["items[0].gross_kg"],
+      "pdf_url": null
+    },
+    "wms": {"status": "승인 대기", "by": null}
+  }
+}

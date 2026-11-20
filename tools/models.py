@@ -1,0 +1,379 @@
+"""데이터 모델. 공용 파일. 형식 기준: docs/schema.md (약속 1~3), 예시: docs/examples/
+
+다른 파일에서 같은 모양의 클래스를 새로 만들지 않는다 (team.md).
+예시 JSON과 안 맞으면 예시가 아니라 이 파일을 고친다. 고치면 단톡에 알린다.
+"""
+
+from datetime import date
+from typing import Literal
+
+from pydantic import BaseModel, ConfigDict, Field
+
+# ---------------------------------------------------------------------------
+# 값 목록 (docs/schema.md)
+# ---------------------------------------------------------------------------
+DocType = Literal[
+    "bill_of_lading", "commercial_invoice", "packing_list", "certificate_of_origin", "unknown"
+]
+Unreadable = Literal["흐림", "가려짐", "칸 없음"]
+JobStatus = Literal["queued", "running", "waiting_approval", "done", "failed"]
+Grade = Literal["불일치", "확인 필요", "참고"]
+CheckedBy = Literal["pdf_text", "textract", "model_reread", "none"]
+HSStatus = Literal["자동 확정", "사람 확인 필요", "사람 확정"]
+HSBy = Literal["history", "auto_match", "human"]
+WmsStatus = Literal["승인 대기", "등록됨"]
+WmsBy = Literal["auto", "human"]
+Period = Literal["today", "this_week", "last_week", "range"]
+
+DOC_TYPE_KO: dict[str, str] = {
+    "bill_of_lading": "선하증권",
+    "commercial_invoice": "상업송장",
+    "packing_list": "포장명세서",
+    "certificate_of_origin": "원산지증명서",
+    "unknown": "알 수 없는 서류",
+}
+
+
+class _Strict(BaseModel):
+    """약속에 없는 필드가 들어오면 실패시킨다. 예시와 모델이 어긋나는 순간 CI가 잡는다."""
+
+    model_config = ConfigDict(extra="forbid")
+
+
+# ---------------------------------------------------------------------------
+# 약속 1. 서류 추출 결과
+# ---------------------------------------------------------------------------
+class Cell(_Strict):
+    """서류의 칸 하나. raw는 모델이 옮긴 글자, value·unit은 코드가 푼 값."""
+
+    raw: str | None = Field(
+        default=None,
+        description="서류에 적힌 그대로의 문자열. 쉼표·단위·대소문자를 고치지 않는다. 예: '6,520.00 KGS'. 못 읽으면 null",
+    )
+    value: str | int | float | None = Field(
+        default=None,
+        description="코드가 raw를 풀어 쓴 값. 숫자 칸은 숫자(예: 6520.0), 글자 칸은 정규화한 글자. 모델이 채우지 않는다",
+    )
+    unit: str | None = Field(
+        default=None,
+        description="코드가 raw에서 뽑은 단위. 정규화한 이름을 쓴다. 예: '500 CTNS' → 'CTN'",
+    )
+    unreadable: Unreadable | None = Field(
+        default=None,
+        description="못 읽은 이유. raw·value가 null일 때만 쓴다: 흐림 · 가려짐 · 칸 없음",
+    )
+
+
+class ExtractedItem(_Strict):
+    """품목 한 행. 칸이 없는 서류는 해당 필드를 null로 둔다."""
+
+    line: int = Field(description="서류에 적힌 행 순서. 1부터 센다")
+    item_code: Cell | None = Field(
+        default=None,
+        description="품목 코드 칸(Item No., Part No., Style No.). 행 번호나 HS 코드와 다르다. 예: 'BP-200'",
+    )
+    name: Cell | None = Field(
+        default=None,
+        description="품명 칸(Description of Goods). 포장 형태나 원산지 문구는 넣지 않는다. 예: 'LITHIUM-ION BATTERY PACK'",
+    )
+    hs_code: Cell | None = Field(
+        default=None,
+        description="HS 코드 칸(HS Code, H.S. No.). 품목 코드와 다르다. value는 숫자만 남긴다. 예: raw '8507.60' → value '850760'",
+    )
+    qty: Cell | None = Field(
+        default=None,
+        description="수량 칸(Quantity). 포장 개수(CTNS)인지 낱개(PCS)인지 단위를 함께 옮긴다. 예: '500 CTNS'",
+    )
+    gross_kg: Cell | None = Field(
+        default=None,
+        description="총중량 칸(Gross Weight, G.W.). 포장 포함 무게로 순중량(N.W.)과 다르다. 예: '6,520.00 KGS'",
+    )
+    net_kg: Cell | None = Field(
+        default=None,
+        description="순중량 칸(Net Weight, N.W.). 포장 뺀 무게로 총중량(G.W.)과 다르다. 예: '6,100.00 KGS'",
+    )
+
+
+class ExtractedDocument(_Strict):
+    """read_document 반환값 (약속 1)."""
+
+    doc_type: DocType = Field(description="서류 종류")
+    file: str = Field(description="S3 키 또는 로컬 경로. 예: 'uploads/sample-001/packing_list.pdf'")
+    doc_no: Cell | None = Field(
+        default=None,
+        description="서류 번호. 상업송장은 'Invoice No.', 포장명세서는 'Packing List No.', B/L은 'B/L No.'. PO No와 다르다",
+    )
+    items: list[ExtractedItem] = Field(default_factory=list, description="품목 행 목록")
+    total_gross_kg: Cell | None = Field(
+        default=None,
+        description="서류 하단 합계 칸의 총중량(Total Gross Weight). 행별 총중량과 다르다. 예: 'TOTAL: 6,520.00 KGS'",
+    )
+    total_qty: Cell | None = Field(
+        default=None,
+        description="서류 하단 합계 칸의 총수량(Total Quantity). 행별 수량과 다르고, 포장 개수(CTNS)인지 낱개(PCS)인지 단위를 함께 옮긴다. 예: 'TOTAL: 2,650 PCS'",
+    )
+
+
+# 모델이 실제로 채우는 모양: raw와 못 읽은 이유만 낸다 (value는 코드가 푼다)
+class RawCell(_Strict):
+    """모델이 내는 칸 하나. 적힌 그대로만 옮긴다."""
+
+    raw: str | None = Field(
+        default=None,
+        description="서류에 적힌 그대로의 문자열. 계산·환산·합계 맞추기를 하지 않는다. 못 읽으면 null",
+    )
+    unreadable: Unreadable | None = Field(
+        default=None, description="raw가 null일 때만: 흐림 · 가려짐 · 칸 없음"
+    )
+
+
+class RawItem(_Strict):
+    """모델이 내는 품목 한 행. 칸 설명은 ExtractedItem과 같다."""
+
+    line: int = Field(description="서류에 적힌 행 순서. 1부터 센다")
+    item_code: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["item_code"].description)
+    name: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["name"].description)
+    hs_code: RawCell | None = Field(default=None, description="HS 코드 칸(HS Code). 점·공백도 적힌 그대로. 예: '8507.60'")
+    qty: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["qty"].description)
+    gross_kg: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["gross_kg"].description)
+    net_kg: RawCell | None = Field(default=None, description=ExtractedItem.model_fields["net_kg"].description)
+
+
+class RawDocument(_Strict):
+    """모델이 서류 한 장을 읽은 결과. 코드가 ExtractedDocument로 바꾼다."""
+
+    doc_no: RawCell | None = Field(default=None, description=ExtractedDocument.model_fields["doc_no"].description)
+    items: list[RawItem] = Field(default_factory=list, description="품목 행 목록. 적힌 행을 빠짐없이 옮긴다")
+    total_gross_kg: RawCell | None = Field(
+        default=None, description=ExtractedDocument.model_fields["total_gross_kg"].description
+    )
+    total_qty: RawCell | None = Field(default=None, description=ExtractedDocument.model_fields["total_qty"].description)
+
+
+class Classification(_Strict):
+    """classify_document 결과."""
+
+    doc_type: DocType = Field(description="서류 종류. 확신이 없으면 unknown")
+    reason: str = Field(description="근거: 서류 제목, 특징이 되는 칸 이름. 예: '제목 PACKING LIST, N.W./G.W. 칸'")
+
+
+# ---------------------------------------------------------------------------
+# 약속 2. 작업 API
+# ---------------------------------------------------------------------------
+class Step(_Strict):
+    """작업 단계 기록 한 줄. 화면의 진행 단계."""
+
+    tool: str = Field(description="부른 도구 이름. 예: 'cross_check'")
+    summary: str = Field(description="사람이 읽을 한 줄 요약. 예: '불일치 1건'")
+    ok: bool = Field(description="도구가 오류 없이 끝났는지")
+
+
+class IssueCell(_Strict):
+    """문제에 걸린 칸 하나 (근거)."""
+
+    doc: DocType = Field(description="서류 종류")
+    field: str = Field(description="칸 경로. 예: 'items[0].gross_kg', 'total_gross_kg'")
+    raw: str | None = Field(description="서류에 적힌 그대로의 값. 못 읽었으면 null")
+
+
+class Issue(_Strict):
+    """cross_check가 낸 문제 하나."""
+
+    rule_id: str = Field(description="규칙 표의 rule_id. 예: 'X-WT-01'")
+    grade: Grade = Field(description="불일치 · 확인 필요 · 참고")
+    cells: list[IssueCell] = Field(description="근거가 된 칸들")
+    suspect: DocType | None = Field(
+        default=None, description="서류가 셋 이상일 때 다수결로 고른 다른 쪽 서류. 둘뿐이면 null"
+    )
+    evidence: str = Field(description="규칙의 문장틀로 코드가 만든 근거 문장")
+    checked_by: CheckedBy = Field(default="none", description="두 번째 근거를 얻은 방법")
+
+
+class HSCandidate(_Strict):
+    """HS 후보 하나."""
+
+    hs: str = Field(description="10자리 HSK. 예: '8507600000'")
+    name: str = Field(description="HS 표의 품목명")
+    reason: str = Field(description="서류의 어느 칸에 근거했는지")
+
+
+class HSResult(_Strict):
+    """품목 한 행의 HS 결과."""
+
+    line: int = Field(description="품목 행 번호")
+    status: HSStatus = Field(description="자동 확정 · 사람 확인 필요 · 사람 확정")
+    by: HSBy | None = Field(default=None, description="확정한 경로. 확정 전이면 null")
+    hs_code: str | None = Field(default=None, description="확정된 10자리 HSK. 확정 전이면 null")
+    candidates: list[HSCandidate] = Field(default_factory=list, description="후보 최대 3개")
+
+
+class DeclarationField(_Strict):
+    """신고서 초안의 칸 하나."""
+
+    name: str = Field(description="신고서 칸 이름. 예: '품명'")
+    value: str | int | float | None = Field(description="채운 값")
+    source: str = Field(description="출처: 서류.칸. 예: 'commercial_invoice.items[0].name'")
+
+
+class DeclarationDraft(_Strict):
+    """신고서 초안 (사람 검토 전)."""
+
+    fields: list[DeclarationField] = Field(default_factory=list, description="채운 칸")
+    blank_fields: list[str] = Field(default_factory=list, description="문제가 남아 비워 둔 칸 경로")
+    pdf_url: str | None = Field(default=None, description="PDF 주소. 아직 없으면 null")
+
+
+class WmsState(_Strict):
+    """가상 WMS 등록 상태."""
+
+    status: WmsStatus = Field(description="승인 대기 · 등록됨")
+    by: WmsBy | None = Field(default=None, description="등록한 경로. 등록 전이면 null")
+    wms_id: str | None = Field(default=None, description="WMS가 준 번호. 등록 전이면 null")
+
+
+class JobResult(_Strict):
+    """작업 결과."""
+
+    issues: list[Issue] = Field(default_factory=list, description="문제 목록")
+    hs: list[HSResult] = Field(default_factory=list, description="품목별 HS 결과")
+    declaration_draft: DeclarationDraft | None = Field(default=None, description="신고서 초안")
+    wms: WmsState | None = Field(default=None, description="WMS 상태")
+
+
+class Job(_Strict):
+    """GET /jobs/{id} 응답."""
+
+    job_id: str = Field(description="작업 ID. 예: 'job-7c1e'")
+    status: JobStatus = Field(description="작업 상태")
+    steps: list[Step] = Field(default_factory=list, description="도구 호출 기록")
+    result: JobResult | None = Field(default=None, description="결과. 끝나기 전이면 null")
+    error: str | None = Field(default=None, description="failed일 때 이유")
+
+
+# ---------------------------------------------------------------------------
+# 화물 기록과 현황 조회
+# ---------------------------------------------------------------------------
+class Shipment(_Strict):
+    """team06-shipments 한 줄."""
+
+    bl_no: str = Field(description="B/L 번호. 예: 'BL-2026-0001'")
+    consignee: str = Field(description="수하인(수입자)")
+    item: str = Field(description="대표 품명")
+    arrived_at: date = Field(description="입항일 (한국 시간 기준 날짜)")
+    customs_status: str = Field(description="통관 상태. 값 목록은 검증 담당이 docs/schema.md에 정한다")
+    last_event_at: date = Field(description="마지막 상태 변경일")
+    job_id: str | None = Field(default=None, description="이 화물을 처리한 작업 ID. 미리 넣은 기록이면 null")
+
+
+class ChatFilters(_Strict):
+    """모델이 질문을 바꾼 조회 조건."""
+
+    status: str | None = Field(default=None, description="상태 조건. 예: '통관 지연'")
+    period: Period | None = Field(default=None, description="today · this_week · last_week · range")
+    date_from: date | None = Field(default=None, description="period가 range일 때만: 시작일. 모델은 질문에 적힌 날짜만 옮긴다")
+    date_to: date | None = Field(default=None, description="period가 range일 때만: 끝일")
+
+
+class PeriodResolved(_Strict):
+    """코드가 한국 시간으로 계산한 기간."""
+
+    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+
+    from_: date = Field(alias="from", description="시작일(포함)")
+    to: date = Field(description="끝일(포함)")
+
+
+class ChatResponse(_Strict):
+    """POST /chat 응답."""
+
+    answer: str = Field(description="답. 건수는 코드가 센 값을 쓴다")
+    filters: ChatFilters = Field(description="쓴 조회 조건")
+    period_resolved: PeriodResolved | None = Field(default=None, description="계산한 기간")
+    rows: list[Shipment] = Field(default_factory=list, description="조회 결과")
+
+
+# ---------------------------------------------------------------------------
+# 역할 사이 약속 (협업 뼈대). 담당끼리 주고받는 모양이다. 바꾸면 단톡에 알린다.
+# ---------------------------------------------------------------------------
+class QueryResult(_Strict):
+    """query_shipments 반환값. 답 문장을 뺀 ChatResponse."""
+
+    filters: ChatFilters = Field(description="실제로 쓴 조회 조건")
+    period_resolved: PeriodResolved | None = Field(default=None, description="코드가 계산한 기간")
+    rule: str | None = Field(default=None, description="쓴 상태 규칙 설명. 예: '입항 후 3일 지나도 수리 안 됨'")
+    rows: list[Shipment] = Field(default_factory=list, description="조회 결과")
+    count: int = Field(description="코드가 센 건수")
+
+
+class OcrLine(_Strict):
+    """Textract가 찾은 글자 한 줄."""
+
+    page: int = Field(description="쪽 번호. 1부터")
+    text: str = Field(description="인식한 글자")
+    bbox: tuple[float, float, float, float] = Field(description="위치 (left, top, width, height), 0~1 비율")
+
+
+class OcrResult(_Strict):
+    """ocr_document 반환값. 다시 확인(reread_field)의 두 번째 근거로 저장해 둔다."""
+
+    file: str = Field(description="S3 키")
+    lines: list[OcrLine] = Field(default_factory=list, description="글자 줄 목록")
+    tables: list[list[list[str]]] = Field(default_factory=list, description="표 목록. 표 → 행 → 칸 글자")
+
+
+class RereadResult(_Strict):
+    """reread_field 반환값. 칸 하나를 다른 방법으로 다시 확인한 결과."""
+
+    doc: DocType = Field(description="서류 종류")
+    field: str = Field(description="칸 경로. 예: 'items[0].gross_kg'")
+    first_raw: str | None = Field(description="첫 판독 raw")
+    second_raw: str | None = Field(description="두 번째 근거에서 찾은 글자. 못 찾으면 null")
+    checked_by: CheckedBy = Field(description="두 번째 근거를 얻은 방법")
+    same: bool = Field(description="두 근거가 같은지. 같으면 불일치 확정, 다르면 '확인 필요(읽기 오류 의심)'")
+
+
+class HSSearchTerms(_Strict):
+    """recommend_hs 2단계: 모델이 서류에서 뽑은 검색어. HS 코드는 내지 않는다."""
+
+    terms: list[str] = Field(description="품명·재질·용도 칸에서 뽑은 검색어. 한글·영문 동의어 포함. 예: ['리튬이온 축전지', 'lithium-ion battery']")
+
+
+class HSPick(_Strict):
+    """recommend_hs 4단계: 모델이 후보 안에서 고른 것."""
+
+    picks: list[HSCandidate] = Field(description="후보 목록 안에서 고른 최대 3개, 1순위부터. 이유에는 근거 칸을 적는다")
+
+
+class ReportCheck(_Strict):
+    """finish_report 조건 검사 결과 (agent-design.md 1번)."""
+
+    ok: bool = Field(description="조건을 모두 채웠는지")
+    missing: list[str] = Field(default_factory=list, description="빠진 것. 예: 'packing_list.pdf 아직 안 읽음'. 에이전트가 이걸 보고 빠진 도구를 부른다")
+
+
+class JobState(_Strict):
+    """작업 하나를 처리하는 동안 도구들이 함께 보는 상태. 문서 처리 Agent가 들고 다닌다."""
+
+    job_id: str = Field(description="작업 ID")
+    files: list[str] = Field(description="올라온 S3 키 목록")
+    doc_types: dict[str, DocType] = Field(default_factory=dict, description="S3 키 → 서류 종류 (분류 결과 또는 사용자가 고친 값)")
+    docs: dict[str, ExtractedDocument] = Field(default_factory=dict, description="S3 키 → 읽은 결과")
+    ocr: dict[str, OcrResult] = Field(default_factory=dict, description="S3 키 → OCR 결과")
+    issues: list[Issue] = Field(default_factory=list, description="마지막 cross_check 결과 (+ 다시 확인 반영)")
+    rereads: list[RereadResult] = Field(default_factory=list, description="다시 확인 결과")
+    hs: list[HSResult] = Field(default_factory=list, description="품목별 HS 결과")
+    declaration_draft: DeclarationDraft | None = Field(default=None, description="신고서 초안")
+    steps: list[Step] = Field(default_factory=list, description="도구 호출 기록 (화면 진행 단계)")
+    read_seq: int = Field(default=0, description="마지막 읽기 순번. finish_report가 '마지막 읽기 뒤 cross_check'를 검사할 때 쓴다")
+    check_seq: int = Field(default=0, description="마지막 cross_check 때의 read_seq")
+
+
+class WmsRecord(_Strict):
+    """가상 WMS에 등록하는 한 건."""
+
+    idempotency_key: str = Field(description="멱등 키: B/L 번호 + 작업 ID. 같은 키는 한 번만 등록")
+    bl_no: str = Field(description="B/L 번호")
+    job_id: str = Field(description="작업 ID")
+    consignee: str = Field(description="수하인(수입자)")
+    items: list[dict] = Field(default_factory=list, description="품목 (품명, 수량, 중량, 확정 HS)")
+    by: WmsBy = Field(description="auto · human")

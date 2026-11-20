@@ -1,0 +1,17 @@
+[project]
+name = "team06-logistics-doc-agent"
+version = "0.1.0"
+description = "물류 서류 분류·판독·교차 검증, HS 추천, 신고서 초안, 가상 WMS 연동, 현황 조회 에이전트"
+requires-python = ">=3.13"
+dependencies = [
+    "boto3>=1.35",
+    "pydantic>=2.7",
+    "strands-agents",
+    "strands-agents-tools",
+]
+[dependency-groups]
+# botocore[crt]: 로컬 aws login 자격 증명용 (Lambda는 실행 역할을 써서 필요 없음)
+dev = ["pytest>=8", "botocore[crt]"]
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests/unit"]

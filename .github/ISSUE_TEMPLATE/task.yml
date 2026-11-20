@@ -1,0 +1,36 @@
+name: 작업
+description: 작업 하나 = 브랜치 하나 = PR 하나 (반나절 이하, Kiro 작업 30분 여러 개)
+title: "[작업ID] 제목"
+labels: []
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: 작업 ID
+      description: .github/tasks.csv의 id (예 B7). 새 작업이면 PM에게 먼저 알린다
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: 담당 (TEAM.md)
+      options: [1 판독, 2 검증, 3 화면, 4 서버, 5 발표]
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: 고칠 파일
+      description: 자기 담당 폴더 안이어야 한다 (CONTRIBUTING.md 폴더 소유권)
+  - type: textarea
+    id: done
+    attributes:
+      label: 끝난 기준
+      description: 테스트나 확인 방법
+    validations:
+      required: true
+  - type: textarea
+    id: depends
+    attributes:
+      label: 먼저 끝나야 하는 이슈
+      description: "예: #12. 없으면 비움. 기다리는 동안은 tests/unit/fakes.py와 docs/examples/로 먼저 만든다"

@@ -1,0 +1,16 @@
+{
+  "doc_type": "packing_list",
+  "file": "uploads/sample-001/packing_list.pdf",
+  "doc_no": {"raw": "PL-2026-001", "value": "PL-2026-001"},
+  "items": [
+    {
+      "line": 1,
+      "item_code": {"raw": "BP-200", "value": "BP-200"},
+      "name": {"raw": "LITHIUM-ION BATTERY PACK", "value": "lithium-ion battery pack"},
+      "hs_code": {"raw": "8507.60", "value": "850760"},
+      "qty": {"raw": "500 CTNS", "value": 500, "unit": "CTN"},
+      "gross_kg": {"raw": "6,520.00 KGS", "value": 6520.0},
+      "net_kg": {"raw": null, "value": null, "unreadable": "흐림"}
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+name: 버그
+description: 돌던 것이 안 돈다
+title: "[버그] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 무엇이 안 되나
+      description: 실행한 명령, 기대한 결과, 실제 결과 (오류 메시지 그대로)
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: 어디서
+      description: 로컬 / 배포된 Function URL / CI
+  - type: dropdown
+    id: role
+    attributes:
+      label: 고칠 담당 (모르면 비움)
+      options: [1 판독, 2 검증, 3 화면, 4 서버, 5 발표]

@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "GlobalInferenceProfileInSeoul",
+      "Effect": "Allow",
+      "Action": ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream"],
+      "Resource": "arn:aws:bedrock:ap-northeast-2:__ACCOUNT_ID__:inference-profile/global.anthropic.*",
+      "Condition": { "StringEquals": { "aws:RequestedRegion": "ap-northeast-2" } }
+    },
+    {
+      "Sid": "FoundationModelInSeoulViaProfile",
+      "Effect": "Allow",
+      "Action": ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream"],
+      "Resource": "arn:aws:bedrock:ap-northeast-2::foundation-model/anthropic.*",
+      "Condition": {
+        "StringEquals": { "aws:RequestedRegion": "ap-northeast-2" },
+        "ArnLike": { "bedrock:InferenceProfileArn": "arn:aws:bedrock:ap-northeast-2:__ACCOUNT_ID__:inference-profile/global.anthropic.*" }
+      }
+    },
+    {
+      "Sid": "GlobalFoundationModelViaProfile",
+      "Effect": "Allow",
+      "Action": ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream"],
+      "Resource": "arn:aws:bedrock:::foundation-model/anthropic.*",
+      "Condition": {
+        "StringEquals": { "aws:RequestedRegion": "unspecified" },
+        "ArnLike": { "bedrock:InferenceProfileArn": "arn:aws:bedrock:ap-northeast-2:__ACCOUNT_ID__:inference-profile/global.anthropic.*" }
+      }
+    }
+  ]
+}
