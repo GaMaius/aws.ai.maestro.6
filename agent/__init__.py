@@ -59,14 +59,14 @@ def _openai_model(read_timeout: int, *, vision: bool):
     VISION_MODEL_ID(사진 서류를 읽을 때. 없으면 MODEL_ID), MAX_TOKENS(기본 8000).
     키는 코드·저장소에 적지 않는다. 로컬 실행 설정은 local/env.example 참고.
     """
-    from strands.models.openai import OpenAIModel
-
     api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise RuntimeError("환경 변수 GROQ_API_KEY(또는 OPENAI_API_KEY)가 없습니다. local/env.example을 보고 .env에 적으세요")
     model_id = (os.environ.get("VISION_MODEL_ID") if vision else None) or os.environ.get("MODEL_ID")
     if not model_id:
         raise RuntimeError("환경 변수 MODEL_ID가 없습니다. 예: MODEL_ID=openai/gpt-oss-120b")
+    from strands.models.openai import OpenAIModel  # openai 패키지는 로컬 실행용(uv sync --group local)에만 있다
+
     return OpenAIModel(
         client_args={
             "api_key": api_key,
