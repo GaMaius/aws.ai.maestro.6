@@ -11,17 +11,17 @@
 | 부분 | 어디서 | 비용 | 하는 일 |
 | --- | --- | --- | --- |
 | 데모 사이트 | GitHub Pages (`web/` 모드 `demo`) | 없음 | 서버 없이 처리 결과 예시(`docs/examples/`)를 재생한다. 업로드 → 처리 단계 → 불일치·HS·신고서·WMS 승인 → 대시보드 → AI chat 화면을 모두 눌러 볼 수 있다 |
-| 직접 처리 (다음 단계) | 내 PC (`uvicorn` 한 줄) | 없음 (무료 등급) | 같은 파이썬 코드(`tools/`, `agent/`)로 실제 서류를 처리한다. AWS 대신 무료 도구를 쓴다 |
+| 직접 처리 | 내 PC (`uvicorn` 한 줄, [local/README.md](../local/README.md)) | 없음 (무료 등급) | 같은 파이썬 코드(`tools/`, `agent/`)로 실제 서류를 처리한다. AWS 대신 무료 도구를 쓴다 |
 | 원래 배포 코드 | `infra/` (남겨 둠) | - | AWS에서 어떻게 배포했는지 보여 주는 기록. 대회 계정 없이는 돌리지 않는다 |
 
 데모 화면 맨 위에는 "원래 서비스는 AWS에서 동작했고, 이 화면은 처리 결과 예시를 재생한다"는 안내가 항상 보인다.
 
-## AWS → 무료 도구 바꾸기 (직접 처리 단계)
+## AWS → 무료 도구 바꾸기 (직접 처리, M2 완료)
 
 | 원래 (AWS) | 바꿀 것 | 이유 |
 | --- | --- | --- |
-| Bedrock Claude (Strands `BedrockModel`) | Groq 무료 등급 (OpenAI 호환 API, Strands `OpenAIModel`) | 키만 있으면 무료. 환경 변수로 Bedrock과 고를 수 있게 둔다 |
-| Textract | PDF 글자층(PyMuPDF) + 사진은 Tesseract (kor+eng) | 생성한 서류 PDF는 글자층이 있어 OCR이 필요 없다. 사진만 OCR |
+| Bedrock Claude (Strands `BedrockModel`) | Groq 무료 등급 (OpenAI 호환 API, Strands `OpenAIModel`). 글자 `openai/gpt-oss-120b`, 사진 `qwen/qwen3.8-27b` | 키만 있으면 무료. `MODEL_PROVIDER`로 Bedrock과 고른다. Ollama도 된다 |
+| Textract | PDF 글자층(pypdfium2) + 사진은 Tesseract (kor+eng, 선택) | 생성한 서류 PDF는 글자층이 있어 OCR이 필요 없다. 사진만 OCR |
 | Lambda (api + worker) | FastAPI 한 프로세스 + 백그라운드 작업 | 경로(`/api/...`)와 응답 모양(docs/schema.md)은 그대로 |
 | DynamoDB 5개 테이블 | SQLite 한 파일 | 테이블 키·칸 약속(infra/README.md)을 그대로 표로 옮긴다 |
 | S3 (서류 원본·캐시) | 로컬 폴더 | 미리 서명된 URL 대신 서버가 직접 받는다 |
@@ -32,8 +32,8 @@
 
 ## 단계
 
-1. **M1 데모 사이트** (이번): `web/` 모드 `demo` 빌드, 내려받기 문서를 미리 만든 파일로 연결, 안내 띠, GitHub Pages 배포 워크플로
-2. **M2 직접 처리**: 위 표의 로컬 구현 + `server/` (FastAPI) + `npm run dev:local`
+1. **M1 데모 사이트** (완료): `web/` 모드 `demo` 빌드, 내려받기 문서를 미리 만든 파일로 연결, 안내 띠, GitHub Pages 배포 워크플로
+2. **M2 직접 처리** (완료): `local/` 대체물 + `server/app.py` (FastAPI) + `npm run dev:local`. 원래 코드는 고치지 않고 boto3가 대체물을 돌려주게 한다. pdfium을 여러 스레드에서 동시에 쓰던 문제(OCR 누락)도 이때 고쳤다
 3. **M3 포트폴리오 정리**: README를 처음 보는 사람 기준으로 다시 쓰기 (무엇을 풀었나, AWS 구조 그림, 데모 링크, 발표 영상, 측정 숫자), 팀 규칙 문서(CLAUDE.md의 폴더 소유권 등)를 개인 저장소에 맞게 정리
 
 ## 데모 사이트 만들기

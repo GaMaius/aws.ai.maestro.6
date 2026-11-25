@@ -222,6 +222,10 @@ def content_blocks(file_name: str, data: bytes) -> list[dict]:
     이미지가 Bedrock 한도(3.75MB·8000px)를 넘으면 JPEG로 줄여 넣는다 (shrink_image, B10 #148). PDF는 그대로다.
     """
     suffix = PurePath(file_name).suffix.lower()
+    from agent import model_provider
+
+    if suffix == ".pdf" and model_provider() == "openai":
+        return pdf_blocks_for_text_models(data)
     if suffix == ".pdf":
         # name 칸은 영문·숫자·공백·하이픈·괄호만 허용되므로 고정 이름을 쓴다
         return [{"document": {"format": "pdf", "name": "document", "source": {"bytes": data}}}]
@@ -231,6 +235,47 @@ def content_blocks(file_name: str, data: bytes) -> list[dict]:
             return [{"image": {"format": "jpeg", "source": {"bytes": shrunk.data}}}]
         return [{"image": {"format": _IMAGE_FORMATS[suffix], "source": {"bytes": data}}}]
     raise ReadError(f"지원하지 않는 파일 형식입니다: {suffix or '확장자 없음'} (PDF, JPG, PNG만)")
+
+
+PDF_TEXT_PAGES = 3  # OpenAI 호환 모드에서 글자층을 옮길 쪽 수 (Groq 비전 모델은 그림 3장까지)
+PDF_TEXT_MIN_CHARS = 30  # 글자층이 이보다 적으면 스캔한 PDF로 보고 쪽 그림을 보낸다
+
+
+def pdf_text(data: bytes, max_pages: int = PDF_TEXT_PAGES) -> str:
+    """PDF 글자층을 쪽마다 옮긴다 (pypdfium2, 모델 호출 없음). 스캔한 PDF는 빈 글자가 나온다."""
+    import pypdfium2 as pdfium
+
+    from tools.ocr import PDFIUM_LOCK
+
+    with PDFIUM_LOCK:
+        return _pdf_text(pdfium, data, max_pages)
+
+
+def _pdf_text(pdfium, data: bytes, max_pages: int) -> str:
+    pdf = pdfium.PdfDocument(data)
+    try:
+        parts = []
+        for i in range(min(len(pdf), max_pages)):
+            text = pdf[i].get_textpage().get_text_range().replace("\r\n", "\n").strip()
+            if text:
+                parts.append(f"[{i + 1}쪽]\n{text}")
+        return "\n\n".join(parts)
+    finally:
+        pdf.close()
+
+
+def pdf_blocks_for_text_models(data: bytes) -> list[dict]:
+    """PDF를 OpenAI 호환 모델(Groq 등)이 받는 블록으로 바꾼다. 이 API들은 PDF 문서 블록을 받지 않는다.
+
+    글자층이 있으면(생성한 서류) 글자를 그대로 넘기고, 없으면(스캔본) 앞 쪽 그림을 JPEG로 넘긴다 (VISION_MODEL_ID로 읽음).
+    서류에서 온 글자는 데이터로만 다룬다는 원칙은 같다 (system_prompt).
+    """
+    text = pdf_text(data)
+    if len(text) >= PDF_TEXT_MIN_CHARS:
+        return [{"text": f"아래는 서류 PDF의 글자층을 쪽 순서대로 옮긴 것이다. 표의 칸 순서는 PDF에 적힌 순서다.\n<document>\n{text}\n</document>"}]
+    from tools.ocr import render_pages
+
+    return [{"image": {"format": "jpeg", "source": {"bytes": p.data}}} for p in render_pages(data, max_pages=PDF_TEXT_PAGES)]
 
 
 # 서류 종류별로 헷갈리기 쉬운 칸. P0 대조는 송장 번호로 하므로 doc_no에는 송장 번호를 옮긴다 (docs/schema.md 약속 3)
@@ -336,7 +381,7 @@ def _strands_structured[M: BaseModel](blocks: list[dict], prompt: str, user_text
 
     from agent import make_model
 
-    agent = Agent(model=make_model(), system_prompt=prompt, callback_handler=None)
+    agent = Agent(model=make_model(vision=any("image" in b for b in blocks)), system_prompt=prompt, callback_handler=None)
     if os.environ.get("READ_MODE", "structured") == "json":
         schema = json.dumps(output_model.model_json_schema(), ensure_ascii=False)
         text = f"{user_text}\n아래 JSON 스키마에 맞는 JSON 하나만 답한다. 다른 글은 쓰지 않는다.\n{schema}"

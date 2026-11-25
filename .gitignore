@@ -33,3 +33,6 @@ samples/data/parties_test.csv
 samples/gen/items_test.csv
 samples/gen/parties_test.csv
 eval/test/
+
+# 로컬 실행 저장소 (local/, server/)
+.local-data*/
