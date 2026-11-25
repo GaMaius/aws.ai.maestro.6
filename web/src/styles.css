@@ -4477,3 +4477,62 @@ button.link {
     font-size: 16px;
   }
 }
+
+/* 포트폴리오 데모 안내 띠 (모드 demo 빌드에서만) */
+.demo-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px var(--gutter);
+  background: var(--primary-tint);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.demo-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  max-width: 760px;
+}
+.demo-banner-text strong {
+  font-size: 14px;
+  color: var(--primary-strong);
+}
+.demo-banner-text span {
+  color: var(--ink-secondary);
+}
+.demo-banner-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.demo-banner-try,
+.demo-banner-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.demo-banner-try {
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+}
+.demo-banner-try:active {
+  background: var(--primary-strong);
+}
+.demo-banner-link {
+  border: 1px solid var(--primary-line);
+  background: var(--bg);
+  color: var(--primary-strong);
+}

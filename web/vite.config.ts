@@ -31,6 +31,8 @@ export default defineConfig(({ mode }) => {
   // npm run dev:api 일 때만 /api 를 배포된 CloudFront 주소로 보낸다
   const proxyTarget = loadEnv(mode, process.cwd(), "VITE_").VITE_API_PROXY;
   return {
+    // 포트폴리오 데모(GitHub Pages)는 하위 경로(/aws.ai.maestro.6/)에 올라가므로 상대 경로로 빌드한다. 주소는 해시 방식이라 문제없다
+    base: mode === "demo" ? "./" : "/",
     plugins: mode === "mock" ? [react(), mockDownloads()] : [react()],
     server: {
       // 가짜 응답이 저장소의 docs/examples/*.json 을 직접 읽는다
