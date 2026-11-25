@@ -33,6 +33,9 @@ JPEG_QUALITY = 85
 TEXTRACT_MIN_INTERVAL = 1.0 / float(os.environ.get("TEXTRACT_TPS", "1"))
 _PACE_LOCK = threading.Lock()
 _last_call = 0.0
+# pdfium(pypdfium2)은 스레드에 안전하지 않다. 처리 worker 는 서류마다 스레드로 그리므로 PDF 를 여는 곳은 모두 이 잠금 안에서 쓴다
+# (Windows 로컬 실행에서 동시에 그리다 access violation 으로 OCR 이 빠졌다)
+PDFIUM_LOCK = threading.RLock()
 
 
 class TextractClient(Protocol):
@@ -101,6 +104,11 @@ def render_pages(data: bytes, *, max_pages: int | None = None) -> list[PageImage
     """
     import pypdfium2 as pdfium
 
+    with PDFIUM_LOCK:
+        return _render_pages(pdfium, data, max_pages)
+
+
+def _render_pages(pdfium, data: bytes, max_pages: int | None) -> list[PageImage]:
     pdf = pdfium.PdfDocument(data)
     try:
         pages = []

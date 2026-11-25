@@ -15,6 +15,12 @@ dependencies = [
 [dependency-groups]
 # botocore[crt]: 로컬 aws login 자격 증명용 (Lambda는 실행 역할을 써서 필요 없음)
 dev = ["pytest>=8", "botocore[crt]"]
+local = [
+    "fastapi>=0.165.0",
+    "openai>=3.59.0",
+    "pytesseract>=0.3.13",
+    "uvicorn>=0.54.0",
+]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests/unit"]

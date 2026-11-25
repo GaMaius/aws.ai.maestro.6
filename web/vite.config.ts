@@ -28,8 +28,9 @@ function mockDownloads(): Plugin {
 }
 
 export default defineConfig(({ mode }) => {
-  // npm run dev:api 일 때만 /api 를 배포된 CloudFront 주소로 보낸다
-  const proxyTarget = loadEnv(mode, process.cwd(), "VITE_").VITE_API_PROXY;
+  // npm run dev:api 일 때만 /api 를 배포된 CloudFront 주소로 보낸다.
+  // npm run dev:local(모드 local)은 내 PC의 로컬 서버(server/app.py, AWS 없이)로 보내고, 업로드 경로 /local-s3 도 같이 보낸다
+  const proxyTarget = mode === "local" ? "http://localhost:8000" : loadEnv(mode, process.cwd(), "VITE_").VITE_API_PROXY;
   return {
     // 포트폴리오 데모(GitHub Pages)는 하위 경로(/aws.ai.maestro.6/)에 올라가므로 상대 경로로 빌드한다. 주소는 해시 방식이라 문제없다
     base: mode === "demo" ? "./" : "/",
@@ -37,7 +38,12 @@ export default defineConfig(({ mode }) => {
     server: {
       // 가짜 응답이 저장소의 docs/examples/*.json 을 직접 읽는다
       fs: { allow: [searchForWorkspaceRoot(process.cwd()), examples] },
-      proxy: proxyTarget ? { "/api": { target: proxyTarget, changeOrigin: true } } : undefined,
+      proxy: proxyTarget
+        ? {
+            "/api": { target: proxyTarget, changeOrigin: true },
+            ...(mode === "local" ? { "/local-s3": { target: proxyTarget, changeOrigin: true } } : {}),
+          }
+        : undefined,
     },
     build: { outDir: "dist" },
     test: {
