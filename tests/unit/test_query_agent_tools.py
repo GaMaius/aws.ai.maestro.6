@@ -416,6 +416,9 @@ def test_chat_passes_history_when_agent_is_on(monkeypatch):
         ScriptedModel([[("query_shipments", {"status": "통관 지연", "period": "this_week", "and_status": "검사 중"})], "그중 2건입니다."]),
     ]
     monkeypatch.setattr(query_agent, "chat_model", lambda: models.pop(0))
+    # 시드 화물의 입항일이 TODAY 주간이라, 실제 오늘 날짜로 돌면 '이번 주'가 비어 날이 지나면 실패한다
+    original_answer = query_agent.answer
+    monkeypatch.setattr(query_agent, "answer", lambda *a, **k: original_answer(*a, **{**k, "today": k.get("today") or TODAY}))
 
     def post(message):
         event = {"requestContext": {"http": {"method": "POST"}}, "rawPath": "/api/chat",
