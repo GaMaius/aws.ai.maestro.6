@@ -1,6 +1,7 @@
 // 화면이 부르는 /api 를 모은 곳 (docs/schema.md 약속 2).
 // 주소는 항상 상대 경로다. 화면과 API 가 같은 CloudFront 주소라 CORS 가 필요 없다.
-// npm run dev(모드 mock)에서는 mock.ts 가 docs/examples/ 로 대신 답한다. 빌드에는 들어가지 않는다.
+// npm run dev(모드 mock)와 포트폴리오 데모 빌드(모드 demo)에서는 mock.ts 가 docs/examples/ 로 대신 답한다.
+// 보통 빌드(npm run build)에는 들어가지 않는다.
 import type {
   ApproveResponse,
   ChatHistoryResponse,
@@ -33,8 +34,14 @@ export class ApiError extends Error {
   }
 }
 
+/** 서버 없이 가짜 응답으로 도는지: 개발(mock)과 포트폴리오 데모(demo) */
+export const FAKE_SERVER = import.meta.env.MODE === "mock" || import.meta.env.MODE === "demo";
+/** 포트폴리오 데모 빌드인지. 내려받기 문서는 web/public/demo/ 에 미리 만든 파일을 준다 (scripts/build_demo_assets.py) */
+export const DEMO = import.meta.env.MODE === "demo";
+const DEMO_FILES = `${import.meta.env.BASE_URL}demo/`;
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
-  if (import.meta.env.MODE === "mock") {
+  if (FAKE_SERVER) {
     const { mockRequest } = await import("./mock");
     return mockRequest(method, path, body) as Promise<T>;
   }
@@ -58,7 +65,7 @@ export function createUploads(files: UploadRequestFile[]): Promise<UploadsRespon
 
 /** 받은 주소로 파일을 S3 에 직접 올린다. content-type 은 createUploads 에 보낸 값과 같아야 한다. */
 export async function putToS3(url: string, file: Blob, contentType: string): Promise<void> {
-  if (import.meta.env.MODE === "mock") return;
+  if (FAKE_SERVER) return;
   const res = await fetch(url, { method: "PUT", headers: { "content-type": contentType }, body: file });
   if (!res.ok) throw new ApiError(res.status, `S3 업로드 실패 (${res.status})`);
 }
@@ -85,16 +92,19 @@ export function approveJob(jobId: string, approver: string, overrideReason?: str
 }
 /** HS 확인 요청서 PDF 내려받기 주소 (GET /api/jobs/{id}/hs-request, X2 #260). HS가 '사람 확인 필요'로 남은 품목이 있을 때 받는다 */
 export function hsRequestUrl(jobId: string): string {
+  if (DEMO) return `${DEMO_FILES}hs-request.pdf`;
   return `/api/jobs/${encodeURIComponent(jobId)}/hs-request`;
 }
 /** 불일치 통지 문서 내려받기 주소 (GET /api/jobs/{id}/notice?format=html|md, F9 #155 · C7 #158).
  *  관리자에게 보낼 문서로, 불일치·확인 필요와 근거를 담는다. 처리 중인 작업은 409 */
 export function noticeUrl(jobId: string, format: "html" | "md" = "html"): string {
+  if (DEMO) return `${DEMO_FILES}notice.${format}`;
   return `/api/jobs/${encodeURIComponent(jobId)}/notice?format=${format}`;
 }
 
 /** 검수 완료서 PDF 내려받기 주소 (GET /api/jobs/{id}/certificate, X1 #258). 사람이 승인해 등록한 작업만 받을 수 있다 */
 export function certificateUrl(jobId: string): string {
+  if (DEMO) return `${DEMO_FILES}certificate.pdf`;
   return `/api/jobs/${encodeURIComponent(jobId)}/certificate`;
 }
 

@@ -16,6 +16,12 @@
 - [x] 로컬 개발 서버에서 `/api`를 어디로 보낼지: `npm run dev:api`는 Vite 개발 서버 프록시로 `/api`를 환경 변수 `VITE_API_PROXY`(배포된 CloudFront 주소)에 보낸다. 배포 전에는 `npm run dev`(가짜 응답)만 쓴다
   - S3 업로드 CORS는 CloudFront 주소에서 오는 PUT만 허용한다(`infra/s3-cors-docs.json`). 그래서 `localhost`에서는 S3에 파일을 올릴 수 없고, 실제 업로드는 배포된 주소에서 확인한다
 
+## 포트폴리오 데모 빌드 (개인 포크)
+- `npm run build:demo`: 모드 `demo`. 가짜 응답(`mock.ts`)을 빌드에 넣고, 상대 경로(`base: "./"`)로 만들어 GitHub Pages 하위 경로에서도 열린다.
+- 화면 맨 위에 데모 안내 띠(`components/DemoBanner.tsx`)가 붙는다. "예시 작업 바로 보기"는 업로드 없이 예시 작업을 연다.
+- 내려받기 문서(통지 문서·HS 확인 요청서·검수 완료서)는 서버 대신 `public/demo/`의 미리 만든 파일을 준다 (`scripts/build_demo_assets.py`).
+- 배포: main에 올라가면 `.github/workflows/pages.yml`. 계획은 `docs/REBUILD.md`.
+
 ## 구조 (G1, G9에서 배치 변경)
 메뉴는 파일 업로드 · 문서 분류 내역 · 대시보드 · AI chat 네 개다. 사용자와 관리자를 나누지 않는다. 주소는 해시 방식이다.
 

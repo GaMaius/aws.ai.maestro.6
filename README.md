@@ -1,4 +1,9 @@
 # aws.ai.maestro.6: 6팀 물류 문서 자동화 Agent
+
+> **포트폴리오 데모**: https://gamaius.github.io/aws.ai.maestro.6/ (서버 없이 처리 결과 예시를 재생하는 화면)
+> 원래 서비스는 해커톤 동안 AWS(Bedrock·Textract·Lambda·DynamoDB)에 배포해 동작했다. 그 코드는 브랜치 [`archive/aws-hackathon`](https://github.com/GaMaius/aws.ai.maestro.6/tree/archive/aws-hackathon)에 그대로 있다.
+> 이 포크를 어떻게 바꾸는지는 [docs/REBUILD.md](docs/REBUILD.md)에 있다.
+
 부산항 포워더 실무자가 화물 한 건의 서류 묶음(B/L, 상업송장, 포장명세서, 원산지증명서)을 올리면,
 에이전트가 서류를 분류해 핵심 항목을 읽고, 서류끼리 대조해 오류를 근거와 함께 짚고,
 HS 코드를 확정하거나 추천해 신고서 초안을 채우고, 문제가 없으면 가상 WMS에 바로 등록한다.

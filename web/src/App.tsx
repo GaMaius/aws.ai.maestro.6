@@ -1,6 +1,8 @@
 // 메뉴 + 화면 (web/README.md 구조).
 // 메뉴는 모바일에서 아래 탭(아이콘 + 글자), 태블릿·PC 에서 위 왼쪽 칩이다. 배치는 styles.css 가 화면 너비로 바꾼다.
 import type { ReactNode } from "react";
+import { DEMO } from "./api";
+import { DemoBanner } from "./components/DemoBanner";
 import { Icon, type IconName } from "./components/Icon";
 import { ChatPage } from "./pages/ChatPage";
 import { DashboardPage } from "./pages/DashboardPage";
@@ -39,6 +41,7 @@ export function App() {
   const { page, active } = resolve(useHashPath());
   return (
     <div className="layout">
+      {DEMO ? <DemoBanner /> : null}
       <header className="topbar">
         <span className="brand">{APP_NAME}</span>
         <nav className="menu" aria-label="메뉴">
